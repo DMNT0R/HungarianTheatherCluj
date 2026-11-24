@@ -319,6 +319,7 @@
     $("sheet-hero").style.setProperty("--hue", (350 + i * 9) % 360);
     renderMedia(s);
     renderActivity(s);
+    $("rephoto-btn").hidden = !s.rephoto;
 
     const text = tr(s.text);
     let k = 0;
@@ -387,6 +388,15 @@
     if (Math.abs(dx) > 50 && lbItems.length > 1) stepLightbox(dx < 0 ? 1 : -1);
     touchX = null;
   });
+
+  // ---------- Damals & Heute ----------
+  Rephoto.init();
+  $("rephoto-btn").onclick = () => {
+    const s = S[state.openIdx];
+    if (!s || !s.rephoto) return;
+    player.pause();
+    Rephoto.open(s, { tr, t, esc, credits: T.rephotoCredits });
+  };
 
   // ---------- Mitmach-Element, Kostümfoto, Links ----------
   let photoFile = null, photoUrl = null;
@@ -507,6 +517,7 @@
   });
 
   document.addEventListener("keydown", e => {
+    if (Rephoto.isOpen()) return;
     if (!$("lightbox").hidden) {
       if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowLeft") stepLightbox(-1);

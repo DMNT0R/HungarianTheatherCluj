@@ -48,6 +48,10 @@
       hu: "Kolozsvári Állami Magyar Színház",
       ro: "Teatrul Maghiar de Stat Cluj"
     },
+    rephotoCredits: {
+      theatre: { en: "Documentation Centre of the Hungarian Theatre of Cluj", hu: "Kolozsvári Állami Magyar Színház, Dokumentációs Központ", ro: "Centrul de Documentare al Teatrului Maghiar de Stat Cluj" },
+      enyedi: { en: "Historic photo, reproduced in D. Enyedi, Studia UBB Dramatica 2018", hu: "Korabeli fotó, közölve: Enyedi D., Studia UBB Dramatica 2018", ro: "Fotografie istorică, reprodusă în D. Enyedi, Studia UBB Dramatica 2018" }
+    },
     mediaCredit: {
       en: "Images: Documentation Centre of the Hungarian Theatre of Cluj",
       hu: "Képek: a Kolozsvári Állami Magyar Színház Dokumentációs Központja",
@@ -68,22 +72,28 @@
             ro: "Casa Rhédey, primul spațiu al teatrului maghiar din Cluj"
           })
         ],
+        rephoto: {
+          hint: { en: "Stand on the opposite pavement of Napoca Street and point your camera at the palace front.", hu: "Álljon a Napoca utca túloldali járdájára, és fordítsa a kamerát a palota homlokzata felé.", ro: "Stați pe trotuarul opus al străzii Napoca și îndreptați camera spre fațada palatului." },
+          images: [
+            { src: "img/rephoto/rhedey-house.jpg", year: "1900s", credit: "theatre", caption: { en: "The Rhédey House on Napoca Street", hu: "A Rhédey-ház a Napoca utca felől", ro: "Casa Rhédey dinspre strada Napoca" } }
+          ]
+        },
         text: {
-          en: `Welcome to Cluj – or Kolozsvár, as the city is called in Hungarian. Look for the corner of the Main Square and Napoca Street, where the memorial of the 1989 revolution, the “Shot Pillars”, stands today. The building behind it is the Rhédey Palace.
+          en: `Welcome to Cluj – or Kolozsvár, as the city is called in Hungarian. Look for the corner of the Main Square and Napoca Street, where the memorial of the 1989 revolution, the “Shot Pillars”, stands today. The building behind it is the Rhédey Palace – look for the memorial plaque on its façade.
 
 This is where our story begins. In October 1792 a group of young nobles led by János Fejér asked the authorities for permission to perform plays in Hungarian. They wanted more than entertainment: they wanted to enrich and refine the Hungarian language. They were granted permission – in a reply that was more tolerant than enthusiastic.
 
 But where to perform? Countess Rhédey, born Baroness Terézia Bánffy, offered them the ballroom of this palace, free of charge, for an entire year. On 17 December 1792 the company gave its first performance here, a play called “A titkos ellenkezés vagy Köleséri”. Hungarian-language theatre in Cluj has never stopped since – the Hungarian Theatre of Cluj counts its birthday from that night.
 
 Imagine it: candlelight, a ballroom full of nobles and townspeople in silk and velvet, and young actors on an improvised stage, performing in their own language. Today the Rhédey Café welcomes guests within these old walls. And you are invited to become part of this story yourself: slip into a costume and stand, for a moment, on the stage of 1792.`,
-          hu: `Üdvözöljük Kolozsváron! Keresse meg a Főtér és a Napoca utca sarkát, ahol ma az 1989-es forradalom emlékműve, a „Stâlpii Împușcați” áll. A mögötte álló épület a Rhédey-palota.
+          hu: `Üdvözöljük Kolozsváron! Keresse meg a Főtér és a Napoca utca sarkát, ahol ma az 1989-es forradalom emlékműve, a „Stâlpii Împușcați” áll. A mögötte álló épület a Rhédey-palota – keresse meg a homlokzatán az emléktáblát!
 
 Itt kezdődik történetünk. 1792 októberében Fejér János vezetésével néhány fiatal nemes engedélyt kért arra, hogy magyar nyelvű színdarabokat adhasson elő. Nem csupán szórakoztatni akartak: a magyar nyelvet akarták gazdagítani és csiszolni. Az engedélyt megkapták – inkább türelmes, mint lelkes válasz formájában.
 
 De hol játsszanak? Rhédey grófné, született Bánffy Terézia bárónő egy teljes évre ingyen átengedte nekik palotája báltermét. 1792. december 17-én itt tartotta a társulat első előadását, „A titkos ellenkezés vagy Köleséri” című darabot. Azóta Kolozsváron megszakítás nélkül folyik a magyar nyelvű színjátszás – a Kolozsvári Állami Magyar Színház ettől az estétől számítja születésnapját.
 
 Képzelje el: gyertyafény, selyembe és bársonyba öltözött nemesekkel és polgárokkal teli bálterem, a rögtönzött színpadon pedig fiatal színészek, akik a saját anyanyelvükön játszanak. Ma a Rhédey Kávéház várja a vendégeket az öreg falak között. Önt pedig arra hívjuk, hogy maga is részese legyen ennek a történetnek: bújjon jelmezbe, és álljon egy pillanatra 1792 színpadára.`,
-          ro: `Bine ați venit la Cluj – sau Kolozsvár, cum se numește orașul în limba maghiară. Căutați colțul dintre Piața Unirii și strada Napoca, unde se află astăzi monumentul revoluției din 1989, „Stâlpii Împușcați”. Clădirea din spatele lui este Palatul Rhédey.
+          ro: `Bine ați venit la Cluj – sau Kolozsvár, cum se numește orașul în limba maghiară. Căutați colțul dintre Piața Unirii și strada Napoca, unde se află astăzi monumentul revoluției din 1989, „Stâlpii Împușcați”. Clădirea din spatele lui este Palatul Rhédey – căutați placa memorială de pe fațadă.
 
 Aici începe povestea noastră. În octombrie 1792, un grup de tineri nobili condus de János Fejér a cerut permisiunea de a juca piese de teatru în limba maghiară. Nu voiau doar să distreze publicul: voiau să îmbogățească și să rafineze limba maghiară. Au primit permisiunea – printr-un răspuns mai degrabă tolerant decât entuziast.
 
@@ -192,6 +202,14 @@ Astăzi, clădirea este folosită de Universitatea de Artă și Design. Arta și
             ro: "Placa memorială de pe clădirea Colegiului Academic (fosta Casă a Universitarilor)"
           })
         ],
+        rephoto: {
+          hint: { en: "Stand diagonally opposite the corner of Kogălniceanu and Emmanuel de Martonne streets – the old theatre will appear where the Academic College stands.", hu: "Álljon átlósan szemben a Kogălniceanu és az Emmanuel de Martonne utca sarkával – a régi színház ott jelenik meg, ahol ma az Akadémiai Kollégium áll.", ro: "Stați în diagonală față de colțul străzilor Kogălniceanu și Emmanuel de Martonne – vechiul teatru va apărea acolo unde se află astăzi Colegiul Academic." },
+          images: [
+            { src: "img/rephoto/farkas-photo.jpg", year: "c. 1900", credit: "enyedi", caption: { en: "The old theatre on Farkas Street", hu: "A régi Farkas utcai színház", ro: "Vechiul teatru de pe strada Farkas" } },
+            { src: "img/rephoto/farkas-1865.jpg", year: "1865", credit: "theatre", caption: { en: "After the reconstruction of 1865", hu: "Az 1865-ös átépítés után", ro: "După reconstrucția din 1865" } },
+            { src: "img/rephoto/farkas-1850s.jpg", year: "1850s", credit: "theatre", caption: { en: "The theatre in the 1850s", hu: "A színház az 1850-es években", ro: "Teatrul în anii 1850" } }
+          ]
+        },
         text: {
           en: `You are standing at the corner of Farkas Street – Wolf Street, today Kogălniceanu Street – and the former Theatre Street, today Emmanuel de Martonne Street. Here stood the first stone theatre ever built for performances in Hungarian.
 
@@ -311,6 +329,13 @@ Opriți-vă pentru o clipă. Teatrul este cea mai efemeră dintre arte – fieca
             ro: "Afișul spectacolului festiv din 1906"
           })
         ],
+        rephoto: {
+          hint: { en: "Stand in the square in front of the main entrance and frame the whole façade.", hu: "Álljon a főbejárat előtti téren, és vegye kamerába az egész homlokzatot.", ro: "Stați în piața din fața intrării principale și încadrați toată fațada." },
+          images: [
+            { src: "img/rephoto/national-theatre-postcard.jpg", year: "c. 1910", credit: "theatre", caption: { en: "Postcard: “Kolozsvár, Nemzeti színház”", hu: "Képeslap: „Kolozsvár, Nemzeti színház”", ro: "Carte poștală: „Kolozsvár, Nemzeti színház”" } },
+            { src: "img/rephoto/national-theatre-square.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The National Theatre and Hunyadi Square", hu: "A Nemzeti Színház és a Hunyadi tér", ro: "Teatrul Național și Piața Hunyadi" } }
+          ]
+        },
         text: {
           en: `In front of you stands the Lucian Blaga National Theatre, which is also home to the Romanian Opera. It was built as the new Hungarian National Theatre, designed by the Viennese architects Fellner and Helmer, and opened on 8 September 1906 under its director Jenő Janovics. Into the new stage he set a piece of the floorboards of the old Farkas Street theatre – as a sign that the story goes on.
 
@@ -363,23 +388,23 @@ Dar Janovics nu a fost doar un om de teatru. Următoarea oprire ne duce în lume
           })
         ],
         text: {
-          en: `Jenő Janovics was fascinated by film long before most theatre people took it seriously. As early as 1907 he was filming in the streets of Kolozsvár, and in 1913 his film “The Yellow Foal”, made together with the French company Pathé, became an international success. Between 1914 and 1920 his studio produced 65 silent films. It stood just ahead of you, in the courtyard of the summer theatre – a simple hall with a glass roof – and many scenes were shot outdoors, here in the park. With the money from his 26 cinemas he kept the theatre alive.
+          en: `Jenő Janovics was fascinated by film long before most theatre people took it seriously. As early as 1907 he was filming in the streets of Kolozsvár, and in 1913 his film “The Yellow Foal”, made together with the French company Pathé, was shown in almost forty countries. By 1920 his studio had produced more than sixty silent films. It stood just ahead of you, in the courtyard of the summer theatre – a simple hall with a glass roof – and many scenes were shot outdoors, here in the park. With the money from his 26 cinemas he kept the theatre alive.
 
-Janovics brought young talent to Kolozsvár. One was Mihály Kertész from Budapest. In 1914 Kertész filmed “Bánk bán” for him, with the great Mari Jászai as the Queen. Another was Sándor Korda, later Sir Alexander Korda, one of the great producers of British cinema.
+Janovics brought young talent to Kolozsvár. One was Mihály Kertész from Budapest. In 1914 Kertész directed “A tolonc” for him, shot in Kolozsvár and in the Turda Gorge, with the great Mari Jászai. It is the only film with her that survives: an English copy turned up in the basement of the Hungarian House in New York. Another was Sándor Korda, later Sir Alexander Korda, one of the great producers of British cinema.
 
 Kertész went to Hollywood and called himself Michael Curtiz. In 1942 he made “Casablanca” there, starring Humphrey Bogart and Ingrid Bergman, and won the Oscar for Best Director. In front of the camera there were Hungarians too: Peter Lorre, born László Löwenstein, and S. Z. Sakall, known in Budapest as Szőke Szakáll.
 
 “I think this is the beginning of a beautiful friendship” – and a piece of this story began here, in Kolozsvár.`,
-          hu: `Janovics Jenőt már akkor lenyűgözte a film, amikor a legtöbb színházi ember még nem vette komolyan. Már 1907-ben forgatott Kolozsvár utcáin, és 1913-ban a francia Pathé céggel közösen készített filmje, a „Sárga csikó” világsikert aratott. 1914 és 1920 között stúdiója hatvanöt némafilmet készített. Közvetlenül Ön előtt állt, a nyári színkör udvarán – egy egyszerű, üvegtetős csarnok –, és sok jelenetet a szabadban forgattak, itt, a Sétatéren. Huszonhat mozijának bevételéből tartotta életben a színházat.
+          hu: `Janovics Jenőt már akkor lenyűgözte a film, amikor a legtöbb színházi ember még nem vette komolyan. Már 1907-ben forgatott Kolozsvár utcáin, és 1913-ban a francia Pathé céggel közösen készített filmjét, a „Sárga csikót” csaknem negyven országban vetítették. 1920-ig stúdiója több mint hatvan némafilmet készített. Közvetlenül Ön előtt állt, a nyári színkör udvarán – egy egyszerű, üvegtetős csarnok –, és sok jelenetet a szabadban forgattak, itt, a Sétatéren. Huszonhat mozijának bevételéből tartotta életben a színházat.
 
-Janovics fiatal tehetségeket hozott Kolozsvárra. Egyikük a budapesti Kertész Mihály volt. 1914-ben Kertész forgatta le neki a „Bánk bánt”, a királyné szerepében a nagy Jászai Marival. Egy másik Korda Sándor volt, a későbbi Sir Alexander Korda, a brit filmgyártás egyik legnagyobb producere.
+Janovics fiatal tehetségeket hozott Kolozsvárra. Egyikük a budapesti Kertész Mihály volt. 1914-ben Kertész rendezte neki „A tolonc” című filmet, amelyet Kolozsváron és a Tordai-hasadékban forgattak, a nagy Jászai Marival. Ez az egyetlen fennmaradt filmje: angol nyelvű kópiája a New York-i Magyar Ház pincéjéből került elő. Egy másik Korda Sándor volt, a későbbi Sir Alexander Korda, a brit filmgyártás egyik legnagyobb producere.
 
 Kertész Hollywoodba ment, és Michael Curtiznek nevezte magát. 1942-ben ott forgatta a „Casablancát” Humphrey Bogart és Ingrid Bergman főszereplésével, és megkapta a legjobb rendezőnek járó Oscar-díjat. A kamera előtt magyarok is álltak: Peter Lorre, született Löwenstein László, és S. Z. Sakall, akit Budapesten Szőke Szakállként ismertek.
 
 „Azt hiszem, ez egy gyönyörű barátság kezdete” – és ennek a történetnek egy darabja itt, Kolozsváron kezdődött.`,
-          ro: `Jenő Janovics era fascinat de film cu mult înainte ca majoritatea oamenilor de teatru să-l ia în serios. Încă din 1907 filma pe străzile Clujului, iar în 1913 filmul său „Mânzul galben”, realizat împreună cu compania franceză Pathé, a avut un succes internațional. Între 1914 și 1920, studioul său a produs 65 de filme mute. Se afla chiar în fața dumneavoastră, în curtea teatrului de vară – o hală simplă, cu acoperiș de sticlă – iar multe scene au fost filmate în aer liber, aici, în parc. Cu banii din cele 26 de cinematografe ale sale a ținut în viață teatrul.
+          ro: `Jenő Janovics era fascinat de film cu mult înainte ca majoritatea oamenilor de teatru să-l ia în serios. Încă din 1907 filma pe străzile Clujului, iar în 1913 filmul său „Mânzul galben”, realizat împreună cu compania franceză Pathé, a fost prezentat în aproape patruzeci de țări. Până în 1920, studioul său a produs peste șaizeci de filme mute. Se afla chiar în fața dumneavoastră, în curtea teatrului de vară – o hală simplă, cu acoperiș de sticlă – iar multe scene au fost filmate în aer liber, aici, în parc. Cu banii din cele 26 de cinematografe ale sale a ținut în viață teatrul.
 
-Janovics a adus la Cluj tineri talentați. Unul dintre ei a fost Mihály Kertész, din Budapesta. În 1914, Kertész a filmat pentru el „Bánk bán”, cu marea Mari Jászai în rolul reginei. Altul a fost Sándor Korda, viitorul Sir Alexander Korda, unul dintre marii producători ai cinematografiei britanice.
+Janovics a adus la Cluj tineri talentați. Unul dintre ei a fost Mihály Kertész, din Budapesta. În 1914, Kertész a regizat pentru el filmul „A tolonc”, turnat la Cluj și în Cheile Turzii, cu marea Mari Jászai. Este singurul film cu ea care s-a păstrat: o copie în limba engleză a fost găsită în subsolul Casei Maghiare din New York. Altul a fost Sándor Korda, viitorul Sir Alexander Korda, unul dintre marii producători ai cinematografiei britanice.
 
 Kertész a plecat la Hollywood și și-a luat numele de Michael Curtiz. În 1942 a realizat acolo „Casablanca”, cu Humphrey Bogart și Ingrid Bergman, și a primit Premiul Oscar pentru cea mai bună regie. În fața camerei au jucat și maghiari: Peter Lorre, născut László Löwenstein, și S. Z. Sakall, cunoscut la Budapesta drept Szőke Szakáll.
 
@@ -396,7 +421,8 @@ Kertész a plecat la Hollywood și și-a luat numele de Michael Curtiz. În 1942
           }
         },
         links: [
-          { label: { en: "Hungarian actors (actors.hu)", hu: "Magyar színészek (actors.hu)", ro: "Actori maghiari (actors.hu)" }, url: "https://actors.hu" }
+          { label: { en: "Watch “A tolonc” (1914) – National Film Institute", hu: "„A tolonc” (1914) – Nemzeti Filmintézet", ro: "Vizionați „A tolonc” (1914) – Institutul Național de Film" }, url: "https://nfi.hu/alapfilmek-1/alapfilmek-filmek/jatekfilm/a-tolonc-1.html" },
+        { label: { en: "Hungarian actors (actors.hu)", hu: "Magyar színészek (actors.hu)", ro: "Actori maghiari (actors.hu)" }, url: "https://actors.hu" }
         ]
       },
       {
@@ -406,6 +432,13 @@ Kertész a plecat la Hollywood și și-a luat numele de Michael Curtiz. În 1942
         title: { en: "The Hungarian Theatre today", hu: "A Magyar Színház ma", ro: "Teatrul Maghiar astăzi" },
         subtitle: { en: "Kolozsvári Állami Magyar Színház", hu: "Kolozsvári Állami Magyar Színház", ro: "Teatrul Maghiar de Stat Cluj" },
         address: { en: "Str. Emil Isac 26–28, Cluj-Napoca", hu: "Emil Isac utca 26–28, Kolozsvár", ro: "Str. Emil Isac 26–28, Cluj-Napoca" },
+        rephoto: {
+          hint: { en: "Stand in front of the main entrance. In 1959–61 the original Art Nouveau façade was replaced – see what it looked like.", hu: "Álljon a főbejárat elé. Az eredeti szecessziós homlokzatot 1959–61-ben lecserélték – nézze meg, milyen volt.", ro: "Stați în fața intrării principale. Fațada originală Art Nouveau a fost înlocuită în 1959–61 – vedeți cum arăta." },
+          images: [
+            { src: "img/rephoto/summer-theatre-1910.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The summer theatre with its original façade", hu: "A nyári színkör eredeti homlokzatával", ro: "Teatrul de vară cu fațada originală" } },
+            { src: "img/rephoto/summer-theatre-street.jpg", year: "1910s", credit: "enyedi", caption: { en: "The summer theatre seen from the street", hu: "A nyári színkör az utca felől", ro: "Teatrul de vară văzut din stradă" } }
+          ]
+        },
         text: {
           en: `You have reached the end of the tour. From 1874 a wooden summer stage stood here at the entrance to the park. In 1910 Janovics replaced it with this brick theatre – and paid for it out of his own pocket. When the Hungarian company lost the great house on Hunyadi Square, it moved in here. In October 1919 Janovics opened the season – in a building without heating.
 

@@ -69,7 +69,18 @@ window.I18N = {
       aMap: "Tour map",
       aPrev: "Previous image",
       aNext: "Next image",
-      aOpenImg: "Open image"
+      aOpenImg: "Open image",
+      rpButton: "Then & Now",
+      rpSub: "See the past through your camera",
+      rpBlend: "Blend",
+      rpSwipe: "Swipe",
+      rpReset: "Reset",
+      rpCapture: "Take photo",
+      rpBack: "Back",
+      rpAlign: "Drag to move the old picture, pinch to zoom.",
+      rpNoCamera: "The camera is not available. You can take or choose a photo instead.",
+      rpUsePhoto: "📷 Use a photo",
+      rpShareText: "Then & now in Cluj – #IoiCluj"
     },
     hu: {
       stations: "állomás",
@@ -128,7 +139,18 @@ window.I18N = {
       aMap: "A séta térképe",
       aPrev: "Előző kép",
       aNext: "Következő kép",
-      aOpenImg: "Kép megnyitása"
+      aOpenImg: "Kép megnyitása",
+      rpButton: "Akkor és most",
+      rpSub: "Nézze a múltat a kamerán át",
+      rpBlend: "Áttűnés",
+      rpSwipe: "Csúszka",
+      rpReset: "Alaphelyzet",
+      rpCapture: "Fotó készítése",
+      rpBack: "Vissza",
+      rpAlign: "Húzással mozgathatja a régi képet, két ujjal nagyíthatja.",
+      rpNoCamera: "A kamera nem érhető el. Helyette készíthet vagy kiválaszthat egy fotót.",
+      rpUsePhoto: "📷 Fotó használata",
+      rpShareText: "Akkor és most Kolozsváron – #IoiCluj"
     },
     ro: {
       stations: "opriri",
@@ -187,7 +209,18 @@ window.I18N = {
       aMap: "Harta turului",
       aPrev: "Imaginea anterioară",
       aNext: "Imaginea următoare",
-      aOpenImg: "Deschide imaginea"
+      aOpenImg: "Deschide imaginea",
+      rpButton: "Atunci și acum",
+      rpSub: "Priviți trecutul prin cameră",
+      rpBlend: "Suprapunere",
+      rpSwipe: "Glisare",
+      rpReset: "Resetare",
+      rpCapture: "Fotografiați",
+      rpBack: "Înapoi",
+      rpAlign: "Trageți pentru a muta imaginea veche, apropiați degetele pentru a mări.",
+      rpNoCamera: "Camera nu este disponibilă. Puteți face sau alege o fotografie în schimb.",
+      rpUsePhoto: "📷 Folosiți o fotografie",
+      rpShareText: "Atunci și acum în Cluj – #IoiCluj"
     }
   }
 };

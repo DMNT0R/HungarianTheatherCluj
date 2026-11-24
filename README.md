@@ -30,6 +30,10 @@ The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
   - Otherwise the device's **text-to-speech** reads the story, highlighting the current sentence.
 - **Archive images** per stop from the theatre's Documentation Centre, with captions in
   all three languages and a full-screen viewer (swipe or arrow keys)
+- **Then & Now camera**: at four stops a historic photo or engraving is laid over the live
+  camera image – blend with a slider or swipe between past and present, drag and pinch to
+  align it with today's building, and save or share the combined picture. Without camera
+  access, a photo can be taken or chosen instead.
 - **Interactive elements** per stop, e.g. a costume photo taken with the phone camera
   (stays on the device, can be shared) or search lists
 - **Progress** is saved on the device

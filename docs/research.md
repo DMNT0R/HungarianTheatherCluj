@@ -20,6 +20,9 @@ Documentation Centre.
 - [ADC-3] Actual de Cluj: [204 ani de la inaugurarea primei clădiri de teatru din Cluj](https://actualdecluj.ro/azi-204-ani-de-la-inaugurarea-primei-cladiri-de-teatru-din-cluj/), 2025
 - [ADC-4] Actual de Cluj: [Istoria clădirii Colegiului Academic din Cluj](https://actualdecluj.ro/?p=264868), 2025
 - [OSM] Coordinates: OpenStreetMap / Nominatim, queried 24 Nov 2026
+- [ENYEDI-21] D. Enyedi: *Janovics' Menace: inquiries into a duplicated silent film script*, Studies in Eastern European Cinema 12/2 (2021), 109–120, [doi:10.1080/2040350X.2021.1898115](https://doi.org/10.1080/2040350X.2021.1898115) (PDF provided by the team)
+- [NFI] Nemzeti Filmintézet: [A tolonc (1914)](https://nfi.hu/alapfilmek-1/alapfilmek-filmek/jatekfilm/a-tolonc-1.html)
+- [KOCSIS] T. Kocsis (Hungarian Theatre of Cluj): *Basic infos* (Google Doc, project Drive folder, Nov 2026). ⚠️ Partly compiled with ChatGPT (links carry `utm_source=chatgpt.com`); use as leads, verify against primary sources.
 
 **The theatre's own historic walk.** For the 230th anniversary (17 Dec 2022) the
 theatre ran a guided walk with theatre historian Erzsébet Salat-Zakariás along almost
@@ -181,6 +184,49 @@ theatre) → Házsongárd Cemetery → National Theatre (Hunyadi Square) → Hun
   Romanian and English [HT-ABOUT: huntheater.ro/en/the-theatre/about-us/].
 
 ---
+
+## Additions from the team's material (25 Nov 2026)
+
+**Film [ENYEDI-21, NFI]**
+- *The Yellow Foal* (1913) was distributed in 137 copies to almost 40 countries [ENYEDI-21].
+- Janovics supervised **66** silent feature films 1913–1920 [ENYEDI-21]; WP-JANOVICS says 65 films
+  (1914–1920) plus 5 sketches ⚠️ → the app says “more than sixty”.
+- Curtiz and Korda's careers “originated on the streets of Cluj as Mihály Kertész and Sándor
+  László Kellner” [ENYEDI-21].
+- **A tolonc** (1914): directed by Mihály Kertész, script by Jenő Janovics, camera László Fekete,
+  starring Lili Berky, Mihály Várkonyi, **Mari Jászai**, István Szentgyörgyi; produced by Proja;
+  shot June–July 1914 in Kolozsvár, Torockó, the Turda Gorge and on the Arieș; **the only
+  surviving film with Mari Jászai**; an English-language copy was found in the basement of the
+  Hungarian House in New York; shown in Vienna and Berlin; full film on filmio.hu [NFI].
+- Last Transylvania studio feature: *Menace* (*Világrém*, 1920), a social-hygiene film on syphilis
+  ordered by the Romanian Ministry of Health, shot in Cluj hospitals, premiere 31 Dec 1920; studio
+  closed after 1924 [ENYEDI-21].
+- 1934/35 Janovics proposed a national film industry to the Romanian government; 1935–41 he made
+  documentaries for both Romanian and Hungarian clients [ENYEDI-21].
+
+**Buildings and dates [KOCSIS] – to verify**
+- Rhédey Palace: formerly “Chain House” (*Casa cu lanțuri*); used by the company 1792–93 and again
+  1819–21; **commemorative plaque on the façade** (used in the app, stop 1). First play's author:
+  Sándor Kövesdi Boér. *Hamlet* on 23 Nov 1793 (venue unverified).
+- Farkas Street: present address 1 Emmanuel de Martonne Street; *Béla futása* 26 Dec 1822; Cluj
+  premiere of *Bánk bán* **30 Aug 1834** (Lendvay as Bánk, Egressy as Otto) ⚠️ ADC-1 says 6 Sep 1834;
+  farewell *Bánk bán* 17 June 1906; 1885 recognised as second National Theatre.
+- First summer theatre: opened **13 June 1874**, architect Henrik Zimmermann, financed by intendant
+  Bogdán Korbuly, demolished 1908.
+- National Theatre: built 1904–06; Romanian National Theatre opened 1–2 Dec 1919 (*Se face ziuă*,
+  *Ovidiu*); Romanian Opera 25 May 1920 (*Aida*); Hungarian performances returned **Nov 1941**
+  ⚠️ (WP-KAMSZ: 1940–45; the app says “between 1940 and 1945”).
+- Summer theatre 1910: opened **18 July 1910** (some studies: 18 Aug) ⚠️; reinforced-concrete dome of
+  about 28 m; 1959–61 rebuild substantially changed the façade; Hungarian Opera independent from
+  11 Dec 1948 (*Háry János*).
+- The team's wish list of archive material includes **“comparative photographs: façade and
+  square in 1906 and today”** – now implemented as the *Then & Now* camera.
+
+**Images used for *Then & Now*** (`img/rephoto/`): Rhédey House (theatre archive); Farkas Street
+theatre photo c. 1900 [ENYEDI fig. 2] and engravings 1850s / after 1865 (theatre archive);
+National Theatre postcard (theatre archive) and photo [ENYEDI fig. 3]; summer theatre with its
+original façade [ENYEDI figs. 4–5]. All are over 100 years old; rights and higher-resolution scans
+to be confirmed with the Documentation Centre.
 
 ## Further reading (not yet consulted)
 
