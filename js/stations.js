@@ -57,11 +57,10 @@
       {
         id: "01-rhedey",
         year: 1792,
-        coords: [46.76975, 23.58890],
-        draftLocation: true,
+        coords: [46.76873, 23.58938],
         title: { en: "Rhédey Palace & Rhédey Café", hu: "Rhédey-palota és Rhédey Kávéház", ro: "Palatul Rhédey și Rhédey Café" },
         subtitle: { en: "Main Square · Piața Unirii · Főtér", hu: "Főtér · Piața Unirii", ro: "Piața Unirii · Főtér" },
-        address: { en: "Piața Unirii, Cluj-Napoca", hu: "Főtér (Piața Unirii), Kolozsvár", ro: "Piața Unirii, Cluj-Napoca" },
+        address: { en: "Piața Unirii 9, corner of Str. Napoca, Cluj-Napoca", hu: "Főtér (Piața Unirii) 9, a Napoca utca sarkán, Kolozsvár", ro: "Piața Unirii 9, colț cu Str. Napoca, Cluj-Napoca" },
         media: [
           img("15885-kamsz_archi_bir_5684.jpg", {
             en: "Rhédey House, the first venue of the Hungarian theatre in Cluj",
@@ -107,7 +106,7 @@ Imaginați-vă: lumina lumânărilor, o sală plină de nobili și orășeni îm
       {
         id: "02-matthias",
         year: 1443,
-        coords: [46.77125, 23.58775],
+        coords: [46.77113, 23.58756],
         title: { en: "Birthplace of King Matthias", hu: "Mátyás király szülőháza", ro: "Casa natală a regelui Matia Corvin" },
         subtitle: { en: "Casa Matei Corvin · Mátyás király szülőháza", hu: "Mátyás király szülőháza", ro: "Casa Matei Corvin" },
         address: { en: "Str. Matei Corvin 6, Cluj-Napoca", hu: "Mátyás király utca (Str. Matei Corvin) 6, Kolozsvár", ro: "Str. Matei Corvin 6, Cluj-Napoca" },
@@ -138,14 +137,13 @@ Astăzi, clădirea este folosită de Universitatea de Artă și Design. Arta și
       {
         id: "03-farkas",
         year: 1821,
-        coords: [46.76710, 23.58935],
-        draftLocation: true,
+        coords: [46.76772, 23.59252],
         title: { en: "The first stone theatre", hu: "Az első kőszínház", ro: "Primul teatru din piatră" },
         subtitle: { en: "Farkas utca · Str. Mihail Kogălniceanu", hu: "Farkas utca", ro: "Str. Mihail Kogălniceanu · Farkas utca" },
         address: {
-          en: "Casa Universitarilor, Str. Mihail Kogălniceanu, Cluj-Napoca",
-          hu: "Casa Universitarilor, Farkas utca (Str. Mihail Kogălniceanu), Kolozsvár",
-          ro: "Casa Universitarilor, Str. Mihail Kogălniceanu, Cluj-Napoca"
+          en: "Colegiul Academic (Auditorium Maximum), Str. Mihail Kogălniceanu 5, corner of Str. Emmanuel de Martonne",
+          hu: "Colegiul Academic (Auditorium Maximum), Farkas utca (Str. Mihail Kogălniceanu) 5, a Színház utca (Str. Emmanuel de Martonne) sarkán",
+          ro: "Colegiul Academic (Auditorium Maximum), Str. Mihail Kogălniceanu 5, colț cu Str. Emmanuel de Martonne"
         },
         media: [
           img("15886-a-farkas-utcai-szinhaz-az-1850-es-evekben.jpg", {
@@ -234,7 +232,8 @@ Continuăm spre sud, urcând dealul, către Cimitirul Central – unde se odihne
       {
         id: "04-hazsongard",
         year: 1585,
-        coords: [46.7625, 23.5910],
+        coords: [46.76266, 23.59300],
+        draftLocation: true,
         title: { en: "Házsongárd Central Cemetery", hu: "Házsongárdi temető", ro: "Cimitirul Central (Hajongard)" },
         subtitle: { en: "Házsongárdi temető · Cimitirul Central", hu: "Házsongárdi temető · Központi temető", ro: "Cimitirul Central · Házsongárdi temető" },
         address: { en: "Str. Avram Iancu, Cluj-Napoca", hu: "Avram Iancu utca, Kolozsvár", ro: "Str. Avram Iancu, Cluj-Napoca" },
@@ -291,7 +290,7 @@ Opriți-vă pentru o clipă. Teatrul este cea mai efemeră dintre arte – fieca
       {
         id: "05-nationaltheater",
         year: 1906,
-        coords: [46.77035, 23.59745],
+        coords: [46.77013, 23.59749],
         title: { en: "A Romanian theatre, built as Hungarian", hu: "Román színház – magyarnak épült", ro: "Un teatru românesc, construit ca teatru maghiar" },
         subtitle: { en: "Piața Ștefan cel Mare · Hunyadi tér", hu: "Hunyadi tér · Piața Ștefan cel Mare", ro: "Piața Ștefan cel Mare · Hunyadi tér" },
         address: { en: "Piața Ștefan cel Mare 2–4, Cluj-Napoca", hu: "Hunyadi tér (Piața Ștefan cel Mare) 2–4, Kolozsvár", ro: "Piața Ștefan cel Mare 2–4, Cluj-Napoca" },
@@ -346,7 +345,7 @@ Dar Janovics nu a fost doar un om de teatru. Următoarea oprire ne duce în lume
       {
         id: "06-casablanca",
         year: 1942,
-        coords: [46.76880, 23.58380],
+        coords: [46.77138, 23.58308],
         draftLocation: true,
         title: { en: "From Kolozsvár to Casablanca", hu: "Kolozsvártól Casablancáig", ro: "De la Cluj la Casablanca" },
         subtitle: { en: "Kertész Mihály · Michael Curtiz", hu: "Kertész Mihály · Michael Curtiz", ro: "Mihály Kertész · Michael Curtiz" },
@@ -409,7 +408,7 @@ Unul dintre regizorii care lucrau pentru Janovics era un tânăr din Budapesta: 
       {
         id: "07-ungarisches-theater",
         year: 1919,
-        coords: [46.7696, 23.5817],
+        coords: [46.77261, 23.58414],
         title: { en: "The Hungarian Theatre today", hu: "A Magyar Színház ma", ro: "Teatrul Maghiar astăzi" },
         subtitle: { en: "Kolozsvári Állami Magyar Színház", hu: "Kolozsvári Állami Magyar Színház", ro: "Teatrul Maghiar de Stat Cluj" },
         address: { en: "Str. Emil Isac 26–28, Cluj-Napoca", hu: "Emil Isac utca 26–28, Kolozsvár", ro: "Str. Emil Isac 26–28, Cluj-Napoca" },
