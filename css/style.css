@@ -273,3 +273,20 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
 .links { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
 .links:empty { display: none; }
 .links a { text-decoration: none; text-align: center; }
+
+/* ---------- Sprachwahl ---------- */
+.lang-switch { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.lang-switch button {
+  border: 1.5px solid var(--line); background: transparent; border-radius: 999px;
+  padding: 7px 14px; font-size: 14px; font-weight: 600;
+}
+.lang-switch button[aria-pressed="true"] { background: var(--wine); border-color: var(--wine); color: #fff; }
+.intro-lang { margin: 0 0 22px; }
+.intro-lang button { border-color: rgba(251, 238, 224, .35); color: #fbeee0; }
+.intro-lang button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: #2a070d; }
+.drawer-foot .lang-switch { justify-content: flex-start; }
+.lang-btn {
+  flex: none; height: 30px; min-width: 40px; padding: 0 8px; border-radius: 999px;
+  border: 1.5px solid rgba(255,255,255,.5); background: transparent; color: #fff;
+  font-size: 12px; font-weight: 800; letter-spacing: .05em;
+}

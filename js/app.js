@@ -1,14 +1,16 @@
 (function () {
   const T = window.TOUR;
   const S = T.stations;
+  const I = window.I18N;
   const ARRIVAL_RADIUS = 40;   // Meter: ab hier gilt eine Station als erreicht
   const WALK_SPEED = 75;       // Meter pro Minute
-  const STORE_KEY = "buehne-kolozsvar-v1";
+  const STORE_KEY = "theatre-city-map-v1";
 
   const $ = id => document.getElementById(id);
 
   // ---------- Zustand ----------
   const state = {
+    lang: null,
     visited: new Set(),
     arrived: new Set(),   // bereits per GPS gemeldete Ankünfte (keine Doppelmeldung)
     userPos: null,
@@ -22,13 +24,76 @@
       const d = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
       (d.visited || []).forEach(id => state.visited.add(id));
       state.demo = !!d.demo;
+      state.lang = d.lang || null;
       return d;
     } catch (e) { return {}; }
   }
-  function save() {
+  function save(extra) {
     try {
-      localStorage.setItem(STORE_KEY, JSON.stringify({ visited: [...state.visited], demo: state.demo, started: true }));
+      const prev = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+      localStorage.setItem(STORE_KEY, JSON.stringify(Object.assign(prev, {
+        visited: [...state.visited], demo: state.demo, lang: state.lang
+      }, extra || {})));
     } catch (e) { /* privates Fenster o. ä. */ }
+  }
+
+  // ---------- Sprache ----------
+  const LANGS = I.languages.map(l => l.code);
+  function detectLang() {
+    const prefs = navigator.languages || [navigator.language || ""];
+    for (const p of prefs) {
+      const c = (p || "").slice(0, 2).toLowerCase();
+      if (LANGS.includes(c)) return c;
+    }
+    return I.fallback;
+  }
+  /** Übersetzbaren Wert in der aktuellen Sprache liefern */
+  function tr(v) {
+    if (v && typeof v === "object" && !Array.isArray(v)) return v[state.lang] ?? v[I.fallback];
+    return v;
+  }
+  /** Oberflächentext mit Platzhaltern */
+  function t(key, vars) {
+    let s = (I.strings[state.lang] || {})[key] ?? I.strings[I.fallback][key] ?? key;
+    if (vars) s = s.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+    return s;
+  }
+  const langInfo = () => I.languages.find(l => l.code === state.lang);
+
+  function applyStaticTexts() {
+    document.documentElement.lang = state.lang;
+    document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+    document.querySelectorAll("[data-i18n-aria]").forEach(el => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
+    document.title = tr(T.title);
+    $("tour-title").textContent = tr(T.title);
+    $("intro-title").textContent = tr(T.title);
+    $("intro-subtitle").textContent = tr(T.subtitle);
+    $("intro-organizer").textContent = tr(T.organizer);
+    $("intro-count").textContent = S.length;
+    $("lang-btn").textContent = langInfo().short;
+    document.querySelectorAll(".lang-switch button").forEach(b => {
+      b.setAttribute("aria-pressed", b.dataset.lang === state.lang ? "true" : "false");
+    });
+  }
+
+  function setLang(code) {
+    if (!LANGS.includes(code)) code = I.fallback;
+    state.lang = code;
+    player.setLang(langInfo().speech);
+    applyStaticTexts();
+    markers.forEach((m, i) => { const el = m.getElement(); if (el) el.title = tr(S[i].title); });
+    renderProgress();
+    if (state.openIdx != null) openSheet(state.openIdx, { keepMap: true });
+    save();
+  }
+
+  function buildLangSwitches() {
+    document.querySelectorAll(".lang-switch").forEach(box => {
+      box.innerHTML = I.languages
+        .map(l => `<button type="button" data-lang="${l.code}" lang="${l.code}">${l.label}</button>`).join("");
+      box.querySelectorAll("button").forEach(b => { b.onclick = () => setLang(b.dataset.lang); });
+    });
+    $("lang-btn").onclick = () => setLang(LANGS[(LANGS.indexOf(state.lang) + 1) % LANGS.length]);
   }
 
   // ---------- Hilfsfunktionen ----------
@@ -38,20 +103,24 @@
     const h = Math.sin(dLat / 2) ** 2 + Math.cos(a[0] * r) * Math.cos(b[0] * r) * Math.sin(dLng / 2) ** 2;
     return 2 * R * Math.asin(Math.sqrt(h));
   }
+  function num(x) { return x.toLocaleString(state.lang); }
   function fmtDist(m) {
-    return m < 1000 ? Math.round(m / 10) * 10 + " m" : (m / 1000).toFixed(1).replace(".", ",") + " km";
+    return m < 1000 ? Math.round(m / 10) * 10 + " m" : num(Math.round(m / 100) / 10) + " km";
   }
   function nextIdx() {
     const i = S.findIndex(s => !state.visited.has(s.id));
     return i === -1 ? null : i;
   }
+  function esc(x) {
+    return String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  }
   let toastTimer;
   function toast(msg, ms) {
-    const t = $("toast");
-    t.innerHTML = msg;
-    t.classList.add("show");
+    const el = $("toast");
+    el.innerHTML = msg;
+    el.classList.add("show");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => t.classList.remove("show"), ms || 3500);
+    toastTimer = setTimeout(() => el.classList.remove("show"), ms || 3500);
   }
 
   // ---------- Karte ----------
@@ -68,7 +137,7 @@
   L.polyline(S.map(s => s.coords), { color: "#6e1a26", weight: 4, opacity: .55, dashArray: "2 10", lineCap: "round" }).addTo(map);
 
   const markers = S.map((s, i) => {
-    const m = L.marker(s.coords, { icon: icon(i), title: s.title, keyboard: true }).addTo(map);
+    const m = L.marker(s.coords, { icon: icon(i), keyboard: true }).addTo(map);
     m.on("click", () => openSheet(i));
     L.circle(s.coords, { radius: ARRIVAL_RADIUS, color: "#c79a3b", weight: 1, fillOpacity: .06, interactive: false }).addTo(map);
     return m;
@@ -109,7 +178,7 @@
       if (d <= ARRIVAL_RADIUS && !state.arrived.has(s.id)) {
         state.arrived.add(s.id);
         if (navigator.vibrate) navigator.vibrate([120, 60, 120]);
-        toast(`<strong>Station ${i + 1} erreicht</strong><br>${s.title}`);
+        toast(`<strong>${t("arrived", { i: i + 1 })}</strong><br>${esc(tr(s.title))}`);
         if (state.openIdx !== i) openSheet(i);
       } else if (d > ARRIVAL_RADIUS * 2.5) {
         state.arrived.delete(s.id); // erneutes Betreten später wieder melden
@@ -120,23 +189,18 @@
   // ---------- Geolokalisierung ----------
   function startGeo() {
     if (state.demo) return;
-    if (!("geolocation" in navigator)) {
-      toast("Ihr Gerät unterstützt keine Standortbestimmung. Der Demo-Modus ist im Menü verfügbar.", 5000);
-      return;
-    }
+    if (!("geolocation" in navigator)) { toast(t("noGeo"), 5000); return; }
     let first = true;
     state.watchId = navigator.geolocation.watchPosition(
       p => {
         const ll = [p.coords.latitude, p.coords.longitude];
         if (first) {
           first = false;
-          if (dist(ll, S[0].coords) > 20000) {
-            toast("Sie scheinen nicht in Cluj zu sein. Tipp: Im Menü den <strong>Demo-Modus</strong> aktivieren.", 6000);
-          }
+          if (dist(ll, S[0].coords) > 20000) toast(t("notInCluj"), 6000);
         }
         if (!state.demo) setUserPos(ll, p.coords.accuracy);
       },
-      () => toast("Standort nicht verfügbar. Im Menü können Sie den Demo-Modus aktivieren.", 5000),
+      () => toast(t("geoUnavailable"), 5000),
       { enableHighAccuracy: true, maximumAge: 5000, timeout: 20000 }
     );
   }
@@ -150,53 +214,50 @@
     $("demo-toggle").checked = on;
     $("demo-banner").hidden = !on;
     document.body.classList.toggle("demo", on);
-    if (on) { stopGeo(); } else { startGeo(); }
+    if (on) stopGeo(); else startGeo();
     save();
   }
   map.on("click", e => { if (state.demo) setUserPos([e.latlng.lat, e.latlng.lng], 8); });
 
   $("locate-btn").onclick = () => {
     if (state.userPos) map.flyTo(state.userPos, 17);
-    else if (state.demo) toast("Demo-Modus: Tippen Sie auf die Karte, um einen Standort zu setzen.");
-    else toast("Standort wird noch gesucht …");
+    else toast(state.demo ? t("demoTap") : t("searching"));
   };
 
   // ---------- Fortschritt & nächste Station ----------
   function renderProgress() {
     const n = state.visited.size;
-    $("progress-label").textContent = `${n} / ${S.length} Stationen`;
+    $("progress-label").textContent = t("progress", { n, total: S.length });
     $("progress-fill").style.width = (n / S.length * 100) + "%";
     markers.forEach((m, i) => m.setIcon(icon(i)));
+    markers.forEach((m, i) => { const el = m.getElement(); if (el) el.title = tr(S[i].title); });
     renderList();
     renderNext();
   }
 
   function renderNext() {
     const i = nextIdx();
-    const card = $("next-card");
     if (i === null) {
       $("next-num").textContent = "★";
-      $("next-label").textContent = "Tour abgeschlossen";
-      $("next-title").textContent = "Danke für Ihren Besuch!";
-      $("next-meta").textContent = "Wir sehen uns im Theater.";
-      $("next-open").textContent = "Neu starten";
-      card.dataset.idx = "";
+      $("next-label").textContent = t("tourDone");
+      $("next-title").textContent = t("thanks");
+      $("next-meta").textContent = t("seeYou");
+      $("next-open").textContent = t("restart");
       return;
     }
     const s = S[i];
     $("next-num").textContent = i + 1;
-    $("next-label").textContent = state.visited.size ? "Nächste Station" : "Erste Station";
-    $("next-title").textContent = s.title;
+    $("next-label").textContent = state.visited.size ? t("nextStation") : t("firstStation");
+    $("next-title").textContent = tr(s.title);
     if (state.userPos) {
       const d = dist(state.userPos, s.coords);
       $("next-meta").textContent = d <= ARRIVAL_RADIUS
-        ? "Sie sind da"
-        : `${fmtDist(d)} · ca. ${Math.max(1, Math.round(d / WALK_SPEED))} min zu Fuß`;
+        ? t("youAreHere")
+        : t("distance", { d: fmtDist(d), min: Math.max(1, Math.round(d / WALK_SPEED)) });
     } else {
-      $("next-meta").textContent = s.address;
+      $("next-meta").textContent = tr(s.address);
     }
-    $("next-open").textContent = "Öffnen";
-    card.dataset.idx = i;
+    $("next-open").textContent = t("open");
   }
 
   $("next-open").onclick = () => {
@@ -216,8 +277,8 @@
         <button data-i="${i}">
           <span class="li-num">${state.visited.has(s.id) ? "✓" : i + 1}</span>
           <span class="li-text">
-            <span class="li-title">${s.title}</span>
-            <span class="li-sub">${s.year} · ${s.subtitle}</span>
+            <span class="li-title">${esc(tr(s.title))}</span>
+            <span class="li-sub">${s.year} · ${esc(tr(s.subtitle))}</span>
           </span>
         </button>
       </li>`).join("");
@@ -239,46 +300,44 @@
     renderProgress();
     closeDrawer();
     map.fitBounds(bounds, { padding: [40, 40] });
-    toast("Fortschritt zurückgesetzt.");
+    toast(t("resetDone"));
   }
   $("reset-btn").onclick = resetProgress;
 
   // ---------- Stationsdetail & Audio ----------
-  const player = new StationAudio(T.lang);
+  const player = new StationAudio("en-GB");
 
-  function openSheet(i) {
+  function openSheet(i, opts) {
     const s = S[i];
     state.openIdx = i;
-    $("sheet-num").textContent = `Station ${i + 1} von ${S.length}`;
+    $("sheet-num").textContent = t("stationOf", { i: i + 1, n: S.length });
     $("sheet-year").textContent = s.year;
-    $("sheet-subtitle").textContent = s.subtitle;
-    $("sheet-title").textContent = s.title;
-    $("sheet-address").innerHTML = esc(s.address) +
-      (s.draftLocation ? ' <span class="badge">Ort vorläufig</span>' : "");
+    $("sheet-subtitle").textContent = tr(s.subtitle);
+    $("sheet-title").textContent = tr(s.title);
+    $("sheet-address").innerHTML = esc(tr(s.address)) +
+      (s.draftLocation ? ` <span class="badge">${esc(t("draftLocation"))}</span>` : "");
     $("sheet-hero").style.setProperty("--hue", (350 + i * 9) % 360);
     renderActivity(s);
 
+    const text = tr(s.text);
     let k = 0;
-    $("sheet-text").innerHTML = storyParagraphs(s.text)
-      .map(p => "<p>" + p.map(sen => `<span data-s="${k++}">${sen}</span>`).join(" ") + "</p>")
+    $("sheet-text").lang = state.lang;
+    $("sheet-text").innerHTML = storyParagraphs(text)
+      .map(p => "<p>" + p.map(sen => `<span data-s="${k++}">${esc(sen)}</span>`).join(" ") + "</p>")
       .join("");
 
-    $("sheet-next").textContent = i < S.length - 1 ? "Weiter zu Station " + (i + 2) : "Tour abschließen";
+    $("sheet-next").textContent = i < S.length - 1 ? t("continueTo", { n: i + 2 }) : t("finishTour");
     $("player-source").textContent = "";
-    player.load(s).then(mode => {
+    player.load({ text, audio: `audio/${state.lang}/${s.id}.mp3` }).then(mode => {
       if (state.openIdx !== i) return;
-      $("player-source").textContent = mode === "file" ? "Aufnahme" : "Sprachausgabe";
+      $("player-source").textContent = mode === "file" ? t("recording") : t("tts");
     });
 
     $("sheet").classList.add("open");
     $("sheet").setAttribute("aria-hidden", "false");
     $("sheet").scrollTop = 0;
     $("scrim").classList.add("show");
-    map.flyTo(s.coords, 17, { duration: .8 });
-  }
-
-  function esc(t) {
-    return String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    if (!(opts && opts.keepMap)) map.flyTo(s.coords, 17, { duration: .8 });
   }
 
   // ---------- Mitmach-Element, Kostümfoto, Links ----------
@@ -288,14 +347,14 @@
     $("sheet-activity").hidden = !a;
     if (a) {
       $("act-icon").textContent = a.icon || "★";
-      $("act-title").textContent = a.title;
-      $("act-text").textContent = a.text || "";
-      $("act-items").innerHTML = (a.items || []).map(x => `<li>${esc(x)}</li>`).join("");
+      $("act-title").textContent = tr(a.title);
+      $("act-text").textContent = tr(a.text) || "";
+      $("act-items").innerHTML = (tr(a.items) || []).map(x => `<li>${esc(x)}</li>`).join("");
       $("act-photo").hidden = !a.photo;
     }
     resetPhoto();
     $("sheet-links").innerHTML = (s.links || [])
-      .map(l => `<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
+      .map(l => `<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(tr(l.label))} ↗</a>`)
       .join("");
   }
   function resetPhoto() {
@@ -303,7 +362,7 @@
     photoFile = photoUrl = null;
     $("photo-preview").hidden = true;
     $("photo-share").hidden = true;
-    $("photo-btn").textContent = "📷 Foto aufnehmen";
+    $("photo-btn").textContent = t("photoTake");
     $("photo-input").value = "";
   }
   $("photo-btn").onclick = () => $("photo-input").click();
@@ -316,17 +375,17 @@
     $("photo-preview").src = photoUrl;
     $("photo-preview").hidden = false;
     $("photo-share").hidden = false;
-    $("photo-btn").textContent = "📷 Neues Foto";
+    $("photo-btn").textContent = t("photoNew");
   };
   $("photo-share").onclick = async () => {
     if (!photoFile) return;
-    const data = { files: [photoFile], title: T.title, text: "Kostümiert ins Jahr 1792 – #BühneKolozsvár" };
+    const data = { files: [photoFile], title: tr(T.title), text: t("photoShareText") };
     if (navigator.canShare && navigator.canShare({ files: [photoFile] })) {
       try { await navigator.share(data); } catch (e) { /* abgebrochen */ }
     } else {
       const a = document.createElement("a");
       a.href = photoUrl;
-      a.download = "buehne-kolozsvar-kostuem.jpg";
+      a.download = "theatre-city-map-costume.jpg";
       a.click();
     }
   };
@@ -348,33 +407,29 @@
   }
 
   $("sheet-next").onclick = () => {
-    const i = state.openIdx;
-    markVisited(i);
+    markVisited(state.openIdx);
     closeSheet();
     const n = nextIdx();
-    if (n === null) {
-      toast("<strong>Bravo!</strong> Sie haben alle Stationen besucht.", 5000);
-      return;
-    }
+    if (n === null) { toast(t("bravo"), 5000); return; }
     map.flyTo(S[n].coords, 16);
-    toast(`Weiter zu Station ${n + 1}: ${S[n].title}`);
+    toast(esc(t("nextToast", { n: n + 1, t: tr(S[n].title) })));
   };
 
   $("route-btn").onclick = () => {
     const c = S[state.openIdx].coords;
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${c[0]},${c[1]}&travelmode=walking`, "_blank", "noopener");
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${c[0]},${c[1]}&travelmode=walking&hl=${state.lang}`, "_blank", "noopener");
   };
 
   $("play-btn").onclick = () => {
     const st = player.state();
-    if (st.mode === "tts" && !st.available) {
-      toast("Keine Audiodatei und keine Sprachausgabe verfügbar. Bitte lesen Sie den Text.");
-      return;
+    if (st.mode === "tts") {
+      if (!st.available) { toast(t("noAudio")); return; }
+      if (!st.playing && player.hasVoice() === false) toast(t("noVoice"), 5000);
     }
     player.toggle();
   };
   $("back-btn").onclick = () => player.back(15);
-  $("rate-btn").onclick = () => { $("rate-btn").textContent = String(player.cycleRate()).replace(".", ",") + "×"; };
+  $("rate-btn").onclick = () => { $("rate-btn").textContent = num(player.cycleRate()) + "×"; };
   $("player-track").onclick = e => {
     const r = e.currentTarget.getBoundingClientRect();
     player.seek((e.clientX - r.left) / r.width);
@@ -383,7 +438,7 @@
   let lastSentence = -2;
   player.on("update", st => {
     $("player").classList.toggle("playing", st.playing);
-    $("play-btn").setAttribute("aria-label", st.playing ? "Pause" : "Abspielen");
+    $("play-btn").setAttribute("aria-label", st.playing ? t("aPause") : t("aPlay"));
     $("player-fill").style.width = (st.progress * 100) + "%";
     $("player-time").textContent = st.time;
     if (st.sentence !== lastSentence) {
@@ -399,7 +454,7 @@
   player.on("ended", () => {
     if (state.openIdx != null) {
       markVisited(state.openIdx);
-      toast("Geschichte beendet. Weiter zur nächsten Station!");
+      toast(t("storyEnded"));
     }
   });
 
@@ -409,18 +464,14 @@
 
   // ---------- Start ----------
   const saved = load();
-  $("tour-title").textContent = T.title;
-  $("intro-title").textContent = T.title;
-  $("intro-subtitle").textContent = T.subtitle;
-  $("intro-organizer").textContent = T.organizer;
-  $("intro-count").textContent = S.length;
-  renderProgress();
+  buildLangSwitches();
+  setLang(state.lang || detectLang());
 
   function begin() {
     $("intro").classList.add("hide");
     setTimeout(() => map.invalidateSize(), 50);
     setDemo(state.demo);
-    save();
+    save({ started: true });
   }
   $("start-btn").onclick = begin;
   if (saved.started) begin();

@@ -50,17 +50,33 @@
       this.tts = "speechSynthesis" in window ? window.speechSynthesis : null;
       this.voice = null;
       if (this.tts) {
-        const pick = () => {
-          const voices = this.tts.getVoices();
-          const base = this.lang.split("-")[0];
-          this.voice =
-            voices.find(v => v.lang === this.lang && /natural|neural|premium|enhanced/i.test(v.name)) ||
-            voices.find(v => v.lang === this.lang) ||
-            voices.find(v => v.lang && v.lang.startsWith(base)) || null;
-        };
-        pick();
-        this.tts.addEventListener && this.tts.addEventListener("voiceschanged", pick);
+        this._pickVoice();
+        this.tts.addEventListener && this.tts.addEventListener("voiceschanged", () => this._pickVoice());
       }
+    }
+
+    _pickVoice() {
+      if (!this.tts) return;
+      const voices = this.tts.getVoices();
+      const norm = l => (l || "").replace("_", "-").toLowerCase();
+      const lang = norm(this.lang), base = lang.split("-")[0];
+      this.voice =
+        voices.find(v => norm(v.lang) === lang && /natural|neural|premium|enhanced/i.test(v.name)) ||
+        voices.find(v => norm(v.lang) === lang) ||
+        voices.find(v => norm(v.lang).startsWith(base)) || null;
+    }
+
+    /** Sprache der Sprachausgabe wechseln, z. B. "hu-HU" */
+    setLang(lang) {
+      this.lang = lang;
+      this._pickVoice();
+    }
+
+    /** Gibt es auf dem Gerät eine Stimme für die aktuelle Sprache? (null = noch unbekannt) */
+    hasVoice() {
+      if (!this.tts) return false;
+      if (!this.tts.getVoices().length) return null;
+      return !!this.voice;
     }
 
     on(evt, cb) { this.listeners[evt].push(cb); }

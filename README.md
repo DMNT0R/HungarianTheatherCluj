@@ -1,86 +1,107 @@
-# Bühne Kolozsvár – Audio-Stadttour durch Cluj (Prototyp)
+# Theatre City Map – Cluj (prototype)
 
-Mobile Web-App für eine geführte Stadttour durch Cluj-Napoca / Kolozsvár, organisiert vom
-**Ungarischen Theater Cluj (Kolozsvári Állami Magyar Színház)**. Die Tour erzählt die
-Geschichte der Ungarn in der Stadt, vor allem die Geschichte des Theaters, seiner Häuser
-und seiner Schauspielerinnen und Schauspieler.
+A location-based mobile web app that maps the history of the **Hungarian Theatre of Cluj
+(Kolozsvári Állami Magyar Színház / Teatrul Maghiar de Stat Cluj)** onto the city.
+Built for the challenge *“Theatre City Map”* at the EUTOPIA Innovation Challenge Week,
+Cluj-Napoca, 23–27 November 2026.
 
-## Funktionen
+Walking through Cluj, visitors are guided from place to place. The phone's location
+detects where they are and opens the story connected to that place: text, audio and
+interactive elements.
 
-- **Interaktive Karte** (Leaflet + OpenStreetMap) mit nummerierten Stationen und Route
-- **Live-Standort per GPS** mit Entfernung und Gehzeit zur nächsten Station
-- **Automatische Ankunftserkennung**: im Umkreis von 40 m öffnet sich die Station (mit Vibration)
-- **Audio-Player** pro Station: Play/Pause, −15 s, Geschwindigkeit, Spulen
-  - Liegt eine Aufnahme unter `audio/<station-id>.mp3`, wird sie abgespielt.
-  - Fehlt sie, liest die **Sprachausgabe des Geräts** den Text vor. Der aktuelle Satz
-    wird dabei im Text hervorgehoben.
-- **Mitmach-Elemente** pro Station, z. B. Kostümfoto mit der Handykamera
-  (das Foto bleibt auf dem Gerät und lässt sich teilen) oder Such-Listen
-- **Fortschritt**: besuchte Stationen werden auf dem Gerät gespeichert
-- **Demo-Modus** (Menü → „Demo-Modus"): Standort per Tipp auf die Karte setzen,
-  zum Testen ohne Aufenthalt in Cluj
-- **Installierbar** (Web-App-Manifest) und App-Hülle offline verfügbar (Service Worker)
+## Languages
 
-## Stationen (Entwurf)
+The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
 
-| # | Station | Jahr | Besonderheit |
-|---|---------|------|--------------|
-| 1 | Rhédey-Palais & Rhédey Café (Hauptplatz): erste ungarische Vorstellungen | 1792 | 🎭 Kostüme anprobieren + Erinnerungsfoto |
-| 2 | Geburtshaus von König Matthias | 1443 | |
-| 3 | Farkas utca: erstes steinernes Theater | 1821 | |
-| 4 | Zentralfriedhof Házsongárd | 16. Jh. | 🕯️ Spurensuche: Gräber der Schauspieler |
-| 5 | Rumänisches Theater, ungarisch erbaut (1906, Fellner & Helmer) | 1906 | |
-| 6 | Von Kolozsvár nach Casablanca: Curtiz und die ungarischen Schauspieler | 1942 | 🎬 Ungarn in „Casablanca“, Link actors.hu |
-| 7 | Ungarisches Theater heute (Str. Emil Isac 26–28) | 1919 → heute | |
+- On first start, the language follows the phone's settings (fallback: English).
+- Users can switch at any time: on the start screen, in the menu, or with the language
+  button in the top bar. The choice is remembered.
+- Story texts and UI texts are both translated; audio and text-to-speech follow the language.
 
-Die Stationen 1, 4, 5 und 6 stammen aus der Ideensammlung des Teams.
-**Offen:** genauer Ort von Station 6 (Casablanca) und Station 1 (Rhédey-Palais),
-Namen und Lage der Schauspielergräber für Station 4.
+## Features
 
-> ⚠️ **Die Texte und Koordinaten sind Entwürfe für den Prototyp.** Daten, Namen und
-> genaue Orte müssen vom Theater historisch geprüft und freigegeben werden.
+- **Interactive map** (Leaflet + OpenStreetMap) with numbered stops and route
+- **Live GPS location** with distance and walking time to the next stop
+- **Automatic arrival detection**: within 40 m a stop opens by itself (with vibration)
+- **Audio player** per stop: play/pause, −15 s, speed, seeking
+  - If a recording exists at `audio/<lang>/<stop-id>.mp3`, it is played.
+  - Otherwise the device's **text-to-speech** reads the story, highlighting the current sentence.
+- **Interactive elements** per stop, e.g. a costume photo taken with the phone camera
+  (stays on the device, can be shared) or search lists
+- **Progress** is saved on the device
+- **Demo mode** (menu): set your location by tapping the map. Use it to test or present
+  the app outside Cluj, e.g. at the Demo Day.
+- **Installable** (web app manifest); the app shell works offline (service worker)
 
-## Starten
+## Stops (draft)
 
-Es gibt keinen Build-Schritt. Die App muss nur über einen Webserver ausgeliefert werden
-(GPS und Service Worker brauchen `http://localhost` oder HTTPS):
+| # | Stop | Year | Interactive |
+|---|------|------|-------------|
+| 1 | Rhédey Palace & Rhédey Café (Main Square): first Hungarian performances | 1792 | 🎭 Try on costumes + souvenir photo |
+| 2 | Birthplace of King Matthias | 1443 | |
+| 3 | Farkas utca: the first stone theatre | 1821 | |
+| 4 | Házsongárd Central Cemetery | 16th c. | 🕯️ On the trail of actors' graves |
+| 5 | A Romanian theatre, built as Hungarian (1906, Fellner & Helmer) | 1906 | |
+| 6 | From Kolozsvár to Casablanca: Curtiz and the Hungarian actors | 1942 | 🎬 Hungarians in “Casablanca”, link to actors.hu |
+| 7 | The Hungarian Theatre today (Str. Emil Isac 26–28) | 1919 → today | |
+
+**Open points:** exact location of stop 6 (Casablanca) and stop 1 (Rhédey Palace);
+names and positions of the actors' graves for stop 4; archival photos, documents and
+videos for each stop.
+
+> ⚠️ **Texts and coordinates are drafts.** Facts must be checked by the theatre's
+> Documentation Centre. The Hungarian and Romanian versions should be proofread by
+> native speakers.
+
+## Running it
+
+No build step. Serve the folder with any web server (GPS and the service worker need
+`http://localhost` or HTTPS):
 
 ```bash
 python3 -m http.server 8000
-# dann http://localhost:8000 öffnen
+# then open http://localhost:8000
 ```
 
-Zum Testen auf dem Smartphone: die App auf einen HTTPS-Host legen (z. B. GitHub Pages,
-Netlify) und dort öffnen.
+To test on a phone, put the folder on an HTTPS host (e.g. GitHub Pages, Netlify).
 
-## Inhalte bearbeiten
+## Editing content
 
-Alle Inhalte stehen in **`js/stations.js`**: Titel, Koordinaten, Adresse, Erzähltext.
-Eine Station hinzufügen heißt, einen Eintrag in diese Liste zu schreiben.
+| File | Content |
+|------|---------|
+| `js/stations.js` | Stops: coordinates, texts in all languages, interactive elements, links |
+| `js/i18n.js` | Interface texts (buttons, messages) in all languages |
 
-### Echte Audioaufnahmen einbinden
+Translatable fields look like `{ en: "…", hu: "…", ro: "…" }`. If a language is
+missing, the English version is shown.
 
-1. Aufnahme als MP3 exportieren (z. B. gesprochen von Ensemblemitgliedern).
-2. Unter dem Namen der Station ablegen, z. B. `audio/01-hauptplatz.mp3`.
-3. Fertig: Die App erkennt die Datei und spielt sie statt der Sprachausgabe ab.
+**Adding a language:** add an entry to `languages` and a block to `strings` in
+`js/i18n.js`, then add the language code to the texts in `js/stations.js`.
 
-## Aufbau
+### Adding real audio recordings
+
+1. Export the recording as MP3 (e.g. read by members of the ensemble).
+2. Save it under the language and stop ID, e.g. `audio/hu/01-rhedey.mp3`.
+3. Done: the app detects the file and plays it instead of text-to-speech.
+
+## Structure
 
 ```
-index.html            Oberfläche
-css/style.css         Gestaltung (mobil zuerst, mit Dunkelmodus)
-js/stations.js        Tour-Inhalte
-js/audio.js           Audio-Player (MP3 oder Sprachausgabe)
-js/app.js             Karte, GPS, Fortschritt, UI-Logik
-sw.js                 Offline-Cache
-vendor/leaflet/       Kartenbibliothek Leaflet 1.9.4 (BSD-2-Lizenz)
-audio/                Audioaufnahmen (noch leer)
+index.html            User interface
+css/style.css         Styling (mobile-first, dark mode)
+js/i18n.js            Interface texts (en / hu / ro)
+js/stations.js        Tour content (en / hu / ro)
+js/audio.js           Audio player (MP3 or text-to-speech)
+js/app.js             Map, GPS, language, progress, UI logic
+sw.js                 Offline cache
+vendor/leaflet/       Leaflet 1.9.4 map library (BSD-2 licence)
+audio/en|hu|ro/       Audio recordings per language (still empty)
 ```
 
-## Ideen für die nächsten Schritte
+## Next steps
 
-- Mehrsprachigkeit (Ungarisch, Rumänisch, Englisch); die Datenstruktur ist dafür vorbereitet
-- Historische Fotos aus dem Theaterarchiv pro Station, Vorher/Nachher-Vergleich
-- Echte Fußwegroute statt Luftlinie
-- Kartenkacheln für die Offline-Nutzung vorab laden
-- Hinweis auf aktuelle Vorstellungen und Ticketlink an der letzten Station
+- Archival photos, documents and videos per stop from the Documentation Centre
+  (as described in the challenge proposal)
+- Real walking route instead of straight lines
+- Pre-cache map tiles for offline use
+- Show current performances and a ticket link at the last stop

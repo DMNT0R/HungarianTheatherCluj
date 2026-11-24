@@ -1,6 +1,6 @@
 {
-  "name": "Bühne Kolozsvár – Theatertour Cluj",
-  "short_name": "Bühne Kolozsvár",
+  "name": "Theatre City Map – Cluj",
+  "short_name": "Theatre Map",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#2a070d",

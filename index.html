@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#6e1a26">
-  <title>Bühne Kolozsvár – Theatertour Cluj</title>
+  <title>Theatre City Map – Cluj</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="img/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
@@ -20,65 +20,66 @@
       <p class="eyebrow" id="intro-organizer"></p>
       <h1 id="intro-title"></h1>
       <p class="lead" id="intro-subtitle"></p>
+      <div class="lang-switch intro-lang" role="group" aria-label="Language · Nyelv · Limba"></div>
       <ul class="facts">
-        <li><strong id="intro-count">7</strong> Stationen</li>
-        <li><strong>ca. 4 km</strong> zu Fuß</li>
-        <li><strong>ca. 90 min</strong></li>
+        <li><strong id="intro-count">7</strong> <span data-i18n="stations"></span></li>
+        <li><strong data-i18n="walkDist"></strong> <span data-i18n="onFoot"></span></li>
+        <li><strong data-i18n="duration"></strong></li>
       </ul>
-      <button class="btn btn-primary btn-lg" id="start-btn">Tour starten</button>
-      <p class="hint">Kopfhörer empfohlen. Die App nutzt Ihren Standort, um Sie zu den Stationen zu führen.</p>
-      <p class="proto-note">Prototyp · Inhalte vorläufig</p>
+      <button class="btn btn-primary btn-lg" id="start-btn" data-i18n="start"></button>
+      <p class="hint" data-i18n="hint"></p>
+      <p class="proto-note" data-i18n="protoNote"></p>
     </div>
   </section>
 
   <!-- Kopfzeile -->
   <header class="topbar">
-    <button class="icon-btn" id="list-btn" aria-label="Stationsliste">
+    <button class="icon-btn" id="list-btn" data-i18n-aria="aMenu">
       <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <div class="topbar-title">
       <span id="tour-title"></span>
       <span class="progress-label" id="progress-label"></span>
     </div>
-    <button class="icon-btn" id="locate-btn" aria-label="Auf meinen Standort zentrieren">
+    <button class="lang-btn" id="lang-btn" aria-label="Language · Nyelv · Limba">EN</button>
+    <button class="icon-btn" id="locate-btn" data-i18n-aria="aLocate">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </header>
   <div class="progress-bar"><div id="progress-fill"></div></div>
 
   <!-- Karte -->
-  <main id="map" aria-label="Karte der Tour"></main>
+  <main id="map" data-i18n-aria="aMap"></main>
 
-  <div class="demo-banner" id="demo-banner" hidden>
-    Demo-Modus: Tippen Sie auf die Karte, um Ihren Standort zu setzen.
-  </div>
+  <div class="demo-banner" id="demo-banner" data-i18n="demoBanner" hidden></div>
 
   <!-- Karte der nächsten Station (unten) -->
   <section class="next-card" id="next-card">
     <div class="next-num" id="next-num">1</div>
     <div class="next-info">
-      <div class="next-label" id="next-label">Nächste Station</div>
+      <div class="next-label" id="next-label"></div>
       <div class="next-title" id="next-title"></div>
       <div class="next-meta" id="next-meta"></div>
     </div>
-    <button class="btn btn-primary" id="next-open">Öffnen</button>
+    <button class="btn btn-primary" id="next-open"></button>
   </section>
 
   <!-- Stationsliste -->
   <aside class="drawer" id="drawer" aria-hidden="true">
     <div class="drawer-head">
-      <h2>Stationen</h2>
-      <button class="icon-btn" id="drawer-close" aria-label="Schließen">
+      <h2 data-i18n="stationsTitle"></h2>
+      <button class="icon-btn" id="drawer-close" data-i18n-aria="aClose">
         <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
     <ol class="station-list" id="station-list"></ol>
     <div class="drawer-foot">
+      <div class="lang-switch" role="group" aria-label="Language · Nyelv · Limba"></div>
       <label class="switch">
         <input type="checkbox" id="demo-toggle">
-        <span>Demo-Modus (Standort simulieren)</span>
+        <span data-i18n="demoMode"></span>
       </label>
-      <button class="btn btn-ghost" id="reset-btn">Fortschritt zurücksetzen</button>
+      <button class="btn btn-ghost" id="reset-btn" data-i18n="resetProgress"></button>
     </div>
   </aside>
   <div class="scrim" id="scrim"></div>
@@ -86,7 +87,7 @@
   <!-- Stationsdetail mit Audio -->
   <section class="sheet" id="sheet" aria-hidden="true" role="dialog" aria-labelledby="sheet-title">
     <div class="sheet-grip"></div>
-    <button class="icon-btn sheet-close" id="sheet-close" aria-label="Schließen">
+    <button class="icon-btn sheet-close" id="sheet-close" data-i18n-aria="aClose">
       <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
     </button>
     <div class="sheet-hero" id="sheet-hero">
@@ -99,7 +100,7 @@
       <p class="sheet-address" id="sheet-address"></p>
 
       <div class="player" id="player">
-        <button class="play-btn" id="play-btn" aria-label="Abspielen">
+        <button class="play-btn" id="play-btn" data-i18n-aria="aPlay">
           <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
           <svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>
         </button>
@@ -111,8 +112,8 @@
           </div>
         </div>
         <div class="player-side">
-          <button class="chip" id="back-btn" aria-label="15 Sekunden zurück">−15</button>
-          <button class="chip" id="rate-btn" aria-label="Geschwindigkeit">1×</button>
+          <button class="chip" id="back-btn" data-i18n-aria="aBack">−15</button>
+          <button class="chip" id="rate-btn" data-i18n-aria="aRate">1×</button>
         </div>
       </div>
 
@@ -124,19 +125,19 @@
         <ul class="activity-items" id="act-items"></ul>
         <div class="photo-box" id="act-photo" hidden>
           <input type="file" accept="image/*" capture="user" id="photo-input" hidden>
-          <img id="photo-preview" alt="Ihr Kostümfoto" hidden>
+          <img id="photo-preview" alt="" hidden>
           <div class="photo-actions">
-            <button class="btn btn-primary" id="photo-btn">📷 Foto aufnehmen</button>
-            <button class="btn btn-ghost" id="photo-share" hidden>Teilen</button>
+            <button class="btn btn-primary" id="photo-btn"></button>
+            <button class="btn btn-ghost" id="photo-share" data-i18n="share" hidden></button>
           </div>
-          <p class="photo-note">Das Foto bleibt auf Ihrem Gerät und wird nicht hochgeladen.</p>
+          <p class="photo-note" data-i18n="photoNote"></p>
         </div>
       </div>
       <div class="links" id="sheet-links"></div>
 
       <div class="sheet-actions">
-        <button class="btn btn-ghost" id="route-btn">Route in Karten-App</button>
-        <button class="btn btn-primary" id="sheet-next">Zur nächsten Station</button>
+        <button class="btn btn-ghost" id="route-btn" data-i18n="route"></button>
+        <button class="btn btn-primary" id="sheet-next"></button>
       </div>
     </div>
   </section>
@@ -144,6 +145,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/stations.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/app.js"></script>
