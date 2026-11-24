@@ -1,0 +1,16 @@
+# Cache-Regeln für Cloudflare Pages (wird von nginx ignoriert)
+/*
+  X-Content-Type-Options: nosniff
+
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/sw.js
+  Cache-Control: no-cache
+/js/*
+  Cache-Control: no-cache
+/css/*
+  Cache-Control: no-cache
+/manifest.webmanifest
+  Cache-Control: no-cache

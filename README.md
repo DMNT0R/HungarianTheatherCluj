@@ -81,21 +81,58 @@ python3 -m http.server 8000
 Use **demo mode** (menu) to set your position by clicking on the map. Alternatively,
 in Chrome DevTools: device toolbar (phone view) and *Sensors → Location* to fake GPS.
 
-### On a smartphone (GitHub Pages, free HTTPS)
+### Publishing it (HTTPS, for smartphones)
 
-1. Repository on GitHub → **Settings → Pages**
-2. *Source*: **Deploy from a branch**, branch: the branch with the app, folder: **/ (root)** → Save
-3. After about a minute the app is live at `https://<user>.github.io/<repository>/`
-4. Open that link on the phone, allow location access
-5. Install it like an app: iPhone (Safari) → *Share → Add to Home Screen*;
-   Android (Chrome) → *⋮ → Add to Home screen / Install app*
+GPS and installation as an app need HTTPS. Three options:
 
-GitHub Pages is free for public repositories; private repositories need a paid plan.
-Alternative without GitHub settings: drag the project folder onto
-[app.netlify.com/drop](https://app.netlify.com/drop).
+#### A) Self-hosted on a NAS behind a Cloudflare Tunnel
 
-Opening the app on the phone via the computer's local IP (e.g. `http://192.168.x.x:8000`)
-works for a quick look, but browsers block GPS without HTTPS – use demo mode there.
+The repository contains `docker-compose.yml` and `deploy/nginx.conf`.
+
+1. On the NAS, get the code:
+   ```bash
+   git clone -b <branch> https://github.com/DMNT0R/HungarianTheatherCluj.git ioi-cluj
+   cd ioi-cluj
+   docker compose up -d
+   ```
+   The app is now reachable in the home network at `http://<NAS-IP>:8088`.
+   (Synology: *Container Manager → Project → Create*, path = the cloned folder.)
+2. Cloudflare dashboard → **Zero Trust → Networks → Tunnels** → your tunnel →
+   **Public Hostname → Add a public hostname**:
+   - Subdomain: e.g. `ioi`, Domain: your domain
+   - Service: `HTTP` → `localhost:8088` (if cloudflared runs directly on the NAS) or
+     `ioi-cluj:80` (if cloudflared runs as a container in the same Docker network)
+3. Done: `https://ioi.<your-domain>` – Cloudflare provides the certificate.
+
+**Updates:** `git pull` in the folder on the NAS. No restart needed: nginx serves the
+files directly, and `Cache-Control: no-cache` on HTML/JS/CSS makes browsers and the
+Cloudflare cache pick up changes immediately.
+
+nginx does not serve `.git`, `deploy/` or `docker-compose.yml`.
+
+#### B) Cloudflare Pages (no server needed)
+
+1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** →
+   select this repository
+2. Production branch: the branch with the app; framework preset **None**;
+   build command **empty**; build output directory **`/`**
+3. After the first deploy: **Custom domains → Set up a custom domain** → e.g. `ioi.<your-domain>`
+
+Every push to the branch deploys automatically. Cache rules are in `_headers`.
+
+#### C) GitHub Pages
+
+Repository → **Settings → Pages** → *Source*: **Deploy from a branch** → branch with the
+app, folder **/ (root)**. URL: `https://<user>.github.io/<repository>/`
+(free for public repositories only).
+
+#### Install on the phone
+
+Open the URL, allow location access, then
+iPhone (Safari) → *Share → Add to Home Screen*; Android (Chrome) → *⋮ → Install app*.
+
+Opening the app via the computer's local IP (e.g. `http://192.168.x.x:8000`) works for a
+quick look, but browsers block GPS without HTTPS – use demo mode there.
 
 ## Editing content
 
@@ -126,6 +163,9 @@ js/stations.js        Tour content (en / hu / ro)
 js/audio.js           Audio player (MP3 or text-to-speech)
 js/app.js             Map, GPS, language, progress, UI logic
 sw.js                 Offline cache
+docker-compose.yml    Self-hosting with nginx (NAS)
+deploy/nginx.conf     nginx configuration
+_headers              Cache rules for Cloudflare Pages
 vendor/leaflet/       Leaflet 1.9.4 map library (BSD-2 licence)
 audio/en|hu|ro/       Audio recordings per language (still empty)
 ```
