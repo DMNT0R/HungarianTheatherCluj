@@ -250,3 +250,26 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
   .sheet.open { transform: none; }
   .next-card { left: 16px; right: auto; width: 420px; margin: 0; }
 }
+
+/* ---------- Mitmach-Element & Links ---------- */
+.badge {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  padding: 2px 8px; border-radius: 999px; background: #fff1cc; color: #7a5600; vertical-align: 1px;
+}
+.activity {
+  margin: 6px 0 18px; padding: 16px; border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(199,154,59,.16), rgba(110,26,38,.08));
+  border: 1.5px solid rgba(199,154,59,.45);
+}
+.activity-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.activity-icon { font-size: 26px; line-height: 1; }
+.activity h3 { margin: 0; font-family: var(--serif); font-size: 19px; }
+.activity p { margin: 0 0 10px; line-height: 1.5; font-size: 15px; }
+.activity-items { margin: 0 0 4px; padding-left: 20px; line-height: 1.6; font-size: 15px; }
+.photo-box img { display: block; width: 100%; max-height: 360px; object-fit: cover; border-radius: 14px; margin: 6px 0 10px; }
+.photo-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.photo-actions .btn { flex: 1 1 140px; }
+.photo-note { font-size: 12px !important; color: var(--muted); margin: 8px 0 0 !important; }
+.links { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.links:empty { display: none; }
+.links a { text-decoration: none; text-align: center; }

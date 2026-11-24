@@ -21,7 +21,7 @@
       <h1 id="intro-title"></h1>
       <p class="lead" id="intro-subtitle"></p>
       <ul class="facts">
-        <li><strong id="intro-count">6</strong> Stationen</li>
+        <li><strong id="intro-count">7</strong> Stationen</li>
         <li><strong>ca. 4 km</strong> zu Fuß</li>
         <li><strong>ca. 90 min</strong></li>
       </ul>
@@ -117,6 +117,22 @@
       </div>
 
       <div class="story" id="sheet-text"></div>
+
+      <div class="activity" id="sheet-activity" hidden>
+        <div class="activity-head"><span class="activity-icon" id="act-icon"></span><h3 id="act-title"></h3></div>
+        <p id="act-text"></p>
+        <ul class="activity-items" id="act-items"></ul>
+        <div class="photo-box" id="act-photo" hidden>
+          <input type="file" accept="image/*" capture="user" id="photo-input" hidden>
+          <img id="photo-preview" alt="Ihr Kostümfoto" hidden>
+          <div class="photo-actions">
+            <button class="btn btn-primary" id="photo-btn">📷 Foto aufnehmen</button>
+            <button class="btn btn-ghost" id="photo-share" hidden>Teilen</button>
+          </div>
+          <p class="photo-note">Das Foto bleibt auf Ihrem Gerät und wird nicht hochgeladen.</p>
+        </div>
+      </div>
+      <div class="links" id="sheet-links"></div>
 
       <div class="sheet-actions">
         <button class="btn btn-ghost" id="route-btn">Route in Karten-App</button>

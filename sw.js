@@ -1,5 +1,5 @@
 // Einfacher Offline-Cache für die App-Hülle (Kartenkacheln werden nicht vorab geladen).
-const CACHE = "buehne-kolozsvar-v1";
+const CACHE = "buehne-kolozsvar-v2";
 const SHELL = [
   "./", "index.html", "css/style.css", "js/stations.js", "js/audio.js", "js/app.js",
   "img/icon.svg", "manifest.webmanifest",

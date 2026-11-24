@@ -14,6 +14,8 @@ und seiner Schauspielerinnen und Schauspieler.
   - Liegt eine Aufnahme unter `audio/<station-id>.mp3`, wird sie abgespielt.
   - Fehlt sie, liest die **Sprachausgabe des Geräts** den Text vor. Der aktuelle Satz
     wird dabei im Text hervorgehoben.
+- **Mitmach-Elemente** pro Station, z. B. Kostümfoto mit der Handykamera
+  (das Foto bleibt auf dem Gerät und lässt sich teilen) oder Such-Listen
 - **Fortschritt**: besuchte Stationen werden auf dem Gerät gespeichert
 - **Demo-Modus** (Menü → „Demo-Modus"): Standort per Tipp auf die Karte setzen,
   zum Testen ohne Aufenthalt in Cluj
@@ -21,14 +23,19 @@ und seiner Schauspielerinnen und Schauspieler.
 
 ## Stationen (Entwurf)
 
-| # | Station | Jahr |
-|---|---------|------|
-| 1 | Hauptplatz (Főtér / Piața Unirii): erste ungarische Truppe | 1792 |
-| 2 | Geburtshaus von König Matthias | 1443 |
-| 3 | Farkas utca: erstes steinernes Theater | 1821 |
-| 4 | Házsongárd-Friedhof: Erinnerung | 16. Jh. |
-| 5 | Nationaltheater von 1906 (heute Rumänisches Nationaltheater/Oper) | 1906 |
-| 6 | Ungarisches Theater heute (Str. Emil Isac 26–28) | 1919 → heute |
+| # | Station | Jahr | Besonderheit |
+|---|---------|------|--------------|
+| 1 | Rhédey-Palais & Rhédey Café (Hauptplatz): erste ungarische Vorstellungen | 1792 | 🎭 Kostüme anprobieren + Erinnerungsfoto |
+| 2 | Geburtshaus von König Matthias | 1443 | |
+| 3 | Farkas utca: erstes steinernes Theater | 1821 | |
+| 4 | Zentralfriedhof Házsongárd | 16. Jh. | 🕯️ Spurensuche: Gräber der Schauspieler |
+| 5 | Rumänisches Theater, ungarisch erbaut (1906, Fellner & Helmer) | 1906 | |
+| 6 | Von Kolozsvár nach Casablanca: Curtiz und die ungarischen Schauspieler | 1942 | 🎬 Ungarn in „Casablanca“, Link actors.hu |
+| 7 | Ungarisches Theater heute (Str. Emil Isac 26–28) | 1919 → heute | |
+
+Die Stationen 1, 4, 5 und 6 stammen aus der Ideensammlung des Teams.
+**Offen:** genauer Ort von Station 6 (Casablanca) und Station 1 (Rhédey-Palais),
+Namen und Lage der Schauspielergräber für Station 4.
 
 > ⚠️ **Die Texte und Koordinaten sind Entwürfe für den Prototyp.** Daten, Namen und
 > genaue Orte müssen vom Theater historisch geprüft und freigegeben werden.

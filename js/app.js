@@ -253,8 +253,10 @@
     $("sheet-year").textContent = s.year;
     $("sheet-subtitle").textContent = s.subtitle;
     $("sheet-title").textContent = s.title;
-    $("sheet-address").textContent = s.address;
+    $("sheet-address").innerHTML = esc(s.address) +
+      (s.draftLocation ? ' <span class="badge">Ort vorläufig</span>' : "");
     $("sheet-hero").style.setProperty("--hue", (350 + i * 9) % 360);
+    renderActivity(s);
 
     let k = 0;
     $("sheet-text").innerHTML = storyParagraphs(s.text)
@@ -274,6 +276,60 @@
     $("scrim").classList.add("show");
     map.flyTo(s.coords, 17, { duration: .8 });
   }
+
+  function esc(t) {
+    return String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  }
+
+  // ---------- Mitmach-Element, Kostümfoto, Links ----------
+  let photoFile = null, photoUrl = null;
+  function renderActivity(s) {
+    const a = s.activity;
+    $("sheet-activity").hidden = !a;
+    if (a) {
+      $("act-icon").textContent = a.icon || "★";
+      $("act-title").textContent = a.title;
+      $("act-text").textContent = a.text || "";
+      $("act-items").innerHTML = (a.items || []).map(x => `<li>${esc(x)}</li>`).join("");
+      $("act-photo").hidden = !a.photo;
+    }
+    resetPhoto();
+    $("sheet-links").innerHTML = (s.links || [])
+      .map(l => `<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`)
+      .join("");
+  }
+  function resetPhoto() {
+    if (photoUrl) URL.revokeObjectURL(photoUrl);
+    photoFile = photoUrl = null;
+    $("photo-preview").hidden = true;
+    $("photo-share").hidden = true;
+    $("photo-btn").textContent = "📷 Foto aufnehmen";
+    $("photo-input").value = "";
+  }
+  $("photo-btn").onclick = () => $("photo-input").click();
+  $("photo-input").onchange = e => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    if (photoUrl) URL.revokeObjectURL(photoUrl);
+    photoFile = f;
+    photoUrl = URL.createObjectURL(f);
+    $("photo-preview").src = photoUrl;
+    $("photo-preview").hidden = false;
+    $("photo-share").hidden = false;
+    $("photo-btn").textContent = "📷 Neues Foto";
+  };
+  $("photo-share").onclick = async () => {
+    if (!photoFile) return;
+    const data = { files: [photoFile], title: T.title, text: "Kostümiert ins Jahr 1792 – #BühneKolozsvár" };
+    if (navigator.canShare && navigator.canShare({ files: [photoFile] })) {
+      try { await navigator.share(data); } catch (e) { /* abgebrochen */ }
+    } else {
+      const a = document.createElement("a");
+      a.href = photoUrl;
+      a.download = "buehne-kolozsvar-kostuem.jpg";
+      a.click();
+    }
+  };
 
   function closeSheet() {
     player.stop();
