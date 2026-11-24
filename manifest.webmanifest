@@ -1,0 +1,9 @@
+{
+  "name": "Bühne Kolozsvár – Theatertour Cluj",
+  "short_name": "Bühne Kolozsvár",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#2a070d",
+  "theme_color": "#6e1a26",
+  "icons": [{ "src": "img/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
