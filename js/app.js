@@ -385,7 +385,7 @@
     } else {
       const a = document.createElement("a");
       a.href = photoUrl;
-      a.download = "theatre-city-map-costume.jpg";
+      a.download = "ioi-cluj-costume.jpg";
       a.click();
     }
   };

@@ -1,5 +1,5 @@
 // Einfacher Offline-Cache für die App-Hülle (Kartenkacheln werden nicht vorab geladen).
-const CACHE = "theatre-city-map-v3";
+const CACHE = "ioi-cluj-v4";
 const SHELL = [
   "./", "index.html", "css/style.css", "js/i18n.js", "js/stations.js", "js/audio.js", "js/app.js",
   "img/icon.svg", "manifest.webmanifest",

@@ -1,6 +1,6 @@
-# Theatre City Map – Cluj (prototype)
+# Ioi!Cluj (prototype)
 
-A location-based mobile web app that maps the history of the **Hungarian Theatre of Cluj
+**Ioi!Cluj** is a location-based mobile web app that maps the history of the **Hungarian Theatre of Cluj
 (Kolozsvári Állami Magyar Színház / Teatrul Maghiar de Stat Cluj)** onto the city.
 Built for the challenge *“Theatre City Map”* at the EUTOPIA Innovation Challenge Week,
 Cluj-Napoca, 23–27 November 2026.
