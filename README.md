@@ -152,11 +152,23 @@ missing, the English version is shown.
 **Adding a language:** add an entry to `languages` and a block to `strings` in
 `js/i18n.js`, then add the language code to the texts in `js/stations.js`.
 
-### Adding real audio recordings
+### Audio
 
-1. Export the recording as MP3 (e.g. read by members of the ensemble).
-2. Save it under the language and stop ID, e.g. `audio/hu/01-rhedey.mp3`.
-3. Done: the app detects the file and plays it instead of text-to-speech.
+Every stop has a narrated audio file per language in `audio/<lang>/<stop-id>.mp3`,
+generated with the open-source TTS engine [Piper](https://github.com/rhasspy/piper)
+(voices: English *cori*, Hungarian *berta*, Romanian *mihai*). Next to each MP3 is a
+`.json` file with the start time of every sentence, so the app highlights the sentence
+being spoken. If an MP3 is missing, the app falls back to the phone's own speech output.
+
+**After changing a story text, regenerate the audio** (needs python3, node, ffmpeg):
+
+```bash
+bash tools/make_audio.sh                    # all stops, all languages
+bash tools/make_audio.sh --only=hu/03-farkas   # a single file
+```
+
+**Real recordings** (e.g. read by members of the ensemble) simply replace the MP3 under the
+same name. Then delete the matching `.json` file – its sentence timings would no longer fit.
 
 ## Structure
 
@@ -174,7 +186,8 @@ _headers              Cache rules for Cloudflare
 wrangler.jsonc        Cloudflare Workers configuration
 .assetsignore         Files Cloudflare must not publish
 vendor/leaflet/       Leaflet 1.9.4 map library (BSD-2 licence)
-audio/en|hu|ro/       Audio recordings per language (still empty)
+audio/en|hu|ro/       Narration per language (MP3 + sentence timings)
+tools/                Audio generation (Piper)
 ```
 
 ## Next steps

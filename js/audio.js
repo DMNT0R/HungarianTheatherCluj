@@ -92,8 +92,15 @@
       this.ttsTotal = this.sentenceDur.reduce((a, b) => a + b, 0);
       this.idx = 0;
       this.mode = "tts";
+      this.marks = null;   // Satz-Startzeiten der Audiodatei (für die Hervorhebung)
       this._emit();
 
+      if (station.timings) {
+        fetch(station.timings)
+          .then(r => (r.ok ? r.json() : null))
+          .then(j => { if (this.station === station && j && Array.isArray(j.sentences)) this.marks = j.sentences; })
+          .catch(() => {});
+      }
       if (!station.audio) return Promise.resolve(this.mode);
       return new Promise(resolve => {
         const src = station.audio;
@@ -202,6 +209,16 @@
       return this.rate;
     }
 
+    /** Index des Satzes, der zur Abspielzeit t gesprochen wird (-1 = keiner hervorheben) */
+    _sentenceAt(t) {
+      const m = this.marks;
+      if (!m || !m.length || (!this.playing && t === 0)) return -1;
+      if (this.el.ended) return -1;
+      let i = 0;
+      while (i + 1 < m.length && m[i + 1] <= t + 0.05) i++;
+      return i;
+    }
+
     state() {
       if (this.mode === "file") {
         const d = this.el.duration, c = this.el.currentTime;
@@ -209,7 +226,7 @@
           mode: "file", playing: this.playing, rate: this.rate,
           progress: isFinite(d) && d > 0 ? c / d : 0,
           time: fmt(c) + (isFinite(d) ? " / " + fmt(d) : ""),
-          sentence: -1
+          sentence: this._sentenceAt(c)
         };
       }
       const done = (this.sentenceDur || []).slice(0, this.idx || 0).reduce((a, b) => a + b, 0);

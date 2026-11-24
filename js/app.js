@@ -329,7 +329,7 @@
 
     $("sheet-next").textContent = i < S.length - 1 ? t("continueTo", { n: i + 2 }) : t("finishTour");
     $("player-source").textContent = "";
-    player.load({ text, audio: `audio/${state.lang}/${s.id}.mp3` }).then(mode => {
+    player.load({ text, audio: `audio/${state.lang}/${s.id}.mp3`, timings: `audio/${state.lang}/${s.id}.json` }).then(mode => {
       if (state.openIdx !== i) return;
       $("player-source").textContent = mode === "file" ? t("recording") : t("tts");
     });
