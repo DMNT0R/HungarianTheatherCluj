@@ -17,10 +17,39 @@
     return m + ":" + String(s).padStart(2, "0");
   }
 
+  const END = ".!?…";
+  const CLOSE = "\"“”„«»'’";
+  /**
+   * Zerlegt einen Absatz in Sätze. Ein Punkt beendet keinen Satz, wenn
+   *  - ein Kleinbuchstabe folgt (ungarische Daten: „1821. március 12-én“),
+   *  - davor ein einzelner Großbuchstabe oder eine römische Zahl steht
+   *    (Initialen „S. Z. Sakall“, „II. Károly“).
+   */
   function splitParagraph(p) {
-    return (p.replace(/\s+/g, " ").match(/[^.!?…]+[.!?…]+["“”„«»]?\s*|[^.!?…]+$/g) || [])
-      .map(s => s.trim())
-      .filter(Boolean);
+    p = p.replace(/\s+/g, " ").trim();
+    const out = [];
+    let start = 0;
+    for (let i = 0; i < p.length; i++) {
+      const c = p[i];
+      if (!END.includes(c)) continue;
+      let j = i + 1;
+      while (j < p.length && END.includes(p[j])) j++;
+      while (j < p.length && CLOSE.includes(p[j])) j++;
+      if (j < p.length && p[j] !== " ") { i = j - 1; continue; }   // z. B. „3.5“
+      let k = j;
+      while (k < p.length && p[k] === " ") k++;
+      if (k < p.length && c === ".") {
+        const before = p.slice(start, i).split(" ").pop();
+        const next = p[k];
+        const isLower = next !== next.toUpperCase() && next === next.toLowerCase();
+        if (/^[A-ZÁÉÍÓÖŐÚÜŰ]$/.test(before) || /^[IVX]+$/.test(before) || isLower) { i = j - 1; continue; }
+      }
+      out.push(p.slice(start, j).trim());
+      start = j;
+      i = j - 1;
+    }
+    if (p.slice(start).trim()) out.push(p.slice(start).trim());
+    return out.filter(Boolean);
   }
 
   /** Absätze -> Sätze. Liefert eine flache Liste (für die Wiedergabe). */
