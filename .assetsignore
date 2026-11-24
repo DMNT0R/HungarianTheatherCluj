@@ -1,0 +1,10 @@
+# Diese Dateien werden NICHT als Teil der Web-App veröffentlicht (Cloudflare Workers)
+.git
+.gitignore
+.assetsignore
+.wrangler
+node_modules
+wrangler.jsonc
+docker-compose.yml
+deploy
+README.md

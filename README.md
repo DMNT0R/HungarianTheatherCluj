@@ -110,15 +110,18 @@ Cloudflare cache pick up changes immediately.
 
 nginx does not serve `.git`, `deploy/` or `docker-compose.yml`.
 
-#### B) Cloudflare Pages (no server needed)
+#### B) Cloudflare Workers (no server needed)
 
-1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** →
-   select this repository
-2. Production branch: the branch with the app; framework preset **None**;
-   build command **empty**; build output directory **`/`**
-3. After the first deploy: **Custom domains → Set up a custom domain** → e.g. `ioi.<your-domain>`
+The repository contains `wrangler.jsonc` (static assets only, no server code) and
+`.assetsignore` (keeps `.git`, README, Docker files etc. out of the public site).
 
-Every push to the branch deploys automatically. Cache rules are in `_headers`.
+1. Cloudflare dashboard → **Workers & Pages → Create → Import a repository** → select this repository
+2. Project name: **`hungariantheathercluj`** (must match `name` in `wrangler.jsonc`),
+   build command **empty**, deploy command **`npx wrangler deploy`** → **Deploy**
+3. The app is live at `https://hungariantheathercluj.<account>.workers.dev`
+4. Worker → **Settings → Domains & Routes → Add → Custom domain** → e.g. `ioi.<your-domain>`
+
+Every push to the default branch deploys automatically. Cache rules are in `_headers`.
 
 #### C) GitHub Pages
 
@@ -165,7 +168,9 @@ js/app.js             Map, GPS, language, progress, UI logic
 sw.js                 Offline cache
 docker-compose.yml    Self-hosting with nginx (NAS)
 deploy/nginx.conf     nginx configuration
-_headers              Cache rules for Cloudflare Pages
+_headers              Cache rules for Cloudflare
+wrangler.jsonc        Cloudflare Workers configuration
+.assetsignore         Files Cloudflare must not publish
 vendor/leaflet/       Leaflet 1.9.4 map library (BSD-2 licence)
 audio/en|hu|ro/       Audio recordings per language (still empty)
 ```

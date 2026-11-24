@@ -1,0 +1,9 @@
+// Cloudflare Workers: liefert die App als statische Dateien aus (kein Server-Code).
+// "name" muss dem Projektnamen im Cloudflare-Dashboard entsprechen.
+{
+  "name": "hungariantheathercluj",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./"
+  }
+}
