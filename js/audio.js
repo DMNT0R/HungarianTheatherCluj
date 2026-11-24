@@ -102,19 +102,28 @@
           .catch(() => {});
       }
       if (!station.audio) return Promise.resolve(this.mode);
-      return new Promise(resolve => {
-        const src = station.audio;
-        const ok = () => { cleanup(); if (this.station === station) { this.mode = "file"; this._emit(); } resolve(this.mode); };
-        const fail = () => { cleanup(); resolve(this.mode); };
-        const cleanup = () => {
-          this.el.removeEventListener("loadedmetadata", ok);
-          this.el.removeEventListener("error", fail);
-        };
-        this.el.addEventListener("loadedmetadata", ok);
-        this.el.addEventListener("error", fail);
-        this.el.src = src;
-        this.el.load();
-      });
+      // Die ganze Datei laden und als Blob abspielen: so funktioniert Spulen auch,
+      // wenn der Server keine Range-Anfragen unterstützt, und die Datei liegt
+      // vollständig im Offline-Cache.
+      return fetch(station.audio)
+        .then(r => (r.ok ? r.blob() : Promise.reject(new Error("no audio"))))
+        .then(blob => new Promise((resolve, reject) => {
+          if (this.station !== station) return reject(new Error("stale"));
+          const url = URL.createObjectURL(blob);
+          const ok = () => { cleanup(); resolve(); };
+          const fail = () => { cleanup(); URL.revokeObjectURL(url); reject(new Error("decode")); };
+          const cleanup = () => {
+            this.el.removeEventListener("loadedmetadata", ok);
+            this.el.removeEventListener("error", fail);
+          };
+          this.el.addEventListener("loadedmetadata", ok);
+          this.el.addEventListener("error", fail);
+          this.objUrl = url;
+          this.el.src = url;
+          this.el.load();
+        }))
+        .then(() => { if (this.station === station) { this.mode = "file"; this._emit(); } return this.mode; })
+        .catch(() => this.mode);
     }
 
     play() {
@@ -171,6 +180,7 @@
     stop() {
       this.el.pause();
       this.el.removeAttribute("src");
+      if (this.objUrl) { URL.revokeObjectURL(this.objUrl); this.objUrl = null; }
       this.playing = false;
       this._token = null;
       if (this.tts) this.tts.cancel();

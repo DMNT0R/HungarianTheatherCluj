@@ -1,5 +1,5 @@
 // Einfacher Offline-Cache für die App-Hülle (Kartenkacheln werden nicht vorab geladen).
-const CACHE = "ioi-cluj-v7";
+const CACHE = "ioi-cluj-v8";
 const SHELL = [
   "./", "index.html", "css/style.css", "js/i18n.js", "js/stations.js", "js/audio.js", "js/app.js",
   "img/icon.svg", "img/icon-192.png", "manifest.webmanifest",
@@ -20,7 +20,7 @@ self.addEventListener("fetch", e => {
   // Audiodateien und Kartenkacheln: Netzwerk zuerst, bei Erfolg im Cache ablegen.
   e.respondWith(
     fetch(e.request).then(res => {
-      if (res.ok && (url.origin === location.origin || url.hostname.endsWith("tile.openstreetmap.org"))) {
+      if (res.status === 200 && (url.origin === location.origin || url.hostname.endsWith("tile.openstreetmap.org"))) {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put(e.request, copy));
       }
