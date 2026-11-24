@@ -9,6 +9,8 @@ Walking through Cluj, visitors are guided from place to place. The phone's locat
 detects where they are and opens the story connected to that place: text, audio and
 interactive elements.
 
+**Live:** https://ioi.dvwit.org · QR codes for slides and posters in `promo/`
+
 ## Languages
 
 The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
