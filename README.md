@@ -155,17 +155,33 @@ missing, the English version is shown.
 ### Audio
 
 Every stop has a narrated audio file per language in `audio/<lang>/<stop-id>.mp3`,
-generated with the open-source TTS engine [Piper](https://github.com/rhasspy/piper)
-(voices: English *cori*, Hungarian *berta*, Romanian *mihai*). Next to each MP3 is a
-`.json` file with the start time of every sentence, so the app highlights the sentence
-being spoken. If an MP3 is missing, the app falls back to the phone's own speech output.
+generated with **Azure Speech** neural HD voices – two voices per language, like a small
+radio play: a **narrator** tells the story and an **actor** speaks the direct quotes
+(Pál Jantsó's outburst on stage, the Casablanca line).
 
-**After changing a story text, regenerate the audio** (needs python3, node, ffmpeg):
+| Language | Narrator | Actor (quotes) |
+|---|---|---|
+| English | Sonia (en-GB, DragonHD) | Ollie (en-GB, DragonHD) |
+| Hungarian | Harper (MAI-Voice-2.1, audiobook style) | Levente (MAI-Voice-2.1) |
+| Romanian | Ioana (MAI-Voice-2.1) | Andrei (MAI-Voice-2.1) |
+
+Next to each MP3 is a `.json` file with the start time of every sentence, so the app
+highlights the sentence being spoken. If an MP3 is missing, the app falls back to the
+phone's own speech output.
+
+**After changing a story text, regenerate the audio** (needs python3, node, ffmpeg and an
+Azure Speech key; the free F0 tier is enough – a full run uses about 40,000 of the
+500,000 free characters per month and takes ~15 minutes because of the F0 rate limit):
 
 ```bash
-bash tools/make_audio.sh                    # all stops, all languages
-bash tools/make_audio.sh --only=hu/03-farkas   # a single file
+AZURE_SPEECH_KEY=... bash tools/make_audio_azure.sh                    # all stops
+AZURE_SPEECH_KEY=... bash tools/make_audio_azure.sh --only=hu/03-farkas   # one file
 ```
+
+Direct quotes are detected automatically: quoted passages of 36 characters or more go to
+the actor voice, shorter ones (titles of plays and films) stay with the narrator.
+`tools/make_audio.sh` is an offline alternative with the open-source engine Piper
+(lower quality, no account needed).
 
 **Real recordings** (e.g. read by members of the ensemble) simply replace the MP3 under the
 same name. Then delete the matching `.json` file – its sentence timings would no longer fit.
@@ -187,7 +203,7 @@ wrangler.jsonc        Cloudflare Workers configuration
 .assetsignore         Files Cloudflare must not publish
 vendor/leaflet/       Leaflet 1.9.4 map library (BSD-2 licence)
 audio/en|hu|ro/       Narration per language (MP3 + sentence timings)
-tools/                Audio generation (Piper)
+tools/                Audio generation (Azure Speech; Piper as offline fallback)
 ```
 
 ## Next steps
