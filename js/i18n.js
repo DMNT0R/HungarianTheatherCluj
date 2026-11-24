@@ -66,7 +66,10 @@ window.I18N = {
       aPause: "Pause",
       aBack: "Back 15 seconds",
       aRate: "Playback speed",
-      aMap: "Tour map"
+      aMap: "Tour map",
+      aPrev: "Previous image",
+      aNext: "Next image",
+      aOpenImg: "Open image"
     },
     hu: {
       stations: "állomás",
@@ -122,7 +125,10 @@ window.I18N = {
       aPause: "Szünet",
       aBack: "15 másodperc vissza",
       aRate: "Lejátszási sebesség",
-      aMap: "A séta térképe"
+      aMap: "A séta térképe",
+      aPrev: "Előző kép",
+      aNext: "Következő kép",
+      aOpenImg: "Kép megnyitása"
     },
     ro: {
       stations: "opriri",
@@ -178,7 +184,10 @@ window.I18N = {
       aPause: "Pauză",
       aBack: "Înapoi 15 secunde",
       aRate: "Viteza de redare",
-      aMap: "Harta turului"
+      aMap: "Harta turului",
+      aPrev: "Imaginea anterioară",
+      aNext: "Imaginea următoare",
+      aOpenImg: "Deschide imaginea"
     }
   }
 };

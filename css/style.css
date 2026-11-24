@@ -290,3 +290,40 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
   border: 1.5px solid rgba(255,255,255,.5); background: transparent; color: #fff;
   font-size: 12px; font-weight: 800; letter-spacing: .05em;
 }
+
+/* ---------- Archivbilder ---------- */
+.gallery-wrap { margin: 0 -20px 16px; }
+.gallery {
+  display: flex; gap: 10px; overflow-x: auto; padding: 2px 20px 6px;
+  scroll-snap-type: x mandatory; scroll-padding: 0 20px; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.gallery::-webkit-scrollbar { display: none; }
+.gallery button {
+  flex: none; width: 150px; padding: 0; border: 0; background: transparent; text-align: left;
+  scroll-snap-align: start;
+}
+.gallery:has(button:only-child) button { width: 100%; }
+.gallery img {
+  display: block; width: 100%; height: 120px; object-fit: cover; border-radius: 12px;
+  background: var(--line); filter: sepia(.15);
+}
+.gallery:has(button:only-child) img { height: 190px; }
+.gallery span {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: 12px; line-height: 1.35; color: var(--muted); margin-top: 6px;
+}
+.media-credit { margin: 2px 20px 0; font-size: 11px; color: var(--muted); }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 3000; background: rgba(12, 6, 4, .94); color: #fff;
+  display: flex; align-items: center; justify-content: center; padding: 56px 8px 24px;
+}
+.lightbox[hidden] { display: none; }
+.lightbox figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; }
+.lightbox img { max-width: 100%; max-height: calc(100vh - 160px); object-fit: contain; border-radius: 6px; }
+.lightbox figcaption { margin-top: 12px; font-size: 14px; line-height: 1.45; text-align: center; max-width: 560px; padding: 0 40px; opacity: .9; }
+.lightbox .icon-btn { color: #fff; background: rgba(255,255,255,.12); }
+.lightbox-close { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 10px); right: 10px; }
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); }
+.lightbox-nav.prev { left: 6px; }
+.lightbox-nav.next { right: 6px; }

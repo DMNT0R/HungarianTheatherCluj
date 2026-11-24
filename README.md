@@ -26,6 +26,8 @@ The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
 - **Audio player** per stop: play/pause, −15 s, speed, seeking
   - If a recording exists at `audio/<lang>/<stop-id>.mp3`, it is played.
   - Otherwise the device's **text-to-speech** reads the story, highlighting the current sentence.
+- **Archive images** per stop from the theatre's Documentation Centre, with captions in
+  all three languages and a full-screen viewer (swipe or arrow keys)
 - **Interactive elements** per stop, e.g. a costume photo taken with the phone camera
   (stays on the device, can be shared) or search lists
 - **Progress** is saved on the device
@@ -45,15 +47,28 @@ The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
 | 6 | From Kolozsvár to Casablanca: Curtiz and the Hungarian actors | 1942 | 🎬 Hungarians in “Casablanca”, link to actors.hu |
 | 7 | The Hungarian Theatre today (Str. Emil Isac 26–28) | 1919 → today | |
 
-**Open points:** exact location of stop 6 (Casablanca) and stop 1 (Rhédey Palace);
-names and positions of the actors' graves for stop 4; archival photos, documents and
-videos for each stop.
+**Open points:** exact location of stop 1 (Rhédey House) and stop 6 (Casablanca);
+exact position of the Casa Universitarilor plaque (stop 3); grave locations for stop 4;
+more archive material (documents, videos) and image rights.
+
+## Sources
+
+Facts and images for 1792–1906 come from the theatre's own article
+[“The 200th Anniversary of the Hungarian Theatre Company's First Permanent Venue”](https://www.huntheater.ro/en/news/1452/the-200th-anniversary-of-the-hungarian-theatre-companys-first-permanent-venue/)
+by Erzsébet Zakariás (huntheater.ro). The images are loaded directly from huntheater.ro
+and are not stored in this repository. **Image rights must be cleared with the theatre**
+before a public release.
+
+Note: the article gives the first performance as 17 December 1792 in one place and
+16 December 1792 in another. The app uses 17 December; please confirm.
 
 > ⚠️ **Texts and coordinates are drafts.** Facts must be checked by the theatre's
 > Documentation Centre. The Hungarian and Romanian versions should be proofread by
 > native speakers.
 
 ## Running it
+
+### On a computer
 
 No build step. Serve the folder with any web server (GPS and the service worker need
 `http://localhost` or HTTPS):
@@ -63,7 +78,24 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-To test on a phone, put the folder on an HTTPS host (e.g. GitHub Pages, Netlify).
+Use **demo mode** (menu) to set your position by clicking on the map. Alternatively,
+in Chrome DevTools: device toolbar (phone view) and *Sensors → Location* to fake GPS.
+
+### On a smartphone (GitHub Pages, free HTTPS)
+
+1. Repository on GitHub → **Settings → Pages**
+2. *Source*: **Deploy from a branch**, branch: the branch with the app, folder: **/ (root)** → Save
+3. After about a minute the app is live at `https://<user>.github.io/<repository>/`
+4. Open that link on the phone, allow location access
+5. Install it like an app: iPhone (Safari) → *Share → Add to Home Screen*;
+   Android (Chrome) → *⋮ → Add to Home screen / Install app*
+
+GitHub Pages is free for public repositories; private repositories need a paid plan.
+Alternative without GitHub settings: drag the project folder onto
+[app.netlify.com/drop](https://app.netlify.com/drop).
+
+Opening the app on the phone via the computer's local IP (e.g. `http://192.168.x.x:8000`)
+works for a quick look, but browsers block GPS without HTTPS – use demo mode there.
 
 ## Editing content
 

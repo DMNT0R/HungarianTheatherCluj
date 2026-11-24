@@ -317,6 +317,7 @@
     $("sheet-address").innerHTML = esc(tr(s.address)) +
       (s.draftLocation ? ` <span class="badge">${esc(t("draftLocation"))}</span>` : "");
     $("sheet-hero").style.setProperty("--hue", (350 + i * 9) % 360);
+    renderMedia(s);
     renderActivity(s);
 
     const text = tr(s.text);
@@ -339,6 +340,53 @@
     $("scrim").classList.add("show");
     if (!(opts && opts.keepMap)) map.flyTo(s.coords, 17, { duration: .8 });
   }
+
+  // ---------- Archivbilder & Vollbildansicht ----------
+  let lbItems = [], lbIdx = 0;
+  function renderMedia(s) {
+    const items = s.media || [];
+    $("sheet-media-wrap").hidden = !items.length;
+    $("media-credit").textContent = tr(T.mediaCredit) || "";
+    $("sheet-media").innerHTML = items.map((m, k) => `
+      <button type="button" data-k="${k}" aria-label="${esc(t("aOpenImg"))}: ${esc(tr(m.caption))}">
+        <img src="${esc(m.src)}" alt="${esc(tr(m.caption))}" loading="lazy" referrerpolicy="no-referrer">
+        <span>${esc(tr(m.caption))}</span>
+      </button>`).join("");
+    $("sheet-media").scrollLeft = 0;
+    $("sheet-media").querySelectorAll("button").forEach(b => {
+      b.onclick = () => openLightbox(items, +b.dataset.k);
+    });
+    // Bilder, die nicht laden (z. B. offline), ausblenden
+    $("sheet-media").querySelectorAll("img").forEach(im => {
+      im.onerror = () => { im.parentElement.hidden = true; };
+    });
+  }
+  function showLightbox() {
+    const m = lbItems[lbIdx];
+    $("lightbox-img").src = m.src;
+    $("lightbox-img").alt = tr(m.caption);
+    $("lightbox-cap").textContent = `${tr(m.caption)}  (${lbIdx + 1}/${lbItems.length})`;
+    $("lightbox-prev").hidden = $("lightbox-next").hidden = lbItems.length < 2;
+  }
+  function openLightbox(items, k) {
+    lbItems = items; lbIdx = k;
+    showLightbox();
+    $("lightbox").hidden = false;
+  }
+  function closeLightbox() { $("lightbox").hidden = true; $("lightbox-img").removeAttribute("src"); }
+  function stepLightbox(d) { lbIdx = (lbIdx + d + lbItems.length) % lbItems.length; showLightbox(); }
+  $("lightbox-close").onclick = closeLightbox;
+  $("lightbox-prev").onclick = e => { e.stopPropagation(); stepLightbox(-1); };
+  $("lightbox-next").onclick = e => { e.stopPropagation(); stepLightbox(1); };
+  $("lightbox").onclick = e => { if (e.target === $("lightbox")) closeLightbox(); };
+  let touchX = null;
+  $("lightbox").addEventListener("touchstart", e => { touchX = e.touches[0].clientX; }, { passive: true });
+  $("lightbox").addEventListener("touchend", e => {
+    if (touchX == null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50 && lbItems.length > 1) stepLightbox(dx < 0 ? 1 : -1);
+    touchX = null;
+  });
 
   // ---------- Mitmach-Element, Kostümfoto, Links ----------
   let photoFile = null, photoUrl = null;
@@ -459,6 +507,12 @@
   });
 
   document.addEventListener("keydown", e => {
+    if (!$("lightbox").hidden) {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") stepLightbox(-1);
+      if (e.key === "ArrowRight") stepLightbox(1);
+      return;
+    }
     if (e.key === "Escape") { closeSheet(); closeDrawer(); }
   });
 
