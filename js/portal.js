@@ -242,6 +242,7 @@
           ${i18nFields("Address", `${b}.address`, { max: 300 })}
           ${i18nFields("Opening hours", `${b}.hours`, { max: 300 })}
           ${i18nFields("Offer for visitors (optional)", `${b}.offer`, { max: 300 })}
+          <label class="pt-check wide"><input type="checkbox" data-path="${b}.partner" ${p.partner ? "checked" : ""}> Tour partner (paid or sponsored mention, visitors see a “Tour partner” label)</label>
           <div class="wide">${p.image ? `<img class="pt-thumb" src="${mediaUrl(p.image)}" alt="">` : ""}${uploadBtn(p.image ? "Replace picture" : "Add picture", "image/*", `${b}.image`)}</div>
         </div>
         <div class="pt-actions pt-item-actions"><button class="btn btn-ghost danger" type="button" data-remove="${b}">Delete place</button></div>
@@ -257,6 +258,7 @@
   function bindEditor() {
     const ed = $("editor");
     ed.querySelectorAll("[data-path]").forEach(el => {
+      if (el.type === "checkbox") { el.addEventListener("change", () => { setPath(tour, el.dataset.path, el.checked); changed(); }); return; }
       el.addEventListener(el.tagName === "SELECT" ? "change" : "input", () => { setPath(tour, el.dataset.path, el.value); changed(); });
     });
     ed.querySelectorAll("[data-lang]").forEach(el => {

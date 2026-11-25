@@ -423,6 +423,8 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
 .pp p { margin: 0 0 6px !important; font-size: 13px; line-height: 1.45; }
 .pp p span { font-weight: 700; }
 .pp .pp-offer { background: #fff4d6; border-radius: 8px; padding: 6px 8px; }
+.place-pin.partner { box-shadow: 0 0 0 3px var(--gold), 0 2px 6px rgba(0,0,0,.3); }
+.pp-partner { display: inline-block; background: var(--gold); color: #3a2a00; border-radius: 999px; padding: 0 6px; font-size: 10px; letter-spacing: .04em; }
 .pp .pp-note { color: #6d625a; font-size: 11px; font-style: italic; }
 .pp a { font-weight: 700; color: var(--wine); }
 .nearby { margin: 6px 0 16px; }

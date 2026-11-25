@@ -61,6 +61,41 @@
     });
   }
 
+  // Eingebaute Tour (aus js/stations.js, liegt nicht in der Datenbank)
+  function renderBuiltin() {
+    const T = window.TOUR;
+    if (!T || !$("admin-builtin")) return;
+    const S = T.stations || [], P = T.places || [];
+    const LANGS = ["en", "hu", "ro"];
+    const KIND = { cafe: "☕", restaurant: "🍽️", shop: "🛍️", museum: "🏛️", institution: "📚", other: "📍" };
+    const osm = c => `https://www.openstreetmap.org/?mlat=${c[0]}&mlon=${c[1]}#map=18/${c[0]}/${c[1]}`;
+    $("admin-builtin").innerHTML = `
+      <article class="pt-card">
+        <div class="pt-row">
+          <h2>${esc(tr(T.title))} <span class="pill published">built-in</span></h2>
+          <a class="btn btn-ghost" href="./?tour=cluj-theatre" target="_blank" rel="noopener">Open ↗</a>
+        </div>
+        <p>${esc(tr(T.subtitle))}<br><small class="pt-small">${esc(tr(T.organizer))} · Cluj-Napoca · ${S.length} stops · ${P.length} places · EN / HU / RO</small></p>
+        <p class="pt-small">This tour is part of the app code (<code>js/stations.js</code>, audio in <code>audio/&lt;lang&gt;/</code>), so it is shown here read-only and cannot be hidden. Audio: AI voices (Azure). To use your own voice recordings later, replace <code>audio/&lt;lang&gt;/&lt;stop&gt;.mp3</code> under the same name and delete the matching <code>.json</code> (its sentence timings would no longer fit).</p>
+        <details class="pt-item"><summary>Stops (${S.length})</summary>
+          ${S.map((s, i) => `
+            <div class="pt-stop">
+              <p><strong>${i + 1}. ${esc(tr(s.title))}</strong> <small class="pt-small">${esc(s.year || "")}</small>
+                ${s.draftLocation ? ` <span class="pill pending">location to confirm</span>` : ""}<br>
+                <small class="pt-small">${esc(tr(s.address))} · <a href="${osm(s.coords)}" target="_blank" rel="noopener noreferrer">${s.coords.join(", ")}</a> ·
+                ${(s.media || []).length} archive pictures · ${s.rephoto ? s.rephoto.images.length : 0} then/now</small></p>
+              ${LANGS.map(l => `<div class="pt-media-row"><span class="pill">${l.toUpperCase()}</span> <small class="pt-small">${esc((s.title && s.title[l]) || "")}</small>
+                <audio controls preload="none" src="audio/${l}/${encodeURIComponent(s.id)}.mp3"></audio></div>`).join("")}
+            </div>`).join("")}
+        </details>
+        <details class="pt-item"><summary>Places (${P.length})</summary>
+          ${P.map(p => `<div class="pt-media-row"><span>${KIND[p.kind] || "📍"}</span> <strong>${esc(tr(p.title))}</strong>
+            ${p.partner ? `<span class="pill approved">tour partner</span>` : ""}
+            <small class="pt-small">${esc(tr(p.address))}${p.website ? ` · <a href="${esc(p.website)}" target="_blank" rel="noopener noreferrer">website</a>` : ""}</small></div>`).join("")}
+        </details>
+      </article>`;
+  }
+
   $("admin-login").onsubmit = async e => {
     e.preventDefault();
     const msg = e.target.querySelector("[data-msg]");
@@ -79,7 +114,7 @@
     $("admin-login").hidden = isAdmin;
     $("admin-main").hidden = !isAdmin;
     $("admin-user").hidden = !isAdmin;
-    if (isAdmin) load().catch(e => toast(e.message));
+    if (isAdmin) { renderBuiltin(); load().catch(e => toast(e.message)); }
   }
   start();
 })();

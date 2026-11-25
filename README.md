@@ -38,6 +38,12 @@ every change request needs a custom header (CSRF protection); uploads limited to
 AAC, OGG, WAV, ≤ 20 MB) and images (JPG, PNG, WebP, ≤ 8 MB) and served with a sandboxing CSP;
 institutions can only use their own files; links must be http(s).
 
+**Tour partners:** a place can be marked as *tour partner* (checkbox in the portal). It then
+gets a gold ring on the map and a “Tour partner” label. This is meant for cooperations in
+which cafés, shops or museums support a tour in return for being mentioned – the label keeps
+paid mentions transparent for visitors. The built-in tour is listed read-only in the admin
+panel (stops, places, audio in all languages).
+
 **Data:** institutions, tours and uploads live in the Cloudflare D1 database `ioi-tours` and a KV namespace; they are not part of this repository.
 
 **Local development:** create `.dev.vars` with `ADMIN_PASSWORD="…"`, then `npx wrangler dev`.

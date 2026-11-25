@@ -192,6 +192,7 @@ async function sanitizeTour(env, input, institutionId) {
       title, text: i18n(p.text, 2000), address: i18n(p.address, 300), hours: i18n(p.hours, 300), offer: i18n(p.offer, 300),
       website: url(p.website, "website"),
       image: mediaKey(p.image),
+      partner: p.partner === true,
     };
   });
   const title = i18n(input.title, 200);

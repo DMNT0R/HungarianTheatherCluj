@@ -73,3 +73,5 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 .pt-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .pt-table small { color: var(--muted); }
 #admin-login { max-width: 420px; margin: 40px auto; }
+.pt-stop { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.pt-stop p { margin: 0 0 4px; }

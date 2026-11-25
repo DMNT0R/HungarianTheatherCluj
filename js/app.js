@@ -155,7 +155,7 @@
   const PLACE_ICONS = { cafe: "☕", restaurant: "🍽️", shop: "🛍️", museum: "🏛️", institution: "📚", other: "📍" };
   const placeMarkers = PL.map(pl => {
     const m = L.marker(pl.coords, {
-      icon: L.divIcon({ className: "", html: `<div class="place-pin" data-kind="${esc(pl.kind)}">${PLACE_ICONS[pl.kind] || "📍"}</div>`, iconSize: [30, 30], iconAnchor: [15, 15] }),
+      icon: L.divIcon({ className: "", html: `<div class="place-pin${pl.partner ? " partner" : ""}" data-kind="${esc(pl.kind)}">${PLACE_ICONS[pl.kind] || "📍"}</div>`, iconSize: [30, 30], iconAnchor: [15, 15] }),
       keyboard: true, zIndexOffset: -100
     }).addTo(map);
     m.bindPopup(() => placePopup(pl), { maxWidth: 280, className: "place-popup" });
@@ -165,7 +165,7 @@
     const row = (label, v) => v ? `<p><span>${esc(label)}</span> ${esc(v)}</p>` : "";
     return `<div class="pp">
       ${pl.image ? `<img src="${esc(pl.image)}" alt="">` : ""}
-      <small>${PLACE_ICONS[pl.kind] || "📍"} ${esc(t("kind_" + pl.kind))}</small>
+      <small>${PLACE_ICONS[pl.kind] || "📍"} ${esc(t("kind_" + pl.kind))}${pl.partner ? ` · <b class="pp-partner">${esc(t("partner"))}</b>` : ""}</small>
       <strong>${esc(tr(pl.title))}</strong>
       ${tr(pl.text) ? `<p>${esc(tr(pl.text))}</p>` : ""}
       ${row(t("placeAddress"), tr(pl.address))}
@@ -501,7 +501,7 @@
   function renderNearby(s) {
     const near = PL.map((pl, k) => ({ pl, k, d: dist(s.coords, pl.coords) })).filter(x => x.d <= 250).sort((a, b) => a.d - b.d);
     $("sheet-nearby").hidden = !near.length;
-    $("nearby-list").innerHTML = near.map(x => `<button type="button" class="nearby-chip" data-k="${x.k}">${PLACE_ICONS[x.pl.kind] || "📍"} ${esc(tr(x.pl.title))} <small>${Math.round(x.d / 10) * 10} m</small></button>`).join("");
+    $("nearby-list").innerHTML = near.map(x => `<button type="button" class="nearby-chip" data-k="${x.k}">${PLACE_ICONS[x.pl.kind] || "📍"} ${esc(tr(x.pl.title))}${x.pl.partner ? ` <b class="pp-partner">${esc(t("partner"))}</b>` : ""} <small>${Math.round(x.d / 10) * 10} m</small></button>`).join("");
     $("nearby-list").querySelectorAll("button").forEach(b => { b.onclick = () => openPlace(+b.dataset.k); });
   }
 
