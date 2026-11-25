@@ -19,8 +19,8 @@ publish their own walking tours.
 | Who | Where | What |
 |---|---|---|
 | Visitors | `/` | Short introduction on first start → choose city and tour → walk |
-| Institutions | `/portal.html` | Apply with a form → after approval: create tours with texts (en/hu/ro), audio per language, pictures, then/now picture pairs, locations on the map, and places along the route (cafés, shops, museums) → publish |
-| Administrator | `/admin.html` | Approve or reject applications, suspend institutions, hide tours |
+| Institutions | `/portal` | Apply with a form → after approval: create tours with texts (en/hu/ro), audio per language, pictures, then/now picture pairs, locations on the map, and places along the route (cafés, shops, museums) → publish |
+| Administrator | `/admin` | Approve or reject applications, suspend institutions, hide tours |
 
 The Cluj tour is built into the app (`js/stations.js`) and also works offline; all other tours
 come from the server.
