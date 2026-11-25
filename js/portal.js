@@ -4,24 +4,26 @@
  */
 (function () {
   const $ = id => document.getElementById(id);
-  const LANGS = [["en", "English"], ["hu", "Magyar"], ["ro", "Română"]];
-  const KINDS = [["cafe", "☕ Café"], ["restaurant", "🍽️ Restaurant"], ["shop", "🛍️ Shop"], ["museum", "🏛️ Museum"], ["institution", "📚 Institution"], ["other", "📍 Other"]];
+  const t = (key, vars) => window.PageI18n.t(key, vars);
+  const LANGS = window.I18N.languages.map(language => [language.code, language.label]);
+  const KINDS = [
+    ["cafe", `☕ ${t("kindCafe")}`], ["restaurant", `🍽️ ${t("kindRestaurant")}`], ["shop", `🛍️ ${t("kindShop")}`],
+    ["museum", `🏛️ ${t("kindMuseum")}`], ["institution", `📚 ${t("kindInstitution")}`], ["other", `📍 ${t("kindOther")}`]
+  ];
   const ERR = {
-    weak_password: "The password needs at least 10 characters.", email_exists: "This e-mail address is already registered.",
-    invalid_email: "Please enter a valid e-mail address.", wrong_credentials: "E-mail or password is wrong.",
-    pending: "Your application has not been approved yet.", not_approved: "This account is not active.",
-    missing_stops: "Add at least one stop.", missing_languages: "Choose at least one language.", missing_tour_title: "Give the tour a title.",
-    missing_city: "Enter the city.", unsupported_type: "This file type is not supported (use MP3/M4A/OGG audio or JPG/PNG/WebP images).",
-    file_too_large: "The file is too large (audio max. 20 MB, images max. 8 MB).", invalid_website: "The website must start with http:// or https://.",
-    server_not_configured: "The server is not configured yet (admin password missing).", not_logged_in: "Please log in again.",
+    weak_password: "errorWeakPassword", email_exists: "errorEmailExists", invalid_email: "errorInvalidEmail",
+    wrong_credentials: "errorWrongCredentials", pending: "errorPending", not_approved: "errorNotApproved",
+    missing_stops: "errorMissingStops", missing_languages: "errorMissingLanguages", missing_tour_title: "errorMissingTourTitle",
+    missing_city: "errorMissingCity", unsupported_type: "errorUnsupportedType", file_too_large: "errorFileTooLarge",
+    invalid_website: "errorInvalidWebsite", server_not_configured: "errorServerNotConfigured", not_logged_in: "errorNotLoggedIn"
   };
   const errText = (e) => {
-    if (ERR[e]) return ERR[e];
-    let m = /^missing_title_stop_(\d+)$/.exec(e); if (m) return `Stop ${m[1]} needs a title.`;
-    m = /^missing_location_(\d+)$/.exec(e); if (m) return `Set the location of stop ${m[1]} on the map.`;
-    m = /^missing_title_place_(\d+)$/.exec(e); if (m) return `Place ${m[1]} needs a name.`;
-    m = /^missing_location_place_(\d+)$/.exec(e); if (m) return `Set the location of place ${m[1]} on the map.`;
-    return "Something went wrong (" + e + ").";
+    if (ERR[e]) return t(ERR[e]);
+    let m = /^missing_title_stop_(\d+)$/.exec(e); if (m) return t("errorMissingStopTitle", { n: m[1] });
+    m = /^missing_location_(\d+)$/.exec(e); if (m) return t("errorMissingStopLocation", { n: m[1] });
+    m = /^missing_title_place_(\d+)$/.exec(e); if (m) return t("errorMissingPlaceTitle", { n: m[1] });
+    m = /^missing_location_place_(\d+)$/.exec(e); if (m) return t("errorMissingPlaceLocation", { n: m[1] });
+    return t("errorGeneric", { error: e });
   };
   const esc = x => String(x ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   let toastTimer;
@@ -68,51 +70,51 @@
     const msg = e.target.querySelector("[data-msg]");
     msg.textContent = ""; msg.className = "pt-msg";
     const d = formData(e.target);
-    if (!d.name || !d.city || !d.contact_name || !d.email) { msg.textContent = "Please fill in all fields marked with *."; msg.classList.add("err"); return; }
+    if (!d.name || !d.city || !d.contact_name || !d.email) { msg.textContent = t("errorRequiredFields"); msg.classList.add("err"); return; }
     try {
       await api("POST", "/api/register", d);
       e.target.reset();
-      msg.textContent = "Thank you! Your application has been sent. You will be able to log in once it has been approved.";
+      msg.textContent = t("applicationSent");
       msg.classList.add("ok");
     } catch (err) { msg.textContent = errText(err.message); msg.classList.add("err"); }
   };
   $("pt-logout").onclick = async () => { await api("POST", "/api/logout"); location.reload(); };
 
   // ---------------------------------------------------------------- Meine Touren
-  const tr = v => (v && (v.en || v.hu || v.ro)) || "";
+  const tr = v => window.PageI18n.tr(v);
   async function loadDash() {
     show("view-dash");
     const list = await api("GET", "/api/my/tours");
     $("tour-list").innerHTML = list.length ? list.map(t => `
       <article class="pt-card pt-tour">
         <div>
-          <h2>${esc(tr(t.title) || "Untitled tour")}</h2>
-          <p>${esc(t.city)} · ${t.stops} stop${t.stops === 1 ? "" : "s"} ·
-            <span class="pill ${t.blocked ? "blocked" : t.status}">${t.blocked ? "hidden by admin" : t.status === "published" ? "published" : "draft"}</span></p>
+          <h2>${esc(tr(t.title) || window.PageI18n.t("untitledTour"))}</h2>
+          <p>${esc(t.city)} · ${esc(window.PageI18n.t(t.stops === 1 ? "stopCountOne" : "stopCountMany", { n: t.stops }))} ·
+          <span class="pill ${t.blocked ? "blocked" : t.status}">${esc(window.PageI18n.t(t.blocked ? "hiddenByAdmin" : t.status === "published" ? "statusPublished" : "statusDraft"))}</span></p>
         </div>
         <div class="pt-actions">
-          <button class="btn btn-ghost" data-edit="${esc(t.id)}" type="button">Edit</button>
-          <button class="btn btn-ghost" data-publish="${esc(t.id)}" data-to="${t.status === "published" ? "draft" : "published"}" type="button">${t.status === "published" ? "Unpublish" : "Publish"}</button>
-          ${t.status === "published" && !t.blocked ? `<a class="btn btn-ghost" href="./?tour=${encodeURIComponent(t.id)}" target="_blank" rel="noopener">Open in app ↗</a>` : ""}
-          <button class="btn btn-ghost danger" data-delete="${esc(t.id)}" type="button">Delete</button>
+        <button class="btn btn-ghost" data-edit="${esc(t.id)}" type="button">${esc(window.PageI18n.t("edit"))}</button>
+        <button class="btn btn-ghost" data-publish="${esc(t.id)}" data-to="${t.status === "published" ? "draft" : "published"}" type="button">${esc(window.PageI18n.t(t.status === "published" ? "unpublish" : "publish"))}</button>
+        ${t.status === "published" && !t.blocked ? `<a class="btn btn-ghost" href="./?tour=${encodeURIComponent(t.id)}" target="_blank" rel="noopener">${esc(window.PageI18n.t("openApp"))} ↗</a>` : ""}
+        <button class="btn btn-ghost danger" data-delete="${esc(t.id)}" type="button">${esc(window.PageI18n.t("delete"))}</button>
         </div>
-      </article>`).join("") : `<p class="pt-card">You have no tours yet. Create your first tour with “New tour”.</p>`;
+      </article>`).join("") : `<p class="pt-card">${esc(window.PageI18n.t("noToursMessage"))}</p>`;
     $("tour-list").querySelectorAll("[data-edit]").forEach(b => { b.onclick = () => openEditor(b.dataset.edit); });
     $("tour-list").querySelectorAll("[data-publish]").forEach(b => {
       b.onclick = async () => {
-        try { await api("POST", `/api/my/tours/${b.dataset.publish}/status`, { status: b.dataset.to }); toast(b.dataset.to === "published" ? "Tour published." : "Tour is a draft again."); loadDash(); }
+        try { await api("POST", `/api/my/tours/${b.dataset.publish}/status`, { status: b.dataset.to }); toast(window.PageI18n.t(b.dataset.to === "published" ? "tourPublished" : "tourDraft")); loadDash(); }
         catch (e) { toast(errText(e.message)); }
       };
     });
     $("tour-list").querySelectorAll("[data-delete]").forEach(b => {
       b.onclick = async () => {
-        if (!confirm("Delete this tour permanently?")) return;
+        if (!confirm(window.PageI18n.t("confirmDeleteTour"))) return;
         await api("DELETE", `/api/my/tours/${b.dataset.delete}`); loadDash();
       };
     });
   }
   $("new-tour").onclick = () => openEditor(null);
-  $("edit-back").onclick = () => { if (!dirty || confirm("Leave without saving?")) loadDash(); };
+  $("edit-back").onclick = () => { if (!dirty || confirm(window.PageI18n.t("confirmLeaveUnsaved"))) loadDash(); };
 
   // ---------------------------------------------------------------- Editor
   let tour = null, tourId = null, dirty = false, map = null, layer = null, picking = null;
@@ -123,7 +125,7 @@
   async function openEditor(id) {
     tourId = id;
     tour = id ? await api("GET", `/api/my/tours/${id}`) : blankTour();
-    $("edit-status").textContent = id ? (tour.status === "published" ? "Published – changes are live after saving" : "Draft") : "New tour";
+    $("edit-status").textContent = id ? (tour.status === "published" ? t("publishedChanges") : t("statusDraft")) : t("newTourStatus");
     dirty = false;
     show("view-edit");
     renderEditor();
@@ -150,31 +152,31 @@
     const langBoxes = LANGS.map(([c, n]) => `<label class="pt-check"><input type="checkbox" data-lang="${c}" ${tour.languages.includes(c) ? "checked" : ""}> ${n}</label>`).join("");
     $("editor").innerHTML = `
       <section class="pt-card">
-        <h2>Tour</h2>
+        <h2>${esc(t("editorTour"))}</h2>
         <div class="pt-grid">
-          ${field("City *", "city", { max: 100 })}
-          ${field("Country", "country", { max: 100 })}
-          <div class="wide"><span class="pt-label">Languages of this tour *</span><div class="pt-checks">${langBoxes}</div></div>
-          ${i18nFields("Title *", "title", { max: 200 })}
-          ${i18nFields("Subtitle", "subtitle", { max: 300 })}
-          ${i18nFields("Short description", "description", { area: true, rows: 3, max: 3000 })}
+        ${field(t("cityRequired"), "city", { max: 100 })}
+        ${field(t("country"), "country", { max: 100 })}
+        <div class="wide"><span class="pt-label">${esc(t("tourLanguagesRequired"))}</span><div class="pt-checks">${langBoxes}</div></div>
+        ${i18nFields(t("titleRequired"), "title", { max: 200 })}
+        ${i18nFields(t("subtitle"), "subtitle", { max: 300 })}
+        ${i18nFields(t("shortDescription"), "description", { area: true, rows: 3, max: 3000 })}
         </div>
       </section>
 
       <section class="pt-card">
-        <h2>Map</h2>
-        <p class="pt-small" id="pick-hint">Stops are numbered, places have symbols. Use “Set location on map” on a stop or place, then click on the map.</p>
+        <h2>${esc(t("map"))}</h2>
+        <p class="pt-small" id="pick-hint">${esc(t("mapInstruction"))}</p>
         <div id="pt-map" class="pt-map"></div>
       </section>
 
       <section>
-        <div class="pt-row"><h2>Stops (${tour.stations.length})</h2><button class="btn btn-ghost" data-add="stop" type="button">+ Add stop</button></div>
-        ${tour.stations.map((s, i) => stopCard(s, i)).join("") || `<p class="pt-card pt-small">No stops yet.</p>`}
+        <div class="pt-row"><h2>${esc(t("stopsHeading", { n: tour.stations.length }))}</h2><button class="btn btn-ghost" data-add="stop" type="button">${esc(t("addStop"))}</button></div>
+        ${tour.stations.map((s, i) => stopCard(s, i)).join("") || `<p class="pt-card pt-small">${esc(t("noStopsYet"))}</p>`}
       </section>
 
       <section>
-        <div class="pt-row"><h2>Places along the tour (${tour.places.length})</h2><button class="btn btn-ghost" data-add="place" type="button">+ Add place</button></div>
-        <p class="pt-small">Cafés, shops, museums or other institutions near the route. They appear as symbols on the map and under “Places nearby”.</p>
+        <div class="pt-row"><h2>${esc(t("placesHeading", { n: tour.places.length }))}</h2><button class="btn btn-ghost" data-add="place" type="button">${esc(t("addPlace"))}</button></div>
+        <p class="pt-small">${esc(t("placesDescription"))}</p>
         ${tour.places.map((p, i) => placeCard(p, i)).join("")}
       </section>`;
     bindEditor();
@@ -182,8 +184,8 @@
   }
 
   function locLine(base, coords) {
-    return `<div class="pt-loc wide"><span>${coords ? `📍 ${coords[0].toFixed(5)}, ${coords[1].toFixed(5)}` : "📍 No location yet"}</span>
-      <button class="btn btn-ghost" type="button" data-pick="${base}">Set location on map</button></div>`;
+    return `<div class="pt-loc wide"><span>${coords ? `📍 ${coords[0].toFixed(5)}, ${coords[1].toFixed(5)}` : `📍 ${t("noLocationYet")}`}</span>
+      <button class="btn btn-ghost" type="button" data-pick="${base}">${esc(t("setLocationMap"))}</button></div>`;
   }
   function uploadBtn(label, accept, target) {
     return `<label class="btn btn-ghost pt-upload">${esc(label)}<input type="file" accept="${accept}" data-upload="${target}" hidden></label>`;
@@ -192,39 +194,39 @@
     const b = `stations.${i}`;
     const audio = tour.languages.map(l => `
       <div class="pt-media-row"><strong>${l.toUpperCase()}</strong>
-        ${s.audio && s.audio[l] ? `<audio controls preload="none" src="${mediaUrl(s.audio[l])}"></audio><button class="btn btn-ghost" type="button" data-clear="${b}.audio.${l}">Remove</button>`
-          : `<span class="pt-small">No recording – the app will read the text aloud.</span>`}
-        ${uploadBtn("Upload audio", "audio/*", `${b}.audio.${l}`)}
+        ${s.audio && s.audio[l] ? `<audio controls preload="none" src="${mediaUrl(s.audio[l])}"></audio><button class="btn btn-ghost" type="button" data-clear="${b}.audio.${l}">${esc(t("remove"))}</button>`
+          : `<span class="pt-small">${esc(t("noRecording"))}</span>`}
+        ${uploadBtn(t("uploadAudio"), "audio/*", `${b}.audio.${l}`)}
       </div>`).join("");
     const images = (s.media || []).map((m, k) => `
       <div class="pt-img"><img src="${mediaUrl(m.key)}" alt="">
         <div>${tour.languages.map(l => field(`Caption (${l.toUpperCase()})`, `${b}.media.${k}.caption.${l}`, { max: 300 })).join("")}
-        <button class="btn btn-ghost" type="button" data-remove="${b}.media.${k}">Remove picture</button></div></div>`).join("");
+        <button class="btn btn-ghost" type="button" data-remove="${b}.media.${k}">${esc(t("removePicture"))}</button></div></div>`).join("");
     const pairs = (s.compare || []).map((c, k) => `
       <div class="pt-pair">
-        <div><span class="pt-label">Then</span>${c.then && c.then.key ? `<img src="${mediaUrl(c.then.key)}" alt="">` : ""}${uploadBtn(c.then && c.then.key ? "Replace" : "Upload historic picture", "image/*", `${b}.compare.${k}.then.key`)}</div>
-        <div><span class="pt-label">Now (optional)</span>${c.now && c.now.key ? `<img src="${mediaUrl(c.now.key)}" alt="">` : `<p class="pt-small">Without a current photo, visitors can take one on site.</p>`}${uploadBtn(c.now && c.now.key ? "Replace" : "Upload current photo", "image/*", `${b}.compare.${k}.now.key`)}</div>
-        <div class="pt-pair-fields">${field("Year", `${b}.compare.${k}.then.year`, { max: 30 })}${tour.languages.map(l => field(`Caption (${l.toUpperCase()})`, `${b}.compare.${k}.then.caption.${l}`, { max: 300 })).join("")}
-          <button class="btn btn-ghost" type="button" data-remove="${b}.compare.${k}">Remove pair</button></div>
+        <div><span class="pt-label">${esc(t("then"))}</span>${c.then && c.then.key ? `<img src="${mediaUrl(c.then.key)}" alt="">` : ""}${uploadBtn(c.then && c.then.key ? t("replace") : t("uploadHistoricPicture"), "image/*", `${b}.compare.${k}.then.key`)}</div>
+        <div><span class="pt-label">${esc(t("nowOptional"))}</span>${c.now && c.now.key ? `<img src="${mediaUrl(c.now.key)}" alt="">` : `<p class="pt-small">${esc(t("noCurrentPhoto"))}</p>`}${uploadBtn(c.now && c.now.key ? t("replace") : t("uploadCurrentPhoto"), "image/*", `${b}.compare.${k}.now.key`)}</div>
+        <div class="pt-pair-fields">${field(t("year"), `${b}.compare.${k}.then.year`, { max: 30 })}${tour.languages.map(l => field(`${t("caption")} (${l.toUpperCase()})`, `${b}.compare.${k}.then.caption.${l}`, { max: 300 })).join("")}
+          <button class="btn btn-ghost" type="button" data-remove="${b}.compare.${k}">${esc(t("removePair"))}</button></div>
       </div>`).join("");
     return `
       <details class="pt-card pt-item" ${s._open ? "open" : ""} data-open="${b}">
-        <summary><span class="pt-num">${i + 1}</span> ${esc(tr(s.title) || "New stop")}<span class="pt-small">${s.coords ? "" : " · no location"}</span></summary>
+        <summary><span class="pt-num">${i + 1}</span> ${esc(tr(s.title) || t("newStop"))}<span class="pt-small">${s.coords ? "" : ` · ${t("noLocation")}`}</span></summary>
         <div class="pt-grid">
-          ${i18nFields("Title *", `${b}.title`, { max: 200 })}
-          ${i18nFields("Subtitle", `${b}.subtitle`, { max: 200 })}
-          ${field("Year", `${b}.year`, { max: 20, placeholder: "e.g. 1821" })}
+          ${i18nFields(t("titleRequired"), `${b}.title`, { max: 200 })}
+          ${i18nFields(t("subtitle"), `${b}.subtitle`, { max: 200 })}
+          ${field(t("year"), `${b}.year`, { max: 20, placeholder: t("yearExample") })}
           ${locLine(b, s.coords)}
-          ${i18nFields("Address", `${b}.address`, { max: 300 })}
-          ${i18nFields("Story (shown and read aloud)", `${b}.text`, { area: true, rows: 8 })}
+          ${i18nFields(t("address"), `${b}.address`, { max: 300 })}
+          ${i18nFields(t("story"), `${b}.text`, { area: true, rows: 8 })}
         </div>
-        <h3>Audio</h3>${audio}
-        <h3>Pictures</h3>${images}${uploadBtn("+ Add picture", "image/*", `${b}.media.${(s.media || []).length}.key`)}
-        <h3>Then &amp; now</h3>${pairs}<button class="btn btn-ghost" type="button" data-addpair="${i}">+ Add then/now pair</button>
+        <h3>${esc(t("audio"))}</h3>${audio}
+        <h3>${esc(t("pictures"))}</h3>${images}${uploadBtn(t("addPicture"), "image/*", `${b}.media.${(s.media || []).length}.key`)}
+        <h3>${esc(t("thenNow"))}</h3>${pairs}<button class="btn btn-ghost" type="button" data-addpair="${i}">${esc(t("addThenNowPair"))}</button>
         <div class="pt-actions pt-item-actions">
-          <button class="btn btn-ghost" type="button" data-move="${i}" data-dir="-1" ${i === 0 ? "disabled" : ""}>↑ Up</button>
-          <button class="btn btn-ghost" type="button" data-move="${i}" data-dir="1" ${i === tour.stations.length - 1 ? "disabled" : ""}>↓ Down</button>
-          <button class="btn btn-ghost danger" type="button" data-remove="${b}">Delete stop</button>
+          <button class="btn btn-ghost" type="button" data-move="${i}" data-dir="-1" ${i === 0 ? "disabled" : ""}>↑ ${esc(t("up"))}</button>
+          <button class="btn btn-ghost" type="button" data-move="${i}" data-dir="1" ${i === tour.stations.length - 1 ? "disabled" : ""}>↓ ${esc(t("down"))}</button>
+          <button class="btn btn-ghost danger" type="button" data-remove="${b}">${esc(t("deleteStop"))}</button>
         </div>
       </details>`;
   }
@@ -232,20 +234,20 @@
     const b = `places.${i}`;
     return `
       <details class="pt-card pt-item" ${p._open ? "open" : ""} data-open="${b}">
-        <summary>${(KINDS.find(k => k[0] === p.kind) || KINDS[5])[1].split(" ")[0]} ${esc(tr(p.title) || "New place")}<span class="pt-small">${p.coords ? "" : " · no location"}</span></summary>
+        <summary>${(KINDS.find(k => k[0] === p.kind) || KINDS[5])[1].split(" ")[0]} ${esc(tr(p.title) || t("newPlace"))}<span class="pt-small">${p.coords ? "" : ` · ${t("noLocation")}`}</span></summary>
         <div class="pt-grid">
-          <label>Type<select data-path="${b}.kind">${KINDS.map(([v, n]) => `<option value="${v}" ${p.kind === v ? "selected" : ""}>${n}</option>`).join("")}</select></label>
-          ${field("Website", `${b}.website`, { type: "url", placeholder: "https://", max: 500 })}
+          <label>${esc(t("type"))}<select data-path="${b}.kind">${KINDS.map(([v, n]) => `<option value="${v}" ${p.kind === v ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>
+          ${field(t("website"), `${b}.website`, { type: "url", placeholder: "https://", max: 500 })}
           ${locLine(b, p.coords)}
-          ${i18nFields("Name *", `${b}.title`, { max: 200 })}
-          ${i18nFields("Short description", `${b}.text`, { area: true, rows: 3, max: 2000 })}
-          ${i18nFields("Address", `${b}.address`, { max: 300 })}
-          ${i18nFields("Opening hours", `${b}.hours`, { max: 300 })}
-          ${i18nFields("Offer for visitors (optional)", `${b}.offer`, { max: 300 })}
-          <label class="pt-check wide"><input type="checkbox" data-path="${b}.partner" ${p.partner ? "checked" : ""}> Tour partner (paid or sponsored mention, visitors see a “Tour partner” label)</label>
-          <div class="wide">${p.image ? `<img class="pt-thumb" src="${mediaUrl(p.image)}" alt="">` : ""}${uploadBtn(p.image ? "Replace picture" : "Add picture", "image/*", `${b}.image`)}</div>
+          ${i18nFields(t("nameRequired"), `${b}.title`, { max: 200 })}
+          ${i18nFields(t("shortDescription"), `${b}.text`, { area: true, rows: 3, max: 2000 })}
+          ${i18nFields(t("address"), `${b}.address`, { max: 300 })}
+          ${i18nFields(t("openingHours"), `${b}.hours`, { max: 300 })}
+          ${i18nFields(t("visitorOffer"), `${b}.offer`, { max: 300 })}
+          <label class="pt-check wide"><input type="checkbox" data-path="${b}.partner" ${p.partner ? "checked" : ""}> ${esc(t("tourPartnerDisclosure"))}</label>
+          <div class="wide">${p.image ? `<img class="pt-thumb" src="${mediaUrl(p.image)}" alt="">` : ""}${uploadBtn(p.image ? t("replacePicture") : t("addPicture"), "image/*", `${b}.image`)}</div>
         </div>
-        <div class="pt-actions pt-item-actions"><button class="btn btn-ghost danger" type="button" data-remove="${b}">Delete place</button></div>
+        <div class="pt-actions pt-item-actions"><button class="btn btn-ghost danger" type="button" data-remove="${b}">${esc(t("deletePlace"))}</button></div>
       </details>`;
   }
 
@@ -276,7 +278,7 @@
         if (b.dataset.add === "stop") tour.stations.push({ title: {}, subtitle: {}, address: {}, text: {}, audio: {}, media: [], compare: [], coords: null, _open: true });
         else tour.places.push({ kind: "cafe", title: {}, text: {}, address: {}, hours: {}, offer: {}, website: "", coords: null, _open: true });
         changed(); rerender();
-        toast("Now set the location on the map.");
+        toast(t("nowSetLocation"));
         void center;
       };
     });
@@ -299,7 +301,7 @@
     ed.querySelectorAll("[data-pick]").forEach(b => {
       b.onclick = () => {
         picking = b.dataset.pick;
-        $("pick-hint").textContent = "Click on the map to set the location.";
+        $("pick-hint").textContent = t("clickMapToSetLocation");
         $("pick-hint").classList.add("active");
         $("pt-map").scrollIntoView({ behavior: "smooth", block: "center" });
       };
@@ -309,12 +311,12 @@
         const f = inp.files && inp.files[0];
         if (!f) return;
         const target = inp.dataset.upload;
-        toast("Uploading …");
+        toast(t("uploading"));
         try {
           const r = await api("POST", "/api/my/media", undefined, f);
           setPath(tour, target, r.key);
           if (/\.media\.\d+\.key$/.test(target)) { const base = target.replace(/\.key$/, ""); if (!getPath(tour, base + ".caption")) setPath(tour, base + ".caption", {}); }
-          changed(); toast("Uploaded."); rerender();
+          changed(); toast(t("uploaded")); rerender();
         } catch (e) { toast(errText(e.message)); }
       };
     });
@@ -346,7 +348,7 @@
       setPath(tour, picking + ".coords", [+e.latlng.lat.toFixed(6), +e.latlng.lng.toFixed(6)]);
       picking = null;
       changed(); rerender();
-      toast("Location set.");
+      toast(t("locationSet"));
     });
   }
 
@@ -362,8 +364,8 @@
       if (tourId) await api("PUT", `/api/my/tours/${tourId}`, data);
       else { const r = await api("POST", "/api/my/tours", data); tourId = r.id; }
       dirty = false;
-      msg.textContent = "Saved."; msg.classList.add("ok");
-      toast("Saved.");
+      msg.textContent = t("saved"); msg.classList.add("ok");
+      toast(t("saved"));
     } catch (e) { msg.textContent = errText(e.message); msg.classList.add("err"); msg.scrollIntoView({ block: "center" }); }
   };
   window.addEventListener("beforeunload", e => { if (dirty) { e.preventDefault(); e.returnValue = ""; } });

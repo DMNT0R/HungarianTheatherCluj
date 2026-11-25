@@ -12,7 +12,7 @@
  *         → Institut meldet sich an, legt Touren an, lädt Dateien hoch, veröffentlicht.
  */
 
-const LANGS = ["en", "hu", "ro"];
+const LANGS = ["en", "hu", "ro", "tr", "fa", "es", "ca", "de", "ar", "fr"];
 const PLACE_KINDS = ["cafe", "restaurant", "shop", "museum", "institution", "other"];
 const INSTITUTION_TYPES = ["theatre", "museum", "library", "university", "city", "business", "association", "other"];
 const AUDIO_TYPES = ["audio/mpeg", "audio/mp3", "audio/mp4", "audio/x-m4a", "audio/aac", "audio/ogg", "audio/wav", "audio/webm"];

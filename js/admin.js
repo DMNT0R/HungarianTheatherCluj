@@ -2,17 +2,32 @@
 (function () {
   const $ = id => document.getElementById(id);
   const esc = x => String(x ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const tr = v => (v && (v.en || v.hu || v.ro)) || "";
-  const date = s => s ? new Date(s).toLocaleDateString() : "";
+  const t = (key, vars) => window.PageI18n.t(key, vars);
+  const tr = v => window.PageI18n.tr(v);
+  const date = s => s ? new Date(s).toLocaleDateString(window.PageI18n.lang()) : "";
   let toastTimer;
   function toast(m) { const el = $("toast"); el.textContent = m; el.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove("show"), 2500); }
+  const errorKeys = {
+    server_not_configured: "adminPasswordMissing", wrong_credentials: "wrongPassword",
+    weak_password: "errorWeakPassword", email_exists: "errorEmailExists", invalid_email: "errorInvalidEmail",
+    pending: "errorPending", not_approved: "errorNotApproved", missing_stops: "errorMissingStops",
+    missing_languages: "errorMissingLanguages", missing_tour_title: "errorMissingTourTitle",
+    missing_city: "errorMissingCity", unsupported_type: "errorUnsupportedType",
+    file_too_large: "errorFileTooLarge", invalid_website: "errorInvalidWebsite",
+    not_logged_in: "errorNotLoggedIn"
+  };
+  const errorText = error => t(errorKeys[error] || "errorGeneric", { error });
   async function api(method, path, data) {
     const r = await fetch(path, { method, credentials: "same-origin", headers: { "x-ioi": "1", "content-type": "application/json" }, body: data === undefined ? undefined : JSON.stringify(data) });
     let b = null; try { b = await r.json(); } catch (e) { /* leer */ }
     if (!r.ok) throw new Error((b && b.error) || "http_" + r.status);
     return b;
   }
-  const STATUS = { pending: "pending", approved: "approved", rejected: "rejected", suspended: "suspended" };
+  const STATUS = {
+    pending: "statusPending", approved: "statusApproved", rejected: "statusRejected", suspended: "statusSuspended",
+    published: "statusPublished", draft: "statusDraft"
+  };
+  const statusText = status => STATUS[status] ? t(STATUS[status]) : status;
 
   async function load() {
     const [insts, tours] = await Promise.all([api("GET", "/api/admin/institutions"), api("GET", "/api/admin/tours")]);
@@ -23,41 +38,41 @@
         <p>${esc(i.city)}${i.country ? ", " + esc(i.country) : ""}${i.address ? " · " + esc(i.address) : ""}</p>
         <p>${esc(i.contact_name)} · <a href="mailto:${esc(i.email)}">${esc(i.email)}</a>${i.phone ? " · " + esc(i.phone) : ""}${i.website ? ` · <a href="${esc(i.website)}" target="_blank" rel="noopener noreferrer">${esc(i.website)}</a>` : ""}</p>
         ${i.description ? `<p class="pt-quote">${esc(i.description)}</p>` : ""}
-        <p class="pt-small">Applied ${date(i.created_at)}</p>
+        <p class="pt-small">${esc(t("appliedOn", { date: date(i.created_at) }))}</p>
         <div class="pt-actions">
-          <button class="btn btn-primary" data-status="approved" data-id="${esc(i.id)}" type="button">Approve</button>
-          <button class="btn btn-ghost danger" data-status="rejected" data-id="${esc(i.id)}" type="button">Reject</button>
+          <button class="btn btn-primary" data-status="approved" data-id="${esc(i.id)}" type="button">${esc(t("approve"))}</button>
+          <button class="btn btn-ghost danger" data-status="rejected" data-id="${esc(i.id)}" type="button">${esc(t("reject"))}</button>
         </div>
-      </article>`).join("") : `<p class="pt-card pt-small">No open applications.</p>`;
-    $("admin-inst").innerHTML = `<thead><tr><th>Institution</th><th>City</th><th>Contact</th><th>Tours</th><th>Status</th><th></th></tr></thead><tbody>` +
+      </article>`).join("") : `<p class="pt-card pt-small">${esc(t("noOpenApplications"))}</p>`;
+    $("admin-inst").innerHTML = `<thead><tr><th>${esc(t("institution"))}</th><th>${esc(t("city"))}</th><th>${esc(t("contact"))}</th><th>${esc(t("tours"))}</th><th>${esc(t("status"))}</th><th></th></tr></thead><tbody>` +
       insts.map(i => `<tr>
         <td><strong>${esc(i.name)}</strong><br><small>${esc(i.type)}</small></td>
         <td>${esc(i.city)}</td>
         <td>${esc(i.contact_name)}<br><small>${esc(i.email)}</small></td>
         <td>${i.tours}</td>
-        <td><span class="pill ${esc(i.status)}">${esc(STATUS[i.status] || i.status)}</span></td>
+        <td><span class="pill ${esc(i.status)}">${esc(statusText(i.status))}</span></td>
         <td class="pt-actions">${i.status === "approved"
-          ? `<button class="btn btn-ghost danger" data-status="suspended" data-id="${esc(i.id)}" type="button">Suspend</button>`
-          : `<button class="btn btn-ghost" data-status="approved" data-id="${esc(i.id)}" type="button">Approve</button>`}</td>
+          ? `<button class="btn btn-ghost danger" data-status="suspended" data-id="${esc(i.id)}" type="button">${esc(t("suspend"))}</button>`
+          : `<button class="btn btn-ghost" data-status="approved" data-id="${esc(i.id)}" type="button">${esc(t("approve"))}</button>`}</td>
       </tr>`).join("") + "</tbody>";
-    $("admin-tours").innerHTML = `<thead><tr><th>Tour</th><th>Institution</th><th>City</th><th>Stops</th><th>Status</th><th></th></tr></thead><tbody>` +
+    $("admin-tours").innerHTML = `<thead><tr><th>${esc(t("tour"))}</th><th>${esc(t("institution"))}</th><th>${esc(t("city"))}</th><th>${esc(t("stops"))}</th><th>${esc(t("status"))}</th><th></th></tr></thead><tbody>` +
       (tours.map(t => `<tr>
-        <td><strong>${esc(tr(t.title))}</strong><br><small>updated ${date(t.updated_at)}</small></td>
+        <td><strong>${esc(tr(t.title))}</strong><br><small>${esc(window.PageI18n.t("updatedOn", { date: date(t.updated_at) }))}</small></td>
         <td>${esc(t.institution)}</td><td>${esc(t.city)}</td><td>${t.stops}</td>
-        <td><span class="pill ${t.blocked ? "blocked" : esc(t.status)}">${t.blocked ? "hidden" : esc(t.status)}</span></td>
+        <td><span class="pill ${t.blocked ? "blocked" : esc(t.status)}">${t.blocked ? esc(window.PageI18n.t("hidden")) : esc(statusText(t.status))}</span></td>
         <td class="pt-actions">
-          ${t.status === "published" && !t.blocked ? `<a class="btn btn-ghost" href="./?tour=${encodeURIComponent(t.id)}" target="_blank" rel="noopener">Open ↗</a>` : ""}
-          <button class="btn btn-ghost ${t.blocked ? "" : "danger"}" data-block="${esc(t.id)}" data-to="${t.blocked ? 0 : 1}" type="button">${t.blocked ? "Show again" : "Hide"}</button>
-        </td></tr>`).join("") || `<tr><td colspan="6" class="pt-small">No tours yet.</td></tr>`) + "</tbody>";
+          ${t.status === "published" && !t.blocked ? `<a class="btn btn-ghost" href="./?tour=${encodeURIComponent(t.id)}" target="_blank" rel="noopener">${esc(window.PageI18n.t("openApp"))} ↗</a>` : ""}
+          <button class="btn btn-ghost ${t.blocked ? "" : "danger"}" data-block="${esc(t.id)}" data-to="${t.blocked ? 0 : 1}" type="button">${esc(window.PageI18n.t(t.blocked ? "showAgain" : "hide"))}</button>
+        </td></tr>`).join("") || `<tr><td colspan="6" class="pt-small">${esc(window.PageI18n.t("noToursYet"))}</td></tr>`) + "</tbody>";
     document.querySelectorAll("[data-status]").forEach(b => {
       b.onclick = async () => {
-        if (b.dataset.status !== "approved" && !confirm(`Set status to “${b.dataset.status}”?`)) return;
+        if (b.dataset.status !== "approved" && !confirm(window.PageI18n.t("confirmStatus", { status: statusText(b.dataset.status) }))) return;
         await api("POST", `/api/admin/institutions/${b.dataset.id}/status`, { status: b.dataset.status });
-        toast("Saved."); load();
+        toast(window.PageI18n.t("saved")); load();
       };
     });
     document.querySelectorAll("[data-block]").forEach(b => {
-      b.onclick = async () => { await api("POST", `/api/admin/tours/${b.dataset.block}/blocked`, { blocked: b.dataset.to === "1" }); toast("Saved."); load(); };
+      b.onclick = async () => { await api("POST", `/api/admin/tours/${b.dataset.block}/blocked`, { blocked: b.dataset.to === "1" }); toast(window.PageI18n.t("saved")); load(); };
     });
   }
 
@@ -102,7 +117,7 @@
     msg.textContent = "";
     try { await api("POST", "/api/admin/login", { password: e.target.password.value }); start(); }
     catch (err) {
-      msg.textContent = err.message === "server_not_configured" ? "ADMIN_PASSWORD is not set on the server yet." : "Wrong password.";
+      msg.textContent = errorText(err.message);
       msg.className = "pt-msg err";
     }
   };
@@ -114,7 +129,7 @@
     $("admin-login").hidden = isAdmin;
     $("admin-main").hidden = !isAdmin;
     $("admin-user").hidden = !isAdmin;
-    if (isAdmin) { renderBuiltin(); load().catch(e => toast(e.message)); }
+    if (isAdmin) { renderBuiltin(); load().catch(e => toast(errorText(e.message))); }
   }
   start();
 })();

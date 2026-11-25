@@ -67,6 +67,8 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 @media (max-width: 640px) { .pt-img, .pt-pair { grid-template-columns: 1fr; } }
 .pt-item-actions { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
 .pt-quote { border-left: 3px solid var(--gold); padding-left: 10px; color: var(--muted); white-space: pre-wrap; }
+html[dir="rtl"] .pt-table th, html[dir="rtl"] .pt-table td { text-align: right; }
+html[dir="rtl"] .pt-quote { border-left: 0; border-right: 3px solid var(--gold); padding-left: 0; padding-right: 10px; text-align: right; }
 .pt-table-wrap { overflow-x: auto; background: var(--card); border-radius: var(--radius); box-shadow: 0 4px 14px rgba(40,18,10,.07); }
 .pt-table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .pt-table th, .pt-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }

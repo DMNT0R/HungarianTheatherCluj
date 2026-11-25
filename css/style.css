@@ -274,6 +274,23 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
 .links:empty { display: none; }
 .links a { text-decoration: none; text-align: center; }
 
+html[dir="rtl"] .drawer { left: auto; right: 0; transform: translateX(102%); }
+html[dir="rtl"] .drawer.open { transform: none; }
+html[dir="rtl"] .drawer-head { padding: 14px 18px 6px 10px; }
+html[dir="rtl"] .station-list button, html[dir="rtl"] .gallery button, html[dir="rtl"] .ch-tour { text-align: right; }
+html[dir="rtl"] .sheet-close { left: 12px; right: auto; }
+html[dir="rtl"] .leaflet-bottom.leaflet-right { left: 10px; right: auto; }
+html[dir="rtl"] .activity-items { padding-left: 0; padding-right: 20px; }
+html[dir="rtl"] .lightbox-close { left: 10px; right: auto; }
+html[dir="rtl"] .lightbox-nav.prev { left: auto; right: 6px; }
+html[dir="rtl"] .lightbox-nav.next { right: auto; left: 6px; }
+html[dir="rtl"] .compare-tag.left { left: auto; right: 10px; }
+html[dir="rtl"] .compare-tag.right { right: auto; left: 10px; }
+@media (min-width: 900px) {
+  html[dir="rtl"] .sheet { left: 16px; right: auto; transform: translateX(-110%); }
+  html[dir="rtl"] .next-card { left: auto; right: 16px; }
+}
+
 /* ---------- Sprachwahl ---------- */
 .lang-switch { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
 .lang-switch button {
