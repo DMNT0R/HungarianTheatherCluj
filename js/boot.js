@@ -115,6 +115,7 @@
       $("ch-title").textContent = t("chooseTitle");
       $("ch-sub").textContent = t("chooseSub");
       $("ch-help").textContent = t("howItWorks");
+      $("ai-chooser").textContent = t("aiShort");
       $("ch-help").onclick = async () => { box.hidden = true; await showOnboarding(); box.hidden = false; render(list); };
       $("ch-list").innerHTML = `<p class="ch-note">${esc(t("chooseLoading"))}</p>`;
       let list = [builtinSummary()];
@@ -175,7 +176,22 @@
     return showChooser();
   }
 
+  // ---------- KI-Hinweis ----------
+  function showAiNotice() {
+    $("ai-title").textContent = t("aiTitle");
+    $("ai-text").innerHTML = t("aiText").split("\n\n").map(p => `<p>${esc(p)}</p>`).join("");
+    $("ai-close").textContent = t("aiClose");
+    $("ai-modal").hidden = false;
+    $("ai-close").focus({ preventScroll: true });
+    document.querySelector(".ai-card").scrollTop = 0;
+  }
+  document.addEventListener("click", e => {
+    if (e.target.closest("#ai-intro, #ai-chooser, #ai-menu")) showAiNotice();
+    if (e.target.id === "ai-close" || e.target.id === "ai-modal") $("ai-modal").hidden = true;
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") $("ai-modal").hidden = true; });
+
   function chooseAnother() { location.href = location.pathname + "?choose=1"; }
 
-  window.Boot = { resolveTour, showOnboarding, chooseAnother, BUILTIN_ID };
+  window.Boot = { resolveTour, showOnboarding, chooseAnother, showAiNotice, BUILTIN_ID };
 })();
