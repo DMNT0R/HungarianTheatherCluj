@@ -38,6 +38,8 @@ every change request needs a custom header (CSRF protection); uploads limited to
 AAC, OGG, WAV, ≤ 20 MB) and images (JPG, PNG, WebP, ≤ 8 MB) and served with a sandboxing CSP;
 institutions can only use their own files; links must be http(s).
 
+**Data:** institutions, tours and uploads live in the Cloudflare D1 database `ioi-tours` and a KV namespace; they are not part of this repository.
+
 **Local development:** create `.dev.vars` with `ADMIN_PASSWORD="…"`, then `npx wrangler dev`.
 
 The NAS/nginx variant (`docker-compose.yml`) only serves the static app – without portal,
