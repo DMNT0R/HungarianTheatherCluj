@@ -39,6 +39,7 @@
     </header>
     <p class="ch-error" id="ch-error" hidden></p>
     <div class="ch-list" id="ch-list"></div>
+    <p class="ch-ai"><button class="link-btn ai-link" id="ai-chooser" type="button"></button></p>
   </section>
 
   <!-- Startbildschirm -->
@@ -59,6 +60,7 @@
       <button class="btn btn-primary btn-lg" id="start-btn" data-i18n="start"></button>
       <p class="hint" data-i18n="hint"></p>
       <button class="link-btn" id="intro-change" type="button" data-i18n="changeTour"></button>
+      <button class="link-btn ai-link" id="ai-intro" type="button" data-i18n="aiShort"></button>
       <p class="proto-note" data-i18n="protoNote"></p>
     </div>
   </section>
@@ -112,6 +114,7 @@
       </label>
       <button class="btn btn-ghost" id="change-tour-btn" type="button" data-i18n="changeTour"></button>
       <button class="btn btn-ghost" id="help-btn" type="button" data-i18n="howItWorks"></button>
+      <button class="btn btn-ghost" id="ai-menu" type="button" data-i18n="aiMenu"></button>
       <button class="btn btn-ghost" id="reset-btn" data-i18n="resetProgress"></button>
     </div>
   </aside>
@@ -220,6 +223,15 @@
     </button>
   </div>
 
+
+  <!-- KI-Hinweis -->
+  <section class="ai-modal" id="ai-modal" hidden role="dialog" aria-modal="true" aria-labelledby="ai-title">
+    <div class="ai-card">
+      <h2 id="ai-title"></h2>
+      <div id="ai-text"></div>
+      <button class="btn btn-primary" id="ai-close" type="button"></button>
+    </div>
+  </section>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

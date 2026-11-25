@@ -43,6 +43,15 @@ institutions can only use their own files; links must be http(s).
 The NAS/nginx variant (`docker-compose.yml`) only serves the static app – without portal,
 admin and server tours.
 
+## AI disclosure
+
+This app was developed with the help of AI: program code, design, the Hungarian and Romanian
+translations and the stop texts were written with the AI assistant Claude (Anthropic), based on
+the sources listed in `docs/research.md`. The narration uses AI-generated voices (Microsoft Azure
+neural voices). The app says so in three places: a notice on the start and tour-selection
+screens (“Created with the help of AI – details”), the menu item “About this app & AI”, and the
+label “AI voice” in the audio player. The portal and admin pages carry the same notice.
+
 ## Languages
 
 The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
