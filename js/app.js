@@ -98,7 +98,7 @@
   function buildLangSwitches() {
     document.querySelectorAll(".lang-switch").forEach(box => {
       box.innerHTML = I.languages
-        .map(l => `<button type="button" data-lang="${l.code}" lang="${l.code}">${l.label}</button>`).join("");
+        .map(l => `<button type="button" data-lang="${l.code}" lang="${l.code}"><img class="lang-flag" src="img/flags/${l.code}.svg" alt="" aria-hidden="true">${l.label}</button>`).join("");
       box.querySelectorAll("button").forEach(b => { b.onclick = () => setLang(b.dataset.lang); });
     });
     $("lang-btn").onclick = () => setLang(LANGS[(LANGS.indexOf(state.lang) + 1) % LANGS.length]);
