@@ -17,15 +17,14 @@
  * QUELLE der Fakten und Bilder zu 1792–1906: Erzsébet Zakariás, „The 200th
  * Anniversary of the Hungarian Theatre Company's First Permanent Venue“,
  * huntheater.ro (Dokumentationszentrum des Ungarischen Theaters Cluj).
- * Die Bilder werden direkt von huntheater.ro geladen; Nutzungsrechte mit
- * dem Theater klären.
+ * Die Bilder stammen von huntheater.ro; Nutzungsrechte mit dem Theater klären.
  *
  * HINWEIS: Die Texte sind Entwürfe für den Prototyp und sollten vom Theater
  * geprüft, die ungarischen und rumänischen Fassungen von Muttersprachlern
  * gegengelesen werden.
  */
 (function () {
-  const ARCHIVE = "https://www.huntheater.ro/upload/img/ck/thumb/15/";
+  const ARCHIVE = "img/rephoto/";
   const img = (file, caption) => ({ src: ARCHIVE + file, caption });
   const ARTICLE = {
     label: {
@@ -106,7 +105,7 @@
         subtitle: { en: "Main Square · Piața Unirii · Főtér", hu: "Főtér · Piața Unirii", ro: "Piața Unirii · Főtér" },
         address: { en: "Piața Unirii 9, corner of Str. Napoca, Cluj-Napoca", hu: "Főtér (Piața Unirii) 9, a Napoca utca sarkán, Kolozsvár", ro: "Piața Unirii 9, colț cu Str. Napoca, Cluj-Napoca" },
         media: [
-          img("15885-kamsz_archi_bir_5684.jpg", {
+          img("15885-kamsz_archi_bir_5684 (1).jpg", {
             en: "Rhédey House, the first venue of the Hungarian theatre in Cluj",
             hu: "A Rhédey-ház, a kolozsvári magyar színjátszás első helyszíne",
             ro: "Casa Rhédey, primul spațiu al teatrului maghiar din Cluj"
