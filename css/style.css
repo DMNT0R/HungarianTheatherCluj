@@ -182,10 +182,10 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
 /* ---------- Sheet (Station) ---------- */
 .sheet {
   position: fixed; z-index: 1300; left: 0; right: 0; bottom: 0;
-  max-width: 640px; margin: 0 auto; max-height: 92vh; overflow-y: auto;
+  max-width: 640px; margin: 0 auto; max-height: 92vh; max-height: 92dvh; overflow-y: auto;
   background: var(--cream); border-radius: 24px 24px 0 0; box-shadow: var(--shadow);
   transform: translateY(105%); transition: transform .35s cubic-bezier(.2,.8,.2,1);
-  overscroll-behavior: contain;
+  overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
 }
 .sheet.open { transform: none; }
 .sheet-grip { position: absolute; top: 8px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: 4px; background: rgba(255,255,255,.6); z-index: 2; }
@@ -288,6 +288,7 @@ html[dir="rtl"] .compare-tag.left { left: auto; right: 10px; }
 html[dir="rtl"] .compare-tag.right { right: auto; left: 10px; }
 @media (min-width: 900px) {
   html[dir="rtl"] .sheet { left: 16px; right: auto; transform: translateX(-110%); }
+  html[dir="rtl"] .sheet.open { transform: none; }
   html[dir="rtl"] .next-card { left: auto; right: 16px; }
 }
 
