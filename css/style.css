@@ -284,8 +284,8 @@ html[dir="rtl"] .activity-items { padding-left: 0; padding-right: 20px; }
 html[dir="rtl"] .lightbox-close { left: 10px; right: auto; }
 html[dir="rtl"] .lightbox-nav.prev { left: auto; right: 6px; }
 html[dir="rtl"] .lightbox-nav.next { right: auto; left: 6px; }
-html[dir="rtl"] .compare-tag.left { left: auto; right: 10px; }
-html[dir="rtl"] .compare-tag.right { right: auto; left: 10px; }
+html[dir="rtl"] .compare-tag.left { left: 10px; right: auto; }
+html[dir="rtl"] .compare-tag.right { right: 10px; left: auto; }
 @media (min-width: 900px) {
   html[dir="rtl"] .sheet { left: 16px; right: auto; transform: translateX(-110%); }
   html[dir="rtl"] .sheet.open { transform: none; }
@@ -401,24 +401,25 @@ html[dir="rtl"] .compare-tag.right { right: auto; left: 10px; }
 .compare-head { display: flex; flex-direction: column; margin-bottom: 8px; }
 .compare-head strong { font-family: var(--serif); font-size: 18px; }
 .compare-head span { font-size: 13px; color: var(--muted); }
-.compare-stage { position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; background: #222; touch-action: pan-y; }
+.compare-stage { position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 14px; overflow: hidden; background: #222; touch-action: pan-y; direction: ltr; }
 .compare-stage > img, .compare-then img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .compare-stage > img[hidden] { display: none; }
 .compare-then { position: absolute; inset: 0; }
 .compare-handle { position: absolute; top: 0; bottom: 0; width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 8px rgba(0,0,0,.5); pointer-events: none; }
 .compare-handle::after { content: "⟷"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 38px; height: 38px; border-radius: 50%; background: #fff; color: #111; display: grid; place-items: center; font-size: 18px; box-shadow: 0 2px 8px rgba(0,0,0,.4); }
+.compare-stage:focus-within .compare-handle::after { outline: 3px solid var(--gold); outline-offset: 2px; }
 .compare-handle[hidden] { display: none; }
 .compare-tag { position: absolute; top: 10px; padding: 3px 9px; border-radius: 999px; background: rgba(0,0,0,.6); color: #fff; font-size: 12px; font-weight: 700; pointer-events: none; }
 .compare-tag.left { left: 10px; }
 .compare-tag.right { right: 10px; }
 .compare-tag[hidden] { display: none; }
-.compare-stage input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.compare-stage input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; direction: ltr; pointer-events: none; }
 .compare-stage input[type=range][hidden] { display: none; }
 .compare-empty { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 12px; background: linear-gradient(transparent, rgba(0,0,0,.8)); color: #fff; font-size: 14px; line-height: 1.45; }
 .compare-empty[hidden] { display: none; }
 .compare-empty p { margin: 0; }
-.compare-thumbs { display: flex; gap: 8px; margin-top: 10px; }
+.compare-thumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .compare-thumbs:empty { display: none; }
 .compare-thumbs button { position: relative; width: 64px; height: 46px; padding: 0; border: 2px solid var(--line); border-radius: 8px; overflow: hidden; background: #222; }
 .compare-thumbs button[aria-pressed="true"] { border-color: var(--gold); }

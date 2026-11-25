@@ -24,7 +24,7 @@
  * gegengelesen werden.
  */
 (function () {
-  const ARCHIVE = "img/rephoto/";
+  const ARCHIVE = "img/rephoto/black_white/";
   const img = (file, caption) => ({ src: ARCHIVE + file, caption });
   const ARTICLE = {
     label: {
@@ -114,7 +114,7 @@
         rephoto: {
           hint: { en: "Stand on the opposite pavement of Napoca Street and point your camera at the palace front.", hu: "Álljon a Napoca utca túloldali járdájára, és fordítsa a kamerát a palota homlokzata felé.", ro: "Stați pe trotuarul opus al străzii Napoca și îndreptați camera spre fațada palatului." },
           images: [
-            { src: "img/rephoto/rhedey-house.jpg", year: "1900s", credit: "theatre", caption: { en: "The Rhédey House on Napoca Street", hu: "A Rhédey-ház a Napoca utca felől", ro: "Casa Rhédey dinspre strada Napoca" } }
+            { src: "img/rephoto/black_white/rhedey-house.jpg", year: "1900s", credit: "theatre", caption: { en: "The Rhédey House on Napoca Street", hu: "A Rhédey-ház a Napoca utca felől", ro: "Casa Rhédey dinspre strada Napoca" } }
           ]
         },
         text: {
@@ -209,14 +209,14 @@ Imaginați-vă: lumina lumânărilor, o sală de bal plină de nobili și orăș
             hu: "Az emléktábla az Akadémiai Kollégium (egykori Casa Universitarilor) falán",
             ro: "Placa memorială de pe clădirea Colegiului Academic (fosta Casă a Universitarilor)"
           }),
-          { src: "img/rephoto/casa_blanca.png", caption: { en: "Casa Blanca", hu: "Casa Blanca", ro: "Casa Blanca" } }
+          { src: "img/rephoto/black_white/casa_blanca.png", caption: { en: "Casa Blanca", hu: "Casa Blanca", ro: "Casa Blanca" } }
         ],
         rephoto: {
           hint: { en: "Stand diagonally opposite the corner of Kogălniceanu and Emmanuel de Martonne streets – the old theatre will appear where the Academic College stands.", hu: "Álljon átlósan szemben a Kogălniceanu és az Emmanuel de Martonne utca sarkával – a régi színház ott jelenik meg, ahol ma az Akadémiai Kollégium áll.", ro: "Stați în diagonală față de colțul străzilor Kogălniceanu și Emmanuel de Martonne – vechiul teatru va apărea acolo unde se află astăzi Colegiul Academic." },
           images: [
-            { src: "img/rephoto/farkas-photo.jpg", year: "c. 1900", credit: "enyedi", caption: { en: "The old theatre on Farkas Street", hu: "A régi Farkas utcai színház", ro: "Vechiul teatru de pe strada Farkas" } },
-            { src: "img/rephoto/farkas-1865.jpg", year: "1865", credit: "theatre", caption: { en: "After the reconstruction of 1865", hu: "Az 1865-ös átépítés után", ro: "După reconstrucția din 1865" } },
-            { src: "img/rephoto/farkas-1850s.jpg", year: "1850s", credit: "theatre", caption: { en: "The theatre in the 1850s", hu: "A színház az 1850-es években", ro: "Teatrul în anii 1850" } }
+            { src: "img/rephoto/black_white/farkas-photo.jpg", year: "c. 1900", credit: "enyedi", caption: { en: "The old theatre on Farkas Street", hu: "A régi Farkas utcai színház", ro: "Vechiul teatru de pe strada Farkas" } },
+            { src: "img/rephoto/black_white/farkas-1865.jpg", year: "1865", credit: "theatre", caption: { en: "After the reconstruction of 1865", hu: "Az 1865-ös átépítés után", ro: "După reconstrucția din 1865" } },
+            { src: "img/rephoto/black_white/farkas-1850s.jpg", year: "1850s", credit: "theatre", caption: { en: "The theatre in the 1850s", hu: "A színház az 1850-es években", ro: "Teatrul în anii 1850" } }
           ]
         },
         text: {
@@ -297,8 +297,8 @@ Astăzi, clădirea este folosită de Universitatea de Artă și Design. Arta și
         rephoto: {
           hint: { en: "Stand in front of the main entrance. In 1959–61 the original Art Nouveau façade was replaced – see what it looked like.", hu: "Álljon a főbejárat elé. Az eredeti szecessziós homlokzatot 1959–61-ben lecserélték – nézze meg, milyen volt.", ro: "Stați în fața intrării principale. Fațada originală Art Nouveau a fost înlocuită în 1959–61 – vedeți cum arăta." },
           images: [
-            { src: "img/rephoto/summer-theatre-1910.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The summer theatre with its original façade", hu: "A nyári színkör eredeti homlokzatával", ro: "Teatrul de vară cu fațada originală" } },
-            { src: "img/rephoto/summer-theatre-street.jpg", year: "1910s", credit: "enyedi", caption: { en: "The summer theatre seen from the street", hu: "A nyári színkör az utca felől", ro: "Teatrul de vară văzut din stradă" } }
+            { src: "img/rephoto/black_white/summer-theatre-1910.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The summer theatre with its original façade", hu: "A nyári színkör eredeti homlokzatával", ro: "Teatrul de vară cu fațada originală" } },
+            { src: "img/rephoto/black_white/summer-theatre-street.jpg", year: "1910s", credit: "enyedi", caption: { en: "The summer theatre seen from the street", hu: "A nyári színkör az utca felől", ro: "Teatrul de vară văzut din stradă" } }
           ]
         },
         text: {
@@ -535,8 +535,8 @@ Opriți-vă pentru o clipă. Teatrul este cea mai efemeră dintre arte – fieca
         rephoto: {
           hint: { en: "Stand in the square in front of the main entrance and frame the whole façade.", hu: "Álljon a főbejárat előtti téren, és vegye kamerába az egész homlokzatot.", ro: "Stați în piața din fața intrării principale și încadrați toată fațada." },
           images: [
-            { src: "img/rephoto/national-theatre-postcard.jpg", year: "c. 1910", credit: "theatre", caption: { en: "Postcard: “Kolozsvár, Nemzeti színház”", hu: "Képeslap: „Kolozsvár, Nemzeti színház”", ro: "Carte poștală: „Kolozsvár, Nemzeti színház”" } },
-            { src: "img/rephoto/national-theatre-square.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The National Theatre and Hunyadi Square", hu: "A Nemzeti Színház és a Hunyadi tér", ro: "Teatrul Național și Piața Hunyadi" } }
+            { src: "img/rephoto/black_white/national-theatre-postcard.jpg", year: "c. 1910", credit: "theatre", caption: { en: "Postcard: “Kolozsvár, Nemzeti színház”", hu: "Képeslap: „Kolozsvár, Nemzeti színház”", ro: "Carte poștală: „Kolozsvár, Nemzeti színház”" } },
+            { src: "img/rephoto/black_white/national-theatre-square.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The National Theatre and Hunyadi Square", hu: "A Nemzeti Színház és a Hunyadi tér", ro: "Teatrul Național și Piața Hunyadi" } }
           ]
         },
         text: {

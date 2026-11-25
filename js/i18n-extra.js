@@ -41,7 +41,8 @@
       changeTour:"Şehri veya turu değiştir", farFromTour:"Bu turdan uzakta görünüyorsunuz. İpucu: menüden <strong>demo modunu</strong> açın.",
       approxKm:"yaklaşık {km} km", approxMin:"yaklaşık {min} dk.", kind_cafe:"Kafe", kind_restaurant:"Restoran", kind_shop:"Mağaza",
       kind_museum:"Müze", kind_institution:"Kurum", kind_other:"Yer", partner:"Tur ortağı", placeAddress:"Adres:", placeHours:"Çalışma saatleri:",
-      placeWebsite:"Web sitesi", placeNearby:"Yakında", nearbyTitle:"Yakındaki yerler", cmpTitle:"Dün ve bugün", cmpNow:"Bugün", cmpThen:"Geçmiş",
+      placeWebsite:"Web sitesi", placeNearby:"Yakında", nearbyTitle:"Yakındaki yerler",
+      cmpTitle:"Dün ve bugün", cmpNow:"Bugün", cmpThen:"Geçmiş", cmpBlackWhite:"Siyah beyaz", cmpAiColorized:"Yapay zekâyla renklendirildi",
       cmpSlider:"Geçmişi ve bugünü karşılaştırmak için kaydırın", cmpTakePhoto:"📷 Buradan bugünün fotoğrafını çek",
       cmpRetake:"📷 Yeni fotoğraf çek", cmpNoNow:"Henüz bugüne ait fotoğraf yok. Eski fotoğrafın çekildiği yerde durup bir fotoğraf çekin; sonra karşılaştırmak için kaydırın."
     },
@@ -79,7 +80,8 @@
       placesCount:"{n} مکان", changeTour:"تغییر شهر یا گردش", farFromTour:"به نظر می‌رسد از این گردش دور هستید. <strong>حالت آزمایشی</strong> را روشن کنید.",
       approxKm:"حدود {km} کیلومتر", approxMin:"حدود {min} دقیقه", kind_cafe:"کافه", kind_restaurant:"رستوران", kind_shop:"فروشگاه",
       kind_museum:"موزه", kind_institution:"مؤسسه", kind_other:"مکان", partner:"همکار گردش", placeAddress:"نشانی:", placeHours:"ساعت کاری:",
-      placeWebsite:"وب‌سایت", placeNearby:"نزدیک", nearbyTitle:"مکان‌های نزدیک", cmpTitle:"گذشته و امروز", cmpNow:"امروز", cmpThen:"گذشته",
+      placeWebsite:"وب‌سایت", placeNearby:"نزدیک", nearbyTitle:"مکان‌های نزدیک",
+      cmpTitle:"گذشته و امروز", cmpNow:"امروز", cmpThen:"گذشته", cmpBlackWhite:"سیاه‌وسفید", cmpAiColorized:"رنگ‌آمیزی‌شده با هوش مصنوعی",
       cmpSlider:"برای مقایسهٔ گذشته و امروز بلغزانید", cmpTakePhoto:"📷 از اینجا عکس امروزی بگیرید", cmpRetake:"📷 عکس تازه بگیرید",
       cmpNoNow:"هنوز عکسی از امروز نیست. در محل عکس قدیمی بایستید و عکس بگیرید؛ سپس برای مقایسه بلغزانید."
     },
@@ -122,7 +124,7 @@
       approxKm:"aprox. {km} km", approxMin:"aprox. {min} min", kind_cafe:"Café", kind_restaurant:"Restaurante",
       kind_shop:"Tienda", kind_museum:"Museo", kind_institution:"Institución", kind_other:"Lugar", partner:"Socio del recorrido", placeAddress:"Dirección:",
       placeHours:"Horario:", placeWebsite:"Sitio web", placeNearby:"Cerca", nearbyTitle:"Lugares cercanos",
-      cmpTitle:"Antes y ahora", cmpNow:"Hoy", cmpThen:"Antes", cmpSlider:"Desliza para comparar el antes y el ahora",
+      cmpTitle:"Antes y ahora", cmpNow:"Hoy", cmpThen:"Antes", cmpBlackWhite:"Blanco y negro", cmpAiColorized:"Coloreada con IA", cmpSlider:"Desliza para comparar el antes y el ahora",
       cmpTakePhoto:"📷 Haz una foto actual desde aquí", cmpRetake:"📷 Hacer otra foto",
       cmpNoNow:"Aún no hay una foto actual. Colócate donde se tomó la antigua y haz una foto; después desliza para comparar."
     },
@@ -165,7 +167,7 @@
       approxKm:"aprox. {km} km", approxMin:"aprox. {min} min", kind_cafe:"Cafè", kind_restaurant:"Restaurant",
       kind_shop:"Botiga", kind_museum:"Museu", kind_institution:"Institució", kind_other:"Lloc", partner:"Col·laborador de la ruta", placeAddress:"Adreça:",
       placeHours:"Horari:", placeWebsite:"Lloc web", placeNearby:"A prop", nearbyTitle:"Llocs propers",
-      cmpTitle:"Abans i ara", cmpNow:"Avui", cmpThen:"Abans", cmpSlider:"Llisca per comparar el passat i el present",
+      cmpTitle:"Abans i ara", cmpNow:"Avui", cmpThen:"Abans", cmpBlackWhite:"Blanc i negre", cmpAiColorized:"Coloritzada amb IA", cmpSlider:"Llisca per comparar el passat i el present",
       cmpTakePhoto:"📷 Fes una foto actual des d’aquí", cmpRetake:"📷 Fes una altra foto",
       cmpNoNow:"Encara no hi ha cap foto actual. Posa’t on es va fer la foto antiga i fes-ne una; després llisca per comparar."
     },
@@ -208,7 +210,7 @@
       approxKm:"ca. {km} km", approxMin:"ca. {min} Min.", kind_cafe:"Café", kind_restaurant:"Restaurant",
       kind_shop:"Geschäft", kind_museum:"Museum", kind_institution:"Einrichtung", kind_other:"Ort", partner:"Tourpartner", placeAddress:"Adresse:",
       placeHours:"Öffnungszeiten:", placeWebsite:"Website", placeNearby:"In der Nähe", nearbyTitle:"Orte in der Nähe",
-      cmpTitle:"Damals und heute", cmpNow:"Heute", cmpThen:"Damals", cmpSlider:"Schiebe, um damals und heute zu vergleichen",
+      cmpTitle:"Damals und heute", cmpNow:"Heute", cmpThen:"Damals", cmpBlackWhite:"Schwarz-Weiß", cmpAiColorized:"KI-koloriert", cmpSlider:"Schiebe, um damals und heute zu vergleichen",
       cmpTakePhoto:"📷 Heutiges Foto von hier aufnehmen", cmpRetake:"📷 Neues Foto aufnehmen",
       cmpNoNow:"Noch kein heutiges Foto vorhanden. Stelle dich an den Ort der alten Aufnahme und fotografiere; schiebe dann zum Vergleichen."
     },
@@ -251,7 +253,7 @@
       approxKm:"نحو {km} كم", approxMin:"نحو {min} دقيقة", kind_cafe:"مقهى", kind_restaurant:"مطعم",
       kind_shop:"متجر", kind_museum:"متحف", kind_institution:"مؤسسة", kind_other:"مكان", partner:"شريك الجولة", placeAddress:"العنوان:",
       placeHours:"ساعات العمل:", placeWebsite:"الموقع الإلكتروني", placeNearby:"بالقرب منك", nearbyTitle:"أماكن قريبة",
-      cmpTitle:"الماضي والحاضر", cmpNow:"اليوم", cmpThen:"قديمًا", cmpSlider:"مرّر للمقارنة بين الماضي والحاضر",
+      cmpTitle:"الماضي والحاضر", cmpNow:"اليوم", cmpThen:"قديمًا", cmpBlackWhite:"أبيض وأسود", cmpAiColorized:"ملوّن بالذكاء الاصطناعي", cmpSlider:"مرّر للمقارنة بين الماضي والحاضر",
       cmpTakePhoto:"📷 التقط صورة اليوم من هنا", cmpRetake:"📷 التقط صورة جديدة",
       cmpNoNow:"لا توجد صورة حديثة بعد. قف في موضع التقاط الصورة القديمة والتقط صورة، ثم مرّر للمقارنة."
     },
@@ -299,7 +301,7 @@
       approxKm:"environ {km} km", approxMin:"environ {min} min", kind_cafe:"Café", kind_restaurant:"Restaurant",
       kind_shop:"Boutique", kind_museum:"Musée", kind_institution:"Institution", kind_other:"Lieu", partner:"Partenaire du parcours",
       placeAddress:"Adresse :", placeHours:"Horaires :", placeWebsite:"Site web", placeNearby:"À proximité",
-      nearbyTitle:"Lieux à proximité", cmpTitle:"Hier et aujourd’hui", cmpNow:"Aujourd’hui", cmpThen:"Autrefois",
+      nearbyTitle:"Lieux à proximité", cmpTitle:"Hier et aujourd’hui", cmpNow:"Aujourd’hui", cmpThen:"Autrefois", cmpBlackWhite:"Noir et blanc", cmpAiColorized:"Colorisé par IA",
       cmpSlider:"Faites glisser pour comparer hier et aujourd’hui", cmpTakePhoto:"📷 Prendre une photo actuelle ici",
       cmpRetake:"📷 Prendre une nouvelle photo",
       cmpNoNow:"Aucune photo actuelle pour le moment. Placez-vous là où l’ancienne photo a été prise et prenez-en une, puis faites glisser pour comparer."

@@ -464,14 +464,40 @@
 
   // ---------- Damals & Heute: Schieberegler ----------
   const cmp = { pairs: [], idx: 0, value: 50, userNow: {} };
+  const colorizedStems = new Set([
+    "15885-kamsz_archi_bir_5684 (1)", "15886-a-farkas-utcai-szinhaz-az-1850-es-evekben",
+    "15887-a-farkas-utcai-szinhaz-az-1865-os-atepitest-koveto-idokbol", "15888-az-1821.-marcius-12-ei-fouri-eloadas-plakatja",
+    "15892-kep-3.5.-kotsi", "15895-gidofalvi-jantso-pal", "15899-kep-7.1.",
+    "15900-a-fiatal-jaszai-mari", "15913-kep-13.4.1.", "15916-kep-13.5.",
+    "15917-kep-13.6", "15921-hazsongard2",
+    "15923-jaszai-elso-szerepe-kolozsvaron1869.04.22.", "15928-kep-13.10", "15929-kep-13.8",
+    "15932-janovits", "15935-janovits-j.", "casa_blanca", "farkas-1850s", "farkas-1865", "farkas-photo",
+    "national-theatre-postcard", "national-theatre-square", "rhedey-house",
+    "summer-theatre-1910", "summer-theatre-street"
+  ]);
+  function colorizedSrc(src) {
+    const filename = src.slice(src.lastIndexOf("/") + 1);
+    const extension = filename.lastIndexOf(".");
+    const stem = extension < 0 ? filename : filename.slice(0, extension);
+    return colorizedStems.has(stem) ? `img/rephoto/colorful/${stem.replace(/\.+$/, "")}.png` : "";
+  }
   function renderCompare(s) {
-    cmp.pairs = s.compare || (s.rephoto ? s.rephoto.images.map(im => ({ then: im, now: null })) : []);
+    const imagePairs = [...(s.media || []), ...((s.rephoto && s.rephoto.images) || [])]
+      .map(image => {
+        const colored = colorizedSrc(image.src);
+        return colored ? { then: { ...image, src: `img/rephoto/black_white/${image.src.slice(image.src.lastIndexOf("/") + 1)}` }, colorizedSrc: colored } : null;
+      })
+      .filter(Boolean);
+    cmp.pairs = s.compare || imagePairs;
     cmp.stationId = s.id;
     $("sheet-compare").hidden = !cmp.pairs.length;
     if (!cmp.pairs.length) return;
     $("cmp-hint").textContent = s.rephoto ? tr(s.rephoto.hint) : "";
     $("cmp-thumbs").innerHTML = cmp.pairs.length > 1
-      ? cmp.pairs.map((p, k) => `<button type="button" data-k="${k}"><img src="${esc(p.then.src)}" alt=""><span>${esc(p.then.year || "")}</span></button>`).join("")
+      ? cmp.pairs.map((p, k) => {
+        const caption = [tr(p.then.caption), p.then.year].filter(Boolean).join(" · ");
+        return `<button type="button" data-k="${k}" aria-label="${esc(caption)}"><img src="${esc(p.then.src)}" alt=""><span>${esc(p.then.year || t("cmpThen"))}</span></button>`;
+      }).join("")
       : "";
     $("cmp-thumbs").querySelectorAll("button").forEach(b => { b.onclick = () => showPair(+b.dataset.k); });
     showPair(0);
@@ -480,9 +506,11 @@
     cmp.idx = k;
     const p = cmp.pairs[k];
     const userKey = cmp.stationId + ":" + k;
-    const nowSrc = cmp.userNow[userKey] || (p.now && p.now.src) || "";
+    const nowSrc = cmp.userNow[userKey] || (p.now && p.now.src) || p.colorizedSrc || "";
+    const aiColorized = !cmp.userNow[userKey] && !p.now && !!p.colorizedSrc;
     $("cmp-then").src = p.then.src;
-    $("cmp-then").alt = tr(p.then.caption);
+    const caption = tr(p.then.caption);
+    $("cmp-then").alt = aiColorized ? `${t("cmpBlackWhite")}: ${caption}` : caption;
     $("cmp-then").onload = () => {
       const im = $("cmp-then");
       if (im.naturalWidth) $("cmp-stage").style.aspectRatio = `${im.naturalWidth} / ${im.naturalHeight}`;
@@ -494,7 +522,9 @@
     $("cmp-handle").hidden = !nowSrc;
     $("cmp-tag-now").hidden = !nowSrc;
     $("cmp-caption").textContent = [tr(p.then.caption), p.then.year].filter(Boolean).join(" · ");
-    $("cmp-tag-then").textContent = p.then.year || t("cmpThen");
+    $("cmp-tag-then").textContent = aiColorized ? t("cmpBlackWhite") : p.then.year || t("cmpThen");
+    $("cmp-tag-now").textContent = aiColorized ? t("cmpAiColorized") : t("cmpNow");
+    $("cmp-now").alt = aiColorized ? `${t("cmpAiColorized")}: ${caption}` : t("cmpNow");
     const credit = p.then.credit && T.rephotoCredits ? tr(T.rephotoCredits[p.then.credit]) : "";
     $("cmp-credit").textContent = credit ? "© " + credit : "";
     $("cmp-photo").textContent = nowSrc ? t("cmpRetake") : t("cmpTakePhoto");
@@ -502,12 +532,29 @@
     setCompare(nowSrc ? 50 : 100);
   }
   function setCompare(v) {
-    cmp.value = v;
-    $("cmp-range").value = v;
-    $("cmp-then-wrap").style.clipPath = `inset(0 ${100 - v}% 0 0)`;
-    $("cmp-handle").style.left = v + "%";
+    cmp.value = Math.max(0, Math.min(100, v));
+    $("cmp-range").value = cmp.value;
+    $("cmp-range").setAttribute("aria-valuetext", `${Math.round(cmp.value)}%`);
+    $("cmp-then-wrap").style.clipPath = `inset(0 ${100 - cmp.value}% 0 0)`;
+    $("cmp-handle").style.left = cmp.value + "%";
   }
   $("cmp-range").oninput = e => setCompare(+e.target.value);
+  let comparePointer = null;
+  $("cmp-stage").addEventListener("pointerdown", e => {
+    if ($("cmp-range").hidden) return;
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    comparePointer = e.pointerId;
+    $("cmp-range").focus();
+    $("cmp-stage").setPointerCapture(comparePointer);
+    setCompare((e.clientX - $("cmp-stage").getBoundingClientRect().left) / $("cmp-stage").clientWidth * 100);
+  });
+  $("cmp-stage").addEventListener("pointermove", e => {
+    if (e.pointerId !== comparePointer) return;
+    setCompare((e.clientX - $("cmp-stage").getBoundingClientRect().left) / $("cmp-stage").clientWidth * 100);
+  });
+  const endComparePointer = e => { if (e.pointerId === comparePointer) comparePointer = null; };
+  $("cmp-stage").addEventListener("pointerup", endComparePointer);
+  $("cmp-stage").addEventListener("pointercancel", endComparePointer);
   $("cmp-photo").onclick = () => $("cmp-file").click();
   $("cmp-file").onchange = e => {
     const f = e.target.files && e.target.files[0];
