@@ -17,7 +17,7 @@
   async function load() {
     const [insts, tours] = await Promise.all([api("GET", "/api/admin/institutions"), api("GET", "/api/admin/tours")]);
     const pending = insts.filter(i => i.status === "pending");
-    $("ad-pending").innerHTML = pending.length ? pending.map(i => `
+    $("admin-pending").innerHTML = pending.length ? pending.map(i => `
       <article class="pt-card">
         <h2>${esc(i.name)} <span class="pill pending">${esc(i.type)}</span></h2>
         <p>${esc(i.city)}${i.country ? ", " + esc(i.country) : ""}${i.address ? " · " + esc(i.address) : ""}</p>
@@ -29,7 +29,7 @@
           <button class="btn btn-ghost danger" data-status="rejected" data-id="${esc(i.id)}" type="button">Reject</button>
         </div>
       </article>`).join("") : `<p class="pt-card pt-small">No open applications.</p>`;
-    $("ad-inst").innerHTML = `<thead><tr><th>Institution</th><th>City</th><th>Contact</th><th>Tours</th><th>Status</th><th></th></tr></thead><tbody>` +
+    $("admin-inst").innerHTML = `<thead><tr><th>Institution</th><th>City</th><th>Contact</th><th>Tours</th><th>Status</th><th></th></tr></thead><tbody>` +
       insts.map(i => `<tr>
         <td><strong>${esc(i.name)}</strong><br><small>${esc(i.type)}</small></td>
         <td>${esc(i.city)}</td>
@@ -40,7 +40,7 @@
           ? `<button class="btn btn-ghost danger" data-status="suspended" data-id="${esc(i.id)}" type="button">Suspend</button>`
           : `<button class="btn btn-ghost" data-status="approved" data-id="${esc(i.id)}" type="button">Approve</button>`}</td>
       </tr>`).join("") + "</tbody>";
-    $("ad-tours").innerHTML = `<thead><tr><th>Tour</th><th>Institution</th><th>City</th><th>Stops</th><th>Status</th><th></th></tr></thead><tbody>` +
+    $("admin-tours").innerHTML = `<thead><tr><th>Tour</th><th>Institution</th><th>City</th><th>Stops</th><th>Status</th><th></th></tr></thead><tbody>` +
       (tours.map(t => `<tr>
         <td><strong>${esc(tr(t.title))}</strong><br><small>updated ${date(t.updated_at)}</small></td>
         <td>${esc(t.institution)}</td><td>${esc(t.city)}</td><td>${t.stops}</td>
@@ -61,7 +61,7 @@
     });
   }
 
-  $("ad-login").onsubmit = async e => {
+  $("admin-login").onsubmit = async e => {
     e.preventDefault();
     const msg = e.target.querySelector("[data-msg]");
     msg.textContent = "";
@@ -71,14 +71,14 @@
       msg.className = "pt-msg err";
     }
   };
-  $("ad-logout").onclick = async () => { await api("POST", "/api/logout"); location.reload(); };
+  $("admin-logout").onclick = async () => { await api("POST", "/api/logout"); location.reload(); };
 
   async function start() {
     const me = await api("GET", "/api/me").catch(() => ({ role: null }));
     const isAdmin = me.role === "admin";
-    $("ad-login").hidden = isAdmin;
-    $("ad-main").hidden = !isAdmin;
-    $("ad-user").hidden = !isAdmin;
+    $("admin-login").hidden = isAdmin;
+    $("admin-main").hidden = !isAdmin;
+    $("admin-user").hidden = !isAdmin;
     if (isAdmin) load().catch(e => toast(e.message));
   }
   start();

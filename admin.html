@@ -13,22 +13,22 @@
 <body class="portal">
   <header class="pt-bar">
     <a class="pt-brand" href="./"><img src="img/icon.svg" alt=""> Ioi! Tours <span>Admin</span></a>
-    <div class="pt-user" id="ad-user" hidden><button class="btn btn-ghost" id="ad-logout" type="button">Log out</button></div>
+    <div class="pt-user" id="admin-user" hidden><button class="btn btn-ghost" id="admin-logout" type="button">Log out</button></div>
   </header>
   <main class="pt-main">
-    <form class="pt-card" id="ad-login" hidden novalidate>
+    <form class="pt-card" id="admin-login" hidden novalidate>
       <h1>Administrator</h1>
       <label>Admin password<input type="password" name="password" autocomplete="current-password" required></label>
       <p class="pt-msg" data-msg></p>
       <button class="btn btn-primary" type="submit">Log in</button>
     </form>
-    <section id="ad-main" hidden>
+    <section id="admin-main" hidden>
       <h1>Applications</h1>
-      <div id="ad-pending" class="pt-list"></div>
+      <div id="admin-pending" class="pt-list"></div>
       <h1>Institutions</h1>
-      <div class="pt-table-wrap"><table class="pt-table" id="ad-inst"></table></div>
+      <div class="pt-table-wrap"><table class="pt-table" id="admin-inst"></table></div>
       <h1>Tours</h1>
-      <div class="pt-table-wrap"><table class="pt-table" id="ad-tours"></table></div>
+      <div class="pt-table-wrap"><table class="pt-table" id="admin-tours"></table></div>
     </section>
   </main>
   <footer class="pt-ai">🤖 This platform was developed with the help of AI (Claude by Anthropic). The audio guides of the built-in tour use AI-generated voices. Institutions are responsible for the content of their own tours.</footer>

@@ -72,4 +72,4 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 .pt-table th, .pt-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
 .pt-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .pt-table small { color: var(--muted); }
-#ad-login { max-width: 420px; margin: 40px auto; }
+#admin-login { max-width: 420px; margin: 40px auto; }
