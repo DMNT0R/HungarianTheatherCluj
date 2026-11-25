@@ -211,7 +211,14 @@ def verify_tour_data():
     locales = parse_object(overlay_source, "  const locales = ")
     if list(locales) != ADDED_LANGUAGES:
         fail(f"station overlay languages are {list(locales)}")
-    station_ids = re.findall(r'id: "(\d{2}-[^"]+)"', source)
+    all_station_ids = re.findall(r'id: "(\d{2}-[^"]+)"', source)
+    # Stationen, deren Übersetzungen direkt in stations.js stehen (alle Sprachen inline), brauchen keinen Overlay-Eintrag
+    def station_chunk(station_id):
+        chunk = source.split(f'id: "{station_id}"', 1)[1]
+        following = chunk.find("\n      {\n        id:", 1)
+        return chunk[:following] if following >= 0 else chunk
+    inline_ids = [sid for sid in all_station_ids if all(re.search(rf"\b{c}:\s*`", station_chunk(sid)) for c in ADDED_LANGUAGES)]
+    station_ids = [sid for sid in all_station_ids if sid not in inline_ids]
     places_source = source.split("places: [", 1)[1].split("],\n    stations:", 1)[0]
     place_ids = re.findall(r'id: "([^"]+)"', places_source)
     required_tour = {"subtitle", "organizer", "mediaCredit", "placesNote", "theatreCredit", "enyediCredit", "article"}
@@ -293,7 +300,7 @@ def verify_tour_data():
                 expected_links = len(re.findall(r"\bARTICLE\b|\{\s*label:", links_match.group(1)))
                 if len(translated.get("links", [])) != expected_links or not all(translated.get("links", [])):
                     fail(f"{code} {station_id} links incomplete")
-    return len(station_ids), round(sum(station_word_counts) / len(station_word_counts))
+    return len(all_station_ids), round(sum(station_word_counts) / len(station_word_counts))
 
 
 def verify_assets_and_rtl():

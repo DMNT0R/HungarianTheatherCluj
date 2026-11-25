@@ -81,7 +81,7 @@
     const T = window.TOUR;
     if (!T || !$("admin-builtin")) return;
     const S = T.stations || [], P = T.places || [];
-    const LANGS = ["en", "hu", "ro"];
+    const LANGS = ((window.I18N && window.I18N.languages) || [{ code: "en" }, { code: "hu" }, { code: "ro" }]).map(l => l.code);
     const KIND = { cafe: "☕", restaurant: "🍽️", shop: "🛍️", museum: "🏛️", institution: "📚", other: "📍" };
     const osm = c => `https://www.openstreetmap.org/?mlat=${c[0]}&mlon=${c[1]}#map=18/${c[0]}/${c[1]}`;
     $("admin-builtin").innerHTML = `
@@ -96,6 +96,7 @@
           ${S.map((s, i) => `
             <div class="pt-stop">
               <p><strong>${i + 1}. ${esc(tr(s.title))}</strong> <small class="pt-small">${esc(s.year || "")}</small>
+                ${s.optional ? ` <span class="pill">optional</span>` : ""}
                 ${s.draftLocation ? ` <span class="pill pending">location to confirm</span>` : ""}<br>
                 <small class="pt-small">${esc(tr(s.address))} · <a href="${osm(s.coords)}" target="_blank" rel="noopener noreferrer">${s.coords.join(", ")}</a> ·
                 ${(s.media || []).length} archive pictures · ${s.rephoto ? s.rephoto.images.length : 0} then/now</small></p>

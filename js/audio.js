@@ -17,7 +17,7 @@
     return m + ":" + String(s).padStart(2, "0");
   }
 
-  const END = ".!?…";
+  const END = ".!?…؟";
   const CLOSE = "\"“”„«»'’";
   /**
    * Zerlegt einen Absatz in Sätze. Ein Punkt beendet keinen Satz, wenn

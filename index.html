@@ -53,7 +53,7 @@
       <p class="lead" id="intro-subtitle"></p>
       <div class="lang-switch intro-lang" role="group" data-i18n-aria="chooseLang"></div>
       <ul class="facts">
-        <li><strong id="intro-count">7</strong> <span data-i18n="stations"></span></li>
+        <li><strong id="intro-count">5</strong> <span data-i18n="stations"></span> <small id="intro-optional" class="intro-optional"></small></li>
         <li><strong id="intro-km"></strong> <span data-i18n="onFoot"></span></li>
         <li><strong id="intro-min"></strong></li>
       </ul>
@@ -74,12 +74,13 @@
       <span id="tour-title"></span>
       <span class="progress-label" id="progress-label"></span>
     </div>
-    <button class="lang-btn" id="lang-btn" data-i18n-aria="chooseLang">EN</button>
+    <button class="lang-btn" id="lang-btn" data-i18n-aria="chooseLang" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu">EN</button>
     <button class="icon-btn" id="locate-btn" data-i18n-aria="aLocate">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </header>
   <div class="progress-bar"><div id="progress-fill"></div></div>
+  <div class="lang-menu" id="lang-menu" hidden><div class="lang-switch" role="group" data-i18n-aria="chooseLang"></div></div>
 
   <!-- Karte -->
   <main id="map" data-i18n-aria="aMap"></main>
@@ -107,7 +108,7 @@
     </div>
     <ol class="station-list" id="station-list"></ol>
     <div class="drawer-foot">
-      <div class="lang-switch" role="group" data-i18n-aria="chooseLang"></div>
+      <button class="btn btn-ghost drawer-lang" id="drawer-lang" type="button" aria-haspopup="true"></button>
       <label class="switch">
         <input type="checkbox" id="demo-toggle">
         <span data-i18n="demoMode"></span>

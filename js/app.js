@@ -5,6 +5,10 @@
   const S = T.stations;
   const PL = T.places || [];
   const TOUR_ID = T.id;
+  // Hauptroute und optionale Stationen (optional: true) – Optionale haben Buchstaben statt Nummern
+  const MAIN = S.map((s, i) => i).filter(i => !S[i].optional);
+  const OPT = S.map((s, i) => i).filter(i => S[i].optional);
+  const label = i => S[i].optional ? String.fromCharCode(65 + OPT.indexOf(i)) : String(MAIN.indexOf(i) + 1);
   const ARRIVAL_RADIUS = 40;   // Meter: ab hier gilt eine Station als erreicht
   const WALK_SPEED = 75;       // Meter pro Minute
   const STORE_KEY = "theatre-city-map-v1";
@@ -74,11 +78,13 @@
     $("intro-title").textContent = tr(T.title);
     $("intro-subtitle").textContent = tr(T.subtitle);
     $("intro-organizer").textContent = tr(T.organizer);
-    $("intro-count").textContent = S.length;
-    const routeM = S.slice(1).reduce((sum, st, k) => sum + dist(S[k].coords, st.coords), 0) * 1.3; // Umwege grob einrechnen
+    $("intro-count").textContent = MAIN.length;
+    $("intro-optional").textContent = OPT.length ? t("optionalCount", { n: OPT.length }) : "";
+    const routeM = MAIN.slice(1).reduce((sum, i, k) => sum + dist(S[MAIN[k]].coords, S[i].coords), 0) * 1.3; // Umwege grob einrechnen
     $("intro-km").textContent = t("approxKm", { km: num(Math.max(0.5, Math.round(routeM / 500) / 2)) });
-    $("intro-min").textContent = t("approxMin", { min: Math.round((routeM / WALK_SPEED + S.length * 5) / 10) * 10 });
-    $("lang-btn").textContent = langInfo().short;
+    $("intro-min").textContent = t("approxMin", { min: Math.round((routeM / WALK_SPEED + MAIN.length * 5) / 10) * 10 });
+    $("drawer-lang").innerHTML = `🌐 ${esc(t("chooseLang"))}: <img class="lang-flag" src="img/flags/${state.lang}.svg" alt="" aria-hidden="true"> ${esc(langInfo().label)}`;
+    $("lang-btn").innerHTML = `<img class="lang-flag" src="img/flags/${state.lang}.svg" alt="" aria-hidden="true">${esc(langInfo().short)}`;
     document.querySelectorAll(".lang-switch button").forEach(b => {
       b.setAttribute("aria-pressed", b.dataset.lang === state.lang ? "true" : "false");
     });
@@ -99,9 +105,20 @@
     document.querySelectorAll(".lang-switch").forEach(box => {
       box.innerHTML = I.languages
         .map(l => `<button type="button" data-lang="${l.code}" lang="${l.code}"><img class="lang-flag" src="img/flags/${l.code}.svg" alt="" aria-hidden="true">${l.label}</button>`).join("");
-      box.querySelectorAll("button").forEach(b => { b.onclick = () => setLang(b.dataset.lang); });
+      box.querySelectorAll("button").forEach(b => { b.onclick = () => { setLang(b.dataset.lang); toggleLangMenu(false); }; });
     });
-    $("lang-btn").onclick = () => setLang(LANGS[(LANGS.indexOf(state.lang) + 1) % LANGS.length]);
+    $("lang-btn").onclick = e => { e.stopPropagation(); toggleLangMenu(); };
+    $("drawer-lang").onclick = e => { e.stopPropagation(); closeDrawer(); toggleLangMenu(true); };
+    document.addEventListener("click", e => { if (!$("lang-menu").hidden && !$("lang-menu").contains(e.target)) toggleLangMenu(false); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") toggleLangMenu(false); });
+  }
+  // Sprachmenü in der Kopfzeile: alle Sprachen auf einen Blick, ein Tipp genügt
+  function toggleLangMenu(open) {
+    const menu = $("lang-menu");
+    open = open ?? menu.hidden;
+    menu.hidden = !open;
+    $("lang-btn").setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) (menu.querySelector('[aria-pressed="true"]') || menu.querySelector("button")).focus();
   }
 
   // ---------- Hilfsfunktionen ----------
@@ -116,8 +133,8 @@
     return m < 1000 ? Math.round(m / 10) * 10 + " m" : num(Math.round(m / 100) / 10) + " km";
   }
   function nextIdx() {
-    const i = S.findIndex(s => !state.visited.has(s.id));
-    return i === -1 ? null : i;
+    const i = MAIN.find(k => !state.visited.has(S[k].id));
+    return i === undefined ? null : i;
   }
   function esc(x) {
     return String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -142,7 +159,7 @@
   const bounds = L.latLngBounds(S.map(s => s.coords));
   map.fitBounds(bounds, { padding: [40, 40] });
 
-  L.polyline(S.map(s => s.coords), { color: "#6e1a26", weight: 4, opacity: .55, dashArray: "2 10", lineCap: "round" }).addTo(map);
+  L.polyline(MAIN.map(i => S[i].coords), { color: "#6e1a26", weight: 4, opacity: .55, dashArray: "2 10", lineCap: "round" }).addTo(map);
 
   const markers = S.map((s, i) => {
     const m = L.marker(s.coords, { icon: icon(i), keyboard: true }).addTo(map);
@@ -191,10 +208,10 @@
 
   function icon(i) {
     const s = S[i];
-    const cls = state.visited.has(s.id) ? "visited" : i === nextIdx() ? "next" : "";
+    const cls = (state.visited.has(s.id) ? "visited" : i === nextIdx() ? "next" : "") + (s.optional ? " optional" : "");
     return L.divIcon({
       className: "",
-      html: `<div class="pin ${cls}"><span>${state.visited.has(s.id) ? "✓" : i + 1}</span></div>`,
+      html: `<div class="pin ${cls}"><span>${state.visited.has(s.id) ? "✓" : label(i)}</span></div>`,
       iconSize: [36, 44],
       iconAnchor: [18, 42]
     });
@@ -225,7 +242,7 @@
       if (d <= ARRIVAL_RADIUS && !state.arrived.has(s.id)) {
         state.arrived.add(s.id);
         if (navigator.vibrate) navigator.vibrate([120, 60, 120]);
-        toast(`<strong>${t("arrived", { i: i + 1 })}</strong><br>${esc(tr(s.title))}`);
+        toast(`<strong>${(s.optional ? t("optionalStop") + " " + label(i) : t("arrived", { i: label(i) }))}</strong><br>${esc(tr(s.title))}`);
         if (state.openIdx !== i) openSheet(i);
       } else if (d > ARRIVAL_RADIUS * 2.5) {
         state.arrived.delete(s.id); // erneutes Betreten später wieder melden
@@ -273,9 +290,9 @@
 
   // ---------- Fortschritt & nächste Station ----------
   function renderProgress() {
-    const n = state.visited.size;
-    $("progress-label").textContent = t("progress", { n, total: S.length });
-    $("progress-fill").style.width = (n / S.length * 100) + "%";
+    const n = MAIN.filter(i => state.visited.has(S[i].id)).length;
+    $("progress-label").textContent = t("progress", { n, total: MAIN.length });
+    $("progress-fill").style.width = (n / MAIN.length * 100) + "%";
     markers.forEach((m, i) => m.setIcon(icon(i)));
     markers.forEach((m, i) => { const el = m.getElement(); if (el) el.title = tr(S[i].title); });
     renderList();
@@ -293,7 +310,7 @@
       return;
     }
     const s = S[i];
-    $("next-num").textContent = i + 1;
+    $("next-num").textContent = label(i);
     $("next-label").textContent = state.visited.size ? t("nextStation") : t("firstStation");
     $("next-title").textContent = tr(s.title);
     if (state.userPos) {
@@ -319,16 +336,18 @@
 
   // ---------- Stationsliste ----------
   function renderList() {
-    $("station-list").innerHTML = S.map((s, i) => `
-      <li class="${state.visited.has(s.id) ? "visited" : ""} ${i === nextIdx() ? "next" : ""}">
+    const item = i => { const s = S[i]; return `
+      <li class="${state.visited.has(s.id) ? "visited" : ""} ${i === nextIdx() ? "next" : ""} ${s.optional ? "optional" : ""}">
         <button data-i="${i}">
-          <span class="li-num">${state.visited.has(s.id) ? "✓" : i + 1}</span>
+          <span class="li-num">${state.visited.has(s.id) ? "✓" : label(i)}</span>
           <span class="li-text">
             <span class="li-title">${esc(tr(s.title))}</span>
             <span class="li-sub">${[s.year, tr(s.subtitle)].filter(Boolean).map(esc).join(" · ")}</span>
           </span>
         </button>
-      </li>`).join("");
+      </li>`; };
+    $("station-list").innerHTML = MAIN.map(item).join("") +
+      (OPT.length ? `<li class="list-head">${esc(t("optionalStops"))}</li>` + OPT.map(item).join("") : "");
     $("station-list").querySelectorAll("button").forEach(b => {
       b.onclick = () => { closeDrawer(); openSheet(+b.dataset.i); };
     });
@@ -360,7 +379,7 @@
   function openSheet(i, opts) {
     const s = S[i];
     state.openIdx = i;
-    $("sheet-num").textContent = t("stationOf", { i: i + 1, n: S.length });
+    $("sheet-num").textContent = s.optional ? `${t("optionalStop")} ${label(i)}` : t("stationOf", { i: label(i), n: MAIN.length });
     $("sheet-year").textContent = s.year;
     $("sheet-subtitle").textContent = tr(s.subtitle);
     $("sheet-title").textContent = tr(s.title);
@@ -379,7 +398,8 @@
       .map(p => "<p>" + p.map(sen => `<span data-s="${k++}">${esc(sen)}</span>`).join(" ") + "</p>")
       .join("");
 
-    $("sheet-next").textContent = i < S.length - 1 ? t("continueTo", { n: i + 2 }) : t("finishTour");
+    const after = MAIN.find(k => k !== i && !state.visited.has(S[k].id) && (s.optional || MAIN.indexOf(k) > MAIN.indexOf(i)));
+    $("sheet-next").textContent = after !== undefined ? t("continueTo", { n: label(after) }) : t("finishTour");
     $("player-source").textContent = "";
     const audioSrc = T.builtin ? `audio/${state.lang}/${s.id}.mp3` : ((s.audio || {})[state.lang] || null);
     player.load({ text, audio: audioSrc, timings: T.builtin ? `audio/${state.lang}/${s.id}.json` : null }).then(mode => {
@@ -577,7 +597,7 @@
     const n = nextIdx();
     if (n === null) { toast(t("bravo"), 5000); return; }
     map.flyTo(S[n].coords, 16);
-    toast(esc(t("nextToast", { n: n + 1, t: tr(S[n].title) })));
+    toast(esc(t("nextToast", { n: label(n), t: tr(S[n].title) })));
   };
 
   $("route-btn").onclick = () => {

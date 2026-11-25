@@ -236,3 +236,12 @@ to be confirmed with the Documentation Centre.
 - Balogh Gyöngyi – Zágoni Bálint (eds.): *A kolozsvári filmgyártás képes története 1913–1920* (2009)
 - Demeter Kata: *A kolozsvári Nyári Színkör épülete* (construction history of the summer theatre)
 - Gaal György: *Tört kövön és porlandó kereszten* (1997) – on the Házsongárd cemetery
+
+## Route change (25 Nov 2026)
+
+Final order set by the team: Rhédey → Farkas utca → Matthias House → Hungarian Theatre →
+finale at Janovics' former film studio behind the theatre (46.772844, 23.584413). Optional:
+Documentation Centre (Str. Napoca 16, 46.767892, 23.587263), Central Cemetery (main gate,
+46.765747, 23.591716), National Theatre. Coordinates from the team (Google Maps).
+⚠️ The text of the Documentation Centre stop is a draft written for the prototype (general
+description, plus HT-200 and the 2022 walk); the Centre should check it.
