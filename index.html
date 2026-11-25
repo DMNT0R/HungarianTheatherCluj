@@ -12,6 +12,35 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Kurze Einführung (einmalig, später über das Menü) -->
+  <section class="onboard" id="onboard" hidden role="dialog" aria-modal="true" aria-labelledby="ob-title">
+    <div class="ob-card">
+      <div class="ob-top"><span class="ob-head" id="ob-head"></span><div class="ob-lang lang-mini"></div></div>
+      <div class="ob-icon" id="ob-icon" aria-hidden="true"></div>
+      <h2 id="ob-title"></h2>
+      <p id="ob-text"></p>
+      <div class="ob-dots" id="ob-dots"></div>
+      <div class="ob-actions">
+        <button class="btn btn-ghost" id="ob-skip" type="button"></button>
+        <button class="btn btn-primary" id="ob-next" type="button"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Auswahl: Stadt und Tour -->
+  <section class="chooser" id="chooser" hidden aria-labelledby="ch-title">
+    <header class="ch-head">
+      <div class="curtain-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M6 8h52v6H6z" fill="currentColor"/><path d="M8 14c0 18 6 34 18 42H8z M56 14c0 18-6 34-18 42h18z" fill="currentColor" opacity=".85"/></svg>
+      </div>
+      <h1 id="ch-title"></h1>
+      <p id="ch-sub"></p>
+      <button class="btn btn-ghost ch-help" id="ch-help" type="button"></button>
+    </header>
+    <p class="ch-error" id="ch-error" hidden></p>
+    <div class="ch-list" id="ch-list"></div>
+  </section>
+
   <!-- Startbildschirm -->
   <section id="intro" class="intro">
     <div class="intro-inner">
@@ -24,11 +53,12 @@
       <div class="lang-switch intro-lang" role="group" aria-label="Language · Nyelv · Limba"></div>
       <ul class="facts">
         <li><strong id="intro-count">7</strong> <span data-i18n="stations"></span></li>
-        <li><strong data-i18n="walkDist"></strong> <span data-i18n="onFoot"></span></li>
-        <li><strong data-i18n="duration"></strong></li>
+        <li><strong id="intro-km"></strong> <span data-i18n="onFoot"></span></li>
+        <li><strong id="intro-min"></strong></li>
       </ul>
       <button class="btn btn-primary btn-lg" id="start-btn" data-i18n="start"></button>
       <p class="hint" data-i18n="hint"></p>
+      <button class="link-btn" id="intro-change" type="button" data-i18n="changeTour"></button>
       <p class="proto-note" data-i18n="protoNote"></p>
     </div>
   </section>
@@ -80,6 +110,8 @@
         <input type="checkbox" id="demo-toggle">
         <span data-i18n="demoMode"></span>
       </label>
+      <button class="btn btn-ghost" id="change-tour-btn" type="button" data-i18n="changeTour"></button>
+      <button class="btn btn-ghost" id="help-btn" type="button" data-i18n="howItWorks"></button>
       <button class="btn btn-ghost" id="reset-btn" data-i18n="resetProgress"></button>
     </div>
   </aside>
@@ -123,12 +155,30 @@
         </div>
       </div>
 
-      <button class="rephoto-btn" id="rephoto-btn" type="button" hidden>
-        <span class="rephoto-icon" aria-hidden="true">◐</span>
-        <span><strong data-i18n="rpButton"></strong><small data-i18n="rpSub"></small></span>
-      </button>
+      <section class="compare" id="sheet-compare" hidden>
+        <div class="compare-head"><strong data-i18n="cmpTitle"></strong><span id="cmp-caption"></span></div>
+        <div class="compare-stage" id="cmp-stage">
+          <img id="cmp-now" alt="" hidden>
+          <div class="compare-then" id="cmp-then-wrap"><img id="cmp-then" alt=""></div>
+          <div class="compare-handle" id="cmp-handle" hidden></div>
+          <span class="compare-tag left" id="cmp-tag-then"></span>
+          <span class="compare-tag right" id="cmp-tag-now" data-i18n="cmpNow" hidden></span>
+          <input type="range" id="cmp-range" min="0" max="100" value="50" data-i18n-aria="cmpSlider" hidden>
+          <div class="compare-empty" id="cmp-empty"><p data-i18n="cmpNoNow"></p></div>
+        </div>
+        <div class="compare-thumbs" id="cmp-thumbs"></div>
+        <p class="compare-hint" id="cmp-hint"></p>
+        <button class="btn btn-ghost compare-photo" id="cmp-photo" type="button"></button>
+        <input type="file" accept="image/*" capture="environment" id="cmp-file" hidden>
+        <p class="compare-credit" id="cmp-credit"></p>
+      </section>
 
       <div class="story" id="sheet-text"></div>
+
+      <section class="nearby" id="sheet-nearby" hidden>
+        <h3 data-i18n="nearbyTitle"></h3>
+        <div class="nearby-list" id="nearby-list"></div>
+      </section>
 
       <div class="activity" id="sheet-activity" hidden>
         <div class="activity-head"><span class="activity-icon" id="act-icon"></span><h3 id="act-title"></h3></div>
@@ -170,43 +220,6 @@
     </button>
   </div>
 
-  <!-- Damals & Heute: historisches Bild über der Live-Kamera -->
-  <section class="rp" id="rp" hidden role="dialog" aria-modal="true" aria-labelledby="rp-caption">
-    <video id="rp-video" playsinline muted autoplay></video>
-    <img id="rp-still" alt="" hidden>
-    <div class="rp-layer" id="rp-layer"><img id="rp-img" alt="" draggable="false"></div>
-    <div class="rp-divider" id="rp-divider" hidden></div>
-    <div class="rp-gestures" id="rp-gestures"></div>
-    <div class="rp-top">
-      <button class="icon-btn rp-close" id="rp-close">
-        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <div class="rp-title"><strong id="rp-caption"></strong><span id="rp-year"></span></div>
-    </div>
-    <p class="rp-hint" id="rp-hint"></p>
-    <div class="rp-msg" id="rp-msg" hidden>
-      <p id="rp-msg-text"></p>
-      <button class="btn btn-primary" id="rp-photo-btn" type="button"></button>
-      <input type="file" accept="image/*" capture="environment" id="rp-file" hidden>
-    </div>
-    <div class="rp-bottom">
-      <div class="rp-thumbs" id="rp-thumbs"></div>
-      <input type="range" id="rp-slider" min="0" max="100" value="55">
-      <div class="rp-controls">
-        <div class="rp-seg"><button type="button" id="rp-mode-blend"></button><button type="button" id="rp-mode-swipe"></button></div>
-        <button class="rp-shutter" id="rp-shutter" type="button"></button>
-        <button class="chip rp-reset" id="rp-reset" type="button"></button>
-      </div>
-      <p class="rp-credit" id="rp-credit"></p>
-    </div>
-    <div class="rp-result" id="rp-result" hidden>
-      <img id="rp-result-img" alt="">
-      <div class="rp-result-actions">
-        <button class="btn btn-ghost" id="rp-back" type="button"></button>
-        <button class="btn btn-primary" id="rp-share" type="button"></button>
-      </div>
-    </div>
-  </section>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -214,7 +227,7 @@
   <script src="js/i18n.js"></script>
   <script src="js/stations.js"></script>
   <script src="js/audio.js"></script>
-  <script src="js/rephoto.js"></script>
+  <script src="js/boot.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

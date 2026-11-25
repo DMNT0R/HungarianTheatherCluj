@@ -1,0 +1,75 @@
+/* Portal für Institute und Admin-Bereich */
+body.portal { overflow: auto; background: var(--cream); }
+.pt-bar { position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 10px 16px; background: var(--wine); color: #fff; }
+.pt-brand { display: flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-family: var(--serif); font-size: 19px; font-weight: 600; }
+.pt-brand img { width: 30px; height: 30px; border-radius: 7px; }
+.pt-brand span { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+.pt-user { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.pt-user[hidden] { display: none; }
+.pt-user .btn-ghost { color: #fff; border-color: rgba(255,255,255,.5); padding: 6px 12px; }
+.pt-main { max-width: 900px; margin: 0 auto; padding: 20px 16px 60px; }
+.pt-main h1 { font-size: 26px; margin: 18px 0 12px; }
+.pt-main h2 { font-size: 20px; margin: 0 0 10px; }
+.pt-main h3 { font-family: var(--serif); font-size: 16px; margin: 18px 0 8px; }
+.pt-intro p { line-height: 1.6; color: var(--muted); }
+.pt-card { background: var(--card); border-radius: var(--radius); padding: 18px; margin-bottom: 14px; box-shadow: 0 4px 14px rgba(40,18,10,.07); }
+.pt-card[hidden] { display: none; }
+.pt-tabs { display: flex; gap: 6px; margin: 18px 0 12px; }
+.pt-tabs button { border: 0; background: transparent; padding: 10px 14px; border-radius: 999px; font-weight: 700; color: var(--muted); }
+.pt-tabs button[aria-selected="true"] { background: var(--wine); color: #fff; }
+.pt-main label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 10px; }
+.pt-main input:not([type=checkbox]):not([type=file]), .pt-main select, .pt-main textarea {
+  font: inherit; font-weight: 400; color: var(--ink); background: var(--cream); border: 1.5px solid var(--line); border-radius: 10px; padding: 10px 12px; width: 100%; }
+.pt-main textarea { line-height: 1.5; resize: vertical; }
+.pt-main input:focus, .pt-main select:focus, .pt-main textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.pt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+.pt-grid .wide { grid-column: 1 / -1; }
+@media (max-width: 640px) { .pt-grid { grid-template-columns: 1fr; } }
+.pt-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.pt-small { font-size: 13px; color: var(--muted); font-weight: 400; }
+.pt-msg { margin: 8px 0; font-size: 14px; }
+.pt-msg:empty { display: none; }
+.pt-msg.err { color: #a31b1b; }
+.pt-msg.ok { color: #1b6e2f; }
+.pt-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin: 6px 0 10px; }
+.pt-row h1, .pt-row h2 { margin: 0; }
+.pt-sticky { position: sticky; top: 52px; z-index: 900; background: var(--cream); padding: 10px 0; }
+.pt-status { font-size: 13px; color: var(--muted); flex: 1; text-align: center; }
+.pt-list { display: grid; gap: 4px; }
+.pt-tour { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pt-tour p { margin: 0; color: var(--muted); font-size: 14px; }
+.pt-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.pt-actions .btn, .pt-row .btn { padding: 8px 14px; font-size: 14px; }
+.btn.danger { color: #a31b1b; }
+.btn[disabled] { opacity: .4; }
+a.btn { text-decoration: none; display: inline-flex; align-items: center; }
+.pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; background: #eee; color: #444; }
+.pill.published, .pill.approved { background: #dff3e4; color: #1b6e2f; }
+.pill.draft, .pill.pending { background: #fff1cc; color: #7a5600; }
+.pill.blocked, .pill.rejected, .pill.suspended { background: #fde2e2; color: #7a1010; }
+.pt-label { display: block; font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+.pt-checks { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; }
+.pt-main label.pt-check { flex-direction: row; align-items: center; gap: 6px; color: var(--ink); font-weight: 600; margin: 0; }
+.pt-map { height: 360px; border-radius: 14px; overflow: hidden; }
+#pick-hint.active { color: var(--wine); font-weight: 700; }
+.pt-item summary { cursor: pointer; font-family: var(--serif); font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.pt-item[open] summary { margin-bottom: 14px; }
+.pt-num { width: 28px; height: 28px; border-radius: 50%; background: var(--wine); color: #fff; display: inline-grid; place-items: center; font-family: var(--sans); font-size: 14px; }
+.pt-loc { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; font-size: 14px; }
+.pt-media-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.pt-media-row audio { height: 36px; max-width: 260px; }
+.pt-upload { cursor: pointer; padding: 8px 14px; font-size: 14px; display: inline-flex; }
+.pt-img { display: grid; grid-template-columns: 140px 1fr; gap: 12px; margin-bottom: 12px; }
+.pt-img img, .pt-pair img, .pt-thumb { width: 100%; max-width: 220px; border-radius: 10px; display: block; margin-bottom: 6px; }
+.pt-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; border: 1.5px dashed var(--line); border-radius: 12px; margin-bottom: 10px; }
+.pt-pair-fields { grid-column: 1 / -1; }
+@media (max-width: 640px) { .pt-img, .pt-pair { grid-template-columns: 1fr; } }
+.pt-item-actions { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+.pt-quote { border-left: 3px solid var(--gold); padding-left: 10px; color: var(--muted); white-space: pre-wrap; }
+.pt-table-wrap { overflow-x: auto; background: var(--card); border-radius: var(--radius); box-shadow: 0 4px 14px rgba(40,18,10,.07); }
+.pt-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pt-table th, .pt-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.pt-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.pt-table small { color: var(--muted); }
+#ad-login { max-width: 420px; margin: 40px auto; }

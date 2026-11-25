@@ -1,7 +1,7 @@
 // Einfacher Offline-Cache für die App-Hülle (Kartenkacheln werden nicht vorab geladen).
-const CACHE = "ioi-cluj-v21";
+const CACHE = "ioi-cluj-v22";
 const SHELL = [
-  "./", "index.html", "css/style.css", "js/i18n.js", "js/stations.js", "js/audio.js", "js/rephoto.js", "js/app.js",
+  "./", "index.html", "css/style.css", "js/i18n.js", "js/stations.js", "js/audio.js", "js/boot.js", "js/app.js",
   "img/icon.svg", "img/icon-192.png", "manifest.webmanifest",
   "vendor/leaflet/leaflet.css",
   "vendor/leaflet/leaflet.js"
@@ -17,6 +17,8 @@ self.addEventListener("activate", e => {
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
   const url = new URL(e.request.url);
+  // Server-Antworten (Touren, Portal, Admin) nie zwischenspeichern
+  if (url.origin === location.origin && url.pathname.startsWith("/api/")) return;
   // Audiodateien und Kartenkacheln: Netzwerk zuerst, bei Erfolg im Cache ablegen.
   e.respondWith(
     fetch(e.request).then(res => {

@@ -11,6 +11,38 @@ interactive elements.
 
 **Live:** https://ioi.dvwit.org · QR codes for slides and posters in `promo/`
 
+## Platform: tours for any city
+
+Ioi! is a platform: institutions (theatres, museums, libraries, cafés, …) in any city can
+publish their own walking tours.
+
+| Who | Where | What |
+|---|---|---|
+| Visitors | `/` | Short introduction on first start → choose city and tour → walk |
+| Institutions | `/portal.html` | Apply with a form → after approval: create tours with texts (en/hu/ro), audio per language, pictures, then/now picture pairs, locations on the map, and places along the route (cafés, shops, museums) → publish |
+| Administrator | `/admin.html` | Approve or reject applications, suspend institutions, hide tours |
+
+The Cluj tour is built into the app (`js/stations.js`) and also works offline; all other tours
+come from the server.
+
+**Server:** `worker/index.js` (Cloudflare Worker) with a D1 database (institutions, tours,
+media index) and a KV store for uploaded audio and pictures. `wrangler deploy` creates D1 and KV
+automatically; the tables are created on the first request.
+
+**One-time setup:** Cloudflare → Workers & Pages → `hungariantheathercluj` → Settings →
+Variables and Secrets → add **`ADMIN_PASSWORD`** (type *Secret*). It is the admin login and also
+signs the login sessions – changing it logs everyone out.
+
+**Security:** passwords stored as PBKDF2 hashes; signed, HttpOnly, SameSite=Strict session cookies;
+every change request needs a custom header (CSRF protection); uploads limited to audio (MP3, M4A,
+AAC, OGG, WAV, ≤ 20 MB) and images (JPG, PNG, WebP, ≤ 8 MB) and served with a sandboxing CSP;
+institutions can only use their own files; links must be http(s).
+
+**Local development:** create `.dev.vars` with `ADMIN_PASSWORD="…"`, then `npx wrangler dev`.
+
+The NAS/nginx variant (`docker-compose.yml`) only serves the static app – without portal,
+admin and server tours.
+
 ## Languages
 
 The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
@@ -30,10 +62,10 @@ The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
   - Otherwise the device's **text-to-speech** reads the story, highlighting the current sentence.
 - **Archive images** per stop from the theatre's Documentation Centre, with captions in
   all three languages and a full-screen viewer (swipe or arrow keys)
-- **Then & Now camera**: at four stops a historic photo or engraving is laid over the live
-  camera image – blend with a slider or swipe between past and present, drag and pinch to
-  align it with today's building, and save or share the combined picture. Without camera
-  access, a photo can be taken or chosen instead.
+- **Then & Now slider**: drag between a historic picture and today's view. If there is no
+  current photo yet, visitors take one on the spot and compare it with the past.
+- **Places along the tour**: cafés, shops and museums as symbols on the map, with opening
+  hours, website and offers, plus “Places nearby” at each stop.
 - **Interactive elements** per stop, e.g. a costume photo taken with the phone camera
   (stays on the device, can be shared) or search lists
 - **Progress** is saved on the device

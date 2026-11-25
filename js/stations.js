@@ -57,6 +57,46 @@
       hu: "Képek: a Kolozsvári Állami Magyar Színház Dokumentációs Központja",
       ro: "Imagini: Centrul de Documentare al Teatrului Maghiar de Stat Cluj"
     },
+    placesNote: {
+      en: "Example entry for the prototype – opening hours from OpenStreetMap, please check before visiting.",
+      hu: "Példa a prototípushoz – a nyitvatartás az OpenStreetMapből származik, látogatás előtt ellenőrizze.",
+      ro: "Exemplu pentru prototip – programul provine din OpenStreetMap, vă rugăm verificați înainte de vizită."
+    },
+    places: [
+      {
+        id: "rhedey-cafe", kind: "cafe", coords: [46.76876, 23.58951],
+        title: { en: "Rhédey Café", hu: "Rhédey Kávéház", ro: "Rhédey Café" },
+        text: { en: "Café in the Rhédey Palace, where the first Hungarian theatre company performed in 1792.", hu: "Kávézó a Rhédey-palotában, ahol 1792-ben az első magyar színtársulat játszott.", ro: "Cafenea în Palatul Rhédey, unde a jucat în 1792 prima trupă de teatru maghiară." },
+        address: { en: "Piața Unirii 8–9", hu: "Főtér (Piața Unirii) 8–9", ro: "Piața Unirii 8–9" },
+        hours: { en: "Sun–Thu 9:00–23:00, Fri–Sat 9:00–24:00", hu: "V–Cs 9:00–23:00, P–Szo 9:00–24:00", ro: "Du–Jo 9:00–23:00, Vi–Sâ 9:00–24:00" }
+      },
+      {
+        id: "art-museum", kind: "museum", coords: [46.77060, 23.59034], website: "https://www.macluj.ro/",
+        title: { en: "Art Museum – Bánffy Palace", hu: "Művészeti Múzeum – Bánffy-palota", ro: "Muzeul de Artă – Palatul Bánffy" },
+        text: { en: "Baroque palace on the Main Square, home of the Cluj Art Museum.", hu: "Barokk palota a Főtéren, a kolozsvári Művészeti Múzeum otthona.", ro: "Palat baroc în Piața Unirii, sediul Muzeului de Artă Cluj." },
+        address: { en: "Piața Unirii 30", hu: "Főtér (Piața Unirii) 30", ro: "Piața Unirii 30" },
+        hours: { en: "Wed–Sun 10:00–17:00", hu: "Sze–V 10:00–17:00", ro: "Mi–Du 10:00–17:00" }
+      },
+      {
+        id: "ethnographic-museum", kind: "museum", coords: [46.76922, 23.58661], website: "https://www.muzeul-etnografic.ro/",
+        title: { en: "Ethnographic Museum of Transylvania", hu: "Erdélyi Néprajzi Múzeum", ro: "Muzeul Etnografic al Transilvaniei" },
+        text: { en: "In the Reduta Palace.", hu: "A Redut épületében.", ro: "În Palatul Reduta." },
+        address: { en: "Str. Memorandumului 21", hu: "Memorandumului utca 21", ro: "Str. Memorandumului 21" },
+        hours: { en: "Wed–Sun 10:00–18:00 (last entry 17:00)", hu: "Sze–V 10:00–18:00 (utolsó belépés 17:00)", ro: "Mi–Du 10:00–18:00 (ultima intrare 17:00)" }
+      },
+      {
+        id: "academy-library", kind: "institution", coords: [46.76767, 23.59403], website: "http://acad-cluj.ro",
+        title: { en: "Romanian Academy Library", hu: "Román Akadémia Könyvtára", ro: "Biblioteca Academiei Române" },
+        text: { en: "The oldest theatre posters of Cluj are shown in its entrance hall (Actual de Cluj, 2015).", hu: "Előcsarnokában Kolozsvár legrégebbi színlapjai láthatók (Actual de Cluj, 2015).", ro: "În holul ei sunt expuse cele mai vechi afișe de teatru din Cluj (Actual de Cluj, 2015)." },
+        address: { en: "Str. Mihail Kogălniceanu 12–14", hu: "Farkas utca (Str. Mihail Kogălniceanu) 12–14", ro: "Str. Mihail Kogălniceanu 12–14" },
+        hours: { en: "Mon–Fri 8:00–14:00", hu: "H–P 8:00–14:00", ro: "Lu–Vi 8:00–14:00" }
+      },
+      {
+        id: "history-museum", kind: "museum", coords: [46.77164, 23.58638], website: "https://www.mnit.ro/",
+        title: { en: "National Museum of Transylvanian History", hu: "Erdélyi Nemzeti Történeti Múzeum", ro: "Muzeul Național de Istorie a Transilvaniei" },
+        address: { en: "Str. Constantin Daicoviciu 2", hu: "Constantin Daicoviciu utca 2", ro: "Str. Constantin Daicoviciu 2" }
+      }
+    ],
     stations: [
       {
         id: "01-rhedey",

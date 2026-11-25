@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6e1a26">
+  <meta name="robots" content="noindex">
+  <title>Ioi! Tours – Portal for institutions</title>
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body class="portal">
+  <header class="pt-bar">
+    <a class="pt-brand" href="./"><img src="img/icon.svg" alt=""> Ioi! Tours <span>Portal</span></a>
+    <div class="pt-user" id="pt-user" hidden><span id="pt-user-name"></span><button class="btn btn-ghost" id="pt-logout" type="button">Log out</button></div>
+  </header>
+
+  <main class="pt-main">
+    <!-- Anmelden / Registrieren -->
+    <section id="view-auth" hidden>
+      <div class="pt-intro">
+        <h1>Create walking tours for your city</h1>
+        <p>Theatres, museums, libraries, cafés and other institutions can publish their own audio walks in the Ioi! app.
+           Apply with the form below. After your application has been approved, you can log in and build tours with texts,
+           audio files, pictures and locations in English, Hungarian and Romanian.</p>
+      </div>
+      <div class="pt-tabs" role="tablist">
+        <button type="button" role="tab" id="tab-login" aria-selected="true">Log in</button>
+        <button type="button" role="tab" id="tab-register" aria-selected="false">Apply as an institution</button>
+      </div>
+
+      <form class="pt-card" id="form-login" novalidate>
+        <label>E-mail<input type="email" name="email" autocomplete="username" required></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" required></label>
+        <p class="pt-msg" data-msg></p>
+        <button class="btn btn-primary" type="submit">Log in</button>
+      </form>
+
+      <form class="pt-card" id="form-register" hidden novalidate>
+        <div class="pt-grid">
+          <label class="wide">Name of the institution *<input name="name" required maxlength="200"></label>
+          <label>Type *
+            <select name="type">
+              <option value="theatre">Theatre</option><option value="museum">Museum</option><option value="library">Library</option>
+              <option value="university">University</option><option value="city">City / tourism office</option>
+              <option value="business">Café, shop or business</option><option value="association">Association</option><option value="other">Other</option>
+            </select>
+          </label>
+          <label>Website<input name="website" type="url" placeholder="https://"></label>
+          <label>City *<input name="city" required maxlength="100"></label>
+          <label>Country<input name="country" maxlength="100"></label>
+          <label class="wide">Address<input name="address" maxlength="300"></label>
+          <label>Contact person *<input name="contact_name" required maxlength="200"></label>
+          <label>Phone<input name="phone" maxlength="50"></label>
+          <label class="wide">What tours would you like to create?<textarea name="description" rows="4" maxlength="3000"></textarea></label>
+          <label>E-mail (login) *<input name="email" type="email" autocomplete="username" required></label>
+          <label>Password * <small>(at least 10 characters)</small><input name="password" type="password" autocomplete="new-password" minlength="10" required></label>
+          <label class="pt-hp" aria-hidden="true">Leave empty<input name="website_confirm" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <p class="pt-small">Your application is reviewed by the administrator. You can log in as soon as it has been approved.</p>
+        <p class="pt-msg" data-msg></p>
+        <button class="btn btn-primary" type="submit">Send application</button>
+      </form>
+    </section>
+
+    <!-- Meine Touren -->
+    <section id="view-dash" hidden>
+      <div class="pt-row">
+        <h1>My tours</h1>
+        <button class="btn btn-primary" id="new-tour" type="button">+ New tour</button>
+      </div>
+      <div id="tour-list" class="pt-list"></div>
+    </section>
+
+    <!-- Tour-Editor -->
+    <section id="view-edit" hidden>
+      <div class="pt-row pt-sticky">
+        <button class="btn btn-ghost" id="edit-back" type="button">← My tours</button>
+        <span class="pt-status" id="edit-status"></span>
+        <button class="btn btn-primary" id="edit-save" type="button">Save</button>
+      </div>
+      <p class="pt-msg" id="edit-msg"></p>
+      <div id="editor"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/portal.js"></script>
+</body>
+</html>

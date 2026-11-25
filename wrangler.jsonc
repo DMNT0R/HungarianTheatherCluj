@@ -1,9 +1,19 @@
-// Cloudflare Workers: liefert die App als statische Dateien aus (kein Server-Code).
+// Cloudflare Workers: statische App + kleiner Server für Institute, Touren und Dateien.
 // "name" muss dem Projektnamen im Cloudflare-Dashboard entsprechen.
+// D1 (Datenbank) und KV (Audio/Bilder) legt "wrangler deploy" beim ersten Mal selbst an.
+// Admin-Passwort als Secret setzen: Worker → Settings → Variables and Secrets → ADMIN_PASSWORD
 {
   "name": "hungariantheathercluj",
+  "main": "worker/index.js",
   "compatibility_date": "2025-06-01",
   "assets": {
-    "directory": "./"
-  }
+    "directory": "./",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "ioi-tours" }
+  ],
+  "kv_namespaces": [
+    { "binding": "MEDIA" }
+  ]
 }

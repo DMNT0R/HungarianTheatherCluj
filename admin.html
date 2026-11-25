@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6e1a26">
+  <meta name="robots" content="noindex">
+  <title>Ioi! Tours – Admin</title>
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body class="portal">
+  <header class="pt-bar">
+    <a class="pt-brand" href="./"><img src="img/icon.svg" alt=""> Ioi! Tours <span>Admin</span></a>
+    <div class="pt-user" id="ad-user" hidden><button class="btn btn-ghost" id="ad-logout" type="button">Log out</button></div>
+  </header>
+  <main class="pt-main">
+    <form class="pt-card" id="ad-login" hidden novalidate>
+      <h1>Administrator</h1>
+      <label>Admin password<input type="password" name="password" autocomplete="current-password" required></label>
+      <p class="pt-msg" data-msg></p>
+      <button class="btn btn-primary" type="submit">Log in</button>
+    </form>
+    <section id="ad-main" hidden>
+      <h1>Applications</h1>
+      <div id="ad-pending" class="pt-list"></div>
+      <h1>Institutions</h1>
+      <div class="pt-table-wrap"><table class="pt-table" id="ad-inst"></table></div>
+      <h1>Tours</h1>
+      <div class="pt-table-wrap"><table class="pt-table" id="ad-tours"></table></div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/admin.js"></script>
+</body>
+</html>

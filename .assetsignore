@@ -11,3 +11,6 @@ README.md
 promo
 tools
 docs
+worker
+.dev.vars
+.wrangler

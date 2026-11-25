@@ -1,7 +1,10 @@
-(function () {
-  const T = window.TOUR;
-  const S = T.stations;
+(async function () {
   const I = window.I18N;
+  const T = await Boot.resolveTour();
+  if (location.search) history.replaceState(null, "", location.pathname);
+  const S = T.stations;
+  const PL = T.places || [];
+  const TOUR_ID = T.id;
   const ARRIVAL_RADIUS = 40;   // Meter: ab hier gilt eine Station als erreicht
   const WALK_SPEED = 75;       // Meter pro Minute
   const STORE_KEY = "theatre-city-map-v1";
@@ -22,18 +25,20 @@
   function load() {
     try {
       const d = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
-      (d.visited || []).forEach(id => state.visited.add(id));
+      const mine = (d.tours || {})[TOUR_ID] || (TOUR_ID === Boot.BUILTIN_ID ? { visited: d.visited, started: d.started } : {});
+      (mine.visited || []).forEach(id => state.visited.add(id));
       state.demo = !!d.demo;
       state.lang = d.lang || null;
-      return d;
+      return { started: !!mine.started };
     } catch (e) { return {}; }
   }
   function save(extra) {
     try {
       const prev = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
-      localStorage.setItem(STORE_KEY, JSON.stringify(Object.assign(prev, {
-        visited: [...state.visited], demo: state.demo, lang: state.lang
-      }, extra || {})));
+      const tours = prev.tours || {};
+      tours[TOUR_ID] = Object.assign(tours[TOUR_ID] || {}, { visited: [...state.visited] }, extra || {});
+      delete prev.visited; delete prev.started;
+      localStorage.setItem(STORE_KEY, JSON.stringify(Object.assign(prev, { tours, demo: state.demo, lang: state.lang })));
     } catch (e) { /* privates Fenster o. ä. */ }
   }
 
@@ -49,8 +54,8 @@
   }
   /** Übersetzbaren Wert in der aktuellen Sprache liefern */
   function tr(v) {
-    if (v && typeof v === "object" && !Array.isArray(v)) return v[state.lang] ?? v[I.fallback];
-    return v;
+    if (v && typeof v === "object" && !Array.isArray(v)) return v[state.lang] ?? v[I.fallback] ?? Object.values(v)[0] ?? "";
+    return v ?? "";
   }
   /** Oberflächentext mit Platzhaltern */
   function t(key, vars) {
@@ -70,6 +75,9 @@
     $("intro-subtitle").textContent = tr(T.subtitle);
     $("intro-organizer").textContent = tr(T.organizer);
     $("intro-count").textContent = S.length;
+    const routeM = S.slice(1).reduce((sum, st, k) => sum + dist(S[k].coords, st.coords), 0) * 1.3; // Umwege grob einrechnen
+    $("intro-km").textContent = t("approxKm", { km: num(Math.max(0.5, Math.round(routeM / 500) / 2)) });
+    $("intro-min").textContent = t("approxMin", { min: Math.round((routeM / WALK_SPEED + S.length * 5) / 10) * 10 });
     $("lang-btn").textContent = langInfo().short;
     document.querySelectorAll(".lang-switch button").forEach(b => {
       b.setAttribute("aria-pressed", b.dataset.lang === state.lang ? "true" : "false");
@@ -143,6 +151,44 @@
     return m;
   });
 
+  // ---------- Lokale Orte: Cafés, Geschäfte, Museen ----------
+  const PLACE_ICONS = { cafe: "☕", restaurant: "🍽️", shop: "🛍️", museum: "🏛️", institution: "📚", other: "📍" };
+  const placeMarkers = PL.map(pl => {
+    const m = L.marker(pl.coords, {
+      icon: L.divIcon({ className: "", html: `<div class="place-pin" data-kind="${esc(pl.kind)}">${PLACE_ICONS[pl.kind] || "📍"}</div>`, iconSize: [30, 30], iconAnchor: [15, 15] }),
+      keyboard: true, zIndexOffset: -100
+    }).addTo(map);
+    m.bindPopup(() => placePopup(pl), { maxWidth: 280, className: "place-popup" });
+    return m;
+  });
+  function placePopup(pl) {
+    const row = (label, v) => v ? `<p><span>${esc(label)}</span> ${esc(v)}</p>` : "";
+    return `<div class="pp">
+      ${pl.image ? `<img src="${esc(pl.image)}" alt="">` : ""}
+      <small>${PLACE_ICONS[pl.kind] || "📍"} ${esc(t("kind_" + pl.kind))}</small>
+      <strong>${esc(tr(pl.title))}</strong>
+      ${tr(pl.text) ? `<p>${esc(tr(pl.text))}</p>` : ""}
+      ${row(t("placeAddress"), tr(pl.address))}
+      ${row(t("placeHours"), tr(pl.hours))}
+      ${tr(pl.offer) ? `<p class="pp-offer">🎟️ ${esc(tr(pl.offer))}</p>` : ""}
+      ${pl.website ? `<a href="${esc(pl.website)}" target="_blank" rel="noopener">${esc(t("placeWebsite"))} ↗</a>` : ""}
+      ${tr(T.placesNote) ? `<p class="pp-note">${esc(tr(T.placesNote))}</p>` : ""}
+    </div>`;
+  }
+  function openPlace(k) {
+    closeSheet();
+    map.flyTo(PL[k].coords, 18, { duration: .6 });
+    setTimeout(() => placeMarkers[k].openPopup(), 650);
+  }
+  const placeSeen = new Set();
+  function checkPlaces() {
+    PL.forEach((pl, k) => {
+      if (!state.userPos || placeSeen.has(k) || dist(state.userPos, pl.coords) > ARRIVAL_RADIUS) return;
+      placeSeen.add(k);
+      toast(`${PLACE_ICONS[pl.kind] || "📍"} <strong>${esc(t("placeNearby"))}</strong><br>${esc(tr(pl.title))}`, 4500);
+    });
+  }
+
   function icon(i) {
     const s = S[i];
     const cls = state.visited.has(s.id) ? "visited" : i === nextIdx() ? "next" : "";
@@ -168,6 +214,7 @@
       accCircle.setLatLng(latlng).setRadius(accuracy || 0);
     }
     checkArrival();
+    checkPlaces();
     renderNext();
   }
 
@@ -196,7 +243,7 @@
         const ll = [p.coords.latitude, p.coords.longitude];
         if (first) {
           first = false;
-          if (dist(ll, S[0].coords) > 20000) toast(t("notInCluj"), 6000);
+          if (dist(ll, S[0].coords) > 20000) toast(t("farFromTour"), 6000);
         }
         if (!state.demo) setUserPos(ll, p.coords.accuracy);
       },
@@ -278,7 +325,7 @@
           <span class="li-num">${state.visited.has(s.id) ? "✓" : i + 1}</span>
           <span class="li-text">
             <span class="li-title">${esc(tr(s.title))}</span>
-            <span class="li-sub">${s.year} · ${esc(tr(s.subtitle))}</span>
+            <span class="li-sub">${[s.year, tr(s.subtitle)].filter(Boolean).map(esc).join(" · ")}</span>
           </span>
         </button>
       </li>`).join("");
@@ -303,6 +350,9 @@
     toast(t("resetDone"));
   }
   $("reset-btn").onclick = resetProgress;
+  $("change-tour-btn").onclick = Boot.chooseAnother;
+  $("intro-change").onclick = Boot.chooseAnother;
+  $("help-btn").onclick = async () => { closeDrawer(); await Boot.showOnboarding(); };
 
   // ---------- Stationsdetail & Audio ----------
   const player = new StationAudio("en-GB");
@@ -319,7 +369,8 @@
     $("sheet-hero").style.setProperty("--hue", (350 + i * 9) % 360);
     renderMedia(s);
     renderActivity(s);
-    $("rephoto-btn").hidden = !s.rephoto;
+    renderCompare(s);
+    renderNearby(s);
 
     const text = tr(s.text);
     let k = 0;
@@ -330,7 +381,8 @@
 
     $("sheet-next").textContent = i < S.length - 1 ? t("continueTo", { n: i + 2 }) : t("finishTour");
     $("player-source").textContent = "";
-    player.load({ text, audio: `audio/${state.lang}/${s.id}.mp3`, timings: `audio/${state.lang}/${s.id}.json` }).then(mode => {
+    const audioSrc = T.builtin ? `audio/${state.lang}/${s.id}.mp3` : ((s.audio || {})[state.lang] || null);
+    player.load({ text, audio: audioSrc, timings: T.builtin ? `audio/${state.lang}/${s.id}.json` : null }).then(mode => {
       if (state.openIdx !== i) return;
       $("player-source").textContent = mode === "file" ? t("recording") : t("tts");
     });
@@ -389,14 +441,69 @@
     touchX = null;
   });
 
-  // ---------- Damals & Heute ----------
-  Rephoto.init();
-  $("rephoto-btn").onclick = () => {
-    const s = S[state.openIdx];
-    if (!s || !s.rephoto) return;
-    player.pause();
-    Rephoto.open(s, { tr, t, esc, credits: T.rephotoCredits });
+  // ---------- Damals & Heute: Schieberegler ----------
+  const cmp = { pairs: [], idx: 0, value: 50, userNow: {} };
+  function renderCompare(s) {
+    cmp.pairs = s.compare || (s.rephoto ? s.rephoto.images.map(im => ({ then: im, now: null })) : []);
+    cmp.stationId = s.id;
+    $("sheet-compare").hidden = !cmp.pairs.length;
+    if (!cmp.pairs.length) return;
+    $("cmp-hint").textContent = s.rephoto ? tr(s.rephoto.hint) : "";
+    $("cmp-thumbs").innerHTML = cmp.pairs.length > 1
+      ? cmp.pairs.map((p, k) => `<button type="button" data-k="${k}"><img src="${esc(p.then.src)}" alt=""><span>${esc(p.then.year || "")}</span></button>`).join("")
+      : "";
+    $("cmp-thumbs").querySelectorAll("button").forEach(b => { b.onclick = () => showPair(+b.dataset.k); });
+    showPair(0);
+  }
+  function showPair(k) {
+    cmp.idx = k;
+    const p = cmp.pairs[k];
+    const userKey = cmp.stationId + ":" + k;
+    const nowSrc = cmp.userNow[userKey] || (p.now && p.now.src) || "";
+    $("cmp-then").src = p.then.src;
+    $("cmp-then").alt = tr(p.then.caption);
+    $("cmp-then").onload = () => {
+      const im = $("cmp-then");
+      if (im.naturalWidth) $("cmp-stage").style.aspectRatio = `${im.naturalWidth} / ${im.naturalHeight}`;
+    };
+    $("cmp-now").hidden = !nowSrc;
+    if (nowSrc) $("cmp-now").src = nowSrc; else $("cmp-now").removeAttribute("src");
+    $("cmp-empty").hidden = !!nowSrc;
+    $("cmp-range").hidden = !nowSrc;
+    $("cmp-handle").hidden = !nowSrc;
+    $("cmp-tag-now").hidden = !nowSrc;
+    $("cmp-caption").textContent = [tr(p.then.caption), p.then.year].filter(Boolean).join(" · ");
+    $("cmp-tag-then").textContent = p.then.year || t("cmpThen");
+    const credit = p.then.credit && T.rephotoCredits ? tr(T.rephotoCredits[p.then.credit]) : "";
+    $("cmp-credit").textContent = credit ? "© " + credit : "";
+    $("cmp-photo").textContent = nowSrc ? t("cmpRetake") : t("cmpTakePhoto");
+    $("cmp-thumbs").querySelectorAll("button").forEach((b, j) => b.setAttribute("aria-pressed", j === k));
+    setCompare(nowSrc ? 50 : 100);
+  }
+  function setCompare(v) {
+    cmp.value = v;
+    $("cmp-range").value = v;
+    $("cmp-then-wrap").style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+    $("cmp-handle").style.left = v + "%";
+  }
+  $("cmp-range").oninput = e => setCompare(+e.target.value);
+  $("cmp-photo").onclick = () => $("cmp-file").click();
+  $("cmp-file").onchange = e => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    const key = cmp.stationId + ":" + cmp.idx;
+    if (cmp.userNow[key]) URL.revokeObjectURL(cmp.userNow[key]);
+    cmp.userNow[key] = URL.createObjectURL(f);
+    e.target.value = "";
+    showPair(cmp.idx);
   };
+
+  function renderNearby(s) {
+    const near = PL.map((pl, k) => ({ pl, k, d: dist(s.coords, pl.coords) })).filter(x => x.d <= 250).sort((a, b) => a.d - b.d);
+    $("sheet-nearby").hidden = !near.length;
+    $("nearby-list").innerHTML = near.map(x => `<button type="button" class="nearby-chip" data-k="${x.k}">${PLACE_ICONS[x.pl.kind] || "📍"} ${esc(tr(x.pl.title))} <small>${Math.round(x.d / 10) * 10} m</small></button>`).join("");
+    $("nearby-list").querySelectorAll("button").forEach(b => { b.onclick = () => openPlace(+b.dataset.k); });
+  }
 
   // ---------- Mitmach-Element, Kostümfoto, Links ----------
   let photoFile = null, photoUrl = null;
@@ -517,7 +624,6 @@
   });
 
   document.addEventListener("keydown", e => {
-    if (Rephoto.isOpen()) return;
     if (!$("lightbox").hidden) {
       if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowLeft") stepLightbox(-1);
