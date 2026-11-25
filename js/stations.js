@@ -209,7 +209,8 @@ Imaginați-vă: lumina lumânărilor, o sală de bal plină de nobili și orăș
             en: "The memorial plaque on the Academic College (formerly Casa Universitarilor)",
             hu: "Az emléktábla az Akadémiai Kollégium (egykori Casa Universitarilor) falán",
             ro: "Placa memorială de pe clădirea Colegiului Academic (fosta Casă a Universitarilor)"
-          })
+          }),
+          { src: "img/rephoto/casa_blanca.png", caption: { en: "Casa Blanca", hu: "Casa Blanca", ro: "Casa Blanca" } }
         ],
         rephoto: {
           hint: { en: "Stand diagonally opposite the corner of Kogălniceanu and Emmanuel de Martonne streets – the old theatre will appear where the Academic College stands.", hu: "Álljon átlósan szemben a Kogălniceanu és az Emmanuel de Martonne utca sarkával – a régi színház ott jelenik meg, ahol ma az Akadémiai Kollégium áll.", ro: "Stați în diagonală față de colțul străzilor Kogălniceanu și Emmanuel de Martonne – vechiul teatru va apărea acolo unde se află astăzi Colegiul Academic." },
