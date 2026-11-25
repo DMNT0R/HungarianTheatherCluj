@@ -6,6 +6,9 @@
   "name": "hungariantheathercluj",
   "main": "worker/index.js",
   "compatibility_date": "2025-06-01",
+  // Im Dashboard gesetzte Variablen bei jedem Deploy behalten (sonst löscht
+  // "wrangler deploy" Klartext-Variablen, die nicht in dieser Datei stehen)
+  "keep_vars": true,
   "assets": {
     "directory": "./",
     "binding": "ASSETS"
