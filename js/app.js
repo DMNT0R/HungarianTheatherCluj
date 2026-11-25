@@ -71,7 +71,6 @@
 
   function applyStaticTexts() {
     document.documentElement.lang = state.lang;
-    document.documentElement.dir = langInfo().dir || "ltr";
     document.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t(el.dataset.i18n); });
     document.querySelectorAll("[data-i18n-aria]").forEach(el => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
     document.title = tr(T.title);

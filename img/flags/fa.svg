@@ -2,6 +2,11 @@
   <path fill="#239f40" d="M0 0h60v10H0z"/>
   <path fill="#fff" d="M0 10h60v10H0z"/>
   <path fill="#da0000" d="M0 20h60v10H0z"/>
-  <path fill="#da0000" d="M30 11.5 26.5 15l3.5 3.5 3.5-3.5z"/>
-  <path fill="none" stroke="#da0000" stroke-width=".8" d="M29 12v6m2-6v6"/>
+  <g fill="#fff" font-family="Noto Naskh Arabic, Noto Sans Arabic, sans-serif" font-size="2.7" text-anchor="middle" direction="rtl">
+    <text x="30" y="9.5" textLength="55" lengthAdjust="spacingAndGlyphs">الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر</text>
+    <text x="30" y="22.3" textLength="55" lengthAdjust="spacingAndGlyphs">الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر الله أكبر</text>
+  </g>
+  <path fill="#da0000" d="M30 10.4c-.5.8-1 1.5-2 2.1-.4-1.1-.1-2 .8-2.7-.2 1.1.1 1.4 1.2 1.6-.7-1.4-.5-2.5.2-3.4.7.9.9 2 .2 3.4 1.1-.2 1.4-.5 1.2-1.6.9.7 1.2 1.6.8 2.7-1-.6-1.5-1.3-2-2.1z"/>
+  <path fill="#da0000" d="M30 10.1c-.3 1-.3 2-.3 3.1l-1.2 1.8 1.1-.5.4 5.2.4-5.2 1.1.5-1.2-1.8c0-1.1 0-2.1-.3-3.1z"/>
+  <path fill="#da0000" d="M29.6 14.5c-1.3-.1-2.1-.7-2.7-1.6.1 1.5.9 2.3 2.5 2.5l.2-.9zm.8 0c1.3-.1 2.1-.7 2.7-1.6-.1 1.5-.9 2.3-2.5 2.5l-.2-.9z"/>
 </svg>
