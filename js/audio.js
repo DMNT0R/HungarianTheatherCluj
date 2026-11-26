@@ -35,6 +35,8 @@
       let j = i + 1;
       while (j < p.length && END.includes(p[j])) j++;
       while (j < p.length && CLOSE.includes(p[j])) j++;
+      // Französisch: „… Kolozsvár. »“ – schließendes Zeichen nach Leerzeichen gehört noch dazu
+      if (p[j] === " " && "»”".includes(p[j + 1]) && (j + 2 >= p.length || p[j + 2] === " ")) j += 2;
       if (j < p.length && p[j] !== " ") { i = j - 1; continue; }   // z. B. „3.5“
       let k = j;
       while (k < p.length && p[k] === " ") k++;
