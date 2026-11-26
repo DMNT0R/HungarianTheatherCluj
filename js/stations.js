@@ -208,8 +208,7 @@ Imaginați-vă: lumina lumânărilor, o sală de bal plină de nobili și orăș
             en: "The memorial plaque on the Academic College (formerly Casa Universitarilor)",
             hu: "Az emléktábla az Akadémiai Kollégium (egykori Casa Universitarilor) falán",
             ro: "Placa memorială de pe clădirea Colegiului Academic (fosta Casă a Universitarilor)"
-          }),
-          { src: "img/rephoto/black_white/casa_blanca.png", caption: { en: "Casa Blanca", hu: "Casa Blanca", ro: "Casa Blanca" } }
+          })
         ],
         rephoto: {
           hint: { en: "Stand diagonally opposite the corner of Kogălniceanu and Emmanuel de Martonne streets – the old theatre will appear where the Academic College stands.", hu: "Álljon átlósan szemben a Kogălniceanu és az Emmanuel de Martonne utca sarkával – a régi színház ott jelenik meg, ahol ma az Akadémiai Kollégium áll.", ro: "Stați în diagonală față de colțul străzilor Kogălniceanu și Emmanuel de Martonne – vechiul teatru va apărea acolo unde se află astăzi Colegiul Academic." },
@@ -230,7 +229,7 @@ For 85 years this was the company's home. Déryné Róza Széppataki sang here, 
 
 The theatre closed on 7 September 1906. Later it passed to the university, served as a store for the botanical museum and was finally demolished. In 1937 King Carol the Second opened the building you see today, the Academic College; since 1955 the Transilvania Philharmonic has played concerts in its Auditorium Maximum. So this corner has remained a stage. Look for the memorial plaque on the wall.
 
-From here we walk to the birthplace of King Matthias – the hero of that opening night.`,
+From here we walk to Hunyadi Square, to the great theatre that took over from this one in 1906.`,
           hu: `Ön a Farkas utca – ma Mihail Kogălniceanu utca – és az egykori Színház utca, a mai Emmanuel de Martonne utca sarkán áll. Itt állt az első kőszínház, amelyet magyar nyelvű előadások számára építettek.
 
 A színészek már 1793 óta saját házról álmodtak. 1803-ban öt főnemes megvásárolta a telket a Református Kollégiumtól, és adományokból megkezdődött az építkezés. 1807-ben elfogyott a pénz, a munka négy évre leállt. Csak 1821-ben készült el a kolozsvári Alföldi Antal tervezte színház: 800 férőhely, 50 páholy, a színpadot pedig 200 gyertya világította meg.
@@ -241,7 +240,7 @@ Nyolcvanöt évig ez volt a társulat otthona. Itt énekelt Déryné Széppataki
 
 A színház 1906. szeptember 7-én bezárt. Később az egyetemé lett, a botanikus múzeum raktáraként szolgált, végül lebontották. 1937-ben II. Károly király avatta fel a ma itt álló épületet, az Akadémiai Kollégiumot; Auditorium Maximum termében 1955 óta a kolozsvári filharmónia hangversenyez. Ez a sarok tehát színpad maradt. Keresse meg a falon az emléktáblát!
 
-Innen Mátyás király szülőházához sétálunk – a megnyitó este hőséhez.`,
+Innen a Hunyadi térre sétálunk, ahhoz a nagy színházhoz, amely 1906-ban átvette ennek a helyét.`,
           ro: `Vă aflați la colțul străzii Farkas – strada Lupilor, astăzi Mihail Kogălniceanu – cu fosta stradă a Teatrului, astăzi Emmanuel de Martonne. Aici s-a aflat primul teatru din piatră construit pentru spectacole în limba maghiară.
 
 Actorii visau la propria clădire încă din 1793. În 1803, cinci aristocrați au cumpărat terenul de la Colegiul Reformat, iar construcția a început din donații. În 1807 banii s-au terminat, iar lucrările au stat patru ani. Abia în 1821 a fost gata teatrul proiectat de arhitectul clujean Antal Alföldi: 800 de locuri, 50 de loje și o scenă luminată de 200 de lumânări.
@@ -252,7 +251,69 @@ Timp de 85 de ani, aceasta a fost casa trupei. Aici a cântat Déryné Róza Sz�
 
 Teatrul s-a închis pe 7 septembrie 1906. Mai târziu a trecut la universitate, a servit drept depozit al muzeului botanic și, în cele din urmă, a fost demolat. În 1937, regele Carol al II-lea a inaugurat clădirea de astăzi, Colegiul Academic; în sala Auditorium Maximum concertează din 1955 Filarmonica „Transilvania”. Așadar, acest colț a rămas o scenă. Căutați placa memorială de pe zid.
 
-De aici mergem la casa natală a regelui Matia – eroul acelei seri de deschidere.`
+De aici mergem în Piața Hunyadi, azi Piața Ștefan cel Mare, la marele teatru care a preluat locul acestuia în 1906.`
+        },
+        links: [ARTICLE]
+      },
+      {
+        id: "05-nationaltheater",
+        year: 1906,
+        coords: [46.77013, 23.59749],
+        title: { en: "A Romanian theatre, built as Hungarian", hu: "Román színház – magyarnak épült", ro: "Un teatru românesc, construit ca teatru maghiar" },
+        subtitle: { en: "Piața Ștefan cel Mare · Hunyadi tér", hu: "Hunyadi tér · Piața Ștefan cel Mare", ro: "Piața Ștefan cel Mare · Hunyadi tér" },
+        address: { en: "Piața Ștefan cel Mare 2–4, Cluj-Napoca", hu: "Hunyadi tér (Piața Ștefan cel Mare) 2–4, Kolozsvár", ro: "Piața Ștefan cel Mare 2–4, Cluj-Napoca" },
+        media: [
+          img("15928-kep-13.10.jpg", {
+            en: "The theatre on today's Ștefan cel Mare Square",
+            hu: "A színház a mai Ștefan cel Mare téren",
+            ro: "Teatrul din actuala Piață Ștefan cel Mare"
+          }),
+          img("15935-janovits-j..jpg", {
+            en: "Jenő Janovics (1872–1945), director of the theatre from 1905",
+            hu: "Janovics Jenő (1872–1945), 1905-től a színház igazgatója",
+            ro: "Jenő Janovics (1872–1945), directorul teatrului din 1905"
+          }),
+          img("15916-kep-13.5..jpg", {
+            en: "Poster of the festive performance, 1906",
+            hu: "Az 1906-os díszelőadás plakátja",
+            ro: "Afișul spectacolului festiv din 1906"
+          })
+        ],
+        rephoto: {
+          hint: { en: "Stand in the square in front of the main entrance and frame the whole façade.", hu: "Álljon a főbejárat előtti téren, és vegye kamerába az egész homlokzatot.", ro: "Stați în piața din fața intrării principale și încadrați toată fațada." },
+          images: [
+            { src: "img/rephoto/black_white/national-theatre-postcard.jpg", year: "c. 1910", credit: "theatre", caption: { en: "Postcard: “Kolozsvár, Nemzeti színház”", hu: "Képeslap: „Kolozsvár, Nemzeti színház”", ro: "Carte poștală: „Kolozsvár, Nemzeti színház”" } },
+            { src: "img/rephoto/black_white/national-theatre-square.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The National Theatre and Hunyadi Square", hu: "A Nemzeti Színház és a Hunyadi tér", ro: "Teatrul Național și Piața Hunyadi" } }
+          ]
+        },
+        text: {
+          en: `In front of you stands the Lucian Blaga National Theatre, which is also home to the Romanian Opera. It was built as the new Hungarian National Theatre, designed by the Viennese architects Fellner and Helmer, and opened on 8 September 1906 under its director Jenő Janovics. Into the new stage he set a piece of the floorboards of the old Farkas Street theatre – as a sign that the story goes on.
+
+Then the First World War ended. On 21 December 1918, with Romanian troops close to the city, Janovics gathered about two hundred and fifty actors, musicians and stagehands on this stage at dawn. “As long as I breathe, I will defend this theatre that has been entrusted to me.” His wife, the actress Lili Poór, answered: “We stay here!” – and everyone repeated it.
+
+Transylvania became part of Romania. For Romanians, who had long been hindered here from playing theatre in their own language, taking over this house was a matter of national pride. In May 1919 the takeover was ordered. On 30 September 1919 the Hungarian company played here for the last time: Hamlet, with Janovics in the title role. The censors had cut the great monologue down to its first line. When Janovics spoke “To be, or not to be” straight to the audience, a woman cried out: “We want to live!” – and two thousand voices joined in. Police cleared the house. The next morning the building passed to the Romanian National Theatre.
+
+Between 1940 and 1945, after the Second Vienna Award, the Hungarian company played here once more. Today the Romanian and the Hungarian theatres of Cluj perform a few hundred metres apart – and both belong to this city.
+
+Janovics was also a pioneer of film – you will hear that story at the end of the tour. But first we walk to the birthplace of King Matthias, the hero of the very first evening on Farkas Street.`,
+          hu: `Ön előtt a Lucian Blaga Nemzeti Színház áll, amelyben a Román Opera is otthonra talált. Új magyar Nemzeti Színháznak épült, a bécsi Fellner és Helmer tervei szerint, és 1906. szeptember 8-án nyílt meg Janovics Jenő igazgatása alatt. Az új színpadba Janovics beépíttetett egy darabot a régi Farkas utcai színpad deszkáiból – annak jeléül, hogy a történet folytatódik.
+
+Aztán véget ért az első világháború. 1918. december 21-én hajnalban, amikor a román csapatok már a város közelében jártak, Janovics mintegy kétszázötven színészt, zenészt és műszaki dolgozót gyűjtött össze ezen a színpadon. „Ezt a színházat, amelyet gondozásomra bíztak, védeni fogom, amíg lélegzem.” Felesége, Poór Lili színésznő így felelt: „Itt maradunk!” – és mindenki megismételte.
+
+Erdély Romániához került. A románok számára, akiket itt sokáig akadályoztak abban, hogy saját nyelvükön színházat játsszanak, a ház átvétele nemzeti büszkeség kérdése volt. 1919 májusában elrendelték az átvételt. 1919. szeptember 30-án a magyar társulat utoljára játszott itt: a Hamletet adták, a címszerepben Janovics Jenővel. A cenzúra a nagymonológból csak az első sort hagyta meg. Amikor Janovics a „Lenni vagy nem lenni” kérdését egyenesen a közönséghez intézte, egy nő felkiáltott: „Élni akarunk!” – és kétezer hang csatlakozott hozzá. A rendőrség ürítette ki a nézőteret. Másnap reggel az épület a Román Nemzeti Színházé lett.
+
+1940 és 1945 között, a második bécsi döntés után, a magyar társulat még egyszer itt játszott. Ma Kolozsvár román és magyar színháza néhány száz méterre játszik egymástól – és mindkettő ehhez a városhoz tartozik.
+
+Janovics a film egyik úttörője is volt – erről a séta végén hall majd. Előbb azonban Mátyás király szülőházához sétálunk, a Farkas utcai legelső este hőséhez.`,
+          ro: `În fața dumneavoastră se află Teatrul Național „Lucian Blaga”, care adăpostește și Opera Națională Română. A fost construit ca noul Teatru Național Maghiar, după planurile arhitecților vienezi Fellner și Helmer, și s-a deschis pe 8 septembrie 1906, sub conducerea directorului Jenő Janovics. În noua scenă, Janovics a încorporat o bucată din scândurile vechii scene de pe strada Farkas – ca semn că povestea continuă.
+
+Apoi s-a încheiat Primul Război Mondial. Pe 21 decembrie 1918, în zori, cu trupele române aproape de oraș, Janovics a adunat pe această scenă aproximativ două sute cincizeci de actori, muzicieni și tehnicieni. „Atâta timp cât respir, voi apăra acest teatru care mi-a fost încredințat.” Soția lui, actrița Lili Poór, a răspuns: „Rămânem aici!” – și toți au repetat.
+
+Transilvania a devenit parte a României. Pentru români, care fuseseră multă vreme împiedicați aici să joace teatru în propria limbă, preluarea acestei clădiri a fost o chestiune de mândrie națională. În mai 1919 s-a dispus preluarea. Pe 30 septembrie 1919, trupa maghiară a jucat aici pentru ultima dată: Hamlet, cu Janovics în rolul titular. Cenzura redusese marele monolog la primul vers. Când Janovics a adresat întrebarea „A fi sau a nu fi” direct publicului, o femeie a strigat: „Vrem să trăim!” – și două mii de voci i s-au alăturat. Poliția a evacuat sala. A doua zi dimineață, clădirea a trecut la Teatrul Național Român.
+
+Între 1940 și 1945, după Dictatul de la Viena, trupa maghiară a jucat aici încă o dată. Astăzi, teatrul românesc și cel maghiar din Cluj joacă la câteva sute de metri unul de celălalt – și amândouă aparțin acestui oraș.
+
+Janovics a fost și un pionier al filmului – veți auzi această poveste la finalul turului. Dar mai întâi mergem la casa natală a regelui Matia, eroul primei seri de pe strada Farkas.`
         },
         links: [ARTICLE]
       },
@@ -342,7 +403,8 @@ La peste două sute treizeci de ani după primul spectacol din sala de bal a con
             en: "Jenő Janovics, theatre director and film pioneer",
             hu: "Janovics Jenő színigazgató, a film úttörője",
             ro: "Jenő Janovics, director de teatru și pionier al filmului"
-          })
+          }),
+          img("casa_blanca.png", { en: "On the set of “Casablanca” (1942): Humphrey Bogart and Ingrid Bergman", hu: "A „Casablanca” forgatásán (1942): Humphrey Bogart és Ingrid Bergman", ro: "La filmările pentru „Casablanca” (1942): Humphrey Bogart și Ingrid Bergman" })
         ],
         text: {
           en: `Jenő Janovics was fascinated by film long before most theatre people took it seriously. As early as 1907 he was filming in the streets of Kolozsvár, and in 1913 his film “The Yellow Foal”, made together with the French company Pathé, was shown in almost forty countries. By 1920 his studio had produced more than sixty silent films. It stood right here, in the courtyard of the summer theatre, today's Hungarian Theatre: a simple hall with a glass roof. Many scenes were shot outdoors, here in the park. With the money from his 26 cinemas he kept the theatre alive.
@@ -353,7 +415,7 @@ Kertész went to Hollywood and called himself Michael Curtiz. In 1942 he made �
 
 “I think this is the beginning of a beautiful friendship” – and a piece of this story began here, in Kolozsvár.
 
-This is where our walk ends. Thank you for joining us! If you still have time, three optional stops await you: the theatre's Documentation Centre, the Central Cemetery and the National Theatre. We would be delighted to welcome you in our audience soon.`,
+This is where our walk ends. Thank you for joining us! If you still have time, two optional stops await you: the theatre's Documentation Centre and the Central Cemetery. We would be delighted to welcome you in our audience soon.`,
           hu: `Janovics Jenőt már akkor lenyűgözte a film, amikor a legtöbb színházi ember még nem vette komolyan. Már 1907-ben forgatott Kolozsvár utcáin, és 1913-ban a francia Pathé céggel közösen készített filmjét, a „Sárga csikót” csaknem negyven országban vetítették. 1920-ig stúdiója több mint hatvan némafilmet készített. Éppen itt állt, a nyári színkör, a mai Magyar Színház udvarán: egy egyszerű, üvegtetős csarnok. Sok jelenetet a szabadban forgattak, itt, a Sétatéren. Huszonhat mozijának bevételéből tartotta életben a színházat.
 
 Janovics fiatal tehetségeket hozott Kolozsvárra. Egyikük a budapesti Kertész Mihály volt. 1914-ben Kertész rendezte neki „A tolonc” című filmet, amelyet Kolozsváron és a Tordai-hasadékban forgattak, a nagy Jászai Marival. Ez az egyetlen fennmaradt filmje: angol nyelvű kópiája a New York-i Magyar Ház pincéjéből került elő. Egy másik Korda Sándor volt, a későbbi Sir Alexander Korda, a brit filmgyártás egyik legnagyobb producere.
@@ -362,7 +424,7 @@ Kertész Hollywoodba ment, és Michael Curtiznek nevezte magát. 1942-ben ott fo
 
 „Azt hiszem, ez egy gyönyörű barátság kezdete” – és ennek a történetnek egy darabja itt, Kolozsváron kezdődött.
 
-Itt ér véget sétánk. Köszönjük, hogy velünk tartott! Ha még van ideje, három választható állomás várja: a színház Dokumentációs Központja, a Házsongárdi temető és a Nemzeti Színház. Szeretettel várjuk hamarosan a nézőtéren!`,
+Itt ér véget sétánk. Köszönjük, hogy velünk tartott! Ha még van ideje, két választható állomás várja: a színház Dokumentációs Központja és a Házsongárdi temető. Szeretettel várjuk hamarosan a nézőtéren!`,
           ro: `Jenő Janovics era fascinat de film cu mult înainte ca majoritatea oamenilor de teatru să-l ia în serios. Încă din 1907 filma pe străzile Clujului, iar în 1913 filmul său „Mânzul galben”, realizat împreună cu compania franceză Pathé, a fost prezentat în aproape patruzeci de țări. Până în 1920, studioul său a produs peste șaizeci de filme mute. Se afla chiar aici, în curtea teatrului de vară, azi Teatrul Maghiar: o hală simplă, cu acoperiș de sticlă. Multe scene au fost filmate în aer liber, aici, în parc. Cu banii din cele 26 de cinematografe ale sale a ținut în viață teatrul.
 
 Janovics a adus la Cluj tineri talentați. Unul dintre ei a fost Mihály Kertész, din Budapesta. În 1914, Kertész a regizat pentru el filmul „A tolonc”, turnat la Cluj și în Cheile Turzii, cu marea Mari Jászai. Este singurul film cu ea care s-a păstrat: o copie în limba engleză a fost găsită în subsolul Casei Maghiare din New York. Altul a fost Sándor Korda, viitorul Sir Alexander Korda, unul dintre marii producători ai cinematografiei britanice.
@@ -371,7 +433,7 @@ Kertész a plecat la Hollywood și și-a luat numele de Michael Curtiz. În 1942
 
 „Cred că acesta este începutul unei frumoase prietenii” – iar o parte din această poveste a început aici, la Cluj.
 
-Aici se încheie plimbarea noastră. Vă mulțumim că ne-ați însoțit! Dacă mai aveți timp, vă așteaptă trei opriri opționale: Centrul de Documentare al teatrului, Cimitirul Central și Teatrul Național. Ne-ar bucura să vă revedem curând în sală.`
+Aici se încheie plimbarea noastră. Vă mulțumim că ne-ați însoțit! Dacă mai aveți timp, vă așteaptă două opriri opționale: Centrul de Documentare al teatrului și Cimitirul Central. Ne-ar bucura să vă revedem curând în sală.`
         },
         activity: {
           icon: "🎬",
@@ -506,69 +568,6 @@ Opriți-vă pentru o clipă. Teatrul este cea mai efemeră dintre arte – fieca
             ro: ["Jenő Janovics (1872–1945) – director de teatru, pionier al filmului; parcela II. A, monument istoric", "Pál Jantsó Gidófalvi (1761–1845) – cofondator, primul actor de comedie", "Celesztin Pergő (1784–1858) – actor și director, lângă Jantsó", "Mária Néb (1799–1884) – actriță de comedie"]
           }
         }
-      },
-      {
-        id: "05-nationaltheater",
-        optional: true,
-        year: 1906,
-        coords: [46.77013, 23.59749],
-        title: { en: "A Romanian theatre, built as Hungarian", hu: "Román színház – magyarnak épült", ro: "Un teatru românesc, construit ca teatru maghiar" },
-        subtitle: { en: "Piața Ștefan cel Mare · Hunyadi tér", hu: "Hunyadi tér · Piața Ștefan cel Mare", ro: "Piața Ștefan cel Mare · Hunyadi tér" },
-        address: { en: "Piața Ștefan cel Mare 2–4, Cluj-Napoca", hu: "Hunyadi tér (Piața Ștefan cel Mare) 2–4, Kolozsvár", ro: "Piața Ștefan cel Mare 2–4, Cluj-Napoca" },
-        media: [
-          img("15928-kep-13.10.jpg", {
-            en: "The theatre on today's Ștefan cel Mare Square",
-            hu: "A színház a mai Ștefan cel Mare téren",
-            ro: "Teatrul din actuala Piață Ștefan cel Mare"
-          }),
-          img("15935-janovits-j..jpg", {
-            en: "Jenő Janovics (1872–1945), director of the theatre from 1905",
-            hu: "Janovics Jenő (1872–1945), 1905-től a színház igazgatója",
-            ro: "Jenő Janovics (1872–1945), directorul teatrului din 1905"
-          }),
-          img("15916-kep-13.5..jpg", {
-            en: "Poster of the festive performance, 1906",
-            hu: "Az 1906-os díszelőadás plakátja",
-            ro: "Afișul spectacolului festiv din 1906"
-          })
-        ],
-        rephoto: {
-          hint: { en: "Stand in the square in front of the main entrance and frame the whole façade.", hu: "Álljon a főbejárat előtti téren, és vegye kamerába az egész homlokzatot.", ro: "Stați în piața din fața intrării principale și încadrați toată fațada." },
-          images: [
-            { src: "img/rephoto/black_white/national-theatre-postcard.jpg", year: "c. 1910", credit: "theatre", caption: { en: "Postcard: “Kolozsvár, Nemzeti színház”", hu: "Képeslap: „Kolozsvár, Nemzeti színház”", ro: "Carte poștală: „Kolozsvár, Nemzeti színház”" } },
-            { src: "img/rephoto/black_white/national-theatre-square.jpg", year: "c. 1910", credit: "enyedi", caption: { en: "The National Theatre and Hunyadi Square", hu: "A Nemzeti Színház és a Hunyadi tér", ro: "Teatrul Național și Piața Hunyadi" } }
-          ]
-        },
-        text: {
-          en: `In front of you stands the Lucian Blaga National Theatre, which is also home to the Romanian Opera. It was built as the new Hungarian National Theatre, designed by the Viennese architects Fellner and Helmer, and opened on 8 September 1906 under its director Jenő Janovics. Into the new stage he set a piece of the floorboards of the old Farkas Street theatre – as a sign that the story goes on.
-
-Then the First World War ended. On 21 December 1918, with Romanian troops close to the city, Janovics gathered about two hundred and fifty actors, musicians and stagehands on this stage at dawn. “As long as I breathe, I will defend this theatre that has been entrusted to me.” His wife, the actress Lili Poór, answered: “We stay here!” – and everyone repeated it.
-
-Transylvania became part of Romania. For Romanians, who had long been hindered here from playing theatre in their own language, taking over this house was a matter of national pride. In May 1919 the takeover was ordered. On 30 September 1919 the Hungarian company played here for the last time: Hamlet, with Janovics in the title role. The censors had cut the great monologue down to its first line. When Janovics spoke “To be, or not to be” straight to the audience, a woman cried out: “We want to live!” – and two thousand voices joined in. Police cleared the house. The next morning the building passed to the Romanian National Theatre.
-
-Between 1940 and 1945, after the Second Vienna Award, the Hungarian company played here once more. Today the Romanian and the Hungarian theatres of Cluj perform a few hundred metres apart – and both belong to this city.
-
-But Janovics was not only a man of the theatre: he was also a pioneer of film – a story told at the last stop of the tour, behind the Hungarian Theatre.`,
-          hu: `Ön előtt a Lucian Blaga Nemzeti Színház áll, amelyben a Román Opera is otthonra talált. Új magyar Nemzeti Színháznak épült, a bécsi Fellner és Helmer tervei szerint, és 1906. szeptember 8-án nyílt meg Janovics Jenő igazgatása alatt. Az új színpadba Janovics beépíttetett egy darabot a régi Farkas utcai színpad deszkáiból – annak jeléül, hogy a történet folytatódik.
-
-Aztán véget ért az első világháború. 1918. december 21-én hajnalban, amikor a román csapatok már a város közelében jártak, Janovics mintegy kétszázötven színészt, zenészt és műszaki dolgozót gyűjtött össze ezen a színpadon. „Ezt a színházat, amelyet gondozásomra bíztak, védeni fogom, amíg lélegzem.” Felesége, Poór Lili színésznő így felelt: „Itt maradunk!” – és mindenki megismételte.
-
-Erdély Romániához került. A románok számára, akiket itt sokáig akadályoztak abban, hogy saját nyelvükön színházat játsszanak, a ház átvétele nemzeti büszkeség kérdése volt. 1919 májusában elrendelték az átvételt. 1919. szeptember 30-án a magyar társulat utoljára játszott itt: a Hamletet adták, a címszerepben Janovics Jenővel. A cenzúra a nagymonológból csak az első sort hagyta meg. Amikor Janovics a „Lenni vagy nem lenni” kérdését egyenesen a közönséghez intézte, egy nő felkiáltott: „Élni akarunk!” – és kétezer hang csatlakozott hozzá. A rendőrség ürítette ki a nézőteret. Másnap reggel az épület a Román Nemzeti Színházé lett.
-
-1940 és 1945 között, a második bécsi döntés után, a magyar társulat még egyszer itt játszott. Ma Kolozsvár román és magyar színháza néhány száz méterre játszik egymástól – és mindkettő ehhez a városhoz tartozik.
-
-Janovics azonban nemcsak színházi ember volt, hanem a film egyik úttörője is – erről a séta utolsó állomása mesél, a Magyar Színház mögött.`,
-          ro: `În fața dumneavoastră se află Teatrul Național „Lucian Blaga”, care adăpostește și Opera Națională Română. A fost construit ca noul Teatru Național Maghiar, după planurile arhitecților vienezi Fellner și Helmer, și s-a deschis pe 8 septembrie 1906, sub conducerea directorului Jenő Janovics. În noua scenă, Janovics a încorporat o bucată din scândurile vechii scene de pe strada Farkas – ca semn că povestea continuă.
-
-Apoi s-a încheiat Primul Război Mondial. Pe 21 decembrie 1918, în zori, cu trupele române aproape de oraș, Janovics a adunat pe această scenă aproximativ două sute cincizeci de actori, muzicieni și tehnicieni. „Atâta timp cât respir, voi apăra acest teatru care mi-a fost încredințat.” Soția lui, actrița Lili Poór, a răspuns: „Rămânem aici!” – și toți au repetat.
-
-Transilvania a devenit parte a României. Pentru români, care fuseseră multă vreme împiedicați aici să joace teatru în propria limbă, preluarea acestei clădiri a fost o chestiune de mândrie națională. În mai 1919 s-a dispus preluarea. Pe 30 septembrie 1919, trupa maghiară a jucat aici pentru ultima dată: Hamlet, cu Janovics în rolul titular. Cenzura redusese marele monolog la primul vers. Când Janovics a adresat întrebarea „A fi sau a nu fi” direct publicului, o femeie a strigat: „Vrem să trăim!” – și două mii de voci i s-au alăturat. Poliția a evacuat sala. A doua zi dimineață, clădirea a trecut la Teatrul Național Român.
-
-Între 1940 și 1945, după Dictatul de la Viena, trupa maghiară a jucat aici încă o dată. Astăzi, teatrul românesc și cel maghiar din Cluj joacă la câteva sute de metri unul de celălalt – și amândouă aparțin acestui oraș.
-
-Dar Janovics nu a fost doar un om de teatru, ci și un pionier al filmului – o poveste spusă la ultima oprire a turului, în spatele Teatrului Maghiar.`
-        },
-        links: [ARTICLE]
       }
     ]
   };

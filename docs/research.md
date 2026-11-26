@@ -245,3 +245,9 @@ Documentation Centre (Str. Napoca 16, 46.767892, 23.587263), Central Cemetery (m
 46.765747, 23.591716), National Theatre. Coordinates from the team (Google Maps).
 ⚠️ The text of the Documentation Centre stop is a draft written for the prototype (general
 description, plus HT-200 and the 2022 walk); the Centre should check it.
+
+Update 26 Nov 2026 (mentor): the National Theatre on Hunyadi Square belongs to the main route,
+after Farkas utca and before the Matthias House. Optional stops are now only the Documentation
+Centre and the Central Cemetery.
+⚠️ The Casablanca set photo (`img/rephoto/black_white/casa_blanca.png`, Bogart and Bergman) is
+a Warner Bros. production still; check the rights before public use.

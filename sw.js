@@ -1,5 +1,5 @@
 // Einfacher Offline-Cache für die App-Hülle (Kartenkacheln werden nicht vorab geladen).
-const CACHE = "ioi-cluj-v27";
+const CACHE = "ioi-cluj-v28";
 const SHELL = [
   "./", "index.html", "css/style.css", "js/i18n.js", "js/i18n-extra.js", "js/stations.js", "js/stations-locales.js", "js/audio.js", "js/boot.js", "js/app.js",
   "img/flags/en.svg", "img/flags/hu.svg", "img/flags/ro.svg", "img/flags/tr.svg", "img/flags/fa.svg", "img/flags/es.svg", "img/flags/ca.svg", "img/flags/de.svg", "img/flags/ar.svg", "img/flags/fr.svg",

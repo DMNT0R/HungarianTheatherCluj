@@ -92,19 +92,19 @@ The app is available in **English, Hungarian (Magyar) and Romanian (Română)**.
 
 ## Stops
 
-Main route (about 1.5 km): five numbered stops. Three optional stops (A–C) are shown with a
-dashed pin; they do not count towards the progress.
+Main route: six numbered stops. Two optional stops (A, B) are shown with a dashed pin; they
+do not count towards the progress.
 
 | # | Stop | Year | Interactive |
 |---|------|------|-------------|
 | 1 | Rhédey Palace & Rhédey Café (Main Square): first Hungarian performances | 1792 | 🎭 Try on costumes + souvenir photo |
 | 2 | Farkas utca: the first stone theatre | 1821 | |
-| 3 | Birthplace of King Matthias | 1443 | |
-| 4 | The Hungarian Theatre today (Str. Emil Isac 26–28) | 1919 → today | |
-| 5 | Finale: from Kolozsvár to Casablanca – Janovics' film studio behind the theatre | 1942 | 🎬 Hungarians in “Casablanca”, link to actors.hu |
+| 3 | A Romanian theatre, built as Hungarian (Hunyadi Square, 1906, Fellner & Helmer) | 1906 | |
+| 4 | Birthplace of King Matthias | 1443 | |
+| 5 | The Hungarian Theatre today (Str. Emil Isac 26–28) | 1919 → today | |
+| 6 | Finale: from Kolozsvár to Casablanca – Janovics' film studio behind the theatre | 1942 | 🎬 Hungarians in “Casablanca”, link to actors.hu |
 | A | Documentation Centre of the Hungarian Theatre (Str. Napoca 16) | – | |
 | B | Házsongárd Central Cemetery (main gate) | 1585 | 🕯️ On the trail of actors' graves |
-| C | A Romanian theatre, built as Hungarian (1906, Fellner & Helmer) | 1906 | |
 
 The station IDs (and audio file names) keep their original numbers, e.g. `03-farkas` is stop 2.
 Mark a stop as optional with `optional: true` in `js/stations.js`.
