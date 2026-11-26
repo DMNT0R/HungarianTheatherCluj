@@ -516,3 +516,17 @@ html[dir="rtl"] .lang-menu { margin-left: 0; margin-right: auto; }
 .ob-langs button, .lang-menu .lang-switch button, .intro-lang button { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .facts strong { white-space: nowrap; }
 @media (max-width: 360px) { .facts { gap: 12px; } .facts strong { font-size: 16px; } }
+
+/* ---------- Wussten Sie? / Weiterlesen ---------- */
+.fact { margin: 4px 0 18px; padding: 12px 14px; border-radius: 12px; background: rgba(199, 154, 59, .14); font-size: 15px; line-height: 1.5; }
+.fact::before { content: "💡 "; }
+.fact[hidden], .readmore[hidden] { display: none; }
+.readmore { margin: 6px 0 14px; }
+.readmore h3 { font-size: 16px; margin: 0 0 6px; }
+.readmore ul { margin: 0; padding-inline-start: 18px; font-size: 14px; line-height: 1.45; }
+.readmore li { margin-bottom: 6px; overflow-wrap: anywhere; }
+.readmore a { color: var(--wine); }
+@media (prefers-color-scheme: dark) { .readmore a { color: var(--gold); } }
+.sheet-optional { width: 100%; margin-top: 8px; white-space: normal; }
+.sheet-optional[hidden] { display: none; }
+.sheet-actions .btn { overflow-wrap: normal; word-break: normal; hyphens: auto; -webkit-hyphens: auto; }

@@ -251,3 +251,16 @@ after Farkas utca and before the Matthias House. Optional stops are now only the
 Centre and the Central Cemetery.
 ⚠️ The Casablanca set photo (`img/rephoto/black_white/casa_blanca.png`, Bogart and Bergman) is
 a Warner Bros. production still; check the rights before public use.
+
+## Corrections by Tünde Kocsis (26 Nov 2026)
+
+Applied: plaque on the Napoca (formerly Jókai) Street side, "Did you know?" note on the
+plaque date (11 Nov vs. 17 Dec 1792), scholarly "Read more" lists per stop, sentence on King
+Matthias as shared Hungarian–Romanian heritage, new texts for the Studio, the Documentation
+Centre and the cemetery (Pergő sentence removed), playbills moved to Farkas utca ("Mozgó
+fényképek", 3 Jan 1899; "Bánk bán", last performance 17 June 1906).
+⚠️ The Farkas utca text says the theatre closed on 7 September 1906, while the playbill
+names 17 June 1906 as the last performance – to check.
+Still missing (photos not yet visible in the Drive): current photo of the Academic College
+for then/now, second building photo of the National Theatre, wooden summer theatre and
+interior photos, a Janovics film poster for the Studio, cemetery photos.

@@ -409,6 +409,14 @@
 
     const after = MAIN.find(k => k !== i && !state.visited.has(S[k].id) && (s.optional || MAIN.indexOf(k) > MAIN.indexOf(i)));
     $("sheet-next").textContent = after !== undefined ? t("continueTo", { n: label(after) }) : t("finishTour");
+    // Am Ende der Hauptroute zusätzlich zur ersten optionalen Station weiterleiten
+    const opt = OPT.find(k => k !== i && !state.visited.has(S[k].id));
+    const showOpt = after === undefined && opt !== undefined;
+    $("sheet-next-opt").hidden = !showOpt;
+    if (showOpt) {
+      $("sheet-next-opt").textContent = t("continueToPlace", { t: tr(S[opt].title) });
+      $("sheet-next-opt").onclick = () => { markVisited(i); openSheet(opt); };
+    }
     $("player-source").textContent = "";
     const audioSrc = T.builtin ? `audio/${state.lang}/${s.id}.mp3` : ((s.audio || {})[state.lang] || null);
     player.load({ text, audio: audioSrc, timings: T.builtin ? `audio/${state.lang}/${s.id}.json` : null }).then(mode => {
@@ -594,6 +602,13 @@
       $("act-photo").hidden = !a.photo;
     }
     resetPhoto();
+    $("sheet-fact").hidden = !tr(s.fact);
+    $("sheet-fact").textContent = tr(s.fact) || "";
+    const rm = s.readMore || [];
+    $("sheet-readmore").hidden = !rm.length;
+    $("readmore-list").innerHTML = rm.map(r => r.url
+      ? `<li><a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${esc(tr(r.t))}</a></li>`
+      : `<li>${esc(tr(r.t))}</li>`).join("");
     $("sheet-links").innerHTML = (s.links || [])
       .map(l => `<a class="btn btn-ghost" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(tr(l.label))} ↗</a>`)
       .join("");

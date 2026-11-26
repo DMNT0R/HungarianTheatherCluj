@@ -118,21 +118,21 @@
           ]
         },
         text: {
-          en: `Welcome to Cluj – or Kolozsvár, as the city is called in Hungarian. Look for the corner of the Main Square and Napoca Street, where the memorial of the 1989 revolution, the “Shot Pillars”, stands today. The building behind it is the Rhédey Palace – look for the memorial plaque on its façade.
+          en: `Welcome to Cluj – or Kolozsvár, as the city is called in Hungarian. Look for the corner of the Main Square and Napoca Street, where the memorial of the 1989 revolution, the “Shot Pillars”, stands today. The building behind it is the Rhédey Palace – take a look at its façade facing the Main Square.
 
 This is where our story begins. In October 1792 a group of young nobles led by János Fejér asked the authorities for permission to perform plays in Hungarian. They wanted more than entertainment: they wanted to enrich and refine the Hungarian language. They were granted permission – in a reply that was more tolerant than enthusiastic.
 
 But where to perform? Countess Rhédey, born Baroness Terézia Bánffy, offered them the ballroom of this palace, free of charge, for an entire year. On 17 December 1792 the company gave its first performance here, a play called “A titkos ellenkezés vagy Köleséri”. Hungarian-language theatre in Cluj has never stopped since – the Hungarian Theatre of Cluj counts its birthday from that night.
 
 Imagine it: candlelight, a ballroom full of nobles and townspeople in silk and velvet, and young actors on an improvised stage, performing in their own language. Today the Rhédey Café welcomes guests within these old walls. And you are invited to become part of this story yourself: slip into a costume and stand, for a moment, on the stage of 1792.`,
-          hu: `Üdvözöljük Kolozsváron! Keresse meg a Főtér és a Napoca utca sarkát, ahol ma az 1989-es forradalom emlékműve, a „Stâlpii Împușcați” áll. A mögötte álló épület a Rhédey-palota – keresse meg a homlokzatán az emléktáblát!
+          hu: `Üdvözöljük Kolozsváron! Keresse meg a Főtér és a Napoca utca sarkát, ahol ma az 1989-es forradalom emlékműve, a „Stâlpii Împușcați” áll. A mögötte álló épület a Rhédey-palota – nézze meg a Főtérre néző homlokzatát!
 
 Itt kezdődik történetünk. 1792 októberében Fejér János vezetésével néhány fiatal nemes engedélyt kért arra, hogy magyar nyelvű színdarabokat adhasson elő. Nem csupán szórakoztatni akartak: a magyar nyelvet akarták gazdagítani és csiszolni. Az engedélyt megkapták – inkább türelmes, mint lelkes válasz formájában.
 
 De hol játsszanak? Rhédey grófné, született Bánffy Terézia bárónő egy teljes évre ingyen átengedte nekik palotája báltermét. 1792. december 17-én itt tartotta a társulat első előadását, „A titkos ellenkezés vagy Köleséri” című darabot. Azóta Kolozsváron megszakítás nélkül folyik a magyar nyelvű színjátszás – a Kolozsvári Állami Magyar Színház ettől az estétől számítja születésnapját.
 
 Képzelje el: gyertyafény, selyembe és bársonyba öltözött nemesekkel és polgárokkal teli bálterem, a rögtönzött színpadon pedig fiatal színészek, akik a saját anyanyelvükön játszanak. Ma a Rhédey Kávéház várja a vendégeket az öreg falak között. Önt pedig arra hívjuk, hogy maga is részese legyen ennek a történetnek: bújjon jelmezbe, és álljon egy pillanatra 1792 színpadára.`,
-          ro: `Bine ați venit la Cluj – sau Kolozsvár, cum se numește orașul în limba maghiară. Căutați colțul dintre Piața Unirii și strada Napoca, unde se află astăzi monumentul revoluției din 1989, „Stâlpii Împușcați”. Clădirea din spatele lui este Palatul Rhédey – căutați placa memorială de pe fațadă.
+          ro: `Bine ați venit la Cluj – sau Kolozsvár, cum se numește orașul în limba maghiară. Căutați colțul dintre Piața Unirii și strada Napoca, unde se află astăzi monumentul revoluției din 1989, „Stâlpii Împușcați”. Clădirea din spatele lui este Palatul Rhédey – priviți fațada dinspre Piața Unirii.
 
 Aici începe povestea noastră. În octombrie 1792, un grup de tineri nobili condus de János Fejér a cerut permisiunea de a juca piese de teatru în limba maghiară. Nu voiau doar să distreze publicul: voiau să îmbogățească și să rafineze limba maghiară. Au primit permisiunea – printr-un răspuns mai degrabă tolerant decât entuziast.
 
@@ -150,7 +150,15 @@ Imaginați-vă: lumina lumânărilor, o sală de bal plină de nobili și orăș
             ro: "La Rhédey Café vă așteaptă costume istorice din garderoba Teatrului Maghiar. Îmbrăcați-vă, faceți o fotografie de amintire – și distribuiți-o cu #TOurCluj."
           }
         },
-        links: [ARTICLE]
+        fact: { en: "Did you know? According to the commemorative plaque on the building’s Napoca (formerly Jókai) Street façade, the Transylvanian Hungarian Noble Theatre Company began performing here on 11 November 1792, but later theatre history research established that the first performance actually took place on 17 December 1792.", hu: "Érdekesség: Az épület Jókai (Napoca) utca felőli homlokzatán található emléktábla szerint az Erdélyi Magyar Nemes Színjátszó Társaság 1792. november 11-én kezdte meg itt előadásait, a későbbi színháztörténeti kutatások azonban igazolták, hogy az első előadásra 1792. december 17-én került sor.", ro: "Curiozitate: Potrivit plăcii comemorative de pe fațada clădirii dinspre strada Napoca (fosta stradă Jókai), Societatea Teatrală a Nobililor Maghiari din Transilvania și-a început aici activitatea la 11 noiembrie 1792, însă cercetările istorice ulterioare au demonstrat că prima reprezentație a avut loc, de fapt, la 17 decembrie 1792.", tr: "Biliyor muydunuz? Binanın Napoca (eski adıyla Jókai) Caddesi'ne bakan cephesindeki anı plakasına göre Erdélyli Macar Soylular Tiyatro Topluluğu gösterilerine burada 11 Kasım 1792'de başladı; ancak sonraki tiyatro tarihi araştırmaları ilk gösterinin aslında 17 Aralık 1792'de yapıldığını ortaya koydu.", fa: "آیا می‌دانستید؟ بر پایهٔ لوح یادبودی که بر نمای ساختمان رو به خیابان ناپوکا (نام پیشین: یوکای) نصب شده، «انجمن تئاتر اشراف مجار ترانسیلوانیا» اجراهای خود را در ۱۱ نوامبر ۱۷۹۲ در اینجا آغاز کرد؛ اما پژوهش‌های بعدی تاریخ تئاتر نشان داد که نخستین اجرا در واقع در ۱۷ دسامبر ۱۷۹۲ برگزار شد.", es: "¿Sabías que…? Según la placa conmemorativa de la fachada del edificio que da a la calle Napoca (antes calle Jókai), la Compañía Teatral de la Nobleza Húngara de Transilvania comenzó sus funciones aquí el 11 de noviembre de 1792; sin embargo, la investigación posterior en historia del teatro demostró que la primera función tuvo lugar en realidad el 17 de diciembre de 1792.", ca: "Sabies que…? Segons la placa commemorativa de la façana de l’edifici que dona al carrer Napoca (abans carrer Jókai), la Companyia Teatral de la Noblesa Hongaresa de Transsilvània va començar aquí les seves funcions l’11 de novembre de 1792; però la recerca posterior en història del teatre va demostrar que la primera funció va tenir lloc, de fet, el 17 de desembre de 1792.", de: "Schon gewusst? Laut der Gedenktafel an der Fassade zur Napoca-Straße (früher Jókai-Straße) begann die Siebenbürgisch-Ungarische Adelige Theatergesellschaft hier am 11. November 1792 zu spielen. Spätere theatergeschichtliche Forschungen haben jedoch gezeigt, dass die erste Vorstellung tatsächlich am 17. Dezember 1792 stattfand.", ar: "هل تعلم؟ وفقًا للوحة التذكارية على واجهة المبنى المطلّة على شارع نابوكا (شارع يوكاي سابقًا)، بدأت جمعية المسرح المجرية للنبلاء في ترانسيلفانيا عروضها هنا في 11 نوفمبر 1792، لكن أبحاث تاريخ المسرح اللاحقة أثبتت أن العرض الأول أُقيم في الواقع في 17 ديسمبر 1792.", fr: "Le saviez-vous ? D’après la plaque commémorative apposée sur la façade du bâtiment côté rue Napoca (ancienne rue Jókai), la Société théâtrale de la noblesse hongroise de Transylvanie commença ici ses représentations le 11 novembre 1792 ; les recherches ultérieures en histoire du théâtre ont toutefois établi que la première représentation eut lieu en réalité le 17 décembre 1792." },
+        readMore: [
+          { t: "Molnár Géza: Adatok a kolozsvári első színjátszó társaság történetéhez. Erdélyi Múzeum, 1912", url: "https://epa.oszk.hu/00900/00979/00208/pdf/EM-1912_29_06epa.pdf" },
+          { t: "Ferenczi Zoltán: Az erdélyi magyar játékszín kezdete. Erdélyi Múzeum, 1892 (I)", url: "https://epa.oszk.hu/00900/00979/00046/pdf/EM_1892_09_08_454-488.pdf" },
+          { t: "Ferenczi Zoltán: Az erdélyi magyar játékszín kezdete. Erdélyi Múzeum, 1892 (II)", url: "https://real.mtak.hu/189972/1/EM_1892_09_09_522-537.pdf" },
+          { t: "Ferenczi Zoltán: A kolozsvári színészet és színház története. Kolozsvár, 1897", url: "https://www.scribd.com/document/743430114/Ferenczi-Zoltan-A-Kolozsvari-Szineszet-Es-Szinhaz" },
+          { t: "Enyedi Sándor: Az erdélyi magyar színjátszás kezdetei 1792–1821. Kriterion, Bukarest, 1972 (library record)", url: "https://opac.elte.hu/Record/opac-EUL01-000507349" },
+          { t: "Kolozsvári Állami Magyar Színház: Kétszáz éve nyitották meg az első magyar kőszínházat a kolozsvári Farkas utcában", url: "https://www.huntheater.ro/hirek/1452/ketszaz-eve-nyitottak-meg-az-elso-magyar-koszinhazat-a-kolozsvari-farkas-utcaban/" }
+        ]
       },
       {
         id: "03-farkas",
@@ -208,7 +216,9 @@ Imaginați-vă: lumina lumânărilor, o sală de bal plină de nobili și orăș
             en: "The memorial plaque on the Academic College (formerly Casa Universitarilor)",
             hu: "Az emléktábla az Akadémiai Kollégium (egykori Casa Universitarilor) falán",
             ro: "Placa memorială de pe clădirea Colegiului Academic (fosta Casă a Universitarilor)"
-          })
+          }),
+          img("15913-kep-13.4.1..jpg", { en: "Playbill of “Mozgó fényképek” (Moving Pictures), 3 January 1899 – the first film scenes on the Cluj stage", hu: "A „Mozgó fényképek” színlapja, 1899. január 3. – az első filmjelenetek a kolozsvári színpadon", ro: "Afișul spectacolului „Mozgó fényképek” (Fotografii mișcătoare), 3 ianuarie 1899 – primele scene de film pe scena clujeană" }),
+          img("15916-kep-13.5..jpg", { en: "Playbill of the last performance at the Farkas Street theatre: “Bánk bán”, 17 June 1906, with Mari Jászai", hu: "A Farkas utcai színház utolsó előadásának színlapja: „Bánk bán”, 1906. június 17., Jászai Marival", ro: "Afișul ultimului spectacol al teatrului de pe strada Farkas: „Bánk bán”, 17 iunie 1906, cu Mari Jászai" })
         ],
         rephoto: {
           hint: { en: "Stand diagonally opposite the corner of Kogălniceanu and Emmanuel de Martonne streets – the old theatre will appear where the Academic College stands.", hu: "Álljon átlósan szemben a Kogălniceanu és az Emmanuel de Martonne utca sarkával – a régi színház ott jelenik meg, ahol ma az Akadémiai Kollégium áll.", ro: "Stați în diagonală față de colțul străzilor Kogălniceanu și Emmanuel de Martonne – vechiul teatru va apărea acolo unde se află astăzi Colegiul Academic." },
@@ -253,7 +263,17 @@ Teatrul s-a închis pe 7 septembrie 1906. Mai târziu a trecut la universitate, 
 
 De aici mergem în Piața Hunyadi, azi Piața Ștefan cel Mare, la marele teatru care a preluat locul acestuia în 1906.`
         },
-        links: [ARTICLE]
+        readMore: [
+          { t: "Salat-Zakariás Erzsébet: A fiatal Janovics és a Mozgó fényképek. Korunk, 2011/12, 80–87", url: "https://epa.oszk.hu/00400/00458/00575/pdf/EPA00458_korunk_2011_12_080-091.pdf" },
+          { t: "Bartha Katalin Ágnes: Színházi professzió és presztízs Kolozsváron a 19. század utolsó harmadában. Erdélyi Múzeum, 2015/3, 46–78", url: "https://epa.oszk.hu/00900/00979/00440/pdf/EPA00979_erdelyi_muzeum_2015_3_046-078.pdf" },
+          { t: "Bartha Katalin Ágnes: Theatre Inauguration Ceremony and Symbolic Representation. Studia UBB Dramatica, 2017/2, 23–50 (English)", url: "https://dramatica.ro/index.php/j/article/view/201" },
+          { t: "Szabó-Reznek Eszter: Az arisztokrácia önreprezentációja az erdélyi hivatásos színjátszás centenáriumi ünnepségén. Korall, 2017/69, 46–67", url: "https://polecolit.btk.mta.hu/wp-content/uploads/2019/11/szabo_reznek_arisztokracia.pdf" },
+          { t: "Gajdó Tamás: „Vagy nem lenni” – Janovics Jenő színházigazgatói szerepei. Jelenkor, 2008/6", url: "https://www.jelenkor.net/userfiles/archivum/2008-6.pdf" },
+          { t: "Kolozsvári színházépítés (1809–1821). In: Kerényi Ferenc (szerk.): Magyar színháztörténet 1790–1873. Akadémiai Kiadó, 1990", url: "https://mek.oszk.hu/02000/02065/html/1kotet/18.html" },
+          { t: "Gaal György: A kőszínház dicsősége és pusztulása. Kincses Kolozsvár Kalendáriuma, 2023–2024", url: "https://kincseskolozsvar.ro/wp-content/uploads/2024/09/KKK-2023-00_compressed.pdf" },
+          { t: "Ferenczi Zoltán: A kolozsvári színészet és színház története. Kolozsvár, 1897", url: "https://www.scribd.com/document/743430114/Ferenczi-Zoltan-A-Kolozsvari-Szineszet-Es-Szinhaz" },
+          { t: "Janovics Jenő: A Farkas-utcai színház. Singer és Wolfner, Budapest, 1941" }
+        ]
       },
       {
         id: "05-nationaltheater",
@@ -272,11 +292,6 @@ De aici mergem în Piața Hunyadi, azi Piața Ștefan cel Mare, la marele teatru
             en: "Jenő Janovics (1872–1945), director of the theatre from 1905",
             hu: "Janovics Jenő (1872–1945), 1905-től a színház igazgatója",
             ro: "Jenő Janovics (1872–1945), directorul teatrului din 1905"
-          }),
-          img("15916-kep-13.5..jpg", {
-            en: "Poster of the festive performance, 1906",
-            hu: "Az 1906-os díszelőadás plakátja",
-            ro: "Afișul spectacolului festiv din 1906"
           })
         ],
         rephoto: {
@@ -315,7 +330,15 @@ Transilvania a devenit parte a României. Pentru români, care fuseseră multă 
 
 Janovics a fost și un pionier al filmului – veți auzi această poveste la finalul turului. Dar mai întâi mergem la casa natală a regelui Matia, eroul primei seri de pe strada Farkas.`
         },
-        links: [ARTICLE]
+        readMore: [
+          { t: "Delia Enyedi: Written on the Walls: The Hungarian-Romanian Transfer of the National Theatre Building from Kolozsvár/Cluj", url: "https://www.dramatica.ro/index.php/j/article/view/183" },
+          { t: "Gajdó Tamás: „Vagy nem lenni” – Janovics Jenő színházigazgatói szerepei", url: "https://www.jelenkor.net/userfiles/archivum/2008-6.pdf" },
+          { t: "P. Kovács Klára: Nemzeti Színház, Kolozsvár", url: "https://lexikon.adatbank.ro/muemlek.php?id=161" },
+          { t: "Juhász Gabriella: Ferdinand Fellner és Hermann Helmer magyarországi színházépítészete", url: "https://disszertacio.ppke.hu/id/eprint/602/" },
+          { t: "Justin Ceuca: Zaharia Bârsan and the Establishment of the National Theatre in Cluj", url: "https://www.dramatica.ro/index.php/j/article/view/182" },
+          { t: "Janovics Jenő: A Hunyadi téri színház (list of manuscripts)", url: "https://adatbank.ro/inchtm.php?akod=1229" },
+          { t: "Salat-Zakariás Erzsébet: Janovics Jenő, a színész, a rendező, az irodalomtudós és a színházigazgató", url: "https://kultura.hu/a-szinpadtol-a-mozivaszonig-janovics-jeno-palyakepe/" }
+        ]
       },
       {
         id: "02-matthias",
@@ -324,6 +347,15 @@ Janovics a fost și un pionier al filmului – veți auzi această poveste la fi
         title: { en: "Birthplace of King Matthias", hu: "Mátyás király szülőháza", ro: "Casa natală a regelui Matia Corvin" },
         subtitle: { en: "Casa Matei Corvin · Mátyás király szülőháza", hu: "Mátyás király szülőháza", ro: "Casa Matei Corvin" },
         address: { en: "Str. Matei Corvin 6, Cluj-Napoca", hu: "Mátyás király utca (Str. Matei Corvin) 6, Kolozsvár", ro: "Str. Matei Corvin 6, Cluj-Napoca" },
+        readMore: [
+          { t: "Lupescu Radu: Mátyás király szülőháza, Kolozsvár", url: "https://lexikon.adatbank.ro/muemlek.php?id=325" },
+          { t: "Lupescu Radu: Casa Matia Corvin, Cluj-Napoca", url: "https://enciclopedie.transindex.adatbank.ro/monument.php?id=322" },
+          { t: "Lupescu Radu: Mátyás király szülőháza (Rubicon)", url: "https://rubicon.hu/hu/cikkek/matyas-kiraly-szulohaza" },
+          { t: "Kubinyi András: Mátyás király", url: "https://mandadb.hu/tetel/182454/Matyas_kiraly" },
+          { t: "Horváth Richárd: Mesék és sztereotípiák helyett: Mátyás király és uralkodása", url: "https://mta.hu/tudomany_hirei/mesek-es-sztereotipiak-helyett-matyas-kiraly-es-uralkodasa-108635" },
+          { t: "Ioan-Aurel Pop: Numele din familia regelui Matia Corvinul", url: "https://dspace.bcucluj.ro/bitstream/123456789/48214/1/Pop%2BIoan%2BAurel-Numele%2Bdin%2Bfamilia%2Bregelu%2BMatia%2BCorvinul-2008.pdf" },
+          { t: "Bibliotheca Corvina Virtualis – Országos Széchényi Könyvtár", url: "https://corvina.hu/" }
+        ],
         text: {
           en: `In this Gothic town house Matthias Hunyadi was born in 1443 – later King Matthias Corvinus. From 1458 to 1490 he ruled the Kingdom of Hungary and turned his court into one of the first centres of the Renaissance north of the Alps.
 
@@ -331,21 +363,21 @@ For the theatre, Matthias remains a grateful figure to this day. In popular trad
 
 In fact, when the Hungarian actors of Cluj gave their first performance in their own permanent theatre in 1821, they chose a play about him: “King Matthias” by László Szentjóbi Szabó.
 
-Today the house is used by the University of Art and Design. Art and Cluj still belong together here. Our next stop is the Hungarian Theatre, the company's home today.`,
+King Matthias Corvinus holds an important place in both Hungarian and Romanian historical memory: his family roots, humanist education and commitment to Renaissance culture make him a significant figure in our shared cultural heritage. Today the house is used by the University of Art and Design. Art and Cluj still belong together here. Our next stop is the Hungarian Theatre, the company's home today.`,
           hu: `Ebben a gótikus polgárházban született 1443-ban Hunyadi Mátyás, a későbbi Mátyás király. 1458 és 1490 között uralkodott a Magyar Királyság felett, udvarát pedig az Alpoktól északra a reneszánsz egyik első központjává tette.
 
 A színház számára Mátyás ma is hálás figura. A néphagyományban ő lett „Igazságos Mátyás”, aki álruhában járja az országot, leleplezi az igazságtalanságot és megszégyeníti a hatalmasokat. Ezeket a történeteket mesélték, énekelték és eljátszották – vásárokon, iskolákban és a nagy színpadokon.
 
 Amikor a kolozsvári magyar színészek 1821-ben első előadásukat tartották saját, állandó színházukban, róla szóló darabot választottak: Szentjóbi Szabó László „Mátyás király” című művét.
 
-Ma a Művészeti és Design Egyetem használja az épületet. A művészet és Kolozsvár itt ma is összetartozik. Következő állomásunk a Magyar Színház, a társulat mai otthona.`,
+Mátyás király alakja a magyar és a román történelmi emlékezetben egyaránt fontos helyet foglal el: családi gyökerei, humanista műveltsége és a reneszánsz kultúra iránti elkötelezettsége közös kulturális örökség meghatározó alakjává teszik. Ma a Művészeti és Design Egyetem használja az épületet. A művészet és Kolozsvár itt ma is összetartozik. Következő állomásunk a Magyar Színház, a társulat mai otthona.`,
           ro: `În această casă gotică s-a născut în 1443 Matia Hunyadi, viitorul rege Matia Corvin. Între 1458 și 1490 a condus Regatul Ungariei și a transformat curtea sa într-unul dintre primele centre ale Renașterii la nord de Alpi.
 
 Pentru teatru, Matia rămâne până astăzi un personaj îndrăgit. În tradiția populară a devenit „Matia cel Drept”, care cutreieră țara deghizat, descoperă nedreptățile și îi demască pe cei puternici. Aceste povești au fost spuse, cântate și jucate – la târguri, în școli și pe marile scene.
 
 De altfel, când actorii maghiari din Cluj au jucat pentru prima dată în propriul lor teatru permanent, în 1821, au ales o piesă despre el: „Regele Matia” de László Szentjóbi Szabó.
 
-Astăzi, clădirea este folosită de Universitatea de Artă și Design. Arta și Clujul sunt și aici strâns legate. Următoarea oprire este Teatrul Maghiar, casa de azi a trupei.`
+Regele Matia Corvin ocupă un loc important atât în memoria istorică maghiară, cât și în cea românească: rădăcinile sale familiale, cultura sa umanistă și atașamentul față de valorile Renașterii fac din el o personalitate marcantă a patrimoniului nostru cultural comun. Astăzi, clădirea este folosită de Universitatea de Artă și Design. Arta și Clujul sunt și aici strâns legate. Următoarea oprire este Teatrul Maghiar, casa de azi a trupei.`
         }
       },
       {
@@ -362,6 +394,13 @@ Astăzi, clădirea este folosită de Universitatea de Artă și Design. Arta și
             { src: "img/rephoto/black_white/summer-theatre-street.jpg", year: "1910s", credit: "enyedi", caption: { en: "The summer theatre seen from the street", hu: "A nyári színkör az utca felől", ro: "Teatrul de vară văzut din stradă" } }
           ]
         },
+        readMore: [
+          { t: "Demeter Kata: A kolozsvári Nyári Színkör épülete. Játéktér, 2017/2", url: "https://real-j.mtak.hu/27921/1/EPA02997_jatekter_2017_2.pdf" },
+          { t: "Kápolnási Zsolt: A kolozsvári mozihálózat kiépülése a századfordulón (1896–1918)", url: "https://filmtett.ro/cikk/1719/a-kolozsvari-mozihalozat-kiepulese-a-szazadfordulon-1896-1918" },
+          { t: "Balogh Gyöngyi: Filológiai útvesztőkben", url: "https://www.filmkultura.hu/regi/2002/articles/essays/bgyongyi2.hu.html" },
+          { t: "Beyond Everydayness – Exhibition of Theatre Architecture in Central Europe (catalogue, p. 32)", url: "https://www.theatre-architecture.eu/res/archive/068/007855.pdf" },
+          { t: "BME: Nemeuklideszi terek – Kolozsvár", url: "https://kozep.bme.hu/hirek/nemeuklideszi-terek-2" }
+        ],
         text: {
           en: `Welcome to the Hungarian Theatre of Cluj. From 1874 a wooden summer stage stood here at the entrance to the park. In 1910 Janovics replaced it with this brick theatre – and paid for it out of his own pocket. When the Hungarian company lost the great house on Hunyadi Square, it moved in here. In October 1919 Janovics opened the season – in a building without heating.
 
@@ -394,11 +433,6 @@ La peste două sute treizeci de ani după primul spectacol din sala de bal a con
         subtitle: { en: "Kertész Mihály · Michael Curtiz", hu: "Kertész Mihály · Michael Curtiz", ro: "Mihály Kertész · Michael Curtiz" },
         address: { en: "Str. Emil Isac 26–28 (behind the theatre)", hu: "Emil Isac utca 26–28 (a színház mögött)", ro: "Str. Emil Isac 26–28 (în spatele teatrului)" },
         media: [
-          img("15913-kep-13.4.1..jpg", {
-            en: "Film on the Cluj stage, 1899",
-            hu: "Film a kolozsvári színpadon, 1899",
-            ro: "Film pe scena clujeană, 1899"
-          }),
           img("15932-janovits.jpg", {
             en: "Jenő Janovics, theatre director and film pioneer",
             hu: "Janovics Jenő színigazgató, a film úttörője",
@@ -406,34 +440,66 @@ La peste două sute treizeci de ani după primul spectacol din sala de bal a con
           }),
           img("casa_blanca.png", { en: "On the set of “Casablanca” (1942): Humphrey Bogart and Ingrid Bergman", hu: "A „Casablanca” forgatásán (1942): Humphrey Bogart és Ingrid Bergman", ro: "La filmările pentru „Casablanca” (1942): Humphrey Bogart și Ingrid Bergman" })
         ],
+        readMore: [
+          { t: "Zágoni Bálint – Kurutz Márton: Janovics Jenő – A kolozsvári filmgyártás megteremtője (NFI)", url: "https://nfi.hu/filmarchivum/hirek-1/janovics-jeno-a-kolozsvari-filmgyartas-megteremtoje.html" },
+          { t: "Meghiúsult tervek és félreértett címek: pontosítások a Janovics Jenő kolozsvári filmgyárában készült produkciók kapcsán", url: "https://filmtett.ro/cikk/meghiusult-tervek-es-felreertett-cimek-janovics-kolozsvari-filmgyar-pontositasok-tanulmany" },
+          { t: "Balogh Gyöngyi – Zágoni Bálint (szerk.): A kolozsvári filmgyártás képes története 1913-tól 1920-ig", url: "https://filmtett.ro/32305/balogh-gyongyi-zagoni-balint-szerk-a-kolozsvari-filmgyartas-kepes-tortenete-1913-tol-1920-ig/" },
+          { t: "Janovics Jenő munkássága a két világháború között – A némafilmektől a híradó- és oktatófilmekig", url: "https://filmtett.ro/cikk/a-nemafilmektol-a-hirado-es-oktatofilmekig-janovics-jeno-munkassaga-a-ket-vilaghaboru-kozott" },
+          { t: "Kolozsvári Állami Magyar Színház: Műszaki leírás – Stúdióterem", url: "https://www.huntheater.ro/a-szinhaz/muszaki-leiras/" },
+          { t: "Hungarian Theatre of Cluj: Janovics (performance)", url: "https://www.huntheater.ro/en/shows/661/janovics/" }
+        ],
         text: {
-          en: `Jenő Janovics was fascinated by film long before most theatre people took it seriously. As early as 1907 he was filming in the streets of Kolozsvár, and in 1913 his film “The Yellow Foal”, made together with the French company Pathé, was shown in almost forty countries. By 1920 his studio had produced more than sixty silent films. It stood right here, in the courtyard of the summer theatre, today's Hungarian Theatre: a simple hall with a glass roof. Many scenes were shot outdoors, here in the park. With the money from his 26 cinemas he kept the theatre alive.
+          en: `The present-day Studio Theatre was built in 2008, during Gábor Tompa’s tenure as artistic director, based on designs by architect Teodor Raiciu, on the site where Jenő Janovics’s film studio once stood.
 
-Janovics brought young talent to Kolozsvár. One was Mihály Kertész from Budapest. In 1914 Kertész directed “A tolonc” for him, shot in Kolozsvár and in the Turda Gorge, with the great Mari Jászai. It is the only film with her that survives: an English copy turned up in the basement of the Hungarian House in New York. Another was Sándor Korda, later Sir Alexander Korda, one of the great producers of British cinema.
+Jenő Janovics was fascinated by cinema at a time when most theatre professionals did not yet take it seriously. As early as 1907, he was filming on the streets of Cluj, and in 1913, his film The Yellow Foal, produced in collaboration with the French company Pathé, was screened in nearly forty countries. By 1920, his studio had produced more than sixty silent films. His film studio stood right here, in the courtyard of the Summer Theatre, today’s Hungarian Theatre: a simple glass-roofed hall. Many scenes were filmed outdoors, right here in Central Park. He also used the revenue from his cinemas to support the theatre.
 
-Kertész went to Hollywood and called himself Michael Curtiz. In 1942 he made “Casablanca” there, starring Humphrey Bogart and Ingrid Bergman, and won the Oscar for Best Director. In front of the camera there were Hungarians too: Peter Lorre, born László Löwenstein, and S. Z. Sakall, known in Budapest as Szőke Szakáll.
+Janovics brought young talents to Cluj. One of them was Mihály Kertész from Budapest. In 1914, Kertész directed The Undesirable for Janovics, featuring Mari Jászai, a legendary figure of Hungarian theatre. It is the only surviving film featuring Mari Jászai: an English-language print was discovered in the basement of the Hungarian House in New York. Another young talent was Sándor Korda, later known as Sir Alexander Korda, one of the most prominent producers in British cinema.
 
-“I think this is the beginning of a beautiful friendship” – and a piece of this story began here, in Kolozsvár.
+Kertész went to Hollywood, where he became internationally famous under the name Michael Curtiz. In 1942, he directed Casablanca, starring Humphrey Bogart and Ingrid Bergman, for which he received the Academy Award for Best Director. Actors of Hungarian origin also appeared in front of the camera: Peter Lorre, born László Löwenstein, and S. Z. Sakall, known in Budapest as Szőke Szakáll.
 
-This is where our walk ends. Thank you for joining us! If you still have time, two optional stops await you: the theatre's Documentation Centre and the Central Cemetery. We would be delighted to welcome you in our audience soon.`,
-          hu: `Janovics Jenőt már akkor lenyűgözte a film, amikor a legtöbb színházi ember még nem vette komolyan. Már 1907-ben forgatott Kolozsvár utcáin, és 1913-ban a francia Pathé céggel közösen készített filmjét, a „Sárga csikót” csaknem negyven országban vetítették. 1920-ig stúdiója több mint hatvan némafilmet készített. Éppen itt állt, a nyári színkör, a mai Magyar Színház udvarán: egy egyszerű, üvegtetős csarnok. Sok jelenetet a szabadban forgattak, itt, a Sétatéren. Huszonhat mozijának bevételéből tartotta életben a színházat.
+“I think this is the beginning of a beautiful friendship” – and part of this story began right here, in Cluj.
 
-Janovics fiatal tehetségeket hozott Kolozsvárra. Egyikük a budapesti Kertész Mihály volt. 1914-ben Kertész rendezte neki „A tolonc” című filmet, amelyet Kolozsváron és a Tordai-hasadékban forgattak, a nagy Jászai Marival. Ez az egyetlen fennmaradt filmje: angol nyelvű kópiája a New York-i Magyar Ház pincéjéből került elő. Egy másik Korda Sándor volt, a későbbi Sir Alexander Korda, a brit filmgyártás egyik legnagyobb producere.
+This is where our walk comes to an end. Thank you for joining us! If you still have some time, two additional, optional stops await you.
 
-Kertész Hollywoodba ment, és Michael Curtiznek nevezte magát. 1942-ben ott forgatta a „Casablancát” Humphrey Bogart és Ingrid Bergman főszereplésével, és megkapta a legjobb rendezőnek járó Oscar-díjat. A kamera előtt magyarok is álltak: Peter Lorre, született Löwenstein László, és S. Z. Sakall, akit Budapesten Szőke Szakállként ismertek.
+At the theatre’s Documentation Centre, many elements of the story you have just discovered come to life through original documents, historical objects, plays, scripts, playbills and photographs.
+
+At the Házsongárd Cemetery (Central Cemetery), you can find the resting places of many of the theatre personalities you have encountered along the way. A peaceful walk among centuries-old gravestones, in the shade of the trees, can be a fitting conclusion to this journey through history.
+
+Feeling tired? It might be time for a little break! Thank you for joining us, enjoy discovering more of Cluj, and we hope to see you in the theatre audience soon!`,
+          hu: `A mai Stúdiószínház 2008-ban, Tompa Gábor igazgatása idején, Teodor Raiciu építész tervei alapján épült, azon a helyen, ahol egykor Janovics Jenő filmstúdiója működött.
+
+Janovics Jenőt már akkor lenyűgözte a film, amikor a legtöbb színházi ember még nem vette komolyan. Már 1907-ben forgatott Kolozsvár utcáin, és 1913-ban a francia Pathé céggel közösen készített filmjét, a „Sárga csikót” csaknem negyven országban vetítették. 1920-ig stúdiója több mint hatvan némafilmet készített. Éppen itt állt a műterme, a Nyári Színkör, a mai Magyar Színház udvarán: egy egyszerű, üvegtetős csarnok. Sok jelenetet a szabadban forgattak, itt, a Sétatéren. Mozijainak bevételéből a színház működését is finanszírozta.
+
+Janovics fiatal tehetségeket hozott Kolozsvárra. Egyikük a budapesti Kertész Mihály volt. 1914-ben Kertész rendezte neki „A tolonc” című filmet, amelyben a magyar színjátszás legendás alakja, Jászai Mari is szerepelt. Ez Jászai Mari egyetlen fennmaradt filmje: angol nyelvű kópiája a New York-i Magyar Ház pincéjéből került elő. Egy másik fiatal tehetség Korda Sándor volt, a későbbi Sir Alexander Korda, a brit filmgyártás egyik legjelentősebb producere.
+
+Kertész Hollywoodba ment, és Michael Curtiz néven vált világhírűvé. 1942-ben ott forgatta a „Casablancát” Humphrey Bogart és Ingrid Bergman főszereplésével, amelyért megkapta a legjobb rendezőnek járó Oscar-díjat. A kamera előtt magyar származású színészek is álltak: Peter Lorre, született Löwenstein László, és S. Z. Sakall, akit Budapesten Szőke Szakállként ismertek.
 
 „Azt hiszem, ez egy gyönyörű barátság kezdete” – és ennek a történetnek egy darabja itt, Kolozsváron kezdődött.
 
-Itt ér véget sétánk. Köszönjük, hogy velünk tartott! Ha még van ideje, két választható állomás várja: a színház Dokumentációs Központja és a Házsongárdi temető. Szeretettel várjuk hamarosan a nézőtéren!`,
-          ro: `Jenő Janovics era fascinat de film cu mult înainte ca majoritatea oamenilor de teatru să-l ia în serios. Încă din 1907 filma pe străzile Clujului, iar în 1913 filmul său „Mânzul galben”, realizat împreună cu compania franceză Pathé, a fost prezentat în aproape patruzeci de țări. Până în 1920, studioul său a produs peste șaizeci de filme mute. Se afla chiar aici, în curtea teatrului de vară, azi Teatrul Maghiar: o hală simplă, cu acoperiș de sticlă. Multe scene au fost filmate în aer liber, aici, în parc. Cu banii din cele 26 de cinematografe ale sale a ținut în viață teatrul.
+Itt ér véget sétánk. Köszönjük, hogy velünk tartott! Ha még van ideje, két további, választható állomás várja.
 
-Janovics a adus la Cluj tineri talentați. Unul dintre ei a fost Mihály Kertész, din Budapesta. În 1914, Kertész a regizat pentru el filmul „A tolonc”, turnat la Cluj și în Cheile Turzii, cu marea Mari Jászai. Este singurul film cu ea care s-a păstrat: o copie în limba engleză a fost găsită în subsolul Casei Maghiare din New York. Altul a fost Sándor Korda, viitorul Sir Alexander Korda, unul dintre marii producători ai cinematografiei britanice.
+A színház Dokumentációs Tárában az imént megismert történet számos emléke elevenedik meg eredeti dokumentumok, korabeli tárgyak, színdarabok, szövegkönyvek, színlapok és fényképek révén.
 
-Kertész a plecat la Hollywood și și-a luat numele de Michael Curtiz. În 1942 a realizat acolo „Casablanca”, cu Humphrey Bogart și Ingrid Bergman, și a primit Premiul Oscar pentru cea mai bună regie. În fața camerei au jucat și maghiari: Peter Lorre, născut László Löwenstein, și S. Z. Sakall, cunoscut la Budapesta drept Szőke Szakáll.
+A Házsongárdi temetőben pedig megtalálhatja a sétánk során megismert számos színházi személyiség nyughelyét. Az évszázados síremlékek között, a fák árnyékában tett séta méltó és nyugalmas lezárása lehet ennek a történelmi utazásnak.
 
-„Cred că acesta este începutul unei frumoase prietenii” – iar o parte din această poveste a început aici, la Cluj.
+Ha elfáradt, itt az ideje egy kis pihenésnek! Köszönjük, hogy velünk tartott, további szép felfedezéseket kívánunk Kolozsváron, és reméljük, hamarosan a színház nézőterén is találkozunk!`,
+          ro: `Actuala Sală Studio a fost construită în anul 2008, în perioada directoratului lui Gábor Tompa, după planurile arhitectului Teodor Raiciu, pe locul unde odinioară funcționa studioul cinematografic al lui Jenő Janovics.
 
-Aici se încheie plimbarea noastră. Vă mulțumim că ne-ați însoțit! Dacă mai aveți timp, vă așteaptă două opriri opționale: Centrul de Documentare al teatrului și Cimitirul Central. Ne-ar bucura să vă revedem curând în sală.`
+Jenő Janovics era fascinat de cinematografie într-o perioadă în care majoritatea oamenilor de teatru încă nu o luau în serios. Încă din 1907 filma pe străzile Clujului, iar în 1913 filmul său Mânzul galben, realizat în colaborare cu compania franceză Pathé, a fost proiectat în aproape patruzeci de țări. Până în 1920, studioul său a produs peste șaizeci de filme mute. Studioul cinematografic se afla chiar aici, în curtea Teatrului de Vară, actualul Teatru Maghiar: o hală simplă, cu acoperiș de sticlă. Numeroase scene au fost filmate în aer liber, chiar aici, în Parcul Central. Din veniturile cinematografelor sale, Janovics susținea și activitatea teatrului.
+
+Janovics a atras la Cluj tinere talente. Unul dintre acestea a fost Mihály Kertész, originar din Budapesta. În 1914, Kertész a regizat pentru Janovics filmul A tolonc (Deportata), în care a jucat și Mari Jászai, o personalitate legendară a teatrului maghiar. Acesta este singurul film păstrat în care apare Mari Jászai: o copie în limba engleză a fost descoperită în subsolul Casei Maghiare din New York. Un alt tânăr talent a fost Sándor Korda, cunoscut mai târziu sub numele de Sir Alexander Korda, unul dintre cei mai importanți producători ai cinematografiei britanice.
+
+Kertész a plecat la Hollywood, unde a devenit celebru în întreaga lume sub numele de Michael Curtiz. În 1942 a regizat filmul Casablanca, cu Humphrey Bogart și Ingrid Bergman în rolurile principale, pentru care a primit premiul Oscar pentru cea mai bună regie. În fața camerei s-au aflat și actori de origine maghiară: Peter Lorre, născut László Löwenstein, și S. Z. Sakall, cunoscut la Budapesta sub numele de Szőke Szakáll.
+
+„Cred că acesta este începutul unei frumoase prietenii” – iar o parte din această poveste a început chiar aici, la Cluj.
+
+Aici se încheie plimbarea noastră. Vă mulțumim că ne-ați însoțit! Dacă mai aveți timp, vă așteaptă încă două opriri opționale.
+
+În Centrul de Documentare al teatrului, numeroase mărturii ale istoriei pe care tocmai ați descoperit-o prind viață prin documente originale, obiecte de epocă, piese de teatru, texte dramatice, afișe de spectacol și fotografii.
+
+În Cimitirul Central (Házsongárd) veți putea descoperi locurile de veci ale multor personalități teatrale pe care le-ați întâlnit pe parcursul traseului. O plimbare liniștită printre monumentele funerare vechi de secole, la umbra copacilor, poate fi o încheiere potrivită a acestei călătorii în istorie.
+
+Ați obosit? Poate că este timpul pentru o mică pauză! Vă mulțumim că ne-ați însoțit, vă dorim noi descoperiri frumoase la Cluj și sperăm să ne revedem curând în sala de spectacole!`
         },
         activity: {
           icon: "🎬",
@@ -455,60 +521,83 @@ Aici se încheie plimbarea noastră. Vă mulțumim că ne-ați însoțit! Dacă 
         optional: true,
         year: "",
         coords: [46.767892, 23.587263],
-        title: { en: "Documentation Centre of the Hungarian Theatre", hu: "A Magyar Színház Dokumentációs Központja", ro: "Centrul de Documentare al Teatrului Maghiar", tr: "Macar Tiyatrosu Dokümantasyon Merkezi", fa: "مرکز اسناد تئاتر مجاری", es: "Centro de Documentación del Teatro Húngaro", ca: "Centre de Documentació del Teatre Hongarès", de: "Dokumentationszentrum des Ungarischen Theaters", ar: "مركز توثيق المسرح المجري", fr: "Centre de documentation du Théâtre hongrois" },
+        title: { en: "Documentation Centre of the Hungarian Theatre", hu: "A Magyar Színház Dokumentációs Tára", ro: "Centrul de Documentare al Teatrului Maghiar", tr: "Macar Tiyatrosu Dokümantasyon Merkezi", fa: "مرکز اسناد تئاتر مجاری", es: "Centro de Documentación del Teatro Húngaro", ca: "Centre de Documentació del Teatre Hongarès", de: "Dokumentationszentrum des Ungarischen Theaters", ar: "مركز توثيق المسرح المجري", fr: "Centre de documentation du Théâtre hongrois" },
         subtitle: { en: "The theatre's memory", hu: "A színház emlékezete", ro: "Memoria teatrului", tr: "Tiyatronun belleği", fa: "حافظهٔ تئاتر", es: "La memoria del teatro", ca: "La memòria del teatre", de: "Das Gedächtnis des Theaters", ar: "ذاكرة المسرح", fr: "La mémoire du théâtre" },
         address: { en: "Str. Napoca 16, corner of Str. Samuil Micu", hu: "Napoca utca 16, a Samuil Micu utca sarkán", ro: "Str. Napoca 16, colț cu Str. Samuil Micu", tr: "Str. Napoca 16, Str. Samuil Micu köşesi", fa: "خیابان ناپوکا ۱۶، نبش خیابان ساموئیل میکو", es: "Str. Napoca 16, esquina con Str. Samuil Micu", ca: "Str. Napoca 16, cantonada amb Str. Samuil Micu", de: "Str. Napoca 16, Ecke Str. Samuil Micu", ar: "شارع نابوكا 16، عند تقاطعه مع شارع صموئيل ميكو", fr: "Str. Napoca 16, à l’angle de la Str. Samuil Micu" },
+        media: [
+          { src: "img/photos/doktar.jpg", caption: { en: "In the Documentation Centre of the Hungarian Theatre", hu: "A Magyar Színház Dokumentációs Tárában", ro: "În Centrul de Documentare al Teatrului Maghiar", tr: "Macar Tiyatrosu Dokümantasyon Merkezi'nde", fa: "در مرکز اسناد تئاتر مجاری", es: "En el Centro de Documentación del Teatro Húngaro", ca: "Al Centre de Documentació del Teatre Hongarès", de: "Im Dokumentationszentrum des Ungarischen Theaters", ar: "في مركز توثيق المسرح المجري", fr: "Au Centre de documentation du Théâtre hongrois" } }
+        ],
         text: {
-          en: `Behind these walls the Hungarian Theatre of Cluj keeps its memory. Its Documentation Centre collects what remains of a performance: photographs, playbills, programmes, letters and designs – traces of more than two hundred and thirty years of theatre.
+          en: `The theatre’s Documentation Centre preserves more than two centuries of theatrical heritage. Its collection includes numerous handwritten plays from the 19th century, scripts, historical playbills, photographs, costume designs and memorabilia, including valuable objects and documents dating back to the era of Jenő Janovics. The collection continues to grow with materials related to the theatre’s productions.
 
-Many pictures in this app come from here, and so do many of its stories. The theatre historian Erzsébet Zakariás has written about the stone theatre on Farkas Street and about Jenő Janovics, the “creator of the Transylvanian Hollywood”. For the theatre's 230th birthday in 2022 she led a walk along almost the same route as this tour.
+The process of separating and systematically organising materials of historical value was initiated by theatre historian Erzsébet Salat-Zakariás in the early 1990s. Since 2022, the Documentation Centre has been headed by Tünde Kocsis, theatre pedagogue and archivist.
 
-A performance exists only once. Without archives like this one, the candlelit evenings in Countess Rhédey's ballroom would long be forgotten.`,
-          hu: `Ezek mögött a falak mögött őrzi emlékezetét a Kolozsvári Állami Magyar Színház. Dokumentációs Központja azt gyűjti, ami egy előadásból megmarad: fényképeket, színlapokat, műsorfüzeteket, leveleket és terveket – több mint kétszázharminc év színházának nyomait.
+The Centre is open daily from 12 noon to 4 pm, primarily for researchers, but it also warmly welcomes visitors, who can request a guided tour.
 
-Az alkalmazás számos képe innen származik, és sok története is. Zakariás Erzsébet színháztörténész írt a Farkas utcai kőszínházról és Janovics Jenőről, „az erdélyi Hollywood megteremtőjéről”. A színház 230. születésnapján, 2022-ben szinte ugyanezen az útvonalon vezetett sétát.
+If you are curious to discover the original documents and objects behind the stories you have just encountered, this place is well worth a visit. Here, the past becomes tangible, and previously hidden stories come to light.`,
+          hu: `A színház Dokumentációs Tára több mint két évszázad színháztörténeti örökségét őrzi. Gyűjteményében számos 19. századi kézzel írott színmű, szövegkönyv, korabeli színlap, fénykép, jelmezterv és emléktárgy található, köztük Janovics Jenő korszakából fennmaradt értékes tárgyak és dokumentumok. A gyűjtemény folyamatosan gyarapszik a színház előadásaihoz kapcsolódó anyagokkal.
 
-Minden előadás csak egyszer létezik. Az ilyen archívumok nélkül a Rhédey grófné báltermében töltött gyertyafényes esték rég feledésbe merültek volna.`,
-          ro: `În spatele acestor ziduri, Teatrul Maghiar de Stat din Cluj își păstrează memoria. Centrul său de Documentare adună ceea ce rămâne dintr-un spectacol: fotografii, afișe, caiete-program, scrisori și schițe – urmele a peste două sute treizeci de ani de teatru.
+A történeti értékű anyagok elkülönítését és szisztematikus rendszerezését Salat-Zakariás Erzsébet színháztörténész kezdte meg az 1990-es évek elején. A Dokumentációs Tárat 2022 óta Kocsis Tünde színházpedagógus és archivárius vezeti.
 
-Multe dintre imaginile din această aplicație provin de aici, la fel ca multe dintre povești. Istoricul de teatru Erzsébet Zakariás a scris despre teatrul de piatră de pe strada Farkas și despre Jenő Janovics, „creatorul Hollywoodului transilvănean”. La aniversarea de 230 de ani a teatrului, în 2022, ea a condus o plimbare pe aproape același traseu ca acest tur.
+A Tár naponta 12 és 16 óra között tart nyitva, elsősorban kutatók számára, de szeretettel várja az érdeklődő látogatókat is, akik igény szerint tárlatvezetést kérhetnek.
 
-Un spectacol există o singură dată. Fără arhive ca aceasta, serile la lumina lumânărilor din sala de bal a contesei Rhédey ar fi fost demult uitate.`,
-          tr: `Cluj Macar Tiyatrosu belleğini bu duvarların ardında saklıyor. Dokümantasyon Merkezi, bir gösteriden geriye kalanları topluyor: fotoğraflar, afişler, programlar, mektuplar ve tasarımlar; iki yüz otuz yılı aşkın tiyatronun izleri.
+Ha kíváncsi arra, milyen eredeti dokumentumok és tárgyak mesélnek az imént megismert történetekről, érdemes ellátogatnia ide. A múlt itt kézzelfogható közelségbe kerül, és újabb, eddig rejtett történetek tárulnak fel.`,
+          ro: `Centrul de Documentare al teatrului păstrează un patrimoniu teatral de peste două secole. Colecția sa cuprinde numeroase piese de teatru în manuscris din secolul al XIX-lea, texte dramatice, afișe de epocă, fotografii, schițe de costume și obiecte memoriale, printre care obiecte și documente valoroase din perioada lui Jenő Janovics. Colecția se îmbogățește continuu cu materiale legate de spectacolele teatrului.
 
-Bu uygulamadaki görsellerin ve öykülerin birçoğu buradan geliyor. Tiyatro tarihçisi Erzsébet Zakariás, Farkas Caddesi'ndeki taş tiyatroyu ve “Transilvanya Hollywood'unun yaratıcısı” Jenő Janovics'i yazdı. 2022'de tiyatronun 230. doğum gününde, bu turla neredeyse aynı güzergâhta bir yürüyüşe rehberlik etti.
+Separarea și organizarea sistematică a materialelor cu valoare istorică au fost inițiate la începutul anilor 1990 de către istoricul de teatru Erzsébet Salat-Zakariás. Din 2022, Centrul de Documentare este coordonat de Tünde Kocsis, pedagog teatral și arhivist.
 
-Her gösteri yalnızca bir kez var olur. Böyle arşivler olmasaydı, Kontes Rhédey'nin balo salonundaki mum ışığında geçen akşamlar çoktan unutulurdu.`,
-          fa: `تئاتر مجاری کلوژ حافظهٔ خود را پشت این دیوارها نگه می‌دارد. مرکز اسناد آن، آنچه را از یک اجرا باقی می‌ماند گرد می‌آورد: عکس‌ها، پوسترها، بروشورها، نامه‌ها و طرح‌ها؛ ردپای بیش از دویست‌وسی سال تئاتر.
+Centrul este deschis zilnic între orele 12:00 și 16:00, fiind destinat în primul rând cercetătorilor, dar îi întâmpină cu drag și pe vizitatorii interesați, care pot solicita un tur ghidat.
 
-بسیاری از تصاویر و داستان‌های این برنامه از همین‌جا آمده‌اند. اِرژبت زاکاریاش، تاریخ‌نگار تئاتر، دربارهٔ تئاتر سنگی خیابان فارکاش و دربارهٔ یِنو یانوویچ، «آفرینندهٔ هالیوود ترانسیلوانیا»، نوشته است. او در سال ۲۰۲۲، در دویست‌وسی‌امین سالگرد تئاتر، گردشی را تقریباً در همین مسیر راهنمایی کرد.
+Dacă sunteți curioși să descoperiți documentele și obiectele originale din spatele poveștilor pe care tocmai le-ați cunoscut, merită să vizitați acest loc. Aici, trecutul devine palpabil, iar povești până acum ascunse ies la lumină.`,
+          tr: `Tiyatronun Dokümantasyon Merkezi, iki yüzyılı aşkın bir tiyatro mirasını koruyor. Koleksiyonunda 19. yüzyıldan kalma çok sayıda el yazması oyun, metin, dönem afişleri, fotoğraflar, kostüm tasarımları ve hatıra eşyaları, bunların arasında Jenő Janovics döneminden kalma değerli nesneler ve belgeler bulunuyor. Koleksiyon, tiyatronun yapımlarıyla ilgili malzemelerle sürekli zenginleşiyor.
 
-هر اجرا تنها یک بار وجود دارد. بی چنین بایگانی‌هایی، شب‌های شمع‌افروز تالار رقص کنتس رِه‌دی مدت‌ها پیش از یاد رفته بود.`,
-          es: `Tras estos muros, el Teatro Húngaro de Cluj guarda su memoria. Su Centro de Documentación reúne lo que queda de una función: fotografías, carteles, programas de mano, cartas y bocetos, huellas de más de doscientos treinta años de teatro.
+Tarihî değeri olan malzemelerin ayrılması ve sistemli biçimde düzenlenmesi, 1990'ların başında tiyatro tarihçisi Erzsébet Salat-Zakariás tarafından başlatıldı. Merkezi 2022'den bu yana tiyatro pedagogu ve arşivci Tünde Kocsis yönetiyor.
 
-Muchas imágenes de esta aplicación proceden de aquí, y también muchas de sus historias. La historiadora del teatro Erzsébet Zakariás ha escrito sobre el teatro de piedra de la calle Farkas y sobre Jenő Janovics, el «creador del Hollywood transilvano». En 2022, en el 230 aniversario del teatro, guio un paseo casi por la misma ruta que este recorrido.
+Merkez her gün 12.00–16.00 arasında açık; öncelikle araştırmacılara hizmet veriyor, ancak ilgilenen ziyaretçileri de memnuniyetle ağırlıyor. Ziyaretçiler isterlerse rehberli tur talep edebilir.
 
-Cada función existe una sola vez. Sin archivos como este, las veladas a la luz de las velas en el salón de baile de la condesa Rhédey se habrían olvidado hace mucho.`,
-          ca: `Darrere d’aquests murs, el Teatre Hongarès de Cluj guarda la seva memòria. El seu Centre de Documentació recull el que queda d’una funció: fotografies, cartells, programes de mà, cartes i esbossos, empremtes de més de dos-cents trenta anys de teatre.
+Az önce dinlediğiniz öykülerin ardındaki özgün belgeleri ve nesneleri merak ediyorsanız, burası ziyarete değer. Burada geçmiş elle tutulur hâle geliyor ve şimdiye dek gizli kalmış öyküler gün yüzüne çıkıyor.`,
+          fa: `مرکز اسناد تئاتر میراثی تئاتری از بیش از دو سده را نگهداری می‌کند. مجموعهٔ آن شامل شمار زیادی نمایشنامهٔ دست‌نویس سدهٔ نوزدهم، متن‌های اجرا، پوسترهای تاریخی، عکس‌ها، طرح‌های لباس و یادگارهاست؛ از جمله اشیا و اسناد ارزشمندی از دوران یِنو یانوویچ. این مجموعه با مواد مربوط به اجراهای تئاتر پیوسته گسترش می‌یابد.
 
-Moltes imatges d’aquesta aplicació provenen d’aquí, i també moltes de les seves històries. La historiadora del teatre Erzsébet Zakariás ha escrit sobre el teatre de pedra del carrer Farkas i sobre Jenő Janovics, el «creador del Hollywood transsilvà». El 2022, en el 230è aniversari del teatre, va guiar un passeig gairebé pel mateix itinerari que aquest recorregut.
+جداسازی و سامان‌دهی نظام‌مند مواد دارای ارزش تاریخی را اِرژبت شَلات-زاکاریاش، تاریخ‌نگار تئاتر، در آغاز دههٔ ۱۹۹۰ آغاز کرد. از سال ۲۰۲۲ مدیریت مرکز اسناد بر عهدهٔ توندِه کوچیش، مربی تئاتر و بایگان، است.
 
-Cada funció existeix una sola vegada. Sense arxius com aquest, les vetllades a la llum de les espelmes al saló de ball de la comtessa Rhédey ja s’haurien oblidat fa temps.`,
-          de: `Hinter diesen Mauern bewahrt das Ungarische Theater Cluj sein Gedächtnis. Sein Dokumentationszentrum sammelt, was von einer Aufführung bleibt: Fotos, Theaterzettel, Programmhefte, Briefe und Entwürfe – Spuren von mehr als 230 Jahren Theater.
+این مرکز هر روز از ساعت ۱۲ تا ۱۶ باز است و در درجهٔ نخست به پژوهشگران خدمت می‌کند، اما بازدیدکنندگان علاقه‌مند را نیز با گرمی می‌پذیرد؛ آنان می‌توانند درخواست بازدید همراه با راهنما کنند.
 
-Viele Bilder in dieser App stammen von hier, und viele ihrer Geschichten ebenso. Die Theaterhistorikerin Erzsébet Zakariás hat über das Steintheater in der Farkas-Straße geschrieben und über Jenő Janovics, den „Schöpfer des siebenbürgischen Hollywood“. Zum 230. Geburtstag des Theaters 2022 führte sie einen Rundgang fast auf derselben Route wie diese Tour.
+اگر کنجکاوید اسناد و اشیای اصلی پشت داستان‌هایی را که هم‌اکنون شنیدید ببینید، این مکان ارزش بازدید دارد. اینجا گذشته ملموس می‌شود و داستان‌هایی که تاکنون پنهان مانده بودند آشکار می‌شوند.`,
+          es: `El Centro de Documentación del teatro conserva un patrimonio teatral de más de dos siglos. Su colección incluye numerosas obras manuscritas del siglo XIX, libretos, carteles de época, fotografías, figurines de vestuario y objetos de recuerdo, entre ellos valiosos objetos y documentos de la época de Jenő Janovics. La colección sigue creciendo con materiales relacionados con los montajes del teatro.
 
-Jede Aufführung gibt es nur ein einziges Mal. Ohne Archive wie dieses wären die Abende bei Kerzenlicht im Ballsaal der Gräfin Rhédey längst vergessen.`,
-          ar: `خلف هذه الجدران يحفظ المسرح المجري في كلوج ذاكرته. يجمع مركز التوثيق التابع له ما يبقى من العرض: صورًا وملصقات وكتيّبات برامج ورسائل وتصاميم، آثار أكثر من مئتين وثلاثين عامًا من المسرح.
+La separación y la organización sistemática de los materiales de valor histórico las inició a comienzos de la década de 1990 la historiadora del teatro Erzsébet Salat-Zakariás. Desde 2022 dirige el Centro Tünde Kocsis, pedagoga teatral y archivera.
 
-كثير من صور هذا التطبيق وحكاياته مصدره هنا. كتبت مؤرخة المسرح إرجيبت زاكارياش عن المسرح الحجري في شارع فاركاش، وعن يينو يانوفيتش، «صانع هوليوود ترانسيلفانيا». وفي عام 2022، في الذكرى المئتين والثلاثين لتأسيس المسرح، قادت جولة على المسار نفسه تقريبًا الذي تسلكه هذه الجولة.
+El Centro abre todos los días de 12:00 a 16:00, principalmente para investigadores, pero también recibe con gusto a los visitantes interesados, que pueden solicitar una visita guiada.
 
-كل عرض لا يحدث إلا مرة واحدة. ولولا أرشيفات كهذا، لطُويت منذ زمن بعيد أمسيات الشموع في قاعة رقص الكونتيسة رِهْدي.`,
-          fr: `Derrière ces murs, le Théâtre hongrois de Cluj conserve sa mémoire. Son Centre de documentation rassemble ce qui reste d’une représentation : photographies, affiches, programmes, lettres et maquettes, traces de plus de deux cent trente ans de théâtre.
+Si sientes curiosidad por ver los documentos y objetos originales que hay detrás de las historias que acabas de conocer, merece la pena visitarlo. Aquí el pasado se vuelve tangible y salen a la luz historias hasta ahora ocultas.`,
+          ca: `El Centre de Documentació del teatre conserva un patrimoni teatral de més de dos segles. La seva col·lecció inclou nombroses obres manuscrites del segle XIX, llibrets, cartells d’època, fotografies, figurins de vestuari i objectes de record, entre els quals objectes i documents valuosos de l’època de Jenő Janovics. La col·lecció continua creixent amb materials relacionats amb els muntatges del teatre.
 
-Beaucoup d’images de cette application viennent d’ici, tout comme beaucoup de ses histoires. L’historienne du théâtre Erzsébet Zakariás a écrit sur le théâtre de pierre de la rue Farkas et sur Jenő Janovics, le « créateur du Hollywood transylvain ». Pour les 230 ans du théâtre, en 2022, elle a guidé une promenade presque sur le même itinéraire que cette visite.
+La separació i l’organització sistemàtica dels materials de valor històric les va iniciar a principis dels anys noranta la historiadora del teatre Erzsébet Salat-Zakariás. Des del 2022 dirigeix el Centre Tünde Kocsis, pedagoga teatral i arxivera.
 
-Chaque représentation n’existe qu’une seule fois. Sans des archives comme celles-ci, les soirées aux chandelles dans la salle de bal de la comtesse Rhédey seraient oubliées depuis longtemps.`
+El Centre obre cada dia de 12 a 16 h, principalment per a investigadors, però també rep amb molt de gust els visitants interessats, que poden demanar una visita guiada.
+
+Si tens curiositat per veure els documents i objectes originals que hi ha darrere de les històries que acabes de conèixer, val la pena visitar-lo. Aquí el passat es fa tangible i surten a la llum històries fins ara amagades.`,
+          de: `Das Dokumentationszentrum des Theaters bewahrt ein Theatererbe aus mehr als zwei Jahrhunderten. Zur Sammlung gehören zahlreiche handgeschriebene Stücke aus dem 19. Jahrhundert, Textbücher, historische Theaterzettel, Fotografien, Kostümentwürfe und Erinnerungsstücke, darunter wertvolle Gegenstände und Dokumente aus der Ära von Jenő Janovics. Die Sammlung wächst ständig um Material zu den Inszenierungen des Theaters.
+
+Mit der Aussonderung und systematischen Ordnung der historisch wertvollen Bestände begann die Theaterhistorikerin Erzsébet Salat-Zakariás Anfang der 1990er-Jahre. Seit 2022 leitet die Theaterpädagogin und Archivarin Tünde Kocsis das Dokumentationszentrum.
+
+Das Zentrum ist täglich von 12 bis 16 Uhr geöffnet, vor allem für Forschende, heißt aber auch interessierte Besucherinnen und Besucher herzlich willkommen; auf Wunsch gibt es eine Führung.
+
+Wenn du neugierig bist, welche Originaldokumente und Gegenstände hinter den Geschichten stehen, die du gerade gehört hast, lohnt sich ein Besuch. Hier wird die Vergangenheit greifbar, und bisher verborgene Geschichten kommen ans Licht.`,
+          ar: `يحفظ مركز التوثيق التابع للمسرح تراثًا مسرحيًا يمتد لأكثر من قرنين. وتضم مجموعته مسرحيات كثيرة مكتوبة بخط اليد من القرن التاسع عشر، ونصوصًا مسرحية، وملصقات عروض تاريخية، وصورًا، وتصاميم أزياء، وتذكارات، من بينها قطع ووثائق قيّمة من عهد يينو يانوفيتش. وتنمو المجموعة باستمرار بمواد تتعلق بعروض المسرح.
+
+بدأت مؤرخة المسرح إرجيبت شالات-زاكارياش في مطلع تسعينيات القرن العشرين فرز المواد ذات القيمة التاريخية وتنظيمها بصورة منهجية. ومنذ عام 2022 تدير مركز التوثيق تونده كوتشيش، المربية المسرحية وأمينة الأرشيف.
+
+يفتح المركز أبوابه يوميًا من الساعة 12 ظهرًا حتى 4 عصرًا، وهو مخصص أساسًا للباحثين، لكنه يرحب أيضًا بالزوار المهتمين الذين يمكنهم طلب جولة بصحبة مرشد.
+
+إذا كنت تتشوق إلى رؤية الوثائق والقطع الأصلية التي تقف وراء الحكايات التي سمعتها للتو، فهذا المكان يستحق الزيارة. هنا يصبح الماضي ملموسًا، وتظهر إلى النور حكايات ظلت مخفية حتى الآن.`,
+          fr: `Le Centre de documentation du théâtre conserve un patrimoine théâtral de plus de deux siècles. Sa collection comprend de nombreuses pièces manuscrites du XIXe siècle, des livrets, des affiches d’époque, des photographies, des maquettes de costumes et des souvenirs, dont des objets et documents précieux de l’époque de Jenő Janovics. La collection s’enrichit sans cesse de documents liés aux spectacles du théâtre.
+
+Le tri et le classement systématique des documents ayant une valeur historique ont été entrepris au début des années 1990 par l’historienne du théâtre Erzsébet Salat-Zakariás. Depuis 2022, le Centre est dirigé par Tünde Kocsis, pédagogue théâtrale et archiviste.
+
+Le Centre est ouvert tous les jours de 12 h à 16 h, en premier lieu pour les chercheurs, mais il accueille aussi chaleureusement les visiteurs intéressés, qui peuvent demander une visite guidée.
+
+Si vous êtes curieux de découvrir les documents et objets originaux qui se cachent derrière les histoires que vous venez d’entendre, cet endroit mérite une visite. Ici, le passé devient tangible et des histoires jusque-là cachées voient le jour.`
         }
       },
       {
@@ -532,27 +621,27 @@ Chaque représentation n’existe qu’une seule fois. Sans des archives comme c
           })
         ],
         text: {
-          en: `The Házsongárd Cemetery, today the Central Cemetery, was founded in 1585, during a plague, on the town's melon field. From the very beginning anyone could be buried here, whatever their religion or language. Scholars, writers and artists rest here – and many people of the theatre.
+          en: `Házsongárd Cemetery was established in 1585, during a plague epidemic, on land belonging to the city that had been used for growing melons. From the very beginning, anyone could be buried here, regardless of their religion or language. Scholars, writers and artists rest here – along with many figures from the world of theatre.
 
-One of them is Pál Jantsó Gidófalvi, one of the young nobles who founded the company in 1792. He longed to play heroes, but his tall, lanky figure, his top hat and his hooked nose made audiences laugh. Legend has it that one night he trampled the laurel wreath he was given and shouted: “Yesterday, when I played a proud, wise man, you whistled. Today, when I play a jackass, you applaud!” He became the first true comedian of the Cluj stage. Next to him rests his colleague Celesztin Pergő. Here, too, lies Mária Néb, a brilliant comic actress who was lured to Buda in vain – she could not leave her city.
+Among them is Gidófalvi Pál Jantsó, one of the young nobles who founded the theatre company in 1792. He wanted to play heroes, but his tall, lanky figure, top hat and hooked nose made audiences laugh. According to legend, one evening he trampled on the laurel wreath presented to him and exclaimed: “Yesterday, when I played a proud and intelligent man, they booed me. Today, when I play a donkey, they applaud!” He became the first true comedian of the Cluj stage. Also buried here is Mária Néb, a brilliant comedy actress who resisted attempts to persuade her to move to Buda – she could not bear to leave her beloved city.
 
-And here lies Jenő Janovics, the man whose name runs through this whole tour. He died in 1945, on the very day the theatre season opened. His grave lies where the actress Anikó Ungár was once buried – one of the great actresses of the Farkas Street stage, whom he deeply admired.
+And here rests Jenő Janovics, whose name has accompanied us throughout our walk. He died in 1945, on the very day the theatre season was due to open. His grave stands where Anikó Székelyné Ungár was once buried – one of the great actresses of the Farkas Street Theatre, whom he deeply admired.
 
-Take a moment. Theatre is the most fleeting of all arts – every performance exists only once. What remains is the memory of the people who were there.`,
-          hu: `A Házsongárdi temetőt – ma hivatalosan Központi temető – 1585-ben, pestisjárvány idején alapították a város dinnyeföldjén. Kezdettől fogva bárki ide temetkezhetett, vallásától és nyelvétől függetlenül. Tudósok, írók, művészek nyugszanak itt – és a színház sok embere.
+Pause for a moment. Theatre is the most ephemeral of all art forms – every performance exists only once. What remains is the memory of those who were there.`,
+          hu: `A Házsongárdi temetőt 1585-ben, pestisjárvány idején alapították a város dinnyeföldjén. Kezdettől fogva bárki ide temetkezhetett, vallásától és nyelvétől függetlenül. Tudósok, írók, művészek nyugszanak itt – és a színház sok embere.
 
-Közéjük tartozik Gidófalvi Jantsó Pál, az 1792-es alapító fiatal nemesek egyike. Hősöket szeretett volna játszani, de magas, nyurga alakja, cilindere és horgas orra nevetésre fakasztotta a közönséget. A legenda szerint egy este lábbal taposta meg a neki nyújtott babérkoszorút, és így kiáltott: „Tegnap, amikor büszke, okos embert játszottam, kifütyültek. Ma, amikor egy szamarat játszom, tapsolnak!” Ő lett a kolozsvári színpad első igazi komikusa. Mellette nyugszik kollégája, Pergő Celesztin. Itt nyugszik Néb Mária is, a ragyogó vígjátéki színésznő, akit hiába csábítottak Budára – nem tudott megválni városától.
+Közéjük tartozik Gidófalvi Jantsó Pál, az 1792-es alapító fiatal nemesek egyike. Hősöket szeretett volna játszani, de magas, nyurga alakja, cilindere és horgas orra nevetésre fakasztotta a közönséget. A legenda szerint egy este lábbal taposta meg a neki nyújtott babérkoszorút, és így kiáltott: „Tegnap, amikor büszke, okos embert játszottam, kifütyültek. Ma, amikor egy szamarat játszom, tapsolnak!” Ő lett a kolozsvári színpad első igazi komikusa. Itt nyugszik Néb Mária is, a ragyogó vígjátéki színésznő, akit hiába csábítottak Budára – nem tudott megválni városától.
 
-És itt nyugszik Janovics Jenő, akinek neve az egész sétán végigkísér bennünket. 1945-ben halt meg, éppen a színházi évadnyitás napján. Sírja ott van, ahol egykor Székelyné Ungár Anikó nyugodott – a Farkas utcai színpad egyik nagy színésznője, akit mélyen tisztelt.
+És itt nyugszik Janovics Jenő, akinek neve az egész sétán végigkísért bennünket. 1945-ben halt meg, éppen a színházi évadnyitás napján. Sírja ott van, ahol egykor Székelyné Ungár Anikó nyugodott – a Farkas utcai színpad egyik nagy színésznője, akit mélyen tisztelt.
 
 Álljon meg egy pillanatra. A színház a legmúlandóbb művészet – minden előadás csak egyszer létezik. Ami megmarad, az azok emléke, akik ott voltak.`,
-          ro: `Cimitirul Central, cunoscut și ca Házsongárd sau Hajongard, a fost înființat în 1585, în timpul unei epidemii de ciumă, pe fostul teren cu pepeni al orașului. De la început, aici putea fi înmormântat oricine, indiferent de religie sau limbă. Aici odihnesc savanți, scriitori, artiști – și mulți oameni ai teatrului.
+          ro: `Cimitirul Házsongárd a fost înființat în 1585, în timpul unei epidemii de ciumă, pe un teren al orașului folosit pentru cultivarea pepenilor. Încă de la început, aici putea fi înmormântat oricine, indiferent de religie sau de limba vorbită. Aici își dorm somnul de veci oameni de știință, scriitori, artiști – și numeroase personalități ale teatrului.
 
-Unul dintre ei este Pál Jantsó Gidófalvi, unul dintre tinerii nobili care au fondat trupa în 1792. Și-ar fi dorit să joace eroi, dar silueta lui înaltă și deșirată, jobenul și nasul coroiat stârneau râsul publicului. Legenda spune că într-o seară a călcat în picioare coroana de lauri primită și a strigat: „Ieri, când am jucat un om mândru și înțelept, m-ați fluierat. Azi, când joc un măgar, mă aplaudați!” A devenit primul adevărat actor de comedie al scenei clujene. Lângă el se odihnește colegul său, Celesztin Pergő. Tot aici se află Mária Néb, o strălucită actriță de comedie, pe care cei din Buda au încercat în zadar să o atragă – nu s-a putut despărți de orașul ei.
+Printre aceștia se numără Gidófalvi Jantsó Pál, unul dintre tinerii nobili care au fondat trupa de teatru în 1792. Își dorea să interpreteze roluri de eroi, însă statura sa înaltă și deșirată, jobenul și nasul acvilin stârneau râsul publicului. Potrivit legendei, într-o seară a călcat în picioare cununa de lauri care îi fusese oferită și a exclamat: „Ieri, când am interpretat rolul unui om mândru și inteligent, m-au fluierat. Astăzi, când joc rolul unui măgar, mă aplaudă!” A devenit primul adevărat actor de comedie al scenei clujene. Tot aici se odihnește și Néb Mária, o strălucită actriță de comedie, pe care au încercat în zadar să o atragă la Buda – nu se putea despărți de orașul său îndrăgit.
 
-Și tot aici se odihnește Jenő Janovics, omul al cărui nume străbate întregul tur. A murit în 1945, chiar în ziua deschiderii stagiunii. Mormântul lui se află pe locul unde fusese înmormântată actrița Anikó Ungár – una dintre marile actrițe ale scenei de pe strada Farkas, pe care el o admira profund.
+Și tot aici își doarme somnul de veci Janovics Jenő, al cărui nume ne-a însoțit pe tot parcursul plimbării. A murit în 1945, chiar în ziua în care urma să se deschidă stagiunea teatrală. Mormântul său se află în locul în care odinioară fusese înmormântată Székelyné Ungár Anikó – una dintre marile actrițe ale teatrului de pe strada Farkas, pe care Janovics o admira profund.
 
-Opriți-vă pentru o clipă. Teatrul este cea mai efemeră dintre arte – fiecare spectacol există o singură dată. Ceea ce rămâne este amintirea celor care au fost de față.`
+Opriți-vă pentru o clipă. Teatrul este cea mai efemeră dintre arte – fiecare reprezentație există o singură dată. Ceea ce rămâne este amintirea celor care au fost acolo.`
         },
         activity: {
           icon: "🕯️",
