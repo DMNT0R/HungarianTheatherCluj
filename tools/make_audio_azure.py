@@ -11,7 +11,7 @@ Aufruf (im Projektordner):
 
 Kostenloser Tarif F0: 500.000 Zeichen/Monat, max. 20 Anfragen pro Minute –
 das Skript wartet deshalb zwischen den Anfragen. Ein kompletter Lauf
-(21 Dateien, ca. 40.000 Zeichen) dauert rund 15 Minuten.
+(80 Dateien in 10 Sprachen, ca. 170.000 Zeichen) dauert rund eine Stunde.
 """
 import io, json, os, re, subprocess, sys, time, urllib.request, urllib.error, wave
 from xml.sax.saxutils import escape
@@ -28,8 +28,15 @@ VOICES = {
     "en": {"locale": "en-GB", "narrator": "en-GB-Sonia:DragonHDLatestNeural", "actor": "en-GB-Ollie:DragonHDLatestNeural", "style": None},
     "hu": {"locale": "hu-HU", "narrator": "hu-HU-Harper:MAI-Voice-2.1", "actor": "hu-HU-Levente:MAI-Voice-2.1", "style": "audiobook"},
     "ro": {"locale": "ro-RO", "narrator": "ro-RO-Ioana:MAI-Voice-2.1", "actor": "ro-RO-Andrei:MAI-Voice-2.1", "style": None},
+    "tr": {"locale": "tr-TR", "narrator": "tr-TR-Elif:MAI-Voice-2.1", "actor": "tr-TR-Aydin:MAI-Voice-2.1", "style": None},
+    "fa": {"locale": "fa-IR", "narrator": "fa-IR-Dilara:DragonLatestNeural", "actor": "fa-IR-FaridNeural", "style": None},
+    "es": {"locale": "es-ES", "narrator": "es-ES-Ximena:DragonHDLatestNeural", "actor": "es-ES-Tristan:DragonHDLatestNeural", "style": None},
+    "ca": {"locale": "ca-ES", "narrator": "ca-ES-Joana:DragonLatestNeural", "actor": "ca-ES-EnricNeural", "style": None},
+    "de": {"locale": "de-DE", "narrator": "de-DE-Seraphina:DragonHDLatestNeural", "actor": "de-DE-Florian:DragonHDLatestNeural", "style": None},
+    "ar": {"locale": "ar-SA", "narrator": "ar-SA-ZariyahNeural", "actor": "ar-SA-Hamed:DragonLatestNeural", "style": None},
+    "fr": {"locale": "fr-FR", "narrator": "fr-FR-Vivienne:DragonHDLatestNeural", "actor": "fr-FR-Remy:DragonHDLatestNeural", "style": None},
 }
-QUOTES = re.compile(r"[“„\"]([^“”„\"]+)[”\"]")
+QUOTES = re.compile(r"[“„«\"]\s?([^“”„«»\"]+?)\s?[”“»\"]")
 
 sent_file, out_dir = sys.argv[1], sys.argv[2]
 only = next((a.split("=", 1)[1] for a in sys.argv[3:] if a.startswith("--only=")), None)

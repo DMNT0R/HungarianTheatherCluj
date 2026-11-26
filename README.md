@@ -224,14 +224,21 @@ radio play: a **narrator** tells the story and an **actor** speaks the direct qu
 | English | Sonia (en-GB, DragonHD) | Ollie (en-GB, DragonHD) |
 | Hungarian | Harper (MAI-Voice-2.1, audiobook style) | Levente (MAI-Voice-2.1) |
 | Romanian | Ioana (MAI-Voice-2.1) | Andrei (MAI-Voice-2.1) |
+| Turkish | Elif (MAI-Voice-2.1) | Aydin (MAI-Voice-2.1) |
+| Persian | Dilara (Dragon) | Farid (Neural) |
+| Spanish | Ximena (es-ES, DragonHD) | Tristan (es-ES, DragonHD) |
+| Catalan | Joana (Dragon) | Enric (Neural) |
+| German | Seraphina (DragonHD) | Florian (DragonHD) |
+| Arabic | Zariyah (ar-SA, Neural) | Hamed (ar-SA, Dragon) |
+| French | Vivienne (DragonHD) | Remy (DragonHD) |
 
 Next to each MP3 is a `.json` file with the start time of every sentence, so the app
 highlights the sentence being spoken. If an MP3 is missing, the app falls back to the
 phone's own speech output.
 
 **After changing a story text, regenerate the audio** (needs python3, node, ffmpeg and an
-Azure Speech key; the free F0 tier is enough – a full run uses about 40,000 of the
-500,000 free characters per month and takes ~15 minutes because of the F0 rate limit):
+Azure Speech key; the free F0 tier is enough – a full run in all 10 languages uses about
+125,000 of the 500,000 free characters per month and takes ~75 minutes because of the F0 rate limit):
 
 ```bash
 AZURE_SPEECH_KEY=... bash tools/make_audio_azure.sh                    # all stops
