@@ -1,6 +1,6 @@
-# Ioi!Cluj (prototype)
+# (T) Our.Cluj (prototype)
 
-**Ioi!Cluj** is a location-based mobile web app that maps the history of the **Hungarian Theatre of Cluj
+**(T) Our.Cluj** is a location-based mobile web app that maps the history of the **Hungarian Theatre of Cluj
 (Kolozsvári Állami Magyar Színház / Teatrul Maghiar de Stat Cluj)** onto the city.
 Built for the challenge *“Theatre City Map”* at the EUTOPIA Innovation Challenge Week,
 Cluj-Napoca, 23–27 November 2026.
@@ -13,7 +13,7 @@ interactive elements.
 
 ## Platform: tours for any city
 
-Ioi! is a platform: institutions (theatres, museums, libraries, cafés, …) in any city can
+(T) Our is a platform: institutions (theatres, museums, libraries, cafés, …) in any city can
 publish their own walking tours.
 
 | Who | Where | What |

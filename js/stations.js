@@ -36,7 +36,7 @@
   };
 
   window.TOUR = {
-    title: { en: "Ioi!Cluj", hu: "Ioi!Cluj", ro: "Ioi!Cluj" },
+    title: { en: "(T) Our.Cluj", hu: "(T) Our.Cluj", ro: "(T) Our.Cluj" },
     subtitle: {
       en: "A walk through the Hungarian theatre history of Cluj",
       hu: "Séta Kolozsvár magyar színháztörténetében",
@@ -145,9 +145,9 @@ Imaginați-vă: lumina lumânărilor, o sală de bal plină de nobili și orăș
           photo: true,
           title: { en: "In costume, back to 1792", hu: "Jelmezben 1792-be", ro: "În costum, înapoi în 1792" },
           text: {
-            en: "Historical costumes from the Hungarian Theatre's wardrobe are waiting for you at the Rhédey Café. Dress up, take a souvenir photo – and share it with #IoiCluj.",
-            hu: "A Rhédey Kávéházban a Magyar Színház jelmeztárából származó történelmi jelmezek várják. Öltözzön be, készítsen emlékfotót – és ossza meg a #IoiCluj címkével.",
-            ro: "La Rhédey Café vă așteaptă costume istorice din garderoba Teatrului Maghiar. Îmbrăcați-vă, faceți o fotografie de amintire – și distribuiți-o cu #IoiCluj."
+            en: "Historical costumes from the Hungarian Theatre's wardrobe are waiting for you at the Rhédey Café. Dress up, take a souvenir photo – and share it with #TOurCluj.",
+            hu: "A Rhédey Kávéházban a Magyar Színház jelmeztárából származó történelmi jelmezek várják. Öltözzön be, készítsen emlékfotót – és ossza meg a #TOurCluj címkével.",
+            ro: "La Rhédey Café vă așteaptă costume istorice din garderoba Teatrului Maghiar. Îmbrăcați-vă, faceți o fotografie de amintire – și distribuiți-o cu #TOurCluj."
           }
         },
         links: [ARTICLE]

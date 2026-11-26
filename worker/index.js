@@ -1,5 +1,5 @@
 /*
- * Ioi! Tours – Server (Cloudflare Worker)
+ * (T) Our – Server (Cloudflare Worker)
  *
  * Statische App-Dateien kommen weiter aus den Assets; dieser Worker beantwortet
  * nur /api/* und /media/*.

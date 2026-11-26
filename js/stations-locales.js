@@ -27,7 +27,7 @@
           media: ["Rhédey Evi, Cluj'daki ilk Macar tiyatrosunun mekânı"],
           hint: "Napoca Caddesi'nin karşı kaldırımında durup kameranızı sarayın ön cephesine yöneltin.",
           rephoto: ["Napoca Caddesi'ndeki Rhédey Evi"],
-          activity: ["1792'ye kostümle dönüş", "Rhédey Café'de Macar Tiyatrosu'nun kostüm deposundan tarihî kostümler sizi bekliyor. Giyinip bir hatıra fotoğrafı çekin ve #IoiCluj etiketiyle paylaşın."],
+          activity: ["1792'ye kostümle dönüş", "Rhédey Café'de Macar Tiyatrosu'nun kostüm deposundan tarihî kostümler sizi bekliyor. Giyinip bir hatıra fotoğrafı çekin ve #TOurCluj etiketiyle paylaşın."],
           links: ["Daha fazlası: Farkas Caddesi tiyatrosunun 200 yılı (huntheater.ro)"]
         },
         "02-matthias": {
@@ -111,7 +111,7 @@
           media: ["خانهٔ رِه‌دی، نخستین محل تئاتر مجارستان در کلوژ"],
           hint: "در پیاده‌روی روبه‌روی خیابان Napoca بایستید و دوربین را به سوی نمای کاخ بگیرید.",
           rephoto: ["خانهٔ رِه‌دی در خیابان Napoca"],
-          activity: ["با لباس نمایش به سال ۱۷۹۲", "در کافهٔ رِه‌دی لباس‌های تاریخی از انبار تئاتر مجارستان منتظر شماست. لباس بپوشید، عکس یادگاری بگیرید و آن را با #IoiCluj به اشتراک بگذارید."],
+          activity: ["با لباس نمایش به سال ۱۷۹۲", "در کافهٔ رِه‌دی لباس‌های تاریخی از انبار تئاتر مجارستان منتظر شماست. لباس بپوشید، عکس یادگاری بگیرید و آن را با #TOurCluj به اشتراک بگذارید."],
           links: ["بیشتر بخوانید: دویست سال تئاتر خیابان فارکاش (huntheater.ro)"]
         },
         "02-matthias": {
@@ -195,7 +195,7 @@
           media: ["La casa Rhédey, primera sede del teatro húngaro en Cluj"],
           hint: "Ponte en la acera opuesta de la calle Napoca y dirige la cámara hacia la fachada del palacio.",
           rephoto: ["La casa Rhédey en la calle Napoca"],
-          activity: ["De vuelta a 1792 con vestuario", "En Rhédey Café te esperan trajes históricos del guardarropa del Teatro Húngaro. Vístete, haz una foto de recuerdo y compártela con #IoiCluj."],
+          activity: ["De vuelta a 1792 con vestuario", "En Rhédey Café te esperan trajes históricos del guardarropa del Teatro Húngaro. Vístete, haz una foto de recuerdo y compártela con #TOurCluj."],
           links: ["Más información: 200 años del teatro de la calle Farkas (huntheater.ro)"]
         },
         "02-matthias": {
@@ -279,7 +279,7 @@
           media: ["La casa Rhédey, primera seu del teatre hongarès a Cluj"],
           hint: "Posa’t a la vorera oposada del carrer Napoca i enfoca la façana del palau.",
           rephoto: ["La casa Rhédey al carrer Napoca"],
-          activity: ["De tornada al 1792 amb vestuari", "Al Rhédey Café t’esperen vestits històrics del guardarroba del Teatre Hongarès. Vesteix-te, fes una foto de record i comparteix-la amb #IoiCluj."],
+          activity: ["De tornada al 1792 amb vestuari", "Al Rhédey Café t’esperen vestits històrics del guardarroba del Teatre Hongarès. Vesteix-te, fes una foto de record i comparteix-la amb #TOurCluj."],
           links: ["Més informació: 200 anys del teatre del carrer Farkas (huntheater.ro)"]
         },
         "02-matthias": {
@@ -363,7 +363,7 @@
           media: ["Das Rhédey-Haus, die erste Spielstätte des ungarischen Theaters in Cluj"],
           hint: "Stelle dich auf den gegenüberliegenden Gehweg der Napoca-Straße und richte die Kamera auf die Palastfassade.",
           rephoto: ["Das Rhédey-Haus in der Napoca-Straße"],
-          activity: ["Im Kostüm zurück ins Jahr 1792", "Im Rhédey Café warten historische Kostüme aus dem Fundus des Ungarischen Theaters auf dich. Zieh eines an, mach ein Erinnerungsfoto und teile es mit #IoiCluj."],
+          activity: ["Im Kostüm zurück ins Jahr 1792", "Im Rhédey Café warten historische Kostüme aus dem Fundus des Ungarischen Theaters auf dich. Zieh eines an, mach ein Erinnerungsfoto und teile es mit #TOurCluj."],
           links: ["Mehr erfahren: 200 Jahre Theater in der Farkas-Straße (huntheater.ro)"]
         },
         "02-matthias": {
@@ -447,7 +447,7 @@
           media: ["بيت رِهْدي، أول مقر للمسرح المجري في كلوج"],
           hint: "قف على الرصيف المقابل في شارع Napoca ووجّه الكاميرا نحو واجهة القصر.",
           rephoto: ["بيت رِهْدي في شارع Napoca"],
-          activity: ["بالزي المسرحي إلى عام 1792", "تنتظرك في مقهى رِهْدي أزياء تاريخية من خزانة المسرح المجري. ارتدِ زيًا والتقط صورة تذكارية وشاركها مع #IoiCluj."],
+          activity: ["بالزي المسرحي إلى عام 1792", "تنتظرك في مقهى رِهْدي أزياء تاريخية من خزانة المسرح المجري. ارتدِ زيًا والتقط صورة تذكارية وشاركها مع #TOurCluj."],
           links: ["اقرأ المزيد: مئتا عام على مسرح شارع فاركاش (huntheater.ro)"]
         },
         "02-matthias": {
@@ -531,7 +531,7 @@
           media: ["La maison Rhédey, premier lieu du théâtre hongrois à Cluj"],
           hint: "Placez-vous sur le trottoir opposé de la rue Napoca et dirigez votre appareil photo vers la façade du palais.",
           rephoto: ["La maison Rhédey sur la rue Napoca"],
-          activity: ["En costume, retour en 1792", "Des costumes historiques de la garde-robe du Théâtre hongrois vous attendent au Rhédey Café. Habillez-vous, prenez une photo souvenir et partagez-la avec #IoiCluj."],
+          activity: ["En costume, retour en 1792", "Des costumes historiques de la garde-robe du Théâtre hongrois vous attendent au Rhédey Café. Habillez-vous, prenez une photo souvenir et partagez-la avec #TOurCluj."],
           links: ["En savoir plus : 200 ans du théâtre de la rue Farkas (huntheater.ro)"]
         },
         "02-matthias": {
@@ -598,7 +598,7 @@
   };
   for (const code of codes) {
     const data = locales[code];
-    set(T.title, code, "Ioi!Cluj");
+    set(T.title, code, "(T) Our.Cluj");
     set(T.subtitle, code, data.tour.subtitle);
     set(T.organizer, code, data.tour.organizer);
     set(T.mediaCredit, code, data.tour.mediaCredit);
