@@ -84,6 +84,8 @@
     const routeM = MAIN.slice(1).reduce((sum, i, k) => sum + dist(S[MAIN[k]].coords, S[i].coords), 0) * 1.3; // Umwege grob einrechnen
     $("intro-km").textContent = t("approxKm", { km: num(Math.max(0.5, Math.round(routeM / 500) / 2)) });
     $("intro-min").textContent = t("approxMin", { min: Math.round((routeM / WALK_SPEED + MAIN.length * 5) / 10) * 10 });
+    $("intro-lang-btn").innerHTML = `<img class="lang-flag" src="img/flags/${state.lang}.svg" alt="" aria-hidden="true"> ${esc(langInfo().label)} <span aria-hidden="true">▾</span>`;
+    $("intro-lang-btn").setAttribute("aria-label", `${t("chooseLang")}: ${langInfo().label}`);
     $("drawer-lang").innerHTML = `🌐 ${esc(t("chooseLang"))}: <img class="lang-flag" src="img/flags/${state.lang}.svg" alt="" aria-hidden="true"> ${esc(langInfo().label)}`;
     $("lang-btn").innerHTML = `<img class="lang-flag" src="img/flags/${state.lang}.svg" alt="" aria-hidden="true">${esc(langInfo().short)}`;
     document.querySelectorAll(".lang-switch button").forEach(b => {
@@ -109,6 +111,12 @@
       box.querySelectorAll("button").forEach(b => { b.onclick = () => { setLang(b.dataset.lang); toggleLangMenu(false); }; });
     });
     $("lang-btn").onclick = e => { e.stopPropagation(); toggleLangMenu(); };
+    $("intro-lang-btn").onclick = () => {
+      const open = $("intro-lang").hidden;
+      $("intro-lang").hidden = !open;
+      $("intro-lang-btn").setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    $("intro-lang").addEventListener("click", e => { if (e.target.closest("button")) { $("intro-lang").hidden = true; $("intro-lang-btn").setAttribute("aria-expanded", "false"); } });
     $("drawer-lang").onclick = e => { e.stopPropagation(); closeDrawer(); toggleLangMenu(true); };
     document.addEventListener("click", e => { if (!$("lang-menu").hidden && !$("lang-menu").contains(e.target)) toggleLangMenu(false); });
     document.addEventListener("keydown", e => { if (e.key === "Escape") toggleLangMenu(false); });

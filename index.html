@@ -15,10 +15,11 @@
   <!-- Kurze Einführung (einmalig, später über das Menü) -->
   <section class="onboard" id="onboard" hidden role="dialog" aria-modal="true" aria-labelledby="ob-title">
     <div class="ob-card">
-      <div class="ob-top"><span class="ob-head" id="ob-head"></span><div class="ob-lang lang-mini"></div></div>
+      <div class="ob-top"><span class="ob-head" id="ob-head"></span></div>
       <div class="ob-icon" id="ob-icon" aria-hidden="true"></div>
       <h2 id="ob-title"></h2>
       <p id="ob-text"></p>
+      <div class="ob-langs" id="ob-langs" role="group" hidden></div>
       <div class="ob-dots" id="ob-dots"></div>
       <div class="ob-actions">
         <button class="btn btn-ghost" id="ob-skip" type="button"></button>
@@ -47,7 +48,8 @@
       <p class="eyebrow" id="intro-organizer"></p>
       <h1 id="intro-title"></h1>
       <p class="lead" id="intro-subtitle"></p>
-      <div class="lang-switch intro-lang" role="group" data-i18n-aria="chooseLang"></div>
+      <button class="intro-lang-btn" id="intro-lang-btn" type="button" aria-expanded="false" aria-controls="intro-lang"></button>
+      <div class="lang-switch intro-lang" id="intro-lang" role="group" data-i18n-aria="chooseLang" hidden></div>
       <ul class="facts">
         <li><strong id="intro-count">5</strong> <span data-i18n="stations"></span> <small id="intro-optional" class="intro-optional"></small></li>
         <li><strong id="intro-km"></strong> <span data-i18n="onFoot"></span></li>

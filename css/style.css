@@ -356,9 +356,14 @@ html[dir="rtl"] .compare-tag.right { right: 10px; left: auto; }
 .ob-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
 .ob-head { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--wine); }
 @media (prefers-color-scheme: dark) { .ob-head { color: var(--gold); } }
-.lang-mini { display: flex; gap: 4px; }
-.lang-mini button { border: 1.5px solid var(--line); background: transparent; border-radius: 999px; padding: 3px 8px; font-size: 12px; font-weight: 700; }
-.lang-mini button[aria-pressed="true"] { background: var(--wine); border-color: var(--wine); color: #fff; }
+.ob-langs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 4px; }
+.ob-langs[hidden] { display: none; }
+.ob-langs button { display: inline-flex; align-items: center; gap: 7px; min-width: 0; border: 1.5px solid var(--line); background: transparent;
+  color: var(--ink); border-radius: 999px; padding: 8px 12px; font-size: 14px; font-weight: 600; text-align: start; }
+.ob-langs button[aria-pressed="true"] { background: var(--wine); border-color: var(--wine); color: #fff; }
+.intro-lang-btn { display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 18px; padding: 8px 16px; border-radius: 999px;
+  border: 1.5px solid rgba(251, 238, 224, .45); background: transparent; color: #fbeee0; font-size: 15px; font-weight: 600; }
+.intro-lang[hidden] { display: none; }
 .ob-icon { font-size: 54px; line-height: 1; margin: 18px 0 10px; }
 .ob-card h2 { font-size: 24px; margin: 0 0 10px; }
 .ob-card p { margin: 0; line-height: 1.55; color: var(--muted); font-size: 16px; min-height: 5em; }
@@ -507,3 +512,7 @@ html[dir="rtl"] .lang-menu { margin-left: 0; margin-right: auto; }
 }
 .lang-menu .lang-switch button, .intro-lang button { justify-content: flex-start; padding: 8px 12px; }
 .intro-lang { max-width: 360px; margin-left: auto; margin-right: auto; }
+.ob-langs button { font-size: 13px; padding: 7px 10px; gap: 6px; }
+.ob-langs button, .lang-menu .lang-switch button, .intro-lang button { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.facts strong { white-space: nowrap; }
+@media (max-width: 360px) { .facts { gap: 12px; } .facts strong { font-size: 16px; } }

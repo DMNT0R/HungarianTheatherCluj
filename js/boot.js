@@ -81,24 +81,31 @@
     return new Promise(resolve => {
       let step = 0;
       const box = $("onboard");
+      // Beim ersten Besuch ist die Sprachwahl der erste Schritt – danach nur noch über das Sprachmenü
+      const steps = store().onboarded ? STEPS : [{ lang: true, icon: "🌐", title: "chooseLang" }, ...STEPS];
       const render = () => {
         document.documentElement.lang = lang();
-        const s = STEPS[step];
+        const info = I.languages.find(l => l.code === lang());
+        document.documentElement.dir = (info && info.dir) || "ltr";
+        const s = steps[step];
         $("ob-icon").textContent = s.icon;
         $("ob-title").textContent = t(s.title);
-        $("ob-text").textContent = t(s.text);
-        $("ob-dots").innerHTML = STEPS.map((_, k) => `<span class="${k === step ? "on" : ""}"></span>`).join("");
-        $("ob-next").textContent = step < STEPS.length - 1 ? t("obNext") : t("obStart");
+        $("ob-text").textContent = s.lang ? "" : t(s.text);
+        $("ob-text").hidden = !!s.lang;
+        $("ob-langs").hidden = !s.lang;
+        $("ob-langs").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang() ? "true" : "false"));
+        $("ob-dots").innerHTML = steps.map((_, k) => `<span class="${k === step ? "on" : ""}"></span>`).join("");
+        $("ob-next").textContent = step < steps.length - 1 ? t("obNext") : t("obStart");
         $("ob-skip").textContent = t("obSkip");
-        $("ob-skip").hidden = step === STEPS.length - 1;
+        $("ob-skip").hidden = step === steps.length - 1;
         $("ob-head").textContent = t("howItWorks");
-        box.querySelectorAll(".ob-lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang()));
       };
-      box.querySelector(".ob-lang").innerHTML = I.languages
-        .map(l => `<button type="button" data-lang="${l.code}" lang="${l.code}">${l.short}</button>`).join("");
-      box.querySelectorAll(".ob-lang button").forEach(b => { b.onclick = () => { saveStore({ lang: b.dataset.lang }); render(); }; });
-      const finish = () => { box.hidden = true; saveStore({ onboarded: true }); resolve(); };
-      $("ob-next").onclick = () => { if (step < STEPS.length - 1) { step++; render(); } else finish(); };
+      $("ob-langs").setAttribute("aria-label", t("chooseLang"));
+      $("ob-langs").innerHTML = I.languages
+        .map(l => `<button type="button" data-lang="${l.code}" lang="${l.code}"><img class="lang-flag" src="img/flags/${l.code}.svg" alt="" aria-hidden="true">${esc(l.label)}</button>`).join("");
+      $("ob-langs").querySelectorAll("button").forEach(b => { b.onclick = () => { saveStore({ lang: b.dataset.lang }); render(); }; });
+      const finish = () => { box.hidden = true; saveStore({ onboarded: true, lang: lang() }); resolve(); };
+      $("ob-next").onclick = () => { if (step < steps.length - 1) { step++; render(); } else finish(); };
       $("ob-skip").onclick = finish;
       render();
       box.hidden = false;
