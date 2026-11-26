@@ -9,7 +9,7 @@ Walking through Cluj, visitors are guided from place to place. The phone's locat
 detects where they are and opens the story connected to that place: text, audio and
 interactive elements.
 
-**Live:** https://ioi.dvwit.org · QR codes for slides and posters in `promo/`
+**Live:** https://our.dvwit.org (old address ioi.dvwit.org redirects) · QR codes for slides and posters in `promo/` (`qr-our-cluj*`)
 
 ## Platform: tours for any city
 

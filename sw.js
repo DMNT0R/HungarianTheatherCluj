@@ -3,7 +3,7 @@ const CACHE = "ioi-cluj-v29";
 const SHELL = [
   "./", "index.html", "css/style.css", "js/i18n.js", "js/i18n-extra.js", "js/stations.js", "js/stations-locales.js", "js/audio.js", "js/boot.js", "js/app.js",
   "img/flags/en.svg", "img/flags/hu.svg", "img/flags/ro.svg", "img/flags/tr.svg", "img/flags/fa.svg", "img/flags/es.svg", "img/flags/ca.svg", "img/flags/de.svg", "img/flags/ar.svg", "img/flags/fr.svg",
-  "img/icon.svg", "img/icon-192.png", "manifest.webmanifest",
+  "img/icon.svg", "img/logo-mark.svg", "img/icon-192.png", "manifest.webmanifest",
   "vendor/leaflet/leaflet.css",
   "vendor/leaflet/leaflet.js"
 ];

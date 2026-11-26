@@ -70,7 +70,7 @@ h1, h2 { font-family: var(--serif); font-weight: 600; margin: 0; }
 }
 .intro.hide { opacity: 0; visibility: hidden; }
 .intro-inner { max-width: 420px; text-align: center; }
-.curtain-mark { width: 64px; height: 64px; margin: 0 auto 18px; color: var(--gold); }
+.curtain-mark { display: block; width: auto; height: 84px; margin: 0 auto 16px; }
 .intro .eyebrow { color: var(--gold); }
 .intro h1 { font-size: clamp(38px, 11vw, 54px); line-height: 1.05; margin: 8px 0 14px; }
 .intro .lead { font-size: 18px; line-height: 1.5; opacity: .9; margin: 0 0 24px; }
@@ -374,7 +374,7 @@ html[dir="rtl"] .compare-tag.right { right: 10px; left: auto; }
 .chooser[hidden] { display: none; }
 .ch-head { text-align: center; color: #fbeee0; padding: calc(env(safe-area-inset-top, 0px) + 28px) 16px 26px;
   background: radial-gradient(120% 70% at 50% 0%, rgba(199,154,59,.25), transparent 60%), linear-gradient(180deg, #4a0f19, #2a070d); }
-.ch-head .curtain-mark { width: 48px; height: 48px; margin: 0 auto 10px; color: var(--gold); }
+.ch-head .curtain-mark { height: 60px; margin: 0 auto 10px; }
 .ch-head h1 { font-size: clamp(26px, 7vw, 34px); margin: 0 0 6px; }
 .ch-head p { margin: 0 0 14px; opacity: .85; }
 .ch-help { color: #fbeee0; border-color: rgba(251,238,224,.4); padding: 7px 14px; font-size: 14px; }
